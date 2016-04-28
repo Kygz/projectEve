@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="po.PlanetPo" table="planet" lazy="false">
+		<id name="planet_id" column="planet_id">
+			<generator class="increment">
+			</generator>
+		</id>
+		<!-- 氧 电解物 水 稀有金属 有毒金属 反应金属 手性结构 -->
+		<property name="planet_user_id" column="planet_user_id"/>
+		<property name="planet_user_name" column="planet_user_name"/>
+		<property name="planet_update_date" column="planet_update_date"/>
+		<property name="planet_star1" column="planet_star1"/>
+		<property name="planet_star2" column="planet_star2"/>
+		<property name="planet_star3" column="planet_star3"/>
+		<property name="planet_star4" column="planet_star4"/>
+		<property name="planet_star5" column="planet_star5"/>
+		<property name="planet_star6" column="planet_star6"/>
+		<property name="planet_star7" column="planet_star7"/>
+	</class>
+</hibernate-mapping>
