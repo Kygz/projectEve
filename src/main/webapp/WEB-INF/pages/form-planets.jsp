@@ -1,3 +1,4 @@
+<%@taglib prefix="eve" uri="/indexTaglib" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
@@ -74,85 +75,21 @@
 						<li><a href="login.do?method=logout">离开太空</a> <i
 							class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
 					</ul>
-					<h4 class="m-0">${sessionScope.username}</h4>
-					#120964066
+					<h4 class="m-0">${sessionScope.member.member_nickname}</h4>
+					#${sessionScope.member.member_qq}
 				</div>
 
 				<!-- Calendar -->
 				<div class="s-widget m-b-25">
 					<div id="sidebar-calendar"></div>
 				</div>
-				
-				<div class="s-widget m-b-25">
-					<h2 class="tile-title">舰长六维</h2>
-					<div class="s-widget-body">
-						<div class="side-border">
-							<small>歼灭姬</small>
-							<div class="progress progress-small">
-								<a href="#" data-toggle="tooltip" title=""
-									class="progress-bar tooltips progress-bar-danger"
-									style="width: 60%;" data-original-title="60%"> <span
-									class="sr-only">60% Complete</span>
-								</a>
-							</div>
-						</div>
-						<div class="side-border">
-							<small>挖掘姬</small>
-							<div class="progress progress-small">
-								<a href="#" data-toggle="tooltip" title=""
-									class="tooltips progress-bar progress-bar-info"
-									style="width: 43%;" data-original-title="43%"> <span
-									class="sr-only">43% Complete</span>
-								</a>
-							</div>
-						</div>
-						<div class="side-border">
-							<small>种植姬</small>
-							<div class="progress progress-small">
-								<a href="#" data-toggle="tooltip" title=""
-									class="tooltips progress-bar progress-bar-warning"
-									style="width: 81%;" data-original-title="81%"> <span
-									class="sr-only">81% Complete</span>
-								</a>
-							</div>
-						</div>
-						<div class="side-border">
-							<small>教官姬</small>
-							<div class="progress progress-small">
-								<a href="#" data-toggle="tooltip" title=""
-									class="tooltips progress-bar progress-bar-danger"
-									style="width: 10%;" data-original-title="10%"> <span
-									class="sr-only">10% Complete</span>
-								</a>
-							</div>
-						</div>
-						<div class="side-border">
-							<small>保镖姬</small>
-							<div class="progress progress-small">
-								<a href="#" data-toggle="tooltip" title=""
-									class="tooltips progress-bar progress-bar-info"
-									style="width: 95%;" data-original-title="95%"> <span
-									class="sr-only">95% Complete</span>
-								</a>
-							</div>
-						</div>
-						<div class="side-border">
-							<small>富豪姬</small>
-							<div class="progress progress-small">
-								<a href="#" data-toggle="tooltip" title=""
-									class="tooltips progress-bar progress-bar-warning"
-									style="width: 30%;" data-original-title="30%"> <span
-									class="sr-only">30% Complete</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<%--舰长六维--%>
+				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
 			</div>
 
 			<!-- Side Menu -->
 			<ul class="list-unstyled side-menu">
-				<li class="active"><a class="sa-side-home" href="index.html">
+				<li><a class="sa-side-home" href="index.html">
 						<span class="menu-item">主页</span>
 				</a></li>
 				<li><a class="sa-side-typography" href="typography.html"> <span
@@ -161,17 +98,16 @@
 				<li><a class="sa-side-widget" href="content-widgets.html">
 						<span class="menu-item">米氏军校</span>
 				</a></li>
-				<li class="dropdown"><a class="sa-side-table" href=""> <span
+				<li class="dropdown active"><a class="sa-side-table" href=""> <span
 						class="menu-item">事务中心</span>
 				</a>
 					<ul class="list-unstyled menu-item">
 						<li><a href="tables.html">*统计表格</a></li>
 						<li><a href="form-elements.html">新手船只申领</a></li>
-						<li><a class="active" href="form-planets.jsp">行星开发</a></li>
+						<li><a href="form-planets.jsp" class="active">行星开发</a></li>
 						<li><a href="form-examples.html">异常拾荒</a></li>
 						<li><a href="form-validation.html">出勤登记</a></li>
 					</ul></li>
-				
 			</ul>
 		</aside>
 
@@ -387,11 +323,11 @@
 				<li class="active">Data</li>
 			</ol>
 
-			<h4 class="page-title">行星产物上交</h4>
+			<h4 class="page-title">行星开发</h4>
 
 			<!-- spinner -->
 			<div class="block-area" id="spinner">
-				<h3 class="block-title">行星开发提交表</h3>
+				<h3 class="block-title">行星产物记录表</h3>
 				<br />
 				<!-- 氧   -->
 				<div class="col-md-4 m-b-15">

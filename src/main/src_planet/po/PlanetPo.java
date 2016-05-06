@@ -9,7 +9,7 @@ import java.util.Date;
  *
  */
 public class PlanetPo {
-	private int planet_id;
+	private Long planet_id;
 	private String planet_user_id;
 	private String planet_user_name;
 	private Date planet_update_date;
@@ -21,10 +21,10 @@ public class PlanetPo {
 	private long planet_star6 = 0;
 	private long planet_star7 = 0;
 	
-	public int getPlanet_id() {
+	public Long getPlanet_id() {
 		return planet_id;
 	}
-	public void setPlanet_id(int planet_id) {
+	public void setPlanet_id(Long planet_id) {
 		this.planet_id = planet_id;
 	}
 	public String getPlanet_user_id() {
@@ -89,6 +89,6 @@ public class PlanetPo {
 	}
 
 	public void setIdIfNew() {
-			this.setPlanet_user_id(String.valueOf(SysUtil.longUUID()));
+			this.setPlanet_id(SysUtil.longUUID());
 	}
 }

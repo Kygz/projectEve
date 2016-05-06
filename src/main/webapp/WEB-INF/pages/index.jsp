@@ -94,71 +94,6 @@
 				<!-- Projects -->
 				<%--舰长六维--%>
 				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
-				<%--<div class="s-widget m-b-25">--%>
-					<%--<h2 class="tile-title">舰长六维</h2>--%>
-					<%--<div class="s-widget-body">--%>
-						<%--<div class="side-border">--%>
-							<%--<small>歼灭姬</small>--%>
-							<%--<div class="progress progress-small">--%>
-								<%--<a href="#" data-toggle="tooltip" title=""--%>
-									<%--class="progress-bar tooltips progress-bar-danger"--%>
-									<%--style="width: 60%;" data-original-title="60%"> <span--%>
-									<%--class="sr-only">60% Complete</span>--%>
-								<%--</a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
-						<%--<div class="side-border">--%>
-							<%--<small>挖掘姬</small>--%>
-							<%--<div class="progress progress-small">--%>
-								<%--<a href="#" data-toggle="tooltip" title=""--%>
-									<%--class="tooltips progress-bar progress-bar-info"--%>
-									<%--style="width: 43%;" data-original-title="43%"> <span--%>
-									<%--class="sr-only">43% Complete</span>--%>
-								<%--</a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
-						<%--<div class="side-border">--%>
-							<%--<small>种植姬</small>--%>
-							<%--<div class="progress progress-small">--%>
-								<%--<a href="#" data-toggle="tooltip" title=""--%>
-									<%--class="tooltips progress-bar progress-bar-warning"--%>
-									<%--style="width: 81%;" data-original-title="81%"> <span--%>
-									<%--class="sr-only">81% Complete</span>--%>
-								<%--</a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
-						<%--<div class="side-border">--%>
-							<%--<small>教官姬</small>--%>
-							<%--<div class="progress progress-small">--%>
-								<%--<a href="#" data-toggle="tooltip" title=""--%>
-									<%--class="tooltips progress-bar progress-bar-danger"--%>
-									<%--style="width: 10%;" data-original-title="10%"> <span--%>
-									<%--class="sr-only">10% Complete</span>--%>
-								<%--</a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
-						<%--<div class="side-border">--%>
-							<%--<small>保镖姬</small>--%>
-							<%--<div class="progress progress-small">--%>
-								<%--<a href="#" data-toggle="tooltip" title=""--%>
-									<%--class="tooltips progress-bar progress-bar-info"--%>
-									<%--style="width: 95%;" data-original-title="95%"> <span--%>
-									<%--class="sr-only">95% Complete</span>--%>
-								<%--</a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
-						<%--<div class="side-border">--%>
-							<%--<small>富豪姬</small>--%>
-							<%--<div class="progress progress-small">--%>
-								<%--<a href="#" data-toggle="tooltip" title=""--%>
-									<%--class="tooltips progress-bar progress-bar-warning"--%>
-									<%--style="width: 30%;" data-original-title="30%"> <span--%>
-									<%--class="sr-only">30% Complete</span>--%>
-								<%--</a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
-					<%--</div>--%>
-				<%--</div>--%>
 			</div>
 
 			<!-- Side Menu -->
@@ -178,64 +113,11 @@
 					<ul class="list-unstyled menu-item">
 						<li><a href="tables.html">*统计表格</a></li>
 						<li><a href="form-elements.html">新手船只申领</a></li>
-						<li><a href="form-planets.jsp">行星开发</a></li>
+						<li><a href="planet.do?method=planetInsertPage">行星开发</a></li>
 						<li><a href="form-examples.html">异常拾荒</a></li>
 						<li><a href="form-validation.html">出勤登记</a></li>
-					</ul></li>
-				<!-- 隐藏
-                    <li class="dropdown">
-                        <a class="sa-side-form" href="">
-                            <span class="menu-item">Form</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="form-elements.html">Basic Form Elements</a></li>
-                            <li><a href="form-components.html">Form Components</a></li>
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-ui" href="">
-                            <span class="menu-item">User Interface</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="labels.html">Labels</a></li>
-                            <li><a href="images-icons.html">Images &amp; Icons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="media.html">Media</a></li>
-                            <li><a href="components.html">Components</a></li>
-                            <li><a href="other-components.html">Others</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="sa-side-chart" href="charts.html">
-                            <span class="menu-item">Charts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-folder" href="file-manager.html">
-                            <span class="menu-item">File Manager</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-calendar" href="calendar.html">
-                            <span class="menu-item">Calendar</span>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-page" href="">
-                            <span class="menu-item">Pages</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="list-view.html">List View</a></li>
-                            <li><a href="profile-page.html">Profile Page</a></li>
-                            <li><a href="messages.html">Messages</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="404.html">404 Error</a></li>
-                        </ul>
-                    </li>
-				    -->
+					</ul>
+				</li>
 			</ul>
 		</aside>
 

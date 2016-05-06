@@ -60,6 +60,8 @@ public class PlanetDaoImpl implements PlanetDao {
 
 	public void uploadPlanetRecordById(PlanetPo planetPo) {
 		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.save(planetPo);
 	}
 
 }

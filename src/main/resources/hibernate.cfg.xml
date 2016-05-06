@@ -28,6 +28,7 @@
         <!--<property name="current_session_context_class">thread</property>-->
         <!--<property name="current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</property>-->
         <mapping resource="po/MemberPo.hbm.xml"/>
+        <mapping resource="po/PlanetPo.hbm.xml"/>
         <!-- 映射实体路径 -->
     </session-factory>
 </hibernate-configuration>

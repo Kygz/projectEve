@@ -1,5 +1,6 @@
 package manager;
 
+import po.PlanetPo;
 import po.PlanetRecordResult;
 
 /**
@@ -15,4 +16,9 @@ public interface PlanetManager {
      * @return
      */
 	PlanetRecordResult queryPlanetRecordByMemeberPerMonth(String userId,String userName);
+	/**
+	 * 上传记录
+	 * @param planetPo
+	 */
+	void insertPlanetRecordById(PlanetPo planetPo);
 }

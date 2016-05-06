@@ -19,6 +19,7 @@ function submitPlanetFunction(){
 		dataType : "json",
 		success : function(data) {
 			alert("提交成功！");
+			location.reload();
 		}
 	});
 }
