@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="hibernate.cfg.xml/Hibernate" uuid="5a809778-ca2e-4546-9e3d-ad87e611c775">
+    <database-info product="MySQL" version="5.6.26-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="projecteve"/>
+      <table id="2" parent="1" name="member"/>
+      <table id="3" parent="1" name="planet"/>
+      <column id="4" parent="2" name="member_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(20)</data-type>
+      </column>
+      <column id="5" parent="2" name="member_nickname">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="6" parent="2" name="member_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="7" parent="2" name="member_password">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="8" parent="2" name="member_qq">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="9" parent="2" name="PRIMARY">
+        <columns>member_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="10" parent="3" name="planet_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(20) unsigned zerofill</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="11" parent="3" name="planet_user_id">
+        <mandatory>1</mandatory>
+        <data-type>smallint(20)</data-type>
+      </column>
+      <column id="12" parent="3" name="planet_user_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="13" parent="3" name="planet_upload_date">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="14" parent="3" name="planet_star_1">
+        <data-type>bigint(20) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="15" parent="3" name="planet_star_2">
+        <data-type>bigint(20) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="16" parent="3" name="planet_star_3">
+        <data-type>bigint(20) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="17" parent="3" name="planet_star_4">
+        <data-type>bigint(20) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="18" parent="3" name="planet_star_5">
+        <data-type>bigint(20) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="19" parent="3" name="planet_star_6">
+        <data-type>bigint(20) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="20" parent="3" name="planet_star_7">
+        <data-type>bigint(20) unsigned</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="21" parent="3" name="PRIMARY">
+        <columns>planet_id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
