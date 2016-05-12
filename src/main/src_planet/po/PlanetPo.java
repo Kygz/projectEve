@@ -20,7 +20,14 @@ public class PlanetPo {
 	private long planet_star5 = 0;
 	private long planet_star6 = 0;
 	private long planet_star7 = 0;
-	
+	private double planet_star1_price = 0;
+	private double planet_star2_price = 0;
+	private double planet_star3_price = 0;
+	private double planet_star4_price = 0;
+	private double planet_star5_price = 0;
+	private double planet_star6_price = 0;
+	private double planet_star7_price = 0;
+
 	public Long getPlanet_id() {
 		return planet_id;
 	}
@@ -86,6 +93,48 @@ public class PlanetPo {
 	}
 	public void setPlanet_star7(long planet_star7) {
 		this.planet_star7 = planet_star7;
+	}
+	public double getPlanet_star1_price() {
+		return planet_star1_price;
+	}
+	public void setPlanet_star1_price(double planet_star1_price) {
+		this.planet_star1_price = planet_star1_price;
+	}
+	public double getPlanet_star2_price() {
+		return planet_star2_price;
+	}
+	public void setPlanet_star2_price(double planet_star2_price) {
+		this.planet_star2_price = planet_star2_price;
+	}
+	public double getPlanet_star3_price() {
+		return planet_star3_price;
+	}
+	public void setPlanet_star3_price(double planet_star3_price) {
+		this.planet_star3_price = planet_star3_price;
+	}
+	public double getPlanet_star4_price() {
+		return planet_star4_price;
+	}
+	public void setPlanet_star4_price(double planet_star4_price) {
+		this.planet_star4_price = planet_star4_price;
+	}
+	public double getPlanet_star5_price() {
+		return planet_star5_price;
+	}
+	public void setPlanet_star5_price(double planet_star5_price) {
+		this.planet_star5_price = planet_star5_price;
+	}
+	public double getPlanet_star6_price() {
+		return planet_star6_price;
+	}
+	public void setPlanet_star6_price(double planet_star6_price) {
+		this.planet_star6_price = planet_star6_price;
+	}
+	public double getPlanet_star7_price() {
+		return planet_star7_price;
+	}
+	public void setPlanet_star7_price(double planet_star7_price) {
+		this.planet_star7_price = planet_star7_price;
 	}
 
 	public void setIdIfNew() {

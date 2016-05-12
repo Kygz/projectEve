@@ -110,6 +110,8 @@
             <artifactId>hibernate-c3p0</artifactId>
             <version>4.3.11.Final</version>
         </dependency>
+        <!--ajax json jackson-->
+
     </dependencies>
     <build>
         <finalName>projectEve</finalName>

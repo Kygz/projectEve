@@ -18,5 +18,12 @@
 		<property name="planet_star5" type="long" column="planet_star_5"/>
 		<property name="planet_star6" type="long" column="planet_star_6"/>
 		<property name="planet_star7" type="long" column="planet_star_7"/>
+		<property name="planet_star1_price" type="double" column="planet_star_1_price"/>
+		<property name="planet_star2_price" type="double" column="planet_star_2_price"/>
+		<property name="planet_star3_price" type="double" column="planet_star_3_price"/>
+		<property name="planet_star4_price" type="double" column="planet_star_4_price"/>
+		<property name="planet_star5_price" type="double" column="planet_star_5_price"/>
+		<property name="planet_star6_price" type="double" column="planet_star_6_price"/>
+		<property name="planet_star7_price" type="double" column="planet_star_7_price"/>
 	</class>
 </hibernate-mapping>

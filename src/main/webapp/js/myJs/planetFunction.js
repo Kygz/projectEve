@@ -18,8 +18,9 @@ function submitPlanetFunction(){
 		type : "POST",
 		dataType : "json",
 		success : function(data) {
-			alert("提交成功！");
-			location.reload();
+			console.log(data.msg);
+			alert(data.msg);
+			//location.reload();
 		}
 	});
 }

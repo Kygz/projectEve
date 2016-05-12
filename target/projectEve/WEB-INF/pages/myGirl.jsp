@@ -22,7 +22,7 @@
 </head>
 <body>
 <button title="23333" onclick="showMyLove()">彩蛋1</button><br/>
-<textarea id="photo" style="border: 0;font-family:黑体;background-color:black;width: 10px;height: 10px;font-size: 40px;line-height:7px;color: #f5ab40">
+<textarea id="photo" style="border: 0;font-family: 'Courier New',serif;background-color:black;width: 10px;height: 10px;font-size: 40px;line-height:7px;color: #f5ab40">
 mmmmBBBBBBBBBBBBBBmnc;:::.:...................................................................::::::::::::::::::::;;;;;;;c;;;;;;;c;;;ccc;cccccccnnnnmmBNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNBBBBmmmBBNMMMM:
 mmmBBBBBBBBBBBBBBmnc;:.::....................................................................::::::::::::::::::::::;;;;;;;cc;;;;;;;;;ccc;;cccccnnnnnnnmBNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNBBBBmmmBBNMMMM:
 mmmmBmBBBBBBBBBmnnc:...:..................................................................:..:::::::::::::::::;:::::;cc;;;cccc;;cc;;;;cccccccnncnnnnnnnmmBNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNBBBmmmBBNNMMM:
