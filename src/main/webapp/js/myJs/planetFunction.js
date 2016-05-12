@@ -18,9 +18,9 @@ function submitPlanetFunction(){
 		type : "POST",
 		dataType : "json",
 		success : function(data) {
-			console.log(data.msg);
+			// console.log(data.msg);
 			alert(data.msg);
-			//location.reload();
+			location.reload();
 		}
 	});
 }
