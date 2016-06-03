@@ -22,6 +22,7 @@ import util.JitaUtil;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -125,8 +126,24 @@ public class PlanetController {
 		return json;
 	}
 
+	/**
+	 * 查成员最新五条提交记录
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(params = "method=queryFive", method=RequestMethod.POST,produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String queryFive(HttpSession session){
+		MemberPo memberPo = (MemberPo)session.getAttribute("member");
+		String userId = memberPo.getMember_id().toString();
+		List<PlanetPo> planetPoList = planetManager.queryPlanetPoFiveByUserId(userId);
+		Gson gson = new Gson();
+		String json = gson.toJson(planetPoList);
+		return json;
+	}
+
 	@RequestMapping(params = "method=planetInsertPage", method=RequestMethod.GET)
-	public ModelAndView logout(HttpSession httpSession){
+	public ModelAndView planetInsertPage(HttpSession httpSession){
 		MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
 		if(memberPo==null){
 			return new ModelAndView("login");

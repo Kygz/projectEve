@@ -46,5 +46,9 @@
             <taglib-uri>/indexTaglib</taglib-uri>
             <taglib-location>/WEB-INF/tld/index.tld</taglib-location>
         </taglib>
+        <taglib>
+            <taglib-uri>/planetTaglib</taglib-uri>
+            <taglib-location>/WEB-INF/tld/planet.tld</taglib-location>
+        </taglib>
     </jsp-config>
 </web-app>

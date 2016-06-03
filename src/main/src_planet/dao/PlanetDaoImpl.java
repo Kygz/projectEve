@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -62,6 +63,15 @@ public class PlanetDaoImpl implements PlanetDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		session.save(planetPo);
+	}
+
+	public List<PlanetPo> queryPlanetPoFiveByUserId(String userId) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from PlanetPo where planet_user_id = ? order by planet_update_date desc ";
+		@SuppressWarnings("unchecked")
+		Query query = session.createQuery(hql).setParameter(0,userId).setMaxResults(5);
+		List<PlanetPo> result = query.list();
+		return result;
 	}
 
 }

@@ -3,6 +3,8 @@ package manager;
 import po.PlanetPo;
 import po.PlanetRecordResult;
 
+import java.util.List;
+
 /**
  * 行星开发信息处理
  * @author KYGZ XXOO
@@ -21,4 +23,6 @@ public interface PlanetManager {
 	 * @param planetPo
 	 */
 	void insertPlanetRecordById(PlanetPo planetPo);
+
+	List<PlanetPo> queryPlanetPoFiveByUserId(String userId);
 }

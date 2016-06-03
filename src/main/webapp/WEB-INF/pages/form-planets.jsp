@@ -1,3 +1,4 @@
+<%@taglib prefix="planet" uri="/planetTaglib" %>
 <%@taglib prefix="eve" uri="/indexTaglib" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -324,7 +325,42 @@
 			</ol>
 
 			<h4 class="page-title">行星开发</h4>
-
+			<!-- planetTable -->
+			<div class="block-area" id="tableStriped">
+				<h3 class="block-title">Last Five</h3>
+				<div class="table-responsive overflow">
+					<table id="lastFiveTable" class="tile table table-bordered table-striped">
+						<thead>
+						<tr>
+							<th>No.</th>
+							<th>氧</th>
+							<th>电解物</th>
+							<th>水</th>
+							<th>稀有金属</th>
+							<th>有毒金属</th>
+							<th>反应金属</th>
+							<th>手性结构</th>
+							<th>时间</th>
+							<th>价格</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>1</td>
+							<th>氧</th>
+							<th>电解物</th>
+							<th>水</th>
+							<th>稀有金属</th>
+							<th>有毒金属</th>
+							<th>反应金属</th>
+							<th>手性结构</th>
+							<td>data</td>
+							<td>10000isk</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 			<!-- spinner -->
 			<div class="block-area" id="spinner">
 				<h3 class="block-title">行星产物记录表</h3>
@@ -388,6 +424,7 @@
 			</div>
 			<div class="block-area">
 				<button class="btn btn-sm m-r-5" id="submitPlanet" >提交产物</button>
+				<%--<button class="btn btn-sm m-r-5" id="TESTPlanet" >TEST</button>--%>
 		    </div>
 			<hr class="whiter m-t-20" />
 
@@ -473,11 +510,16 @@
                     $('.spinner-1').spinedit('setMaximum', 2000000);
                 })();
                 
-                /* 按钮事件 */
+                /* 提交按钮事件 */
                 (function(){
                 	$('#submitPlanet').on('click', function() {
                 		submitPlanetFunction();
                 	});
+                })();
+
+                /* TEST按钮事件 */
+                (function(){
+					getPlanetTable();
                 })();
             });
         </script>

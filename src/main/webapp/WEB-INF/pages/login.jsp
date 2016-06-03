@@ -20,7 +20,7 @@
         <link href="css/animate.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
     </head>
-    <body id="skin-blur-violate">
+    <body id="skin-blur-eve2">
         <section id="login">
             <header>
                 <h1>米氏非正常人类研究院</h1>

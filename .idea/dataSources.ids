@@ -8,132 +8,132 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
       <schema id="1" name="projecteve"/>
-      <table id="2" parent="1" name="member"/>
-      <table id="3" parent="1" name="planet"/>
-      <table id="4" parent="1" name="item"/>
-      <column id="5" parent="2" name="member_id">
+      <table id="2" parent="1" name="item"/>
+      <table id="3" parent="1" name="member"/>
+      <table id="4" parent="1" name="planet"/>
+      <column id="5" parent="2" name="item_id">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="6" parent="2" name="item_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="7" parent="2" name="item_desc">
+        <data-type>longtext</data-type>
+      </column>
+      <column id="8" parent="2" name="item_type1">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="9" parent="2" name="item_type2">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="10" parent="2" name="item_type3">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="11" parent="2" name="item_type4">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="12" parent="2" name="item_type5">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="13" parent="2" name="item_type6">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="14" parent="3" name="member_id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
       </column>
-      <column id="6" parent="2" name="member_nickname">
+      <column id="15" parent="3" name="member_nickname">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="7" parent="2" name="member_name">
+      <column id="16" parent="3" name="member_name">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="8" parent="2" name="member_password">
+      <column id="17" parent="3" name="member_password">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="9" parent="2" name="member_qq">
+      <column id="18" parent="3" name="member_qq">
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="10" parent="2" name="PRIMARY">
+      <key id="19" parent="3" name="PRIMARY">
         <columns>member_id</columns>
         <primary>1</primary>
       </key>
-      <column id="11" parent="3" name="planet_id">
+      <column id="20" parent="4" name="planet_id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
       </column>
-      <column id="12" parent="3" name="planet_user_id">
+      <column id="21" parent="4" name="planet_user_id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)</data-type>
       </column>
-      <column id="13" parent="3" name="planet_user_name">
+      <column id="22" parent="4" name="planet_user_name">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="14" parent="3" name="planet_upload_date">
+      <column id="23" parent="4" name="planet_upload_date">
         <mandatory>1</mandatory>
         <data-type>date</data-type>
       </column>
-      <column id="15" parent="3" name="planet_star_1">
+      <column id="24" parent="4" name="planet_star_1">
         <data-type>bigint(20) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="16" parent="3" name="planet_star_1_price">
+      <column id="25" parent="4" name="planet_star_1_price">
         <data-type>double(255)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="17" parent="3" name="planet_star_2">
+      <column id="26" parent="4" name="planet_star_2">
         <data-type>bigint(20) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="18" parent="3" name="planet_star_2_price">
+      <column id="27" parent="4" name="planet_star_2_price">
         <data-type>double(255)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="19" parent="3" name="planet_star_3">
+      <column id="28" parent="4" name="planet_star_3">
         <data-type>bigint(20) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="20" parent="3" name="planet_star_3_price">
+      <column id="29" parent="4" name="planet_star_3_price">
         <data-type>double(255)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="21" parent="3" name="planet_star_4">
+      <column id="30" parent="4" name="planet_star_4">
         <data-type>bigint(20) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="22" parent="3" name="planet_star_4_price">
+      <column id="31" parent="4" name="planet_star_4_price">
         <data-type>double(255)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="23" parent="3" name="planet_star_5">
+      <column id="32" parent="4" name="planet_star_5">
         <data-type>bigint(20) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="24" parent="3" name="planet_star_5_price">
+      <column id="33" parent="4" name="planet_star_5_price">
         <data-type>double(255)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="25" parent="3" name="planet_star_6">
+      <column id="34" parent="4" name="planet_star_6">
         <data-type>bigint(20) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="26" parent="3" name="planet_star_6_price">
+      <column id="35" parent="4" name="planet_star_6_price">
         <data-type>double(255)</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="27" parent="3" name="planet_star_7">
+      <column id="36" parent="4" name="planet_star_7">
         <data-type>bigint(20) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="28" parent="3" name="planet_star_7_price">
+      <column id="37" parent="4" name="planet_star_7_price">
         <data-type>double(255) unsigned</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <key id="29" parent="3" name="PRIMARY">
+      <key id="38" parent="4" name="PRIMARY">
         <columns>planet_id</columns>
         <primary>1</primary>
       </key>
-      <column id="30" parent="4" name="item_id">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="31" parent="4" name="item_name">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="32" parent="4" name="item_desc">
-        <data-type>longtext</data-type>
-      </column>
-      <column id="33" parent="4" name="item_type1">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="34" parent="4" name="item_type2">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="35" parent="4" name="item_type3">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="36" parent="4" name="item_type4">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="37" parent="4" name="item_type5">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="38" parent="4" name="item_type6">
-        <data-type>varchar(255)</data-type>
-      </column>
     </database-model>
   </data-source>
 </component>

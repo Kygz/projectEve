@@ -68,19 +68,15 @@ public class PlanetRecordResult {
 	public void setPlanet_star5(long planet_star5) {
 		this.planet_star5 = planet_star5;
 	}
-
 	public long getPlanet_star6() {
 		return planet_star6;
 	}
-
 	public void setPlanet_star6(long planet_star6) {
 		this.planet_star6 = planet_star6;
 	}
-
 	public long getPlanet_star7() {
 		return planet_star7;
 	}
-
 	public void setPlanet_star7(long planet_star7) {
 		this.planet_star7 = planet_star7;
 	}

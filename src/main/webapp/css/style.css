@@ -1864,9 +1864,17 @@ a.list-group-item.active > .badge,
         background-attachment: fixed;
     }
 
+    #skin-blur-eve1 {
+        background-image: url(../img/body/eve1.jpg);
+    }
+
+    #skin-blur-eve2 {
+        background-image: url(../img/body/eve2.jpg);
+    }
+
     #skin-blur-violate {
-        /*background-image: url(../img/body/violate.jpg);*/
-        background-image: url(../img/body/eve-background01.jpg);
+        background-image: url(../img/body/violate.jpg);
+        /*background-image: url(../img/body/eve-background01.jpg);*/
     }
 
     #skin-blur-lights {

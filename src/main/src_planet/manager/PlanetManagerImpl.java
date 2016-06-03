@@ -8,6 +8,8 @@ import dao.PlanetDao;
 import po.PlanetPo;
 import po.PlanetRecordResult;
 
+import java.util.List;
+
 @Service
 public class PlanetManagerImpl implements PlanetManager {
 	@Resource
@@ -23,6 +25,11 @@ public class PlanetManagerImpl implements PlanetManager {
 
 	public void insertPlanetRecordById(PlanetPo planetPo) {
 		planetDao.uploadPlanetRecordById(planetPo);
+	}
+
+	public List<PlanetPo> queryPlanetPoFiveByUserId(String userId) {
+		List<PlanetPo> planetPoList = planetDao.queryPlanetPoFiveByUserId(userId);
+		return planetPoList;
 	}
 
 }
