@@ -2,23 +2,36 @@
  * 行星产物页面相关js
  */
 function submitPlanetFunction(){
+	var planetNum1 = $('#planet1').val();
+	var planetNum2 = $('#planet2').val();
+	var planetNum3 = $('#planet3').val();
+	var planetNum4 = $('#planet4').val();
+	var planetNum5 = $('#planet5').val();
+	var planetNum6 = $('#planet6').val();
+	var planetNum7 = $('#planet7').val();
+	if(isNull(planetNum1)){planetNum1 = 0;$('#planet1').val(planetNum1);}
+	if(isNull(planetNum2)){planetNum2 = 0;$('#planet2').val(planetNum1);}
+	if(isNull(planetNum3)){planetNum3 = 0;$('#planet3').val(planetNum1);}
+	if(isNull(planetNum4)){planetNum4 = 0;$('#planet4').val(planetNum1);}
+	if(isNull(planetNum5)){planetNum5 = 0;$('#planet5').val(planetNum1);}
+	if(isNull(planetNum6)){planetNum6 = 0;$('#planet6').val(planetNum1);}
+	if(isNull(planetNum7)){planetNum7 = 0;$('#planet7').val(planetNum1);}
 	$.ajax({
 		url : "planet.do?method=insertPlanetRecord",
 		data : {
 			username : '${sessionScope.username}',
-			planet1: $('#planet1').val(),
-			planet2: $('#planet2').val(),
-			planet3: $('#planet3').val(),
-			planet4: $('#planet4').val(),
-			planet5: $('#planet5').val(),
-			planet6: $('#planet6').val(),
-			planet7: $('#planet7').val()
+			planet1: planetNum1,
+			planet2: planetNum2,
+			planet3: planetNum3,
+			planet4: planetNum4,
+			planet5: planetNum5,
+			planet6: planetNum6,
+			planet7: planetNum7
 		},
 		async : false,
 		type : "POST",
 		dataType : "json",
 		success : function(data) {
-			// console.log(data.msg);
 			alert(data.msg);
 			location.reload();
 		}
@@ -63,4 +76,8 @@ function getPlanetTable(){
 			}
 		}
 	});
+}
+
+function isNull(value) {
+	return value == null||value=="";
 }

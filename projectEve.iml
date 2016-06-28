@@ -9,6 +9,14 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/src_index" />
+          <root url="file://$MODULE_DIR$/src/main/src_member" />
+          <root url="file://$MODULE_DIR$/src/main/src_planet" />
+          <root url="file://$MODULE_DIR$/src/main/src_util" />
+          <root url="file://$MODULE_DIR$/src/main/src_tag" />
+        </sourceRoots>
       </configuration>
     </facet>
     <facet type="hibernate" name="Hibernate">
@@ -35,6 +43,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/src_planet" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/src_util" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/src_tag" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/src_jita" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

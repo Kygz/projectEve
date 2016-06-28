@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="po.ItemPo" table="item" lazy="false">
+        <id name="item_id" type="long" column="item_id" length="20">
+            <generator class="assigned"/>
+        </id>
+        <property name="item_name" type="java.lang.String" column="item_name"/>
+        <property name="item_desc" type="java.lang.String" column="item_desc"/>
+    </class>
+</hibernate-mapping>

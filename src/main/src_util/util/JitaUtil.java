@@ -19,7 +19,6 @@ import java.util.Map;
 public class JitaUtil {
     public static JitaItem getItemInfo(String itemId){
         String urlStr = "http://www.ceve-market.org/api/market/region/10000002/type/"+itemId+".json";
-        StringBuffer response = new StringBuffer();
 
         try {
             URL url = new URL(urlStr);
