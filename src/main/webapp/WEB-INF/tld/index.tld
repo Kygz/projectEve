@@ -6,6 +6,7 @@
     <tlib-version>1.0</tlib-version>
     <short-name>eve</short-name>
     <uri>http://ccav.com</uri>
+    <!--舰长六维-->
     <tag>
         <name>showTheSix</name>
         <tag-class>index.SidebarSixTag</tag-class>
@@ -37,6 +38,27 @@
         </attribute>
         <attribute>
             <name>para6</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <!--首页侧栏-->
+    <tag>
+        <name>showSideMenu</name>
+        <tag-class>index.SidebarMenuTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>showProfileMenu</name>
+        <tag-class>index.SidebarProfileTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>userName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>qqNum</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>

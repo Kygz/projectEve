@@ -59,24 +59,10 @@
 
 		<!-- Sidebar -->
 		<aside id="sidebar">
-
 			<!-- Sidbar Widgets -->
 			<div class="side-widgets overflow">
 				<!-- Profile Menu -->
-				<div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
-					<a href="" data-toggle="dropdown"> <img
-						class="profile-pic animated" src="img/profile-picNew.jpg" alt="">
-					</a>
-					<ul class="dropdown-menu profile-menu">
-						<li><a href="">舰长信息</a> <i class="icon left">&#61903;</i><i
-							class="icon right">&#61815;</i></li>
-						<li><a href="login.do?method=logout">离开太空</a> <i
-							class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-					</ul>
-					<h4 class="m-0">${sessionScope.member.member_nickname}</h4>
-					#${sessionScope.member.member_qq}
-				</div>
-
+				<eve:showProfileMenu userName="${sessionScope.member.member_nickname}" qqNum="${sessionScope.member.member_qq}"/>
 				<!-- Calendar -->
 				<div class="s-widget m-b-25">
 					<div id="sidebar-calendar"></div>
@@ -89,39 +75,15 @@
                         </div>
                     </div> 
                     -->
-				<!-- Projects -->
 				<%--舰长六维--%>
 				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
 			</div>
-
 			<!-- Side Menu -->
-			<ul class="list-unstyled side-menu">
-				<li class="active"><a class="sa-side-home" href="index.html">
-						<span class="menu-item">主页</span>
-				</a></li>
-				<li><a class="sa-side-typography" href="typography.html"> <span
-						class="menu-item">装配车间</span>
-				</a></li>
-				<li><a class="sa-side-widget" href="content-widgets.html">
-						<span class="menu-item">米氏军校</span>
-				</a></li>
-				<li class="dropdown"><a class="sa-side-table" href=""> <span
-						class="menu-item">事务中心</span>
-				</a>
-					<ul class="list-unstyled menu-item">
-						<li><a href="tables.html">*统计表格</a></li>
-						<li><a href="form-elements.html">新手船只申领</a></li>
-						<li><a href="planet.do?method=planetInsertPage">行星开发</a></li>
-						<li><a href="form-examples.html">异常拾荒</a></li>
-						<li><a href="form-validation.html">出勤登记</a></li>
-					</ul>
-				</li>
-			</ul>
+			<eve:showSideMenu/>
 		</aside>
 
 		<!-- Content -->
 		<section id="content" class="container">
-
 			<!-- Messages Drawer -->
 			<div id="messages" class="tile drawer animated">
 				<div class="listview narrow">
