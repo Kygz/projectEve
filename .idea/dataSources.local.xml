@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="hibernate.cfg.xml/Hibernate" uuid="5a809778-ca2e-4546-9e3d-ad87e611c775">
-      <secret-storage>master_key</secret-storage>
-      <user-name>projectEVE</user-name>
-    </data-source>
-  </component>
-</project>
