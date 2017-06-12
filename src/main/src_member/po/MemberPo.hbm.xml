@@ -12,6 +12,7 @@
         <property name="member_name" type="string" column="member_name" length="255" />
         <property name="member_password" type="string" column="member_password" length="255" />
         <property name="member_qq" type="string" column="member_qq" length="255" />
-
+        <property name="member_email" type="string" column="member_email" length="255" />
+        <property name="member_skin" type="string" column="member_skin" length="255" />
     </class>
 </hibernate-mapping>

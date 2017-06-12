@@ -29,4 +29,8 @@ public class MemberManagerImpl implements MemberManager {
         }
         return null;
     }
+
+    public void saveSkinByMember(MemberPo po) {
+        memberDao.saveSkinByMember(po);
+    }
 }

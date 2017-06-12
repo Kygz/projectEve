@@ -12,6 +12,8 @@ public class MemberPo {
     private String member_name;
     private String member_password;
     private String member_qq;
+    private String member_email;
+    private String member_skin = "0";
 
     public String getMember_nickname() {
         return member_nickname;
@@ -51,5 +53,21 @@ public class MemberPo {
 
     public void setMember_qq(String member_qq) {
         this.member_qq = member_qq;
+    }
+
+    public String getMember_skin() {
+        return member_skin;
+    }
+
+    public void setMember_skin(String member_skin) {
+        this.member_skin = member_skin;
+    }
+
+    public String getMember_email() {
+        return member_email;
+    }
+
+    public void setMember_email(String member_email) {
+        this.member_email = member_email;
     }
 }

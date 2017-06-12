@@ -26,4 +26,9 @@ public class MemberDaoImpl implements MemberDao {
 		return (MemberPo)query.uniqueResult();
 	}
 
+	public void saveSkinByMember(MemberPo po) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(po);
+	}
+
 }

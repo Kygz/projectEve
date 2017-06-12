@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import org.springframework.web.bind.annotation.ResponseBody;
 import po.MemberPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,4 +81,19 @@ public class MemberController {
     public ModelAndView colorEgg(HttpSession httpSession){
         return new ModelAndView("myGirl");
     }
+
+	/**
+	 * 查成员当月总产
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(params = "method=saveSkin", method=RequestMethod.POST,produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String saveSkin(HttpSession session){
+		MemberPo memberPo = (MemberPo)session.getAttribute("member");
+		if(memberPo!=null){
+			memberManager.saveSkinByMember(memberPo);
+		}
+		return "";
+	}
 }

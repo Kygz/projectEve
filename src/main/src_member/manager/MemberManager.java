@@ -24,4 +24,10 @@ public interface MemberManager {
      * @return
      */
 	MemberPo queryMemberByIdAndPassword(String name , String password);
+
+	/**
+	 * 保存皮肤
+	 * @param po
+	 */
+	void saveSkinByMember(MemberPo po);
 }

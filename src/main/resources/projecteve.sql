@@ -25,13 +25,15 @@ CREATE TABLE `member` (
   `member_name` varchar(255) DEFAULT NULL,
   `member_password` varchar(255) DEFAULT NULL,
   `member_qq` varchar(255) DEFAULT NULL,
+  `member_email` varchar(255) DEFAULT NULL,
+  `member_skin` varchar(255) DEFAULT '0',
   PRIMARY KEY (`member_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of member
 -- ----------------------------
-INSERT INTO `member` VALUES ('1', '星际奏者', 'xjzz', '123456', '120964066');
+INSERT INTO `member` VALUES ('1', '星际奏者', 'xjzz', '123456', '120964066','gavin110991@163.com','0');
 
 -- ----------------------------
 -- Table structure for planet
