@@ -21,14 +21,18 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	public MemberPo queryById(String id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from MemberPo where member_name = :id");
+		Query query = session.createQuery("from MemberPo where member_id = :id");
 		query.setString("id", id);
 		return (MemberPo)query.uniqueResult();
 	}
 
 	public void saveSkinByMember(MemberPo po) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(po);
+		Query query = session.createQuery("from MemberPo where member_id = :id");
+		query.setString("id", po.getMember_id().toString());
+		MemberPo member = (MemberPo) query.uniqueResult();
+		member.setMember_skin(po.getMember_skin());
+		session.update(member);
 	}
 
 }

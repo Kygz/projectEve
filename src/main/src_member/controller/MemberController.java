@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 //import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -89,11 +91,24 @@ public class MemberController {
 	 */
 	@RequestMapping(params = "method=saveSkin", method=RequestMethod.POST,produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public String saveSkin(HttpSession session){
+	public String saveSkin(HttpSession session,HttpServletRequest request){
+		Map<String,String> resultMap = new HashMap<String, String>();
 		MemberPo memberPo = (MemberPo)session.getAttribute("member");
+		String newSkin = request.getParameter("skin");
 		if(memberPo!=null){
+			if(newSkin!=null&&!"".equals(newSkin)){
+				memberPo.setMember_skin(newSkin);
+			}else{
+				memberPo.setMember_skin("skin-blur-violate");
+			}
 			memberManager.saveSkinByMember(memberPo);
+			resultMap.put("result","success");
+			resultMap.put("msg","成功");
+		}else{
+			resultMap.put("result","false");
+			resultMap.put("msg","妖兽啊~~掉线啦~~~");
 		}
-		return "";
+		Gson gson = new Gson();
+		return gson.toJson(resultMap);
 	}
 }
