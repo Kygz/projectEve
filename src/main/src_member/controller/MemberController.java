@@ -69,6 +69,11 @@ public class MemberController {
         return new ModelAndView("login");
     }
 
+	/**
+	 * 进入主页
+	 * @param httpSession
+	 * @return
+	 */
 	@RequestMapping(params = "method=index", method=RequestMethod.GET)
 	public ModelAndView index(HttpSession httpSession){
 		return new ModelAndView("index");

@@ -16,7 +16,7 @@ public class SidebarMenuTag  extends TagSupport {
         try {
             out.println("<ul class=\"list-unstyled side-menu\">" +
                         "   <li class=\"active\">" +
-                        "       <a class=\"sa-side-home\" href=\"index.html\">" +
+                        "       <a class=\"sa-side-home\" href=\"login.do?method=login\">" +
                         "           <span class=\"menu-item\">主页</span>" +
                         "       </a>" +
                         "   </li>" +
