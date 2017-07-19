@@ -111,7 +111,11 @@
             <version>4.3.11.Final</version>
         </dependency>
         <!--ajax json jackson-->
-
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>projectEve</finalName>

@@ -35,13 +35,13 @@
 		<div class="media-body">
 			<div class="media" id="top-menu">
 				<div class="pull-left tm-icon">
-					<a data-drawer="messages" class="drawer-toggle" href=""> <i
-						class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
+					<a data-drawer="messages" class="drawer-toggle" href="">
+						<i class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
 					</a>
 				</div>
 				<div class="pull-left tm-icon">
-					<a data-drawer="notifications" class="drawer-toggle" href=""> <i
-						class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
+					<a data-drawer="notifications" class="drawer-toggle" href="">
+						<i class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
 					</a>
 				</div>
 				<!-- 时间栏 -->
@@ -59,10 +59,8 @@
 	<div class="clearfix"></div>
 
 	<section id="main" class="p-relative" role="main">
-
 		<!-- Sidebar -->
 		<aside id="sidebar">
-
 			<!-- Sidbar Widgets -->
 			<div class="side-widgets overflow">
 				<!-- Profile Menu -->
@@ -74,9 +72,8 @@
 				<%--舰长六维--%>
 				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
 			</div>
-
 			<!-- Side Menu -->
-			<eve:showSideMenu />
+			<eve:showSideMenu/>
 		</aside>
 
 		<!-- Content -->

@@ -27,7 +27,7 @@ import manager.MemberManager;
  *
  */
 @Controller
-@RequestMapping("login.do")
+@RequestMapping("member.do")
 public class MemberController {
 	@Autowired
 	private MemberManager memberManager;
