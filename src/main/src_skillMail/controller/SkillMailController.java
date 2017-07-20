@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/skillMail")
+@RequestMapping("skillMail.do")
 public class SkillMailController {
 	@Autowired
 	private PlanetManager planetManager;
@@ -33,7 +33,7 @@ public class SkillMailController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(params = "/queryAlert", method=RequestMethod.POST,produces = "application/json; charset=utf-8")
+	@RequestMapping(params = "method=queryAlert", method=RequestMethod.POST,produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String queryMonth(HttpSession session){
 		String pr = "";
@@ -46,7 +46,7 @@ public class SkillMailController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(params = "/insertMailAlert", method=RequestMethod.POST, produces="plain/html;charset=UTF-8")
+	@RequestMapping(params = "method=insertMailAlert", method=RequestMethod.POST, produces="plain/html;charset=UTF-8")
 	@ResponseBody
 	public String insertPlanetRecord(HttpSession session,HttpServletRequest request,HttpServletResponse response){
 		MemberPo memberPo = (MemberPo)session.getAttribute("member");
@@ -63,13 +63,13 @@ public class SkillMailController {
 		return json;
 	}
 
-	@RequestMapping(params = "/index", method=RequestMethod.GET)
+	@RequestMapping(params = "method=index", method=RequestMethod.GET)
 	public ModelAndView mailIndex(HttpSession httpSession){
 		MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
 		if(memberPo==null){
 			return new ModelAndView("login");
 		}else{
-			return new ModelAndView("form-skillMail");
+			return new ModelAndView("skillMail/form-skillMail");
 		}
 	}
 }

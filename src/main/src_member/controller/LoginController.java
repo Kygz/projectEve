@@ -57,7 +57,7 @@ public class LoginController {
 
 		httpSession.setAttribute("member", memberPo);
 
-		return new ModelAndView("index");  // 采用重定向方式跳转页面
+		return new ModelAndView("index/index");  // 采用重定向方式跳转页面
         // 重定向还有一种简单写法
 		//return new ModelAndView("redirect:projectEve/WEB-INF/pages/index.jsp");
     }
@@ -75,12 +75,19 @@ public class LoginController {
 	 */
 	@RequestMapping(params = "method=index", method=RequestMethod.GET)
 	public ModelAndView index(HttpSession httpSession){
-		return new ModelAndView("index");
+		MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
+		if(memberPo==null){
+			ModelAndView mav = new ModelAndView("login");
+			mav.addObject("error", "登陆信息过期，请重新登陆！");
+			return mav;
+		}else{
+			return new ModelAndView("index/index");
+		}
 	}
 
 	@RequestMapping(params = "method=memberInfo", method=RequestMethod.GET)
     public ModelAndView memberInfo(HttpSession httpSession){
-        return new ModelAndView("index");
+        return new ModelAndView("index/index");
     }
 
 	@RequestMapping(params = "method=myGirl", method=RequestMethod.GET)

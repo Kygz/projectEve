@@ -23,10 +23,10 @@
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
     </head>
-    <body id="skin-blur-violate">
+    <body id="${sessionScope.member.member_skin}">
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="index.html">SUPER ADMIN 1.0</a>
+            <a class="logo pull-left" href="../../DEMO/index.html">SUPER ADMIN 1.0</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
@@ -156,22 +156,22 @@
                 <!-- Side Menu -->
                 <ul class="list-unstyled side-menu">
                     <li>
-                        <a class="sa-side-home" href="index.html">
+                        <a class="sa-side-home" href="../../DEMO/index.html">
                             <span class="menu-item">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-typography" href="typography.html">
+                        <a class="sa-side-typography" href="../../DEMO/typography.html">
                             <span class="menu-item">Typography</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-widget" href="content-widgets.html">
+                        <a class="sa-side-widget" href="../../DEMO/content-widgets.html">
                             <span class="menu-item">Widgets</span>
                         </a>
                     </li>                   
                     <li>
-                        <a class="sa-side-table" href="tables.html">
+                        <a class="sa-side-table" href="../../DEMO/tables.html">
                             <span class="menu-item">Tables</span>
                         </a>
                     </li>
@@ -180,10 +180,10 @@
                             <span class="menu-item">Form</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="form-elements.html">Basic Form Elements</a></li>
-                            <li><a href="form-components.html">Form Components</a></li>
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
+                            <li><a href="../../DEMO/form-elements.html">Basic Form Elements</a></li>
+                            <li><a href="../../DEMO/form-components.html">Form Components</a></li>
+                            <li><a href="../../DEMO/form-examples.html">Form Examples</a></li>
+                            <li><a href="../../DEMO/form-validation.html">Form Validation</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -191,13 +191,13 @@
                             <span class="menu-item">User Interface</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="labels.html">Labels</a></li>
-                            <li><a href="images-icons.html">Images &amp; Icons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="media.html">Media</a></li>
-                            <li><a href="components.html">Components</a></li>
-                            <li><a href="other-components.html">Others</a></li>
+                            <li><a href="../../DEMO/buttons.html">Buttons</a></li>
+                            <li><a href="../../DEMO/labels.html">Labels</a></li>
+                            <li><a href="../../DEMO/images-icons.html">Images &amp; Icons</a></li>
+                            <li><a href="../../DEMO/alerts.html">Alerts</a></li>
+                            <li><a href="../../DEMO/media.html">Media</a></li>
+                            <li><a href="../../DEMO/components.html">Components</a></li>
+                            <li><a href="../../DEMO/other-components.html">Others</a></li>
                         </ul>
                     </li>
                     <li>
@@ -206,17 +206,17 @@
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-chart" href="charts.html">
+                        <a class="sa-side-chart" href="../../DEMO/charts.html">
                             <span class="menu-item">Charts</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-folder" href="file-manager.html">
+                        <a class="sa-side-folder" href="../../DEMO/file-manager.html">
                             <span class="menu-item">File Manager</span>
                         </a>
                     </li>
                     <li>
-                        <a class="sa-side-calendar" href="calendar.html">
+                        <a class="sa-side-calendar" href="../../DEMO/calendar.html">
                             <span class="menu-item">Calendar</span>
                         </a>
                     </li>
@@ -225,11 +225,11 @@
                             <span class="menu-item">Pages</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="list-view.html">List View</a></li>
-                            <li><a class="active" href="profile-page.html">Profile Page</a></li>
-                            <li><a href="messages.html">Messages</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="404.html">404 Error</a></li>
+                            <li><a href="../../DEMO/list-view.html">List View</a></li>
+                            <li><a class="active" href="../../DEMO/profile-page.html">Profile Page</a></li>
+                            <li><a href="../../DEMO/messages.html">Messages</a></li>
+                            <li><a href="../../DEMO/login.html">Login</a></li>
+                            <li><a href="../404.html">404 Error</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -801,18 +801,18 @@
         <!-- Javascript Libraries -->
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script> <!-- jQuery Library -->
-        
+
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
-        
+
         <!-- UX -->
         <script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
-        
+
         <!-- Other -->
         <script src="js/calendar.min.js"></script> <!-- Calendar -->
         <script src="js/weather.min.js"></script> <!-- Weather -->
         <script src="js/feeds.min.js"></script> <!-- News Feeds -->
-        
+
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
     </body>

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 9 ]>
-<html class="ie9">
-<![endif]-->
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="format-detection" content="telephone=no">
@@ -20,6 +18,8 @@
         <link href="css/calendar.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/icons.css" rel="stylesheet">
+        <link href="css/lightbox.css" rel="stylesheet">
+        <link href="css/media-player.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
     </head>
     <body id="skin-blur-violate">
@@ -174,18 +174,18 @@
                             <span class="menu-item">Tables</span>
                         </a>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a class="sa-side-form" href="">
                             <span class="menu-item">Form</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a class="active" href="form-elements.html">Basic Form Elements</a></li>
+                            <li><a href="form-elements.html">Basic Form Elements</a></li>
                             <li><a href="form-components.html">Form Components</a></li>
                             <li><a href="form-examples.html">Form Examples</a></li>
                             <li><a href="form-validation.html">Form Validation</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a class="sa-side-ui" href="">
                             <span class="menu-item">User Interface</span>
                         </a>
@@ -194,7 +194,7 @@
                             <li><a href="labels.html">Labels</a></li>
                             <li><a href="images-icons.html">Images &amp; Icons</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="media.html">Media</a></li>
+                            <li><a class="active" href="media.html">Media</a></li>
                             <li><a href="components.html">Components</a></li>
                             <li><a href="other-components.html">Others</a></li>
                         </ul>
@@ -223,7 +223,7 @@
                             <li><a href="profile-page.html">Profile Page</a></li>
                             <li><a href="messages.html">Messages</a></li>
                             <li><a href="login.html">Login</a></li>
-                            <li><a href="404.html">404 Error</a></li>
+                            <li><a href="../pages/404.html">404 Error</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -406,216 +406,152 @@
                     <li class="active">Data</li>
                 </ol>
                 
-                <h4 class="page-title">BASIC FORM ELEMENTS</h4>
-                                
-                <!-- Text Input -->
-                <div class="block-area" id="text-input">
-                    <h3 class="block-title">Text Input</h3>
+                <h4 class="page-title">MEDIA</h4>
+                
+                <!-- Lightbox -->
+                <div class="block-area">
+                    <h3 class="block-title">Lightbox</h3>
                     
-                    <p>Text Inputs with different sizes by height and column.</p>
+                    <p>Lightbox is used to open Images without refreshing the page as a popup.</p>
+                    <p>Single Image (Click to open)</p>
+                    <a href="img/gallery/1.jpg" data-rel="gallery"  class="pirobox_gall img-popup" title="Lovely evening in Noreway">
+                        <img src="img/gallery/thumbs/1.jpg" alt="" width="150">
+                            
+                    </a>
                     
-                    <input class="form-control input-lg m-b-10" type="text" placeholder=".input-lg">
-                    <input type="text" class="form-control m-b-10" placeholder="Default">
-                    <input class="form-control input-sm m-b-10" type="text" placeholder=".input-sm">
-                        
+                    <p class="m-t-20">Image Album (Click to open)</p>
+
+                    <a href="img/gallery/1.jpg" data-rel="gallery"  class="pirobox_gall img-popup" title="Fusce sagittis porta porttitor aliquam tincidunt auctor nibh non convallis">
+                        <img src="img/gallery/thumbs/1.jpg" alt="">
+                    </a>
+                    <a href="img/gallery/2.jpg" data-rel="gallery"  class="pirobox_gall img-popup" title="Sed ultrices orci iaculis augue tincidunt gravida">
+                        <img src="img/gallery/thumbs/2.jpg" alt="">
+                    </a>
+                    <a href="img/gallery/3.jpg" data-rel="gallery"  class="pirobox_gall img-popup" title="Donec ullamcorper malesuada magna mollis pellentesque">
+                        <img src="img/gallery/thumbs/3.jpg" alt="">
+                    </a>
+                    <a href="img/gallery/4.jpg" data-rel="gallery"  class="pirobox_gall img-popup" title="Aliquam tincidunt auctor nibh non convallis">
+                        <img src="img/gallery/thumbs/4.jpg" alt="">
+                    </a>
+                    <a href="img/gallery/5.jpg" data-rel="gallery"  class="pirobox_gall img-popup" title="Quelorem venenatis aliquet enim non venenatis">
+                        <img src="img/gallery/thumbs/5.jpg" alt="">
+                    </a>
+                    
+                    <p class="m-t-20">Youtube and Vimeo Videos</p>
+                    
+                    <a href="http://youtube.googleapis.com/v/sdUUx5FdySs&amp;hl=en_US" data-rel="iframe-300-300" class="pirobox_gall img-popup" rev="1">                        <i class="icon-expand"></i>
+                        <img src="img/gallery/thumbs/1.jpg" alt="">
+                    </a>
+                    <a href="http://player.vimeo.com/video/54188173" data-rel="iframe-300-300" class="pirobox_gall img-popup" rev="2">
+                        <img src="img/gallery/thumbs/2.jpg" alt="">
+                    </a>
+                </div>
+                
+                <hr class="whiter">
+                    
+                <!-- Media Player -->
+                <div class="block-area">
+                    <h3 class="block-title">Media Player</h3>
+                    
+                    <!-- Video -->
                     <div class="row">
-                        <div class="col-lg-2">
-                            <input type="text" class="form-control m-b-10" placeholder=".col-lg-2">
+                        <div class="col-md-6 m-b-20">
+                            <p>Multi-Codec with no JavaScript fallback player - Cross Browser</p>
+                            <video width="100%" height="100%" id="multiCodec" poster="img/media-player/media-player-poster.jpg" controls="controls" preload="none"> <!-- id could be any according to you -->
+                                <!-- MP4 source must come first for iOS -->
+                                <source type="video/mp4" src="media/echohereweare.mp4" />
+                                <!-- WebM for Firefox 4 and Opera -->
+                                <source type="video/webm" src="media/echohereweare.webm" />
+                                <!-- OGG for Firefox 3 -->
+                                <source type="video/ogg" src="media/echohereweare.ogv" />
+                                <!-- Fallback flash player for no-HTML5 browsers with JavaScript turned off -->
+                                <object width="100%" height="100%" type="application/x-shockwave-flash" data="media/flashmediaelement.swf"> 		
+                                        <param name="movie" value="media/flashmediaelement.swf" /> 
+                                        <param name="flashvars" value="controls=true&amp;poster=img/media-player/media-player-poster.jpg&amp;file=media/echohereweare.mp4" /> 		
+                                        <!-- Image fall back for non-HTML5 browser with JavaScript turned off and no Flash player installed -->
+                                        <img src="img/media-player/media-player-poster.jpg" width="100%" height="100%" alt="Media" title="No video playback capabilities" />
+                                </object> 	
+                            </video>
                         </div>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control m-b-10" placeholder=".col-lg-3">
+                        
+                        <div class="col-md-6 m-b-20">
+                            <p>Youtube Video (Preview in server NOT local)</p>
+                            <video id="youtube1" width="100%" height="100%">
+                                <source src="http://www.youtube.com/watch?v=2CvtOUqd84o" type="video/youtube" >
+                            </video>
                         </div>
-                        <div class="col-lg-4">
-                            <input type="text" class="form-control m-b-10" placeholder=".col-lg-4">
-                        </div>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control m-b-10" placeholder=".col-lg-5">
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" class="form-control m-b-10" placeholder=".col-lg-6">
-                        </div>
-                        <div class="clearfix"></div>
                     </div>
-                    <p></p>
-                    <p>Input focus</p>
-                    <input class="form-control input-focused" type="text" value="This is focused...">
-                    <p></p>
-                    <p>Disabled</p>
-                    <input class="form-control" type="text" value="This is disabled..." disabled>
+                        
+                    <p>Audio Player</p>
+                    <!-- Audio -->
+                    <div class="row m-b-20">
+                        <div class="col-md-7">
+                            <audio id="audioPlayer" src="media/audio.mp3"></audio>
+                        </div>
+                    </div>
                 </div>
+                    
+                <hr class="whiter" />
                 
-                <hr class="whiter m-t-20" />
-                
-                <!-- Textarea -->
-                <div class="block-area" id="textarea">
-                    <h3 class="block-title">Textarea</h3>
-                    
-                    <p>Form control which supports multiple lines of text. Change 'rows' attribute as necessary.</p>
-                    <textarea class="form-control overflow" rows="3" placeholder="This is a default Textarea..."></textarea>
-                    
-                    <p></p>
-                    
-                    <p>Textarea with auto-grow height</p>
-                    <textarea class="form-control auto-size m-b-10" placeholder="This is an auto sizing Textarea..."></textarea>
-                    
-                    <p>Textarea Disabled</p>
-                    <textarea class="form-control" placeholder="This is disabled" disabled></textarea>
-                </div>
-                
-                <hr class="whiter m-t-20" />
-                
-                <!-- Select -->
-                <div class="block-area" id="select">
-                    <h3 class="block-title">Select</h3>
-                    <p>Use Grid classes to adjust column sizes</p>
-                    
-                    <select class="form-control input-lg m-b-10">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                    
-                    <select class="form-control m-b-10">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                    
-                    <select class="form-control input-sm m-b-10">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                    
-                    <div class="select-container"> <!-- Hack to hide scrollbars -->
-                        <select multiple class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-
-                    <p></p>
-                    <p>Disabled</p>
-                    <select class="form-control" disabled>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                </div>
-                
-                <hr class="whiter m-t-20" />
-                
-                <!-- Checkbox + Radio-->
-                <div class="block-area" id="check">
-                    <h3 class="block-title">Checkbox + Radio</h3>
-                    <p>Default Checkbox</p>
-                    
-                    <div class="checkbox m-b-5">
-                        <label>
-                            <input type="checkbox" checked>
-                            This is an awesome sample Checkbox
-                        </label>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                    
-                    <div class="checkbox m-b-5">
-                        <label>
-                            <input type="checkbox">
-                            This is another awesome sample Checkbox
-                        </label>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                    
-                    <div class="checkbox m-b-5">
-                        <label>
-                            <input type="checkbox">
-                            One more awesome sample Checkbox
-                        </label>
-                    </div>
-                    
-                    <br/>
-                    
-                    <p>Inline Checkboxes</p>
-                    <label class="checkbox-inline">
-                        <input type="checkbox">
-                        1
-                    </label>
-                    
-                    <label class="checkbox-inline">
-                        <input type="checkbox">
-                        2
-                    </label>
-                    
-                    <label class="checkbox-inline">
-                        <input type="checkbox">
-                        3
-                    </label>
-
-                    <p class="m-t-20">Radio</p>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="radio">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                                        
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="radio">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                    
-                    <div class="clearfix"></div>
-                    
-                    <p class="m-t-20">Disabled</p>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" checked disabled>
-                            This Radio is checked and disabled
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" disabled>
-                            This Radio is not checked and disabled
-                        </label>
-                    </div>
-                    
-                    <div class="checkbox m-t-10 m-b-5">
-                        <label>
-                            <input type="checkbox" checked disabled>
-                            This is an awesome sample Checkbox checked and disabled
-                        </label>
-                    </div>
-                    
-                    <div class="checkbox">
-                        <label class="m-t-10">
-                            <input type="checkbox" disabled>
-                            This is too disabled
-                        </label>
+                <!-- Carousel -->
+                <div class="block-area">
+                    <h3 class="block-title">Carousel</h3>
+                    <p>The slideshow below shows a generic plugin and component for cycling through elements like a carousel.</p>
+                    <div id="carousel-example-generic" class="carousel slide">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                      
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="img/carousel/c-1.jpg" alt="Slide-1">
+                            </div>
+                            <div class="item">
+                                <img src="img/carousel/c-2.jpg" alt="Slide-2">
+                                <div class="carousel-caption hidden-xs">
+                                    <h3>This is a Caption</h3>
+                                    <p>Sample detail text here</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="img/carousel/c-3.jpg" alt="Slide-3">
+                                <div class="carousel-caption hidden-xs">
+                                    <h3>This is a Caption</h3>
+                                    <p>Sample detail text here</p>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <i class="icon">&#61903;</i>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <i class="icon">&#61815;</i>
+                        </a>
                     </div>
                     
                     <br/><br/><br/>
-                </div>  
+                </div>
             </section>
         </section>
         
         <!-- Javascript Libraries -->
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script> <!-- jQuery Library -->
+        <script src="js/jquery-ui.min.js"></script> <!-- jQuery UI -->
+        <script src="js/jquery.easing.1.3.js"></script> <!-- jQuery Easing - Requirred for Lightbox -->
         
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
         
-        <!--  Form Related -->
-        <script src="js/icheck.js"></script> <!-- Custom Checkbox + Radio -->
-        <script src="js/autosize.min.js"></script> <!-- Textarea autosize -->
+        <!-- Media -->
+        <script src="js/media-player.min.js"></script> <!-- Video Player -->
+        <script src="js/pirobox.min.js"></script> <!-- Lightbox -->
         
         <!-- UX -->
         <script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
@@ -627,6 +563,7 @@
         
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
+        
     </body>
 </html>
 

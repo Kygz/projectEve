@@ -27,21 +27,21 @@
 <link href="css/icons.css" rel="stylesheet">
 <link href="css/generics.css" rel="stylesheet">
 </head>
-<body id="skin-blur-violate">
+<body id="${sessionScope.member.member_skin}">
 	<header id="header" class="media">
 		<a href="" id="menu-toggle"></a> <a class="logo pull-left"
-			href="index.html">米氏非正常人类研究院</a>
+			href="../../DEMO/index.html">米氏非正常人类研究院</a>
 
 		<div class="media-body">
 			<div class="media" id="top-menu">
 				<div class="pull-left tm-icon">
-					<a data-drawer="messages" class="drawer-toggle" href="">
-						<i class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
+					<a data-drawer="messages" class="drawer-toggle" href=""> <i
+						class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
 					</a>
 				</div>
 				<div class="pull-left tm-icon">
-					<a data-drawer="notifications" class="drawer-toggle" href="">
-						<i class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
+					<a data-drawer="notifications" class="drawer-toggle" href=""> <i
+						class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
 					</a>
 				</div>
 				<!-- 时间栏 -->
@@ -73,18 +73,15 @@
 				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
 			</div>
 			<!-- Side Menu -->
-			<eve:showSideMenu/>
+			<eve:showSideMenu />
 		</aside>
-
 		<!-- Content -->
 		<section id="content" class="container">
-
 			<!-- Messages Drawer -->
 			<div id="messages" class="tile drawer animated">
 				<div class="listview narrow">
 					<div class="media">
 						<a href="">Send a New Message</a> <span class="drawer-close">&times;</span>
-
 					</div>
 					<div class="overflow" style="height: 254px">
 						<div class="media">
@@ -455,7 +452,6 @@
 	
 	<!-- All JS functions -->
 	<script src="js/myJs/planetFunction.js"></script>
-	
 	<script type="text/javascript">
             $(document).ready(function(){
                 /* Tag Select */

@@ -18,30 +18,23 @@
 <title>米氏非正常人类集散地</title>
 
 <!-- CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/form.css" rel="stylesheet">
-<link href="css/calendar.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/icons.css" rel="stylesheet">
-<link href="css/generics.css" rel="stylesheet">
+<%@ include file="/WEB-INF/pages/common/headerCss.jsp" %>
 </head>
-<body id="skin-blur-violate">
+<body id="${sessionScope.member.member_skin}">
 	<header id="header" class="media">
 		<a href="" id="menu-toggle"></a> <a class="logo pull-left"
-			href="index.html">米氏非正常人类研究院</a>
+			href="../../DEMO/index.html">米氏非正常人类研究院</a>
 
 		<div class="media-body">
 			<div class="media" id="top-menu">
 				<div class="pull-left tm-icon">
-					<a data-drawer="messages" class="drawer-toggle" href=""> <i
-						class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
+					<a data-drawer="messages" class="drawer-toggle" href="">
+						<i class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
 					</a>
 				</div>
 				<div class="pull-left tm-icon">
-					<a data-drawer="notifications" class="drawer-toggle" href=""> <i
-						class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
+					<a data-drawer="notifications" class="drawer-toggle" href="">
+						<i class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
 					</a>
 				</div>
 				<!-- 时间栏 -->
@@ -59,10 +52,8 @@
 	<div class="clearfix"></div>
 
 	<section id="main" class="p-relative" role="main">
-
 		<!-- Sidebar -->
 		<aside id="sidebar">
-
 			<!-- Sidbar Widgets -->
 			<div class="side-widgets overflow">
 				<!-- Profile Menu -->
@@ -74,9 +65,8 @@
 				<%--舰长六维--%>
 				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
 			</div>
-
 			<!-- Side Menu -->
-			<eve:showSideMenu />
+			<eve:showSideMenu/>
 		</aside>
 
 		<!-- Content -->
@@ -458,39 +448,38 @@
 	
 	<!-- All JS functions -->
 	<script src="js/myJs/planetFunction.js"></script>
-	
+
 	<script type="text/javascript">
-            $(document).ready(function(){
-                /* Tag Select */
-                (function(){
-                    /* Overflow */
-                    $('.overflow').niceScroll();
-                })();
-                
-                /* Input Masking - you can include your own way */
-                (function(){
-       
-                })();
-                
-                /* Spinners */
-                (function(){
-                    $('.spinner-1').spinedit('setMaximum', 2000000);
-                })();
-                
-                /* 提交按钮事件 */
-                (function(){
-                	$('#submitPlanet').on('click', function() {
-                		submitPlanetFunction();
-                	});
-                })();
+        $(document).ready(function () {
+            /* Tag Select */
+            (function () {
+                /* Overflow */
+                $('.overflow').niceScroll();
+            })();
 
-                /* TEST按钮事件 */
-                (function(){
-					getPlanetTable();
-                })();
-            });
-        </script>
+            /* Input Masking - you can include your own way */
+            (function () {
 
+            })();
+
+            /* Spinners */
+            (function () {
+                $('.spinner-1').spinedit('setMaximum', 2000000);
+            })();
+
+            /* 提交按钮事件 */
+            (function () {
+                $('#submitPlanet').on('click', function () {
+                    submitPlanetFunction();
+                });
+            })();
+
+            /* TEST按钮事件 */
+            (function () {
+                getPlanetTable();
+            })();
+        });
+	</script>
 </body>
 </html>
 

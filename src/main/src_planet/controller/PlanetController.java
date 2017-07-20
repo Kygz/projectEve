@@ -148,7 +148,7 @@ public class PlanetController {
 		if(memberPo==null){
 			return new ModelAndView("login");
 		}else{
-			return new ModelAndView("form-planets");
+			return new ModelAndView("planet/form-planets");
 		}
 	}
 }

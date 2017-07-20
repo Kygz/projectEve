@@ -16,28 +16,29 @@ public class SidebarMenuTag  extends TagSupport {
         try {
             out.println("<ul class=\"list-unstyled side-menu\">" +
                         "   <li class=\"active\">" +
-                        "       <a class=\"sa-side-home\" href=\"login.do?method=login\">" +
+                        "       <a class=\"sa-side-home\" href=\"login.do?method=index\">" +
                         "           <span class=\"menu-item\">主页</span>" +
                         "       </a>" +
                         "   </li>" +
                         "   <li>" +
-                        "       <a class=\"sa-side-typography\" href=\"typography.html\">" +
-                        "       <span class=\"menu-item\">装配车间</span>" +
+                        "       <a class=\"sa-side-typography\" href=\"404.html\">" +
+                        "           <span class=\"menu-item\">装配车间</span>" +
                         "       </a>" +
                         "   </li>" +
                         "   <li>" +
-                        "       <a class=\"sa-side-widget\" href=\"content-widgets.html\">" +
+                        "       <a class=\"sa-side-widget\" href=\"404.html\">" +
                         "           <span class=\"menu-item\">米氏军校</span>" +
                         "       </a>" +
                         "   </li>" +
                         "   <li class=\"dropdown\">" +
-                        "       <a class=\"sa-side-table\" href=\"\">" +
+                        "       <a class=\"sa-side-table\" href=\"404.html\">" +
                         "           <span class=\"menu-item\">事务中心</span>" +
                         "       </a>" +
                         "       <ul class=\"list-unstyled menu-item\">" +
-                        "           <li><a href=\"tables.html\">统计表格</a></li>" +
-                        "           <li><a href=\"form-elements.html\">新手船只申领</a></li>" +
+                        "           <li><a href=\"404.html\">统计表格</a></li>" +
+                        "           <li><a href=\"404.html\">新手船只申领</a></li>" +
                         "           <li><a href=\"planet.do?method=planetInsertPage\">行星开发</a></li>" +
+                        "           <li><a href=\"skillMail.do?method=index\">技能提醒</a></li>" +
                         "           <li><a href=\"form-examples.html\">异常拾荒</a></li>" +
                         "           <li><a href=\"form-validation.html\">出勤登记</a></li>" +
                         "       </ul>" +
