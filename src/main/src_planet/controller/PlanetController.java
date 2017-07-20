@@ -122,8 +122,7 @@ public class PlanetController {
 			resultMap.put("msg",msg);
 		}
 		Gson gson = new Gson();
-		String json = gson.toJson(resultMap);
-		return json;
+		return gson.toJson(resultMap);
 	}
 
 	/**
@@ -138,8 +137,7 @@ public class PlanetController {
 		String userId = memberPo.getMember_id().toString();
 		List<PlanetPo> planetPoList = planetManager.queryPlanetPoFiveByUserId(userId);
 		Gson gson = new Gson();
-		String json = gson.toJson(planetPoList);
-		return json;
+		return gson.toJson(planetPoList);
 	}
 
 	@RequestMapping(params = "method=planetInsertPage", method=RequestMethod.GET)
