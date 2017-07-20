@@ -51,12 +51,17 @@ CREATE TABLE `planet` (
   `planet_star_5` bigint(20) unsigned DEFAULT '0',
   `planet_star_6` bigint(20) unsigned DEFAULT '0',
   `planet_star_7` bigint(20) unsigned DEFAULT '0',
+  `planet_star_1_price` bigint(20) unsigned DEFAULT '0',
+  `planet_star_2_price` bigint(20) unsigned DEFAULT '0',
+  `planet_star_3_price` bigint(20) unsigned DEFAULT '0',
+  `planet_star_4_price` bigint(20) unsigned DEFAULT '0',
+  `planet_star_5_price` bigint(20) unsigned DEFAULT '0',
+  `planet_star_6_price` bigint(20) unsigned DEFAULT '0',
+  `planet_star_7_price` bigint(20) unsigned DEFAULT '0',
   PRIMARY KEY (`planet_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of planet
+-- Records of planet Demo
 -- ----------------------------
-INSERT INTO `planet` VALUES ('00000000000000000001', '1', '星际奏者', '2015-08-02', '100', '100', '100', '100', '100', '0', '0');
-INSERT INTO `planet` VALUES ('00000000000000000002', '1', '星际奏者', '2015-08-03', '1', '2', '3', '4', '5', '0', '0');
-INSERT INTO `planet` VALUES ('00000000000000000003', '1', '星际奏者', '2016-04-05', '1', '2', '3', '4', '5', '6', '7');
+INSERT INTO `planet` VALUES ('00000000000000000001', '1', '星际奏者', '2015-08-02', '100', '100', '100', '100', '100', '0', '0', '0', '0', '0', '0', '0', '0', '0');
