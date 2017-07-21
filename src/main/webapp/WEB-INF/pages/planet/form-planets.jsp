@@ -330,56 +330,49 @@
 				<div class="col-md-4 m-b-15">
 					<p>氧</p>
 					<div class="p-relative">
-						<input id="planet1" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+						<input id="planet1" class="form-control input-sm spinner-1 spinedit" />
 					</div>
 				</div>
 				<!-- 电解物   -->
 				<div class="col-md-4 m-b-15">
 					<p>电解物</p>
 					<div class="p-relative">
-						<input id="planet2" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+						<input id="planet2" class="form-control input-sm spinner-1 spinedit" />
 					</div>
 				</div>
 				<!-- 水   -->
 				<div class="col-md-4 m-b-15">
 					<p>水</p>
 					<div class="p-relative">
-						<input id="planet3" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+						<input id="planet3" class="form-control input-sm spinner-1 spinedit" />
 					</div>
 				</div>
 				<!-- 稀有金属   -->
 				<div class="col-md-4 m-b-15">
 					<p>稀有金属</p>
 					<div class="p-relative">
-						<input id="planet4" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+						<input id="planet4" class="form-control input-sm spinner-1 spinedit" />
 					</div>
 				</div>
 				<!-- 有毒金属   -->
 				<div class="col-md-4 m-b-15">
 					<p>有毒金属</p>
 					<div class="p-relative">
-						<input id="planet5" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+						<input id="planet5" class="form-control input-sm spinner-1 spinedit" />
 					</div>
 				</div>
 				<!-- 反应金属   -->
 				<div class="col-md-4 m-b-15">
 					<p>反应金属</p>
 					<div class="p-relative">
-						<input id="planet6" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+						<input id="planet6" class="form-control input-sm spinner-1 spinedit" />
 					</div>
 				</div>
 				<!-- 手性结构   -->
 				<div class="col-md-4 m-b-15">
 					<p>手性结构</p>
 					<div class="p-relative">
-						<input id="planet7" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+						<input id="planet7" class="form-control input-sm spinner-1 spinedit" />
 					</div>
 				</div>
 			</div>

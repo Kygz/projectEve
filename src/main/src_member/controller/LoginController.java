@@ -2,6 +2,8 @@ package controller;
 
 import com.google.gson.Gson;
 import manager.MemberManager;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -28,6 +30,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("login.do")
 public class LoginController {
+	private static Log log = LogFactory.getLog(LoginController.class);
+
 	@Autowired
 	private MemberManager memberManager;
 	
@@ -56,7 +60,7 @@ public class LoginController {
 		}
 
 		httpSession.setAttribute("member", memberPo);
-
+		log.info("用户：" +memberPo.getMember_nickname() + "登陆");
 		return new ModelAndView("index/index");  // 采用重定向方式跳转页面
         // 重定向还有一种简单写法
 		//return new ModelAndView("redirect:projectEve/WEB-INF/pages/index.jsp");

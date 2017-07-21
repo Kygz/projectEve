@@ -48,8 +48,8 @@ function getPlanetTable(){
 		success : function(data) {
 			console.log(data);
 			if(data!=null&&data!=""){
-				var table = $("#lastFiveTable tbody");
-				$('#lastFiveTable tbody tr').remove();
+				var table = $("#list");
+                table.find("tr").remove();
 				var size = data.length;
 					for(var i = 0;i<size;i++){
 						var price = 0.8 * 	data[i].planet_star1 * data[i].planet_star1_price +
