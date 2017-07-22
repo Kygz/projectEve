@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Mysql
+Source Server         : mysql
 Source Server Version : 50626
 Source Host           : localhost:3306
 Source Database       : projecteve
@@ -10,10 +10,29 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2016-04-29 10:12:53
+Date: 2017-07-22 18:17:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for mail
+-- ----------------------------
+DROP TABLE IF EXISTS `mail`;
+CREATE TABLE `mail` (
+  `mail_id` smallint(20) NOT NULL,
+  `mail_user_id` smallint(20) NOT NULL,
+  `mail_address` varchar(255) NOT NULL,
+  `mail_content` varchar(2000) DEFAULT NULL,
+  `mail_createDate` datetime DEFAULT NULL,
+  `mail_time` datetime DEFAULT NULL,
+  `mail_done` int(2) DEFAULT NULL,
+  PRIMARY KEY (`mail_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of mail
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for member
@@ -33,7 +52,7 @@ CREATE TABLE `member` (
 -- ----------------------------
 -- Records of member
 -- ----------------------------
-INSERT INTO `member` VALUES ('1', '星际奏者', 'xjzz', '123456', '120964066','gavin110991@163.com','skin-blur-violate');
+INSERT INTO `member` VALUES ('1', '星际奏者', 'xjzz', '123456', '120964066', 'gavin110991@163.com', 'skin-blur-chrome');
 
 -- ----------------------------
 -- Table structure for planet
@@ -62,6 +81,6 @@ CREATE TABLE `planet` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of planet Demo
+-- Records of planet
 -- ----------------------------
 INSERT INTO `planet` VALUES ('00000000000000000001', '1', '星际奏者', '2015-08-02', '100', '100', '100', '100', '100', '0', '0', '0', '0', '0', '0', '0', '0', '0');
