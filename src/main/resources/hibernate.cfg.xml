@@ -30,6 +30,7 @@
         <mapping resource="po/ItemPo.hbm.xml"/>
         <mapping resource="po/MemberPo.hbm.xml"/>
         <mapping resource="po/PlanetPo.hbm.xml"/>
+        <mapping resource="po/MailPo.hbm.xml"/>
         <!-- 映射实体路径 -->
     </session-factory>
 </hibernate-configuration>
