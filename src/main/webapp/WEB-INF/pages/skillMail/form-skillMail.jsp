@@ -18,7 +18,14 @@
 <title>米氏非正常人类集散地</title>
 
 <!-- CSS -->
-<%@ include file="/WEB-INF/pages/common/headerCss.jsp" %>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<link href="css/calendar.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/icons.css" rel="stylesheet">
+<link href="css/generics.css" rel="stylesheet">
 </head>
 <body id="${sessionScope.member.member_skin}">
 	<header id="header" class="media">
@@ -281,110 +288,58 @@
 				<li class="active">Data</li>
 			</ol>
 
-			<h4 class="page-title">行星开发</h4>
+			<h4 class="page-title">技能提醒</h4>
 			<!-- planetTable -->
 			<div class="block-area" id="tableStriped">
-				<h3 class="block-title">Last Five</h3>
+				<h3 class="block-title">上限5个（BETA)</h3>
 				<div class="table-responsive overflow">
 					<table id="lastFiveTable" class="tile table table-bordered table-striped">
 						<thead>
 						<tr>
-							<th>No.</th>
-							<th>氧</th>
-							<th>电解物</th>
-							<th>水</th>
-							<th>稀有金属</th>
-							<th>有毒金属</th>
-							<th>反应金属</th>
-							<th>手性结构</th>
-							<th>时间</th>
-							<th>价格</th>
+							<th>提醒时间</th>
+							<th>内容</th>
+							<th>邮箱</th>
+							<th>状态</th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td>1</td>
-							<th>氧</th>
-							<th>电解物</th>
-							<th>水</th>
-							<th>稀有金属</th>
-							<th>有毒金属</th>
-							<th>反应金属</th>
-							<th>手性结构</th>
-							<td>data</td>
-							<td>10000isk</td>
-						</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<!-- spinner -->
 			<div class="block-area" id="spinner">
-				<h3 class="block-title">行星产物记录表</h3>
+				<form>
+				<h3 class="block-title">技能到期提醒</h3>
 				<br />
-				<!-- 氧   -->
-				<div class="col-md-4 m-b-15">
-					<p>氧</p>
-					<div class="p-relative">
-						<input id="planet1" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+					<div class="col-md-4 m-b-15">
+						<label>设置日期</label>
+						<div class="input-icon datetime-pick date-only">
+							<input id="input_day" data-format="yyyy-MM-dd" class="form-control input-sm validate[required]" type="text">
+							<span class="add-on">
+								<i class="sa-plus icon-calendar"></i>
+							</span>
+						</div>
 					</div>
-				</div>
-				<!-- 电解物   -->
-				<div class="col-md-4 m-b-15">
-					<p>电解物</p>
-					<div class="p-relative">
-						<input id="planet2" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+					<div class="col-md-4 m-b-15">
+						<label>设置<font style="color: #d90004">提醒</font>时间</label>
+						<div class="input-icon datetime-pick time-only">
+							<input id="input_time" data-format="hh:mm:ss" class="form-control input-sm validate[required]" type="text">
+							<span class="add-on">
+								<i class="sa-plus icon-calendar"></i>
+							</span>
+						</div>
 					</div>
-				</div>
-				<!-- 水   -->
-				<div class="col-md-4 m-b-15">
-					<p>水</p>
-					<div class="p-relative">
-						<input id="planet3" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+					<div class="col-md-4 m-b-15">
+						<label>设置提醒内容</label>
+						<input id="input_content" class="form-control input-sm " placeholder="技能将要到期，请及时续一秒！" type="text">
 					</div>
-				</div>
-				<!-- 稀有金属   -->
-				<div class="col-md-4 m-b-15">
-					<p>稀有金属</p>
-					<div class="p-relative">
-						<input id="planet4" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
+					<div class="col-md-12 m-b-15">
+						<input id="submitMail" class="submit btn btn-sm" value="提交" type="submit">
 					</div>
-				</div>
-				<!-- 有毒金属   -->
-				<div class="col-md-4 m-b-15">
-					<p>有毒金属</p>
-					<div class="p-relative">
-						<input id="planet5" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
-					</div>
-				</div>
-				<!-- 反应金属   -->
-				<div class="col-md-4 m-b-15">
-					<p>反应金属</p>
-					<div class="p-relative">
-						<input id="planet6" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
-					</div>
-				</div>
-				<!-- 手性结构   -->
-				<div class="col-md-4 m-b-15">
-					<p>手性结构</p>
-					<div class="p-relative">
-						<input id="planet7" type="text"
-							class="form-control input-sm spinner-1 spinedit" />
-					</div>
-				</div>
+				</form>
 			</div>
-			<div class="block-area">
-				<button class="btn btn-sm m-r-5" id="submitPlanet" >提交产物</button>
-				<%--<button class="btn btn-sm m-r-5" id="TESTPlanet" >TEST</button>--%>
-		    </div>
 			<hr class="whiter m-t-20" />
-
 		</section>
 	</section>
 
@@ -447,7 +402,7 @@
 	<script src="js/functions.js"></script>
 	
 	<!-- All JS functions -->
-	<script src="js/myJs/planetFunction.js"></script>
+	<script src="js/myJs/mailFunction.js"></script>
 
 	<script type="text/javascript">
         $(document).ready(function () {
@@ -462,21 +417,17 @@
 
             })();
 
-            /* Spinners */
-            (function () {
-                $('.spinner-1').spinedit('setMaximum', 2000000);
-            })();
 
             /* 提交按钮事件 */
             (function () {
-                $('#submitPlanet').on('click', function () {
-                    submitPlanetFunction();
+                $('#submitMail').on('click', function () {
+                    submitMailFunction();
                 });
             })();
 
             /* TEST按钮事件 */
             (function () {
-                getPlanetTable();
+                getMailTable();
             })();
         });
 	</script>

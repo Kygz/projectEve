@@ -61,7 +61,7 @@ public class LoginController {
 
 		httpSession.setAttribute("member", memberPo);
 		log.info("用户：" +memberPo.getMember_nickname() + "登陆");
-		return new ModelAndView("index/index");  // 采用重定向方式跳转页面
+		return new ModelAndView("redirect:/login.do?method=index");  // 采用重定向方式跳转页面
         // 重定向还有一种简单写法
 		//return new ModelAndView("redirect:projectEve/WEB-INF/pages/index.jsp");
     }
@@ -126,4 +126,11 @@ public class LoginController {
 		Gson gson = new Gson();
 		return gson.toJson(resultMap);
 	}
+
+
+//	@RequestMapping(value = "/user/save", method = RequestMethod.POST)
+//	public ModelAndView saveUser(UserModel user, RedirectAttributes redirectAttributes) throws Exception {
+//		redirectAttributes.addFlashAttribute("message", "保存用户成功！");//使用addFlashAttribute,参数不会出现在url地址栏中
+//		return "redirect:/user/save/result";
+//	}
 }

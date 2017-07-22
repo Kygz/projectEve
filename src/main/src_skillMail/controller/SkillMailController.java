@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import manager.PlanetManager;
+import manager.SkillMailManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import po.JitaItem;
+import po.MailPo;
 import po.MemberPo;
 import po.PlanetPo;
 import po.PlanetRecordResult;
@@ -17,6 +19,7 @@ import util.JitaUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -26,19 +29,23 @@ import java.util.Map;
 @RequestMapping("skillMail.do")
 public class SkillMailController {
 	@Autowired
-	private PlanetManager planetManager;
+	private SkillMailManager skillMailManager;
 	
 	/**
-	 * 查询所有生效中的提醒
+	 * 查询所有提醒
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(params = "method=queryAlert", method=RequestMethod.POST,produces = "application/json; charset=utf-8")
+	@RequestMapping(params = "method=queryMail", method=RequestMethod.POST,produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String queryMonth(HttpSession session){
-		String pr = "";
+		MemberPo memberPo = (MemberPo)session.getAttribute("member");
+		List<MailPo> mailPos = new ArrayList<MailPo>();
+		if(memberPo!=null) {
+			mailPos = skillMailManager.querySkillMailsByMemberId(memberPo.getMember_id());
+		}
 		Gson gson = new Gson();
-		return gson.toJson(pr);
+		return gson.toJson(mailPos);
 	}
 
 	/**
@@ -46,9 +53,9 @@ public class SkillMailController {
 	 * @param session
 	 * @return
 	 */
-	@RequestMapping(params = "method=insertMailAlert", method=RequestMethod.POST, produces="plain/html;charset=UTF-8")
+	@RequestMapping(params = "method=insertMail", method=RequestMethod.POST, produces="plain/html;charset=UTF-8")
 	@ResponseBody
-	public String insertPlanetRecord(HttpSession session,HttpServletRequest request,HttpServletResponse response){
+	public String insertMail(HttpSession session,HttpServletRequest request,HttpServletResponse response){
 		MemberPo memberPo = (MemberPo)session.getAttribute("member");
 		Map<String,String> resultMap = new HashMap<String, String>();
 		if(memberPo==null) {
