@@ -14,6 +14,7 @@ public class MailPo {
 
     private Long mail_id;
     private Long mail_user_id;
+    private String mail_user_name;
     private String mail_address;
     private String mail_content;
     private Date mail_createTime;
@@ -34,6 +35,14 @@ public class MailPo {
 
     public void setMail_user_id(Long mail_user_id) {
         this.mail_user_id = mail_user_id;
+    }
+
+    public String getMail_user_name() {
+        return mail_user_name;
+    }
+
+    public void setMail_user_name(String mail_user_name) {
+        this.mail_user_name = mail_user_name;
     }
 
     public String getMail_address() {

@@ -17,9 +17,19 @@ function submitMailFunction(){
 		type : "POST",
 		dataType : "json",
 		success : function(data) {
-			alert(data.msg);
-			location.reload();
-		}
+			if(data.result === "true"){
+                $message.alert({
+                    title : "Submit result",
+                    msg : "<p>提交Van♂成！邮件将会在到时间后 FA♂送</p>"
+                });
+			}
+		},
+		error : function (data) {
+            $message.alert({
+                title : "Submit result",
+                msg : "<p>发生未知错误! 天知道后台发生了什么肮脏的交易</p>"
+            });
+        }
 	});
 }/**
  * 行星产物页面相关js
@@ -43,6 +53,7 @@ function getMailTable(){
                             "<td>"+ data[i].mail_content + "</td>" +
                             "<td>"+ data[i].mail_address + "</td>" +
                             "<td>"+ data[i].mail_done + "</td>" +
+                            "<td>"+ "删除" + "</td>" +
                             "</tr>").appendTo(table);
                     }
 			}

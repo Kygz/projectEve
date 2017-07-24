@@ -306,18 +306,6 @@
 						</tr>
 						</thead>
 						<tbody id="list">
-						<tr>
-							<td>1</td>
-							<th>氧</th>
-							<th>电解物</th>
-							<th>水</th>
-							<th>稀有金属</th>
-							<th>有毒金属</th>
-							<th>反应金属</th>
-							<th>手性结构</th>
-							<td>data</td>
-							<td>10000isk</td>
-						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -378,10 +366,28 @@
 			</div>
 			<div class="block-area">
 				<button class="btn btn-sm m-r-5" id="submitPlanet" >提交产物</button>
-				<%--<button class="btn btn-sm m-r-5" id="TESTPlanet" >TEST</button>--%>
 		    </div>
 			<hr class="whiter m-t-20" />
-
+			<div>
+				<a id='submitAlert' data-toggle='modal' href='#successAlertDiv' class='btn btn-sm' style='display: none;'>你看不见我 看不见我</a>
+				<div class='modal fade' id='successAlertDiv' tabindex='-1' role='dialog' aria-hidden='true' style='display: none;'>
+					<div class='modal-dialog'>
+						<div class='modal-content'>
+							<div class='modal-header'>
+								<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+								<h4 class='modal-title'>Submit Result</h4>
+							</div>
+							<div class='modal-body'>
+								<p></p>
+							</div>
+							<div class='modal-footer'>
+								<%--<button type='button' class='btn btn-sm'>确定</button>--%>
+								<button type='button' class='btn btn-sm' data-dismiss='modal'>确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 	</section>
 
@@ -444,6 +450,7 @@
 	<script src="js/functions.js"></script>
 	
 	<!-- All JS functions -->
+	<script src="js/myJs/commonFunction.js"></script>
 	<script src="js/myJs/planetFunction.js"></script>
 	<script type="text/javascript">
             $(document).ready(function(){
@@ -461,6 +468,7 @@
                 /* Spinners */
                 (function(){
                     $('.spinner-1').spinedit('setMaximum', 2000000);
+                    $("input[id^='planet']").val(0);
                 })();
                 
                 /* 提交按钮事件 */

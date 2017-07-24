@@ -9,6 +9,7 @@
             <generator class="assigned"/>
         </id>
         <property name="mail_user_id" type="long" column="mail_user_id" length="20" />
+        <property name="mail_user_name" type="string" column="mail_user_name" length="255" />
         <property name="mail_address" type="string" column="mail_address" length="255" />
         <property name="mail_content" type="string" column="mail_content" length="2000" />
         <property name="mail_createTime" type="date" column="mail_createDate" />

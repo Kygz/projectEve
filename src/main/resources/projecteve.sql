@@ -20,8 +20,9 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `mail`;
 CREATE TABLE `mail` (
-  `mail_id` smallint(20) NOT NULL,
-  `mail_user_id` smallint(20) NOT NULL,
+  `mail_id` bigint(20) NOT NULL,
+  `mail_user_id` bigint(20) NOT NULL,
+  `mail_user_name` varchar(255) NOT NULL,
   `mail_address` varchar(255) NOT NULL,
   `mail_content` varchar(2000) DEFAULT NULL,
   `mail_createDate` datetime DEFAULT NULL,
@@ -39,7 +40,7 @@ CREATE TABLE `mail` (
 -- ----------------------------
 DROP TABLE IF EXISTS `member`;
 CREATE TABLE `member` (
-  `member_id` smallint(20) NOT NULL,
+  `member_id` bigint(20) NOT NULL,
   `member_nickname` varchar(255) DEFAULT NULL,
   `member_name` varchar(255) DEFAULT NULL,
   `member_password` varchar(255) DEFAULT NULL,
@@ -59,8 +60,8 @@ INSERT INTO `member` VALUES ('1', '星际奏者', 'xjzz', '123456', '120964066',
 -- ----------------------------
 DROP TABLE IF EXISTS `planet`;
 CREATE TABLE `planet` (
-  `planet_id` smallint(20) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `planet_user_id` smallint(20) NOT NULL,
+  `planet_id` bigint(20) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `planet_user_id` bigint(20) NOT NULL,
   `planet_user_name` varchar(255) NOT NULL,
   `planet_upload_date` date NOT NULL,
   `planet_star_1` bigint(20) unsigned DEFAULT '0',

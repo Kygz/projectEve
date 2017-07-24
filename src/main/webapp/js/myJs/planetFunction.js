@@ -32,9 +32,20 @@ function submitPlanetFunction(){
 		type : "POST",
 		dataType : "json",
 		success : function(data) {
-			alert(data.msg);
-			location.reload();
-		}
+			// alert(data.msg);
+            $message.alert({
+				title : "Submit result",
+				msg : data.msg
+			});
+            $("input[id^='planet']").val(0);
+            location.reload();
+		},
+		error : function (data) {
+            $message.alert({
+                title : "Submit result",
+                msg : "<p>发生未知错误! 天知道后台发生了什么肮脏的交易</p>"
+            });
+        }
 	});
 }/**
  * 行星产物页面相关js
@@ -47,7 +58,7 @@ function getPlanetTable(){
 		dataType : "json",
 		success : function(data) {
 			console.log(data);
-			if(data!=null&&data!=""){
+			if(data!==null&&data!==""){
 				var table = $("#list");
                 table.find("tr").remove();
 				var size = data.length;

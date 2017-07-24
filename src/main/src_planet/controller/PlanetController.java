@@ -108,16 +108,16 @@ public class PlanetController {
 					item6.getSell().get("max") * Long.parseLong(planet6) +
 					item7.getSell().get("max") * Long.parseLong(planet7);
 
-			String msg = "提交成功！" +  "\n" +
-					"今日吉他姬提供参考价格如下" +  "\n" +
-					"氧——" + item1.getSell().get("max") + "\n" +
-					"电解物——" + item2.getSell().get("max") + "\n" +
-					"水——" + item3.getSell().get("max") + "\n" +
-					"稀有金属——" + item4.getSell().get("max") + "\n" +
-					"有毒金属——" + item5.getSell().get("max") + "\n" +
-					"反应金属——" + item6.getSell().get("max") + "\n" +
-					"手性结构——" + item7.getSell().get("max") + "\n" +
-					"总价为：" + String .format("%.2f",price) + "isk";
+			String msg = "<p>"+"提交成功！" + "</p>" +
+					"<p>"+"今日吉他姬提供参考价格如下" + "</p>" +
+					"<p>"+"氧——" + item1.getSell().get("max") + "</p>" +
+					"<p>"+"电解物——" + item2.getSell().get("max") + "</p>" +
+					"<p>"+"水——" + item3.getSell().get("max") + "</p>" +
+					"<p>"+"稀有金属——" + item4.getSell().get("max") + "</p>" +
+					"<p>"+"有毒金属——" + item5.getSell().get("max") + "</p>" +
+					"<p>"+"反应金属——" + item6.getSell().get("max") + "</p>" +
+					"<p>"+"手性结构——" + item7.getSell().get("max") + "</p>" +
+					"<p>"+"总价为：" + String .format("%.2f",price) + "isk" + "</p>";
 			resultMap.put("result","true");
 			resultMap.put("msg",msg);
 		}

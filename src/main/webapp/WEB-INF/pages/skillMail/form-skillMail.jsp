@@ -300,6 +300,7 @@
 							<th>内容</th>
 							<th>邮箱</th>
 							<th>状态</th>
+							<th>反水</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -402,6 +403,7 @@
 	<script src="js/functions.js"></script>
 	
 	<!-- All JS functions -->
+	<script src="js/myJs/commonFunction.js"></script>
 	<script src="js/myJs/mailFunction.js"></script>
 
 	<script type="text/javascript">

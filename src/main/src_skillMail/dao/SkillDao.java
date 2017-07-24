@@ -6,6 +6,12 @@ import java.util.List;
 
 public interface SkillDao {
     /**
+     * 按state查相关的mail任务
+     * @param state -2:跳过 -1:失败 0:进行中 1:成功
+     * @return
+     */
+    List<MailPo> queryAllSkillMailsByDone(Integer state);
+    /**
      * 按memberId 查相关的mail任务
      * @param memberId
      * @return
