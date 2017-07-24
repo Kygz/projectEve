@@ -4,6 +4,9 @@
 function submitMailFunction(){
 	var input_day = $('#input_day').val();
 	var input_time = $('#input_time').val();
+	if(input_day ===""||input_time ===""){
+		return false;
+	}
 	var input_content = $.trim($('#input_content').val());
 	if(isNull(input_content)){input_content = "技能将要到期，请及时续一秒！";}
 	$.ajax({
@@ -31,6 +34,7 @@ function submitMailFunction(){
             });
         }
 	});
+	return false;
 }/**
  * 行星产物页面相关js
  */
@@ -47,9 +51,8 @@ function getMailTable(){
 			if(data!=null&&data!=""){
 				var size = data.length;
 					for(var i = 0;i<size;i++){
-                        var dateObj = new Date(data[i].mail_time);
                         $("<tr>" +
-                            "<td>"+ dateObj.getFullYear()+"-"+(dateObj.getMonth()+1)+"-"+dateObj.getDate() +"</td>" +
+                            "<td>"+ data[i].mail_timeStr +"</td>" +
                             "<td>"+ data[i].mail_content + "</td>" +
                             "<td>"+ data[i].mail_address + "</td>" +
                             "<td>"+ data[i].mail_done + "</td>" +

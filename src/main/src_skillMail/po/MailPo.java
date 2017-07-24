@@ -3,6 +3,7 @@ package po;
 
 import util.SysUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -19,6 +20,7 @@ public class MailPo {
     private String mail_content;
     private Date mail_createTime;
     private Date mail_time;
+    private String mail_timeStr;
     private Integer mail_done;
 
     public Long getMail_id() {
@@ -75,6 +77,12 @@ public class MailPo {
 
     public void setMail_time(Date mail_time) {
         this.mail_time = mail_time;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        this.mail_timeStr =  sdf.format(this.mail_time);
+    }
+
+    public String getMail_timeStr() {
+        return mail_timeStr;
     }
 
     public Integer getMail_done() {

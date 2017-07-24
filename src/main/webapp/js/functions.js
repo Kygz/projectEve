@@ -53,8 +53,11 @@ $(document).ready(function(){
 					'<a data-skin="skin-blur-yellow" class="col-sm-2 col-xs-4" href="">' +
 					    '<img src="img/skin-yellow.jpg" alt="">' +
 					'</a>' +
-					'<a  data-skin="skin-blur-kiwi"class="col-sm-2 col-xs-4" href="">' +
+					'<a  data-skin="skin-blur-kiwi" class="col-sm-2 col-xs-4" href="">' +
 					    '<img src="img/skin-kiwi.jpg" alt="">' +
+					'</a>' +
+					'<a  data-skin="skin-blur-eve1" class="col-sm-2 col-xs-4" href="">' +
+					    '<img src="img/skin-eve1.jpg" alt="">' +
 					'</a>' +
 				    '</div>' +
 				'</div>' +

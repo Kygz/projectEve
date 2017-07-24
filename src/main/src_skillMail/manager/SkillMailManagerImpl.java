@@ -77,7 +77,7 @@ public class SkillMailManagerImpl implements SkillMailManager,ApplicationListene
         try{
             Timer t = new Timer();
             Long id = mail.getMail_id();
-            MailTimeTask task = new MailTimeTask(id, mail.getMail_id(),mail.getMail_address(),mail.getMail_user_name(),mail.getMail_content());
+            MailTimeTask task = new MailTimeTask(id, mail.getMail_id(),mail.getMail_address(),mail.getMail_user_name(),mail.getMail_content(),this);
 
             t.schedule(task, startTime);
             if(timeLine==null){

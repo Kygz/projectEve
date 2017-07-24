@@ -303,14 +303,14 @@
 							<th>反水</th>
 						</tr>
 						</thead>
-						<tbody>
+						<tbody id="list">
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<!-- spinner -->
 			<div class="block-area" id="spinner">
-				<form>
+				<form onsubmit="return false;">
 				<h3 class="block-title">技能到期提醒</h3>
 				<br />
 					<div class="col-md-4 m-b-15">
@@ -336,7 +336,7 @@
 						<input id="input_content" class="form-control input-sm " placeholder="技能将要到期，请及时续一秒！" type="text">
 					</div>
 					<div class="col-md-12 m-b-15">
-						<input id="submitMail" class="submit btn btn-sm" value="提交" type="submit">
+						<input id="submitMail" class="submit btn btn-sm" value="提交" type="button" onclick="submitMailFunction();">
 					</div>
 				</form>
 			</div>
@@ -417,14 +417,6 @@
             /* Input Masking - you can include your own way */
             (function () {
 
-            })();
-
-
-            /* 提交按钮事件 */
-            (function () {
-                $('#submitMail').on('click', function () {
-                    submitMailFunction();
-                });
             })();
 
             /* TEST按钮事件 */

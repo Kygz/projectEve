@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import java.util.TimerTask;
 
 public class MailTimeTask extends TimerTask{
-    @Resource
     private SkillMailManager skillMailManager;
     private Long taskId;
     private Long mailId;
@@ -54,12 +53,21 @@ public class MailTimeTask extends TimerTask{
         this.content = content;
     }
 
-    public MailTimeTask(Long taskId, Long mailId, String toMailAddress, String toMailName, String content) {
+    public SkillMailManager getSkillMailManager() {
+        return skillMailManager;
+    }
+
+    public void setSkillMailManager(SkillMailManager skillMailManager) {
+        this.skillMailManager = skillMailManager;
+    }
+
+    public MailTimeTask(Long taskId, Long mailId, String toMailAddress, String toMailName, String content ,SkillMailManager skillMailManager) {
         this.taskId = taskId;
         this.mailId = mailId;
         this.toMailAddress = toMailAddress;
         this.toMailName = toMailName;
         this.content = content;
+        this.skillMailManager = skillMailManager;
     }
 
     public void run() {
