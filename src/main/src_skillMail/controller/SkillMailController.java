@@ -63,11 +63,11 @@ public class SkillMailController {
 			resultMap.put("msg","妖兽啊~~掉线啦~~~");
 		}else{
 			try {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String day = request.getParameter("day");
 				String time = request.getParameter("time");
 				String content = request.getParameter("content");
-				sdf.parse(day + " " + time);
+				Date alertDate = sdf.parse(day + " " + time);
 
 				MailPo mailPo = new MailPo();
 				mailPo.setIdIfNew();
@@ -75,7 +75,7 @@ public class SkillMailController {
 				mailPo.setMail_user_name(memberPo.getMember_nickname());
 				mailPo.setMail_address(memberPo.getMember_email());
 				mailPo.setMail_content(content);
-				mailPo.setMail_time(sdf.parse(day + " " + time));
+				mailPo.setMail_time(alertDate);
 				mailPo.setMail_createTime(new Date());
 				mailPo.setMail_done(0);
 

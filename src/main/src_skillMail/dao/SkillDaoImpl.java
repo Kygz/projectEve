@@ -35,7 +35,7 @@ public class SkillDaoImpl implements SkillDao{
     public MailPo querySkillMailByMailId(Long memberId){
         Session session = sessionFactory.getCurrentSession();
         String hql = "from MailPo where mail_id = ?";
-        Query query = session.createQuery(hql);
+        Query query = session.createQuery(hql).setParameter(0,memberId);
         MailPo mailPo = (MailPo)query.uniqueResult();
         return mailPo;
     }

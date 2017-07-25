@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 import po.MailPo;
-import util.SysUtil;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -15,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 
-@Service
+@Service("skillMailManager")
 public class SkillMailManagerImpl implements SkillMailManager,ApplicationListener{
     @Resource
     private SkillDao skillDao;
@@ -73,17 +72,17 @@ public class SkillMailManagerImpl implements SkillMailManager,ApplicationListene
         if(startTime.getTime() < System.currentTimeMillis()){
             log.info(mail.getMail_id() + "申请时间已过期 跳过");
             updateSkillMailState(mail.getMail_id(),-2);
+            return;
         }
         try{
             Timer t = new Timer();
-            Long id = mail.getMail_id();
-            MailTimeTask task = new MailTimeTask(id, mail.getMail_id(),mail.getMail_address(),mail.getMail_user_name(),mail.getMail_content(),this);
+            MailTimeTask task = new MailTimeTask(mail);
 
             t.schedule(task, startTime);
             if(timeLine==null){
                 timeLine = new HashMap<Long, Timer>();
             }
-            timeLine.put(id,t);
+            timeLine.put(mail.getMail_id(),t);
         }catch (Exception e){
             log.error(mail.getMail_id() + "加Timeline出现问题",e);
         }
@@ -91,13 +90,15 @@ public class SkillMailManagerImpl implements SkillMailManager,ApplicationListene
     }
 
     private void endTimeLine(Long id){
-        Timer timer = timeLine.get(id);
-        log.info(id + " 结束定时任务");
-        if(timer!=null){
-            timer.cancel();
-        }else {
-            log.info(id + " 未找到定时任务");
+        if(timeLine!=null){
+            Timer timer = timeLine.get(id);
+            log.info(id + " 结束定时任务");
+            if(timer!=null){
+                timer.cancel();
+            }else {
+                log.info(id + " 未找到定时任务");
+            }
+            timeLine.remove(id);
         }
-        timeLine.remove(id);
     }
 }

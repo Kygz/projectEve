@@ -31,7 +31,6 @@
     <context:component-scan base-package="controller" />
     <context:component-scan base-package="manager" />
     <context:component-scan base-package="dao" />
-
     <!--ViewResolver 视图解析器-->
     <!--用于支持Servlet、JSP视图解析-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -66,4 +65,5 @@
     </aop:config>
 
     <!--jackson-->
+    <bean id="beanUtils" class="util.BeanUtils" />
 </beans>

@@ -12,8 +12,8 @@
         <property name="mail_user_name" type="string" column="mail_user_name" length="255" />
         <property name="mail_address" type="string" column="mail_address" length="255" />
         <property name="mail_content" type="string" column="mail_content" length="2000" />
-        <property name="mail_createTime" type="date" column="mail_createDate" />
-        <property name="mail_time" type="date" column="mail_time" />
+        <property name="mail_createTime" type="java.util.Date" column="mail_createDate" />
+        <property name="mail_time" type="java.util.Date" column="mail_time" />
         <property name="mail_done" type="integer" column="mail_done" length="2" />
     </class>
 </hibernate-mapping>

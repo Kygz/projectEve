@@ -1,25 +1,17 @@
 package manager;
 
+import po.MailPo;
+import util.BeanUtils;
 import util.MailUtil;
 
-import javax.annotation.Resource;
 import java.util.TimerTask;
-
 public class MailTimeTask extends TimerTask{
-    private SkillMailManager skillMailManager;
-    private Long taskId;
+
     private Long mailId;
     private String toMailAddress;
     private String toMailName;
     private String content;
 
-    public Long getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(Long taskId) {
-        this.taskId = taskId;
-    }
 
     public Long getMailId() {
         return mailId;
@@ -53,29 +45,21 @@ public class MailTimeTask extends TimerTask{
         this.content = content;
     }
 
-    public SkillMailManager getSkillMailManager() {
-        return skillMailManager;
-    }
-
-    public void setSkillMailManager(SkillMailManager skillMailManager) {
-        this.skillMailManager = skillMailManager;
-    }
-
-    public MailTimeTask(Long taskId, Long mailId, String toMailAddress, String toMailName, String content ,SkillMailManager skillMailManager) {
-        this.taskId = taskId;
-        this.mailId = mailId;
-        this.toMailAddress = toMailAddress;
-        this.toMailName = toMailName;
-        this.content = content;
-        this.skillMailManager = skillMailManager;
+    public MailTimeTask(MailPo po) {
+        this.mailId = po.getMail_id();
+        this.toMailAddress = po.getMail_address();
+        this.toMailName = po.getMail_user_name();
+        this.content = po.getMail_content();
     }
 
     public void run() {
         if(MailUtil.sendMail(getToMailAddress(),getToMailName(),getContent())){
             //发送成功
+            SkillMailManager skillMailManager = (SkillMailManager)BeanUtils.getBean("skillMailManager");
             skillMailManager.updateSkillMailState(getMailId(),1);
         }else{
             //发送失败
+            SkillMailManager skillMailManager = (SkillMailManager)BeanUtils.getBean("skillMailManager");
             skillMailManager.updateSkillMailState(getMailId(),-1);
         }
     }
