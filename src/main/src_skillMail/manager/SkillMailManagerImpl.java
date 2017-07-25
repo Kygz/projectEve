@@ -36,7 +36,6 @@ public class SkillMailManagerImpl implements SkillMailManager,ApplicationListene
             for(MailPo mailPo : mailPos){
                 startTimeLine(mailPo);
             }
-            //TODO 定时任务，项目启动时执行
         }
     }
 

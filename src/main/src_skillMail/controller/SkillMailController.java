@@ -94,6 +94,25 @@ public class SkillMailController {
 		return json;
 	}
 
+	@RequestMapping(params = "method=delMail", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	@ResponseBody
+	public String delMail(HttpSession session,HttpServletRequest request,HttpServletResponse response){
+		MemberPo memberPo = (MemberPo)session.getAttribute("member");
+		Map<String,String> resultMap = new HashMap<String, String>();
+		if(memberPo==null) {
+			resultMap.put("result","false");
+			resultMap.put("msg","妖兽啊~~掉线啦~~~");
+		}else{
+			String mailId = request.getParameter("mailId");
+			skillMailManager.deleteSkillMailBy(Long.parseLong(mailId));
+			resultMap.put("result","true");
+			resultMap.put("msg","成功！");
+
+		}
+		Gson gson = new Gson();
+		String json = gson.toJson(resultMap);
+		return json;
+	}
 	@RequestMapping(params = "method=index", method=RequestMethod.GET)
 	public ModelAndView mailIndex(HttpSession httpSession){
 		MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");

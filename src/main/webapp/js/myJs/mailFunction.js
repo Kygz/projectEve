@@ -26,6 +26,7 @@ function submitMailFunction(){
                     msg : "<p>提交Van♂成！邮件将会在到时间后 FA♂送</p>"
                 });
 			}
+            getMailTable();
 		},
 		error : function (data) {
             $message.alert({
@@ -35,9 +36,7 @@ function submitMailFunction(){
         }
 	});
 	return false;
-}/**
- * 行星产物页面相关js
- */
+}
 function getMailTable(){
 	$.ajax({
 		url : "skillMail.do?method=queryMail",
@@ -51,19 +50,51 @@ function getMailTable(){
 			if(data!=null&&data!=""){
 				var size = data.length;
 					for(var i = 0;i<size;i++){
+						var state = data[i].mail_done;
+						var stateStr = "";
+						// -2:跳过 -1:失败 0:进行中 1:成功
+						if(state === 1){
+                            stateStr = "成功";
+						}else if(state === 0){
+                            stateStr = "进行中";
+                        }else if(state === -1){
+                            stateStr = "失败";
+                        }else if(state === -2){
+                            stateStr = "跳过";
+                        }
+
                         $("<tr>" +
                             "<td>"+ data[i].mail_timeStr +"</td>" +
                             "<td>"+ data[i].mail_content + "</td>" +
                             "<td>"+ data[i].mail_address + "</td>" +
-                            "<td>"+ data[i].mail_done + "</td>" +
-                            "<td>"+ "删除" + "</td>" +
+                            "<td>"+ stateStr + "</td>" +
+                            "<td onclick='delMail("+data[i].mail_id+")'>"+ "删除" + "</td>" +
                             "</tr>").appendTo(table);
                     }
 			}
 		}
 	});
 }
-
+function delMail(mailId) {
+    $.ajax({
+        url : "skillMail.do?method=delMail",
+        async : false,
+        type : "POST",
+        dataType : "json",
+        data : {
+        	mailId : mailId
+    	},
+        success : function(data) {
+            $message.alert({
+                title : "Delete result",
+                msg : "<p>"+ data.msg +"</p>"
+            });
+            if(data.result === "true"){
+                getMailTable();
+			}
+        }
+    });
+}
 function isNull(value) {
-	return value == null||value=="";
+	return value === null||value==="";
 }

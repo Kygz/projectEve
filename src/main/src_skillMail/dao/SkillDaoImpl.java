@@ -45,7 +45,9 @@ public class SkillDaoImpl implements SkillDao{
         String hql = "from MailPo where mail_id = ?";
         Query query = session.createQuery(hql).setParameter(0,mailId);
         MailPo result = (MailPo) query.uniqueResult();
-        session.delete(result);
+        if(result != null){
+            session.delete(result);
+        }
     }
 
     public void updateSkillMailState(MailPo mailPo) {
