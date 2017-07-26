@@ -314,23 +314,26 @@
                           <div class="modal-content">
                                <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Add an Event</h4>
+                                    <h4 class="modal-title">发布新事件</h4>
                                </div>
                                <div class="modal-body">
                                     <form class="form-validation" role="form">
                                          <div class="form-group">
-                                              <label for="eventName">Event Name</label>
-                                              <input type="text" class="input-sm form-control validate[required]" id="eventName" placeholder="...">
+                                              <label for="eventName">招集信息</label>
+                                              <input type="text" class="input-sm form-control validate[required]" id="eventName" placeholder="事件描述(文体不限 诗歌除外)">
                                          </div>
-                                         
+                                         <div class="form-group">
+                                              <label for="eventCreateMember">发布人</label>
+                                              <input type="text" class="input-sm form-control validate[required]" id="eventCreateMember" readonly value="${sessionScope.member.member_nickname}">
+                                         </div>
                                          <input type="hidden" id="getStart" />
                                          <input type="hidden" id="getEnd" />
                                     </form>
                                </div>
                                
                                <div class="modal-footer">
-                                    <input type="submit" class="btn btn-info btn-sm" id="addEvent" value="Add Event">
-                                    <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-info btn-sm" id="addEvent" value="发布">
+                                    <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">关闭</button>
                                </div>
                           </div>
                      </div>
@@ -342,15 +345,15 @@
                           <div class="modal-content">
                                <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Edit Event</h4>
+                                    <h4 class="modal-title">修改事件</h4>
                                </div>
                                <div class="modal-body">
                                     <div id="eventInfo"></div>
                                </div>
                                
                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">Okay</button>
-                                    <button type="button" class="btn btn-info btn-sm" id="editCancel" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">发布</button>
+                                    <button type="button" class="btn btn-info btn-sm" id="editCancel" data-dismiss="modal">取消</button>
                                </div>
                           </div>
                      </div>
@@ -395,23 +398,19 @@
                          left: 'prev, next',
                          right: ''
                     },
-
+                    events:[{
+                        title: '不可改',
+                        start: new Date(y, m, 1),
+                        end: new Date(y, m, 2),
+                        editable: true,
+                        backgroundColor : "#74ff1c"
+                    }],
                     selectable: true,
                     selectHelper: true,
                     editable: true,
-                    events: [
-                        {
-                            title: '搞基',
-                            start: new Date(y, m, 1),
-                            end: new Date(y, m, 2)
-                        },
-                        {
-                            title: '再搞基',
-                            start: new Date(y, m, 10),
-                            allDay: true
-                        }
-                    ],
-                     
+                    //设置为true时，如果数据过多超过日历格子显示的高度时，多出去的数据不会将格子挤开，而是显示为 +...more ，点击后才会完整显示所有的数据
+                    eventLimit: true,
+
                     //On Day Select
                     select: function(start, end, allDay) {
                         $('#addNew-event').modal('show');   
@@ -419,45 +418,72 @@
                         $('#getStart').val(start);
                         $('#getEnd').val(end);
                     },
-                     
+                    eventClick : function(event){
+                        //do something here...
+                        console.log('eventClick中选中Event的id属性值为：', event.id);
+                        console.log('eventClick中选中Event的title属性值为：', event.title);
+                        console.log('eventClick中选中Event的start属性值为：', event.start.format('YYYY-MM-DD HH:mm'));
+                        console.log('eventClick中选中Event的end属性值为：', event.end.format('YYYY-MM-DD HH:mm'));
+                        console.log('eventClick中选中Event的color属性值为：', event.color);
+                        console.log('eventClick中选中Event的className属性值为：', event.className);
+                        console.log('eventClick中选中Event的className属性值为：', event.editable);
+                        // ...
+                    },
                     eventResize: function(event,dayDelta,minuteDelta,revertFunc) {
-                        $('#editEvent').modal('show');
-
-                        var info =
-                            "The end date of " + event.title + "has been moved " +
-                            dayDelta + " days and " +
-                            minuteDelta + " minutes."
-                        ;
-                        
-                        $('#eventInfo').html(info);
-                
-                
-                        $('#editEvent #editCancel').click(function(){
-                             revertFunc();
-                        }) 
+                        revertFunc();
+//暂不支持拖动改时间
+//                        $('#editEvent').modal('show');
+//
+//                        var info =
+//                            "The end date of " + event.title + "has been moved " +
+//                            dayDelta + " days and " +
+//                            minuteDelta + " minutes."
+//                        ;
+//
+//                        $('#eventInfo').html(info);
+//
+//
+//                        $('#editEvent #editCancel').click(function(){
+//                             revertFunc();
+//                        })
                     }
                 });
-                
-                $('body').on('click', '#addEvent', function(){
-                     var eventForm =  $(this).closest('.modal').find('.form-validation');
-                     eventForm.validationEngine('validate');
-                     
-                     if (!(eventForm).find('.formErrorContent')[0]) {
-                          
-                          //Event Name
-                          var eventName = $('#eventName').val();
+                //新建确定按钮
+                $('body').on('click', '#addEvent', function () {
+                    var eventForm = $(this).closest('.modal').find('.form-validation');
+                    eventForm.validationEngine('validate');
 
-                          //Render Event
-                          $('#calendar').fullCalendar('renderEvent',{
-                               title: eventName,
-                               start: $('#getStart').val(),
-                               end:  $('#getEnd').val(),
-                               allDay: true
-                          },true ); //Stick the event
-                          
-                          $('#addNew-event form')[0].reset();
-                          $('#addNew-event').modal('hide');
-                     } 
+                    if (!(eventForm).find('.formErrorContent')[0]) {
+                        //Event Name 事件名称
+                        var eventName = $('#eventName').val();
+                        var eventData = {
+                            title: eventName,
+                            start: $('#getStart').val(),
+                            end: $('#getEnd').val(),
+                            allDay: true
+                        };
+                        $.ajax({
+                            url: "calendar.do?method=addCalendarEvent",
+                            async: false,
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                eventName: eventName
+                            },
+                            success: function (data) {
+                                $message.alert({
+                                    title: "Delete result",
+                                    msg: "<p>" + data.msg + "</p>"
+                                });
+                                if (data.result === "true") {
+                                    //Render Event
+                                    $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
+                                }
+                            }
+                        });
+                        $('#addNew-event form')[0].reset();
+                        $('#addNew-event').modal('hide');
+                    }
                 });   
             });    
             

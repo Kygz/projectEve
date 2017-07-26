@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="po.CalendarEvent" table="CalenderEvent" lazy="false">
+        <id name="mail_id" type="long" column="mail_id" length="20">
+            <generator class="assigned"/>
+        </id>
+        <property name="mail_user_id" type="long" column="mail_user_id" length="20" />
+        <property name="mail_user_name" type="string" column="mail_user_name" length="255" />
+        <property name="mail_address" type="string" column="mail_address" length="255" />
+        <property name="mail_content" type="string" column="mail_content" length="2000" />
+        <property name="mail_createTime" type="java.util.Date" column="mail_createDate" />
+        <property name="mail_time" type="java.util.Date" column="mail_time" />
+        <property name="mail_done" type="integer" column="mail_done" length="2" />
+    </class>
+</hibernate-mapping>
