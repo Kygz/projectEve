@@ -38,7 +38,7 @@ public class JitaUtil {
                     content += line;
                 }
                 System.out.println(content);
-                JitaItem item = new Gson().fromJson(content,JitaItem.class);
+                JitaItem item = SysUtil.createGson().fromJson(content,JitaItem.class);
                 return item;
             }
         } catch (MalformedURLException e) {

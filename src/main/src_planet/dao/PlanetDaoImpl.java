@@ -43,7 +43,6 @@ public class PlanetDaoImpl implements PlanetDao {
 		@SuppressWarnings("unchecked")
 		List<Object[]> result = session.createSQLQuery(sql).list();
 		if(result.size()==1){
-			//TODO 测试语句待删
 			Object[] obj= result.get(0);
 			PlanetRecordResult pr = new PlanetRecordResult(id,String.valueOf(obj[0]));
 			pr.setPlanet_star1(((BigDecimal) obj[1]).longValue());

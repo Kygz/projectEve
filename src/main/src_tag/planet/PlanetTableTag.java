@@ -2,6 +2,7 @@ package planet;
 
 import com.google.gson.Gson;
 import po.PlanetPo;
+import util.SysUtil;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -19,7 +20,7 @@ public class PlanetTableTag extends TagSupport {
     public int doStartTag() throws JspException {
         JspWriter out = this.pageContext.getOut();
         try {
-            Gson gson = new Gson();
+            Gson gson = SysUtil.createGson();
             List<PlanetPo> planetPoList = (List<PlanetPo>) gson.fromJson(jsonStr, Object.class);
             int i = 1;
             for(PlanetPo planetPo : planetPoList){

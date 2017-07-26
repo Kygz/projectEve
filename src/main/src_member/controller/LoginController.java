@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import po.MemberPo;
+import util.SysUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -123,8 +124,7 @@ public class LoginController {
 			resultMap.put("result","false");
 			resultMap.put("msg","妖兽啊~~掉线啦~~~");
 		}
-		Gson gson = new Gson();
-		return gson.toJson(resultMap);
+		return SysUtil.createGson().toJson(resultMap);
 	}
 
 

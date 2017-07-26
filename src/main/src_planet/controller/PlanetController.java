@@ -19,6 +19,7 @@ import po.PlanetPo;
 import po.PlanetRecordResult;
 import manager.PlanetManager;
 import util.JitaUtil;
+import util.SysUtil;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -43,9 +44,7 @@ public class PlanetController {
 		String userId = memberPo.getMember_id().toString();
 		String username = memberPo.getMember_name();
 		PlanetRecordResult pr = planetManager.queryPlanetRecordByMemeberPerMonth(userId,username);
-		Gson gson = new Gson();
-		String json = gson.toJson(pr);
-		return json;
+		return SysUtil.createGson().toJson(pr);
 	}
 	/**
 	 * 提交行星产物
@@ -121,8 +120,7 @@ public class PlanetController {
 			resultMap.put("result","true");
 			resultMap.put("msg",msg);
 		}
-		Gson gson = new Gson();
-		return gson.toJson(resultMap);
+		return SysUtil.createGson().toJson(resultMap);
 	}
 
 	/**
@@ -136,8 +134,7 @@ public class PlanetController {
 		MemberPo memberPo = (MemberPo)session.getAttribute("member");
 		String userId = memberPo.getMember_id().toString();
 		List<PlanetPo> planetPoList = planetManager.queryPlanetPoFiveByUserId(userId);
-		Gson gson = new Gson();
-		return gson.toJson(planetPoList);
+		return SysUtil.createGson().toJson(planetPoList);
 	}
 
 	@RequestMapping(params = "method=planetInsertPage", method=RequestMethod.GET)

@@ -64,11 +64,11 @@ function getMailTable(){
                         }
 
                         $("<tr>" +
-                            "<td>"+ data[i].mail_timeStr +"</td>" +
+                            "<td>"+ data[i].mail_time +"</td>" +
                             "<td>"+ data[i].mail_content + "</td>" +
                             "<td>"+ data[i].mail_address + "</td>" +
                             "<td>"+ stateStr + "</td>" +
-                            "<td onclick='delMail("+data[i].mail_id+")'>"+ "删除" + "</td>" +
+                            "<td onclick='delMail(\"" + data[i].mail_id + "\")'>" + "删除" + "</td>" +
                             "</tr>").appendTo(table);
                     }
 			}

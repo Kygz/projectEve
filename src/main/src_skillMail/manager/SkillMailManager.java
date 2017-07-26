@@ -18,8 +18,7 @@ public interface SkillMailManager {
     void insertSkillMail(MailPo mailPo);
 
     /**
-     * 按id 删 mail
-     * TODO 删定时任务？
+     * 按id 删 mail(删定时任务)
      * @param mailId
      */
     void deleteSkillMailBy(Long mailId);

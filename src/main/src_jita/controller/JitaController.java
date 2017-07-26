@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import po.ItemPo;
 import po.JitaItem;
 import util.JitaUtil;
+import util.SysUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,8 +50,7 @@ public class JitaController {
             resultMap.put("sellLow",df.format(jitaItem.getSell().get("min")));
             resultMap.put("buyHigh",df.format(jitaItem.getBuy().get("max")));
             resultMap.put("buyLow",df.format(jitaItem.getBuy().get("min")));
-            Gson gson = new Gson();
-            String json = gson.toJson(resultMap);
+            String json = SysUtil.createGson().toJson(resultMap);
             return json;
         }else if(itemPoList!=null&&itemPoList.size()>1){
             String msg = "";
@@ -73,13 +73,11 @@ public class JitaController {
             resultMap.put("state","2");
             resultMap.put("result",msg);
 
-            Gson gson = new Gson();
-            String json = gson.toJson(resultMap);
+            String json = SysUtil.createGson().toJson(resultMap);
             return json;
         }else{
             resultMap.put("state","0");
-            Gson gson = new Gson();
-            String json = gson.toJson(resultMap);
+            String json = SysUtil.createGson().toJson(resultMap);
             return json;
         }
     }

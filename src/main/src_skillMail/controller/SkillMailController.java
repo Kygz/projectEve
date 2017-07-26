@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import po.MailPo;
 import po.MemberPo;
+import util.SysUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,8 +45,7 @@ public class SkillMailController {
 		if(memberPo!=null) {
 			mailPos = skillMailManager.querySkillMailsByMemberId(memberPo.getMember_id());
 		}
-		Gson gson = new Gson();
-		return gson.toJson(mailPos);
+		return SysUtil.createGson().toJson(mailPos);
 	}
 
 	/**
@@ -63,25 +63,31 @@ public class SkillMailController {
 			resultMap.put("msg","妖兽啊~~掉线啦~~~");
 		}else{
 			try {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				String day = request.getParameter("day");
-				String time = request.getParameter("time");
-				String content = request.getParameter("content");
-				Date alertDate = sdf.parse(day + " " + time);
+				List<MailPo> mailPos = skillMailManager.querySkillMailsByMemberId(memberPo.getMember_id());
+				if(mailPos!=null && mailPos.size()>=5){
+					resultMap.put("result","false");
+					resultMap.put("msg","抠门运维不肯升级CPU,每人最多5条生产线！");
+				}else{
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String day = request.getParameter("day");
+					String time = request.getParameter("time");
+					String content = request.getParameter("content");
+					Date alertDate = sdf.parse(day + " " + time);
 
-				MailPo mailPo = new MailPo();
-				mailPo.setIdIfNew();
-				mailPo.setMail_user_id(memberPo.getMember_id());
-				mailPo.setMail_user_name(memberPo.getMember_nickname());
-				mailPo.setMail_address(memberPo.getMember_email());
-				mailPo.setMail_content(content);
-				mailPo.setMail_time(alertDate);
-				mailPo.setMail_createTime(new Date());
-				mailPo.setMail_done(0);
+					MailPo mailPo = new MailPo();
+					mailPo.setIdIfNew();
+					mailPo.setMail_user_id(memberPo.getMember_id());
+					mailPo.setMail_user_name(memberPo.getMember_nickname());
+					mailPo.setMail_address(memberPo.getMember_email());
+					mailPo.setMail_content(content);
+					mailPo.setMail_time(alertDate);
+					mailPo.setMail_createTime(new Date());
+					mailPo.setMail_done(0);
 
-				skillMailManager.insertSkillMail(mailPo);
-				resultMap.put("result","true");
-				resultMap.put("msg","成功！");
+					skillMailManager.insertSkillMail(mailPo);
+					resultMap.put("result","true");
+					resultMap.put("msg","成功！");
+				}
 			} catch (ParseException e) {
 				log.error("时间转换出错", e);
 				resultMap.put("result","false");
@@ -89,9 +95,7 @@ public class SkillMailController {
 			}
 
 		}
-		Gson gson = new Gson();
-		String json = gson.toJson(resultMap);
-		return json;
+		return SysUtil.createGson().toJson(resultMap);
 	}
 
 	@RequestMapping(params = "method=delMail", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
@@ -106,12 +110,10 @@ public class SkillMailController {
 			String mailId = request.getParameter("mailId");
 			skillMailManager.deleteSkillMailBy(Long.parseLong(mailId));
 			resultMap.put("result","true");
-			resultMap.put("msg","成功！");
+			resultMap.put("msg","删除成功！");
 
 		}
-		Gson gson = new Gson();
-		String json = gson.toJson(resultMap);
-		return json;
+		return SysUtil.createGson().toJson(resultMap);
 	}
 	@RequestMapping(params = "method=index", method=RequestMethod.GET)
 	public ModelAndView mailIndex(HttpSession httpSession){
