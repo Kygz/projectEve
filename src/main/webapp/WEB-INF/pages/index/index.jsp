@@ -27,7 +27,8 @@
 <body id="${sessionScope.member.member_skin}">
 <!-- 顶栏 -->
 	<header id="header" class="media">
-		<a href="" id="menu-toggle"></a> <a class="logo pull-left" href="/login.do?method=index">米氏非正常人类研究院</a>
+		<a href="" id="menu-toggle"></a>
+		<a class="logo pull-left" href="/login.do?method=index">米氏非正常人类研究院</a>
 
 		<div class="media-body">
 			<div class="media" id="top-menu">

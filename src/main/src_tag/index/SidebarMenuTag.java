@@ -21,6 +21,11 @@ public class SidebarMenuTag  extends TagSupport {
                         "       </a>" +
                         "   </li>" +
                         "   <li>" +
+                        "       <a class=\"sa-side-calendar\" href=\"calendar.do?method=index\">" +
+                        "           <span class=\"menu-item\">招募英雄专用小酒馆</span>" +
+                        "       </a>" +
+                        "   </li>" +
+                        "   <li>" +
                         "       <a class=\"sa-side-typography\" href=\"404.html\">" +
                         "           <span class=\"menu-item\">装配车间</span>" +
                         "       </a>" +

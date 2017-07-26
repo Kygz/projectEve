@@ -1,14 +1,12 @@
 <%@taglib prefix="planet" uri="/planetTaglib" %>
 <%@taglib prefix="eve" uri="/indexTaglib" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
 <html>
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <meta name="format-detection" content="telephone=no">
 <meta charset="UTF-8">
 
@@ -29,19 +27,21 @@
 </head>
 <body id="${sessionScope.member.member_skin}">
 	<header id="header" class="media">
-		<a href="" id="menu-toggle"></a> <a class="logo pull-left"
-			href="../../DEMO/index.html">米氏非正常人类研究院</a>
+		<a href="" id="menu-toggle"></a>
+		<a class="logo pull-left" href="/login.do?method=index">米氏非正常人类研究院</a>
 
 		<div class="media-body">
 			<div class="media" id="top-menu">
 				<div class="pull-left tm-icon">
 					<a data-drawer="messages" class="drawer-toggle" href="">
-						<i class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
+						<i class="sa-top-message"></i>
+						<i class="n-count animated">5</i> <span>舰长邮件</span>
 					</a>
 				</div>
 				<div class="pull-left tm-icon">
 					<a data-drawer="notifications" class="drawer-toggle" href="">
-						<i class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
+						<i class="sa-top-updates"></i>
+						<i class="n-count animated">9</i> <span>消息更新</span>
 					</a>
 				</div>
 				<!-- 时间栏 -->

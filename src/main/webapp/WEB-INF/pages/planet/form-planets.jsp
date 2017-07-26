@@ -1,7 +1,6 @@
 <%@taglib prefix="planet" uri="/planetTaglib" %>
 <%@taglib prefix="eve" uri="/indexTaglib" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
@@ -29,8 +28,8 @@
 </head>
 <body id="${sessionScope.member.member_skin}">
 	<header id="header" class="media">
-		<a href="" id="menu-toggle"></a> <a class="logo pull-left"
-			href="../../DEMO/index.html">米氏非正常人类研究院</a>
+		<a href="" id="menu-toggle"></a>
+		<a class="logo pull-left" href="/login.do?method=index">米氏非正常人类研究院</a>
 
 		<div class="media-body">
 			<div class="media" id="top-menu">
