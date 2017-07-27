@@ -255,7 +255,7 @@
                 </ol>
                 
                 <h4 class="page-title">日程活动</h4>
-                
+                <input id="monthEvent" type="hidden" value="${monthEvent}">
                 <div class="block-area">
                     <div class="alert alert-info alert-dismissable fade in">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -319,13 +319,17 @@
                                <div class="modal-body">
                                     <form class="form-validation" role="form">
                                          <div class="form-group">
-                                              <label for="eventName">招集信息</label>
-                                              <input type="text" class="input-sm form-control validate[required]" id="eventName" placeholder="事件描述(文体不限 诗歌除外)">
+                                             <label for="eventName">TITLE</label>
+                                             <input type="text" class="input-sm form-control validate[required]" id="eventName" placeholder="标题请勿以‘震惊’为开头">
                                          </div>
                                          <div class="form-group">
                                               <label for="eventCreateMember">发布人</label>
                                               <input type="text" class="input-sm form-control validate[required]" id="eventCreateMember" readonly value="${sessionScope.member.member_nickname}">
                                          </div>
+                                        <div class="form-group">
+                                            <label for="eventName">CONTENT</label>
+                                            <textarea class="form-control auto-size m-b-10" id="eventContent" placeholder="事件描述(文体不限 诗歌除外)"></textarea>
+                                        </div>
                                          <input type="hidden" id="getStart" />
                                          <input type="hidden" id="getEnd" />
                                     </form>
@@ -381,8 +385,9 @@
         <!-- Other -->
         <script src="js/calendar.min.js"></script> <!-- Calendar -->
         <script src="js/feeds.min.js"></script> <!-- News Feeds -->
-        
-        
+        <script src="js/autosize.min.js"></script><!-- Textare autosize -->
+
+
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
         
@@ -392,19 +397,16 @@
                 var d = date.getDate();
                 var m = date.getMonth();
                 var y = date.getFullYear();
+
+                var monthEvent = $.parseJSON($("#monthEvent").val());
+
                 $('#calendar').fullCalendar({
                     header: {
                          center: 'title',
                          left: 'prev, next',
                          right: ''
                     },
-                    events:[{
-                        title: '不可改',
-                        start: new Date(y, m, 1),
-                        end: new Date(y, m, 2),
-                        editable: true,
-                        backgroundColor : "#74ff1c"
-                    }],
+                    events: [],
                     selectable: true,
                     selectHelper: true,
                     editable: true,
@@ -413,17 +415,19 @@
 
                     //On Day Select
                     select: function(start, end, allDay) {
-                        $('#addNew-event').modal('show');   
+                        $("#addNew-event").find('.formError').remove();
+                        $('#addNew-event').modal('show');
                         $('#addNew-event input:text').val('');
+                        $("#eventCreateMember").val($("#eventCreateMember").attr("value"));
                         $('#getStart').val(start);
                         $('#getEnd').val(end);
                     },
                     eventClick : function(event){
-                        //do something here...
+
                         console.log('eventClick中选中Event的id属性值为：', event.id);
                         console.log('eventClick中选中Event的title属性值为：', event.title);
-                        console.log('eventClick中选中Event的start属性值为：', event.start.format('YYYY-MM-DD HH:mm'));
-                        console.log('eventClick中选中Event的end属性值为：', event.end.format('YYYY-MM-DD HH:mm'));
+                        console.log('eventClick中选中Event的start属性值为：', event.start.Format('yyyy-MM-dd HH:mm'));
+                        console.log('eventClick中选中Event的end属性值为：', event.end.Format('yyyy-MM-dd HH:mm'));
                         console.log('eventClick中选中Event的color属性值为：', event.color);
                         console.log('eventClick中选中Event的className属性值为：', event.className);
                         console.log('eventClick中选中Event的className属性值为：', event.editable);
@@ -497,7 +501,8 @@
                 var overflowRegular, overflowInvisible = false;
                 overflowRegular = $('.overflow').niceScroll();     
             });                    
-            
+
+
        </script>
     </body>
 </html>

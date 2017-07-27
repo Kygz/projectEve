@@ -4,16 +4,16 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="po.CalendarEvent" table="CalenderEvent" lazy="false">
-        <id name="mail_id" type="long" column="mail_id" length="20">
+    <class name="po.CalendarEventPo" table="calender_event" lazy="false">
+        <id name="calendar_id" type="long" column="calendar_id" length="20">
             <generator class="assigned"/>
         </id>
-        <property name="mail_user_id" type="long" column="mail_user_id" length="20" />
-        <property name="mail_user_name" type="string" column="mail_user_name" length="255" />
-        <property name="mail_address" type="string" column="mail_address" length="255" />
-        <property name="mail_content" type="string" column="mail_content" length="2000" />
-        <property name="mail_createTime" type="java.util.Date" column="mail_createDate" />
-        <property name="mail_time" type="java.util.Date" column="mail_time" />
-        <property name="mail_done" type="integer" column="mail_done" length="2" />
+        <property name="calendar_create_id" type="long" column="calender_create_id" length="20" />
+        <property name="calendar_title" type="string" column="calendar_title" length="2000" />
+        <property name="calendar_content" type="string" column="calendar_content" length="2000" />
+        <property name="calendar_startTime" type="java.util.Date" column="calendar_startTime" />
+        <property name="calendar_endTime" type="java.util.Date" column="calendar_endTime" />
+        <property name="calendar_allDay" type="integer" column="calendar_allDay" length="1" />
+        <property name="calendar_state" type="integer" column="calendar_state" length="2" />
     </class>
 </hibernate-mapping>
