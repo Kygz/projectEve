@@ -8,7 +8,7 @@
         <id name="calendar_id" type="long" column="calendar_id" length="20">
             <generator class="assigned"/>
         </id>
-        <property name="calendar_create_id" type="long" column="calender_create_id" length="20" />
+        <property name="calendar_create_id" type="long" column="calendar_create_id" length="20" />
         <property name="calendar_title" type="string" column="calendar_title" length="2000" />
         <property name="calendar_content" type="string" column="calendar_content" length="2000" />
         <property name="calendar_startTime" type="java.util.Date" column="calendar_startTime" />

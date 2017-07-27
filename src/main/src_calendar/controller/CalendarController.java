@@ -52,7 +52,34 @@ public class CalendarController {
         }
         return SysUtil.createGson().toJson(resultMap);
     }
+    /**
+     * 增加日程
+     * @param session
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(params = "method=queryMonth", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+    @ResponseBody
+    public String queryMonth(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        MemberPo memberPo = (MemberPo)session.getAttribute("member");
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        if(memberPo==null) {
+            resultMap.put("result","false");
+            resultMap.put("msg","妖兽啊~~掉线啦~~~");
+        }else{
+            String year = request.getParameter("year");
+            String month = request.getParameter("month");
 
+            List<CalendarEventPo> poList = calendarManager.queryCalendarEventPoByMonth(Integer.parseInt(year), Integer.parseInt(month));
+
+            resultMap.put("result","true");
+            resultMap.put("msg","增加成功！");
+            resultMap.put("list",poList);
+
+        }
+        return SysUtil.createGson().toJson(resultMap);
+    }
     @RequestMapping(params = "method=index", method= RequestMethod.GET)
     public ModelAndView mailIndex(HttpSession httpSession){
         MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
@@ -60,10 +87,7 @@ public class CalendarController {
         if(memberPo==null){
             return new ModelAndView("login");
         }else{
-            List<CalendarEventPo> calendarEventPoList = calendarManager.queryCalendarEventPoByMonth(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH)+1);
-            ModelAndView mav =  new ModelAndView("calendar/form-calendar");
-            mav.addObject("monthEvent",SysUtil.createGson().toJson(calendarEventPoList));
-            return mav;
+            return new ModelAndView("calendar/form-calendar");
         }
     }
 }

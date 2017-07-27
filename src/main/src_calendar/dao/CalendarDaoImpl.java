@@ -17,7 +17,7 @@ public class CalendarDaoImpl implements CalendarDao{
 
     public List<CalendarEventPo> queryCalendarEventPoByMonth(Date startTime, Date endTime){
         Session session = sessionFactory.getCurrentSession();
-        String hql = "SELECT CalendarEventPo FROM CalendarEventPo as c WHERE (c.calendar_startTime >= ? AND c.calendar_startTime <= ?) or (c.calendar_endTime >= ? AND c.calendar_endTime <= ?) ORDER BY c.calendar_startTime";
+        String hql = "FROM CalendarEventPo as c WHERE (c.calendar_startTime >= ? AND c.calendar_startTime <= ?) or (c.calendar_endTime >= ? AND c.calendar_endTime <= ?) ORDER BY c.calendar_startTime";
         Query query = session.createQuery(hql);
         query.setParameter(0,startTime);
         query.setParameter(1,endTime);

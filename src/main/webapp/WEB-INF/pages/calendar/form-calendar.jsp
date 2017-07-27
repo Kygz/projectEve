@@ -255,7 +255,6 @@
                 </ol>
                 
                 <h4 class="page-title">日程活动</h4>
-                <input id="monthEvent" type="hidden" value="${monthEvent}">
                 <div class="block-area">
                     <div class="alert alert-info alert-dismissable fade in">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -323,12 +322,12 @@
                                              <input type="text" class="input-sm form-control validate[required]" id="eventName" placeholder="标题请勿以‘震惊’为开头">
                                          </div>
                                          <div class="form-group">
-                                              <label for="eventCreateMember">发布人</label>
+                                              <label for="eventCreateMember">USER</label>
                                               <input type="text" class="input-sm form-control validate[required]" id="eventCreateMember" readonly value="${sessionScope.member.member_nickname}">
                                          </div>
                                         <div class="form-group">
                                             <label for="eventName">CONTENT</label>
-                                            <textarea class="form-control auto-size m-b-10" id="eventContent" placeholder="事件描述(文体不限 诗歌除外)"></textarea>
+                                            <textarea class="input-sm form-control auto-size" id="eventContent" placeholder="事件描述(文体不限 诗歌除外)"></textarea>
                                         </div>
                                          <input type="hidden" id="getStart" />
                                          <input type="hidden" id="getEnd" />
@@ -390,68 +389,16 @@
 
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
-        
+        <script src="js/myJs/calendarFunction.js"></script>
+
         <script type="text/javascript">
             $(document).ready(function() {
                 var date = new Date();
-                var d = date.getDate();
                 var m = date.getMonth();
                 var y = date.getFullYear();
 
-                var monthEvent = $.parseJSON($("#monthEvent").val());
+                getEventData(y,m+1,createCalendar);
 
-                $('#calendar').fullCalendar({
-                    header: {
-                         center: 'title',
-                         left: 'prev, next',
-                         right: ''
-                    },
-                    events: [],
-                    selectable: true,
-                    selectHelper: true,
-                    editable: true,
-                    //设置为true时，如果数据过多超过日历格子显示的高度时，多出去的数据不会将格子挤开，而是显示为 +...more ，点击后才会完整显示所有的数据
-                    eventLimit: true,
-
-                    //On Day Select
-                    select: function(start, end, allDay) {
-                        $("#addNew-event").find('.formError').remove();
-                        $('#addNew-event').modal('show');
-                        $('#addNew-event input:text').val('');
-                        $("#eventCreateMember").val($("#eventCreateMember").attr("value"));
-                        $('#getStart').val(start);
-                        $('#getEnd').val(end);
-                    },
-                    eventClick : function(event){
-
-                        console.log('eventClick中选中Event的id属性值为：', event.id);
-                        console.log('eventClick中选中Event的title属性值为：', event.title);
-                        console.log('eventClick中选中Event的start属性值为：', event.start.Format('yyyy-MM-dd HH:mm'));
-                        console.log('eventClick中选中Event的end属性值为：', event.end.Format('yyyy-MM-dd HH:mm'));
-                        console.log('eventClick中选中Event的color属性值为：', event.color);
-                        console.log('eventClick中选中Event的className属性值为：', event.className);
-                        console.log('eventClick中选中Event的className属性值为：', event.editable);
-                        // ...
-                    },
-                    eventResize: function(event,dayDelta,minuteDelta,revertFunc) {
-                        revertFunc();
-//暂不支持拖动改时间
-//                        $('#editEvent').modal('show');
-//
-//                        var info =
-//                            "The end date of " + event.title + "has been moved " +
-//                            dayDelta + " days and " +
-//                            minuteDelta + " minutes."
-//                        ;
-//
-//                        $('#eventInfo').html(info);
-//
-//
-//                        $('#editEvent #editCancel').click(function(){
-//                             revertFunc();
-//                        })
-                    }
-                });
                 //新建确定按钮
                 $('body').on('click', '#addEvent', function () {
                     var eventForm = $(this).closest('.modal').find('.form-validation');
@@ -475,10 +422,10 @@
                                 eventName: eventName
                             },
                             success: function (data) {
-                                $message.alert({
-                                    title: "Delete result",
-                                    msg: "<p>" + data.msg + "</p>"
-                                });
+//                                $message.alert({
+//                                    title: "Delete result",
+//                                    msg: "<p>" + data.msg + "</p>"
+//                                });
                                 if (data.result === "true") {
                                     //Render Event
                                     $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
