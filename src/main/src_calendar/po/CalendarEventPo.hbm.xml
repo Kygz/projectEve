@@ -4,7 +4,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="po.CalendarEventPo" table="calender_event" lazy="false">
+    <class name="po.CalendarEventPo" table="calendar_event" lazy="false">
         <id name="calendar_id" type="long" column="calendar_id" length="20">
             <generator class="assigned"/>
         </id>

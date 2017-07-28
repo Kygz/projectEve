@@ -27,4 +27,9 @@ public class CalendarDaoImpl implements CalendarDao{
         return list;
     }
 
+    public void insertCalendarEventPo(CalendarEventPo po) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(po);
+    }
+
 }

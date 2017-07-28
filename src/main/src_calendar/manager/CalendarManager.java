@@ -11,4 +11,13 @@ public interface CalendarManager {
      * @return
      */
     List<CalendarEventPo> queryCalendarEventPoByMonth(int year,int month);
+
+    /**
+     * 增加
+     * @param po 实体
+     * @return
+     */
+    void insertCalendarEventPo(CalendarEventPo po);
+
+
 }

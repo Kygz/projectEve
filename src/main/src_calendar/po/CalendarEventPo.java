@@ -82,4 +82,18 @@ public class CalendarEventPo {
         this.setCalendar_id(SysUtil.longUUID());
     }
 
+
+    public CalendarEventPo() {
+
+    }
+    public CalendarEventPo(Long calendar_create_id, String calendar_title, String calendar_content, Date calendar_startTime, Date calendar_endTime, int calendar_allDay, int calendar_state) {
+        setIdIfNew();
+        this.calendar_create_id = calendar_create_id;
+        this.calendar_title = calendar_title;
+        this.calendar_content = calendar_content;
+        this.calendar_startTime = calendar_startTime;
+        this.calendar_endTime = calendar_endTime;
+        this.calendar_allDay = calendar_allDay;
+        this.calendar_state = calendar_state;
+    }
 }

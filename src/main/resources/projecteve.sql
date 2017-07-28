@@ -10,10 +10,32 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2017-07-22 18:17:34
+Date: 2017-07-28 18:16:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for calendar_event
+-- ----------------------------
+DROP TABLE IF EXISTS `calendar_event`;
+CREATE TABLE `calendar_event` (
+  `calendar_id` bigint(20) NOT NULL,
+  `calendar_create_id` bigint(20) NOT NULL,
+  `calendar_title` varchar(2000) DEFAULT NULL,
+  `calendar_content` varchar(2000) DEFAULT NULL,
+  `calendar_startTime` datetime DEFAULT NULL,
+  `calendar_endTime` datetime DEFAULT NULL,
+  `calendar_allDay` int(1) DEFAULT NULL,
+  `calendar_state` int(2) DEFAULT NULL,
+  PRIMARY KEY (`calendar_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of calendar_event
+-- ----------------------------
+INSERT INTO `calendar_event` VALUES ('11111', '1', '测试预置', '这是过去的数据', '2017-07-01 00:00:00', null, '1', '0');
+INSERT INTO `calendar_event` VALUES ('22222', '1', '测试预置', '正在进行的数据', '2017-07-26 00:00:00', '2017-07-29 23:59:59', '1', '0');
 
 -- ----------------------------
 -- Table structure for mail
@@ -34,6 +56,9 @@ CREATE TABLE `mail` (
 -- ----------------------------
 -- Records of mail
 -- ----------------------------
+INSERT INTO `mail` VALUES ('-5387683711696484965', '1', '星际奏者', 'gavin110991@163.com', '技能将要到期，请及时续一秒！', '2017-07-25 18:35:14', '2017-07-25 18:36:05', '-2');
+INSERT INTO `mail` VALUES ('-1216926129766445463', '1', '星际奏者', 'gavin110991@163.com', '技能将要到期，请及时续一秒！', '2017-07-25 21:01:12', '2017-07-25 21:02:06', '1');
+INSERT INTO `mail` VALUES ('2862845660245020463', '1', '星际奏者', 'gavin110991@163.com', '技能将要到期，请及时续一秒！', '2017-07-25 20:25:29', '2017-07-25 20:59:24', '1');
 
 -- ----------------------------
 -- Table structure for member

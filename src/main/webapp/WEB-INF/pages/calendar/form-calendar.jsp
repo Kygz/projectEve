@@ -392,6 +392,10 @@
         <script src="js/myJs/calendarFunction.js"></script>
 
         <script type="text/javascript">
+            var joinColor = "#73ff1e";//green
+            var joinPassColor = "#82fa9b";//灰绿
+            var normalColor = "#00b4ff";//blue
+            var normalPassColor = "#000";//灰
             $(document).ready(function() {
                 var date = new Date();
                 var m = date.getMonth();
