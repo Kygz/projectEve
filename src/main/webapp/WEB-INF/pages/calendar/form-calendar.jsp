@@ -326,7 +326,7 @@
                                               <input type="text" class="input-sm form-control validate[required]" id="eventCreateMember" readonly value="${sessionScope.member.member_nickname}">
                                          </div>
                                         <div class="form-group">
-                                            <label for="eventName">CONTENT</label>
+                                            <label for="eventContent">CONTENT</label>
                                             <textarea class="input-sm form-control auto-size" id="eventContent" placeholder="事件描述(文体不限 诗歌除外)"></textarea>
                                         </div>
                                          <input type="hidden" id="getStart" />
@@ -389,6 +389,7 @@
 
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
+        <script src="js/myJs/commonFunction.js"></script>
         <script src="js/myJs/calendarFunction.js"></script>
 
         <script type="text/javascript">
@@ -411,8 +412,10 @@
                     if (!(eventForm).find('.formErrorContent')[0]) {
                         //Event Name 事件名称
                         var eventName = $('#eventName').val();
+                        var eventContent = $('#eventContent').val();
                         var eventData = {
                             title: eventName,
+                            content: eventContent,
                             start: $('#getStart').val(),
                             end: $('#getEnd').val(),
                             allDay: true
@@ -422,18 +425,22 @@
                             async: false,
                             type: "POST",
                             dataType: "json",
-                            data: {
-                                eventName: eventName
-                            },
+                            data: eventData,
                             success: function (data) {
-//                                $message.alert({
-//                                    title: "Delete result",
-//                                    msg: "<p>" + data.msg + "</p>"
-//                                });
+                                $message.alert({
+                                    title: "Insert result",
+                                    msg: "<p>" + data.msg + "</p>"
+                                });
                                 if (data.result === "true") {
                                     //Render Event
                                     $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
                                 }
+                            },
+                            error : function (data) {
+                                $message.alert({
+                                    title: "Insert result",
+                                    msg: "<p>" + "失败!" + "</p>"
+                                });
                             }
                         });
                         $('#addNew-event form')[0].reset();

@@ -5,6 +5,7 @@ import util.DateUtil;
 import util.JitaUtil;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,6 +29,11 @@ public class Test {
         calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         System.out.println(sdf.format(DateUtil.getFirstTimeOfMonth(2017,7)));
         System.out.println(sdf.format(DateUtil.getLastTimeOfMonth(2017,7)));
+        try {
+            sdf.parse("2017-09-08 12:21:00");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
 }

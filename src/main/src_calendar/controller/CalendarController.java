@@ -48,32 +48,37 @@ public class CalendarController {
             resultMap.put("msg","妖兽啊~~掉线啦~~~");
         }else{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String title = (String)request.getAttribute("title");
-            String content = (String)request.getAttribute("content");
-            String start = (String)request.getAttribute("start");
-            String end = (String)request.getAttribute("end");
-            String allDay = (String)request.getAttribute("allDay");
+            String title = request.getParameter("title");
+            String content = request.getParameter("content");
+            String start = request.getParameter("start");
+            String end = request.getParameter("end");
+            String allDay = request.getParameter("allDay");
 
             try {
                 Date startTime = sdf.parse(start);
                 Date endTime = sdf.parse(end);
                 Calendar startC = Calendar.getInstance();
                 startC.setTime(startTime);
+                Calendar endC = Calendar.getInstance();
+                endC.setTime(startTime);
                 Calendar now = Calendar.getInstance();
 
-                if("1".equals(allDay)){
+                if("true".equals(allDay)){
+                    //前台整天时，结束时间为当天的0点，改为最后时刻少续一秒
+                    endC.add(Calendar.SECOND,3600*24-1);
+                    endTime = endC.getTime();
                     startC.set(startC.get(Calendar.YEAR),startC.get(Calendar.MONTH),startC.get(Calendar.DATE),0,0,0);
                     now.set(startC.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DATE),0,0,0);
                 }else{
                     startC.set(startC.get(Calendar.YEAR),startC.get(Calendar.MONTH),startC.get(Calendar.DATE),startC.get(Calendar.HOUR_OF_DAY),0,0);
                     now.set(startC.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DATE),now.get(Calendar.HOUR_OF_DAY),0,0);
                 }
-                if(now.getTime().getTime()>startC.getTime().getTime()){
+                if(now.getTime().getTime()<startC.getTime().getTime()){
                     resultMap.put("result","false");
                     resultMap.put("msg","发起时间不能晚于今天！");
                 }else{
-                    CalendarEventPo po = new CalendarEventPo(memberPo.getMember_id(), title, content, startTime, endTime, Integer.parseInt(allDay), 0);
-
+                    CalendarEventPo po = new CalendarEventPo(memberPo.getMember_id(), title, content, startTime, endTime, "true".equals(allDay)?1:0, 0);
+                    calendarManager.insertCalendarEventPo(po);
                 }
             } catch (ParseException e) {
                 log.error("新建事件《"+title+"》失败！",e);

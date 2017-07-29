@@ -35,15 +35,15 @@ function createCalendar(list){
             $('#addNew-event').modal('show');
             $('#addNew-event input:text').val('');
             $("#eventCreateMember").val($("#eventCreateMember").attr("value"));
-            $('#getStart').val(start);
-            $('#getEnd').val(end);
+            $('#getStart').val(start.Format('yyyy-MM-dd HH:mm:ss'));
+            $('#getEnd').val(end.Format('yyyy-MM-dd HH:mm:ss'));
         },
         eventClick : function(event){
             // TODO 点击事件的事件
             console.log('eventClick中选中Event的id属性值为：', event.id);
             console.log('eventClick中选中Event的title属性值为：', event.title);
-            console.log('eventClick中选中Event的start属性值为：', event.start.Format('yyyy-MM-dd HH:mm'));
-            console.log('eventClick中选中Event的end属性值为：', event.end.Format('yyyy-MM-dd HH:mm'));
+            console.log('eventClick中选中Event的start属性值为：', event.start.Format('yyyy-MM-dd HH:mm:ss'));
+            console.log('eventClick中选中Event的end属性值为：', event.end.Format('yyyy-MM-dd HH:mm:ss'));
             console.log('eventClick中选中Event的color属性值为：', event.color);
             console.log('eventClick中选中Event的className属性值为：', event.className);
             console.log('eventClick中选中Event的className属性值为：', event.editable);

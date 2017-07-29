@@ -11,7 +11,6 @@ function getUUID(){
 
 var $message = {
     _defDom : "<div>" +
-        "<a id='alert' data-toggle='modal' href='#alertDiv' class='btn btn-sm' style='display: none;'></a>" +
         "<div class='modal fade' id='alertDiv' tabindex='-1' role='dialog' aria-hidden='true' style='display: none;'>" +
         "<div class='modal-dialog'>" +
         "<div class='modal-content'>" +
@@ -23,7 +22,7 @@ var $message = {
         "<p></p>" +
         "</div>" +
         "<div class='modal-footer'>" +
-        "<button type='button' class='btn btn-sm'>确定</button>" +
+        "<button type='button' class='btn btn-sm' data-dismiss='modal'>确定</button>" +
         "<button type='button' class='btn btn-sm' data-dismiss='modal'>确定</button>" +
         "</div>" +
         "</div>" +
@@ -39,11 +38,18 @@ var $message = {
         var id = "msgBox_" + getUUID();
         var title = option.title?option.title:"alert";
         var msg = option.msg?option.msg:"";
-        var alertDiv = $(this._defDom).find(".modal-title").text(title).end().find(".modal-body").html(msg).end().find(".modal-footer>button:eq(0)").hide().end();
+        var alertDiv = $(this._defDom).find(".modal-title").text(title).end()
+            .find(".modal-body").html(msg).end()
+            .find(".modal-footer>button:eq(1)").hide().end()
+            .find(".modal-footer>button:eq(0)").click(function () {
+                setTimeout(function () {
+                    $("div[id^='msgBox']").remove();
+                },200);
+            }).end();
         alertDiv.attr("id",id);
-        $("button[data-dismiss='modal']").click();
+        $("div[id^='msgBox']").modal('hide');
         $("div[id^='msgBox']").remove();
         $("body").prepend(alertDiv);
-        $("#"+id).find("#alert").click();
+        $("#"+id).modal('show');
     }
-}
+};
