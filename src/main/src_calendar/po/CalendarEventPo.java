@@ -7,6 +7,7 @@ import java.util.Date;
 public class CalendarEventPo {
     private Long calendar_id;
     private Long calendar_create_id;
+    private String calendar_create_name;
     private String calendar_title;
     private String calendar_content;
     private Date calendar_startTime;
@@ -28,6 +29,14 @@ public class CalendarEventPo {
 
     public void setCalendar_create_id(Long calendar_create_id) {
         this.calendar_create_id = calendar_create_id;
+    }
+
+    public String getCalendar_create_name() {
+        return calendar_create_name;
+    }
+
+    public void setCalendar_create_name(String calendar_create_name) {
+        this.calendar_create_name = calendar_create_name;
     }
 
     public String getCalendar_title() {
@@ -86,9 +95,10 @@ public class CalendarEventPo {
     public CalendarEventPo() {
 
     }
-    public CalendarEventPo(Long calendar_create_id, String calendar_title, String calendar_content, Date calendar_startTime, Date calendar_endTime, int calendar_allDay, int calendar_state) {
+    public CalendarEventPo(Long calendar_create_id, String calendar_create_name, String calendar_title, String calendar_content, Date calendar_startTime, Date calendar_endTime, int calendar_allDay, int calendar_state) {
         setIdIfNew();
         this.calendar_create_id = calendar_create_id;
+        this.calendar_create_name = calendar_create_name;
         this.calendar_title = calendar_title;
         this.calendar_content = calendar_content;
         this.calendar_startTime = calendar_startTime;

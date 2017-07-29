@@ -11,7 +11,7 @@ function getUUID(){
 
 var $message = {
     _defDom : "<div>" +
-        "<div class='modal fade' id='alertDiv' tabindex='-1' role='dialog' aria-hidden='true' style='display: none;'>" +
+        "<div class='modal fade' id='alertDiv'>" +
         "<div class='modal-dialog'>" +
         "<div class='modal-content'>" +
         "<div class='modal-header'>" +

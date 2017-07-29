@@ -341,7 +341,40 @@
                           </div>
                      </div>
                 </div>
-                
+                <!-- event Detail-->
+                <div class="modal fade" id="show-event">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">事件详情</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-validation" role="form">
+                                    <input type="hidden" id="show_eventId">
+                                    <div class="form-group">
+                                        <label for="eventName">TITLE</label>
+                                        <input type="text" class="input-sm form-control validate[required]" id="show_eventName" placeholder="你看到了bug，请联系作者" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eventCreateMember">USER</label>
+                                        <input type="text" class="input-sm form-control validate[required]" id="show_eventCreateMember" readonly value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eventContent">CONTENT</label>
+                                        <textarea class="input-sm form-control auto-size" id="show_eventContent" placeholder="什么都没留下，只有一句形容 'RT'" readonly></textarea>
+                                    </div>
+                                    <input type="hidden" id="show_getStart" />
+                                    <input type="hidden" id="show_getEnd" />
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-info btn-sm" id="join" value="参加">
+                                <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Modal Resize alert -->
                 <div class="modal fade" id="editEvent">
                      <div class="modal-dialog">

@@ -11,6 +11,7 @@ public class CalendarEventVo {
     final String normalPassColor = "#000";//灰
     private Long id;
     private Long userId;
+    private String userName;
     private Date start;
     private Date end;
     private boolean allDay;
@@ -39,6 +40,14 @@ public class CalendarEventVo {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Date getStart() {
@@ -124,6 +133,7 @@ public class CalendarEventVo {
     public CalendarEventVo(CalendarEventPo po,ArrayList<Long> joinList,MemberPo currentMember) {
         this.id = po.getCalendar_id();
         this.userId = po.getCalendar_create_id();
+        this.userName = currentMember.getMember_nickname();
         this.start = po.getCalendar_startTime();
         this.end = po.getCalendar_endTime();
         this.allDay = po.getCalendar_allDay() == 1;

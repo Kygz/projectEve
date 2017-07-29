@@ -40,13 +40,25 @@ function createCalendar(list){
         },
         eventClick : function(event){
             // TODO 点击事件的事件
-            console.log('eventClick中选中Event的id属性值为：', event.id);
-            console.log('eventClick中选中Event的title属性值为：', event.title);
-            console.log('eventClick中选中Event的start属性值为：', event.start.Format('yyyy-MM-dd HH:mm:ss'));
-            console.log('eventClick中选中Event的end属性值为：', event.end.Format('yyyy-MM-dd HH:mm:ss'));
-            console.log('eventClick中选中Event的color属性值为：', event.color);
-            console.log('eventClick中选中Event的className属性值为：', event.className);
-            console.log('eventClick中选中Event的className属性值为：', event.editable);
+            if(!event.isPass && !event.isJoin){
+                $("#join").show();
+            }else{
+                $("#join").hide();
+            }
+            $("#show_eventId").val(event.id);
+            $("#show_eventName").val(event.title);
+            $("#show_eventCreateMember").val(event.userName);
+            $("#show_eventContent").val(event.content);
+            $('#show_getStart').val(start.Format('yyyy-MM-dd HH:mm:ss'));
+            $('#show_getEnd').val(end.Format('yyyy-MM-dd HH:mm:ss'));
+            $("#show-event").modal("show");
+            // console.log('eventClick中选中Event的id属性值为：', event.id);
+            // console.log('eventClick中选中Event的title属性值为：', event.title);
+            // console.log('eventClick中选中Event的start属性值为：', event.start.Format('yyyy-MM-dd HH:mm:ss'));
+            // console.log('eventClick中选中Event的end属性值为：', event.end.Format('yyyy-MM-dd HH:mm:ss'));
+            // console.log('eventClick中选中Event的color属性值为：', event.color);
+            // console.log('eventClick中选中Event的className属性值为：', event.className);
+            // console.log('eventClick中选中Event的className属性值为：', event.editable);
             // ...
         },
         eventResize: function(event,dayDelta,minuteDelta,revertFunc) {

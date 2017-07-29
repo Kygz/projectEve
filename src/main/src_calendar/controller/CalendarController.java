@@ -77,7 +77,7 @@ public class CalendarController {
                     resultMap.put("result","false");
                     resultMap.put("msg","发起时间不能晚于今天！");
                 }else{
-                    CalendarEventPo po = new CalendarEventPo(memberPo.getMember_id(), title, content, startTime, endTime, "true".equals(allDay)?1:0, 0);
+                    CalendarEventPo po = new CalendarEventPo(memberPo.getMember_id(),memberPo.getMember_nickname(), title, content, startTime, endTime, "true".equals(allDay)?1:0, 0);
                     calendarManager.insertCalendarEventPo(po);
                 }
             } catch (ParseException e) {
