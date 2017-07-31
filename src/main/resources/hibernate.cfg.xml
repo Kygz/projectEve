@@ -32,6 +32,7 @@
         <mapping resource="po/PlanetPo.hbm.xml"/>
         <mapping resource="po/MailPo.hbm.xml"/>
         <mapping resource="po/CalendarEventPo.hbm.xml"/>
+        <mapping resource="po/CalendarJoinPo.hbm.xml"/>
         <!-- 映射实体路径 -->
     </session-factory>
 </hibernate-configuration>

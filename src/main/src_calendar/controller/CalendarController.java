@@ -1,6 +1,7 @@
 package controller;
 
 import manager.CalendarManager;
+import manager.JoinManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import po.CalendarEventPo;
 import po.CalendarEventVo;
+import po.CalendarJoinPo;
 import po.MemberPo;
 import util.SysUtil;
 
@@ -31,6 +33,8 @@ public class CalendarController {
     private static Logger log = Logger.getLogger(CalendarController.class);
     @Autowired
     private CalendarManager calendarManager;
+    @Autowired
+    private JoinManager joinManager;
     /**
      * 增加日程
      * @param session
@@ -92,7 +96,7 @@ public class CalendarController {
         return SysUtil.createGson().toJson(resultMap);
     }
     /**
-     * 增加日程
+     * 按月查日程
      * @param session
      * @param request
      * @param response
@@ -113,8 +117,28 @@ public class CalendarController {
             List<CalendarEventPo> poList = calendarManager.queryCalendarEventPoByMonth(Integer.parseInt(year), Integer.parseInt(month));
             List<CalendarEventVo> voList = new ArrayList<CalendarEventVo>();
             if(poList!=null){
+                List<Long> eventIdList = new ArrayList<Long>();
                 for(CalendarEventPo po : poList){
-                    voList.add(new CalendarEventVo(po,null,memberPo));
+                    eventIdList.add(po.getCalendar_id());
+                }
+                List<CalendarJoinPo> joinPoList = joinManager.queryJoinInfoByEventIds(eventIdList);
+                Map<Long,List<CalendarJoinPo>> joinMap = new HashMap<Long, List<CalendarJoinPo>>();
+                for(CalendarJoinPo po : joinPoList){
+                    if(joinMap.containsKey(po.getCalendar_event_id())){
+                        List<CalendarJoinPo> tempList = joinMap.get(po.getCalendar_event_id());
+                        if(tempList == null){
+                            tempList= new ArrayList<CalendarJoinPo>();
+                        }
+                        tempList.add(po);
+                        joinMap.put(po.getCalendar_event_id(),tempList);
+                    }else{
+                        List<CalendarJoinPo> tempList= new ArrayList<CalendarJoinPo>();
+                        tempList.add(po);
+                        joinMap.put(po.getCalendar_event_id(),tempList);
+                    }
+                }
+                for(CalendarEventPo po : poList){
+                    voList.add(new CalendarEventVo(po,joinMap.get(po.getCalendar_id()),memberPo));
                 }
             }
             resultMap.put("result","true");

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="po.CalendarJoinPo" table="calendar_join" lazy="false">
+        <id name="calendar_join_id" type="long" column="calendar_join_id" length="20">
+            <generator class="assigned"/>
+        </id>
+        <property name="calendar_event_id" type="long" column="calendar_event_id" length="20" />
+        <property name="calendar_member_id" type="long" column="calendar_member_id" length="20" />
+        <property name="calendar_member_name" type="string" column="calendar_member_name" length="225" />
+    </class>
+</hibernate-mapping>

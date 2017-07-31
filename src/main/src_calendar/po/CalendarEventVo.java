@@ -2,7 +2,9 @@ package po;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CalendarEventVo {
     final String joinColor = "#73ff1e";//green
@@ -24,7 +26,7 @@ public class CalendarEventVo {
      */
     private boolean isJoin = false;
     private boolean isPass = false;
-    private List<Long> idList = new ArrayList<Long>();
+    private List<Map<String,String>> idList = new ArrayList<Map<String, String>>();
 
     public Long getId() {
         return id;
@@ -122,15 +124,15 @@ public class CalendarEventVo {
         isPass = pass;
     }
 
-    public List<Long> getIdList() {
+    public List<Map<String, String>> getIdList() {
         return idList;
     }
 
-    public void setIdList(List<Long> idList) {
+    public void setIdList(List<Map<String, String>> idList) {
         this.idList = idList;
     }
 
-    public CalendarEventVo(CalendarEventPo po,ArrayList<Long> joinList,MemberPo currentMember) {
+    public CalendarEventVo(CalendarEventPo po, List<CalendarJoinPo> joinList, MemberPo currentMember) {
         this.id = po.getCalendar_id();
         this.userId = po.getCalendar_create_id();
         this.userName = currentMember.getMember_nickname();
@@ -140,12 +142,17 @@ public class CalendarEventVo {
         this.title = po.getCalendar_title();
         this.content = po.getCalendar_content();
 //        this.editable = editable;
-        this.isJoin = isJoin;
-        if(joinList!=null && joinList.size()>0){
-            this.idList = joinList;
-            isJoin = idList.contains(currentMember.getMember_id());
+        if(joinList!=null && joinList.size()>0) {
+            for (CalendarJoinPo  tempPo : joinList){
+                Map<String,String> tempMap = new HashMap<String,String>();
+                tempMap.put("id",tempPo.getCalendar_member_id().toString());
+                tempMap.put("name",tempPo.getCalendar_member_name());
+                idList.add(tempMap);
+                if(tempPo.getCalendar_member_id().equals(userId)){
+                    isJoin  = true;
+                }
+            }
         }
-
         if(end == null && allDay && new Date().getTime()>(start.getTime()+ 3600 *1000 *24)){
             this.isPass = true;
         }else if(end != null && new Date().getTime()>end.getTime()){
