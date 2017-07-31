@@ -41,4 +41,8 @@ public class CalendarJoinPo {
     public void setCalendar_member_name(String calendar_member_name) {
         this.calendar_member_name = calendar_member_name;
     }
+
+    public void setIdIfNew() {
+        this.setCalendar_join_id(SysUtil.longUUID());
+    }
 }

@@ -370,6 +370,7 @@
                             </div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-info btn-sm" id="join" value="参加">
+                                <input type="submit" class="btn btn-info btn-sm" id="noJoin" value="有事退出">
                                 <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">关闭</button>
                             </div>
                         </div>
@@ -479,7 +480,83 @@
                         $('#addNew-event form')[0].reset();
                         $('#addNew-event').modal('hide');
                     }
-                });   
+                });
+                $('body').on('click', '#join', function () {
+                    //Event Name 事件名称
+                    var eventId = $('#show_eventid').val();
+                    var eventContent = $('#eventContent').val();
+                    var eventData = {
+                        eventId: eventId,
+                        join: true,
+                    };
+                    $.ajax({
+                        url: "calendar.do?method=addCalendarEvent",
+                        async: false,
+                        type: "POST",
+                        dataType: "json",
+                        data: eventData,
+                        success: function (data) {
+                            $message.alert({
+                                title: "Insert result",
+                                msg: "<p>" + data.msg + "</p>"
+                            });
+                            if (data.result === "true") {
+                                //Render Event
+                                $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
+                            }
+                        },
+                        error : function (data) {
+                            $message.alert({
+                                title: "Insert result",
+                                msg: "<p>" + "失败!" + "</p>"
+                            });
+                        }
+                    });
+                    $('#addNew-event form')[0].reset();
+                    $('#addNew-event').modal('hide');
+                });
+                $('body').on('click', '#noJoin', function () {
+                    var eventForm = $(this).closest('.modal').find('.form-validation');
+                    eventForm.validationEngine('validate');
+
+                    if (!(eventForm).find('.formErrorContent')[0]) {
+                        //Event Name 事件名称
+                        var eventName = $('#eventName').val();
+                        var eventContent = $('#eventContent').val();
+                        var eventData = {
+                            title: eventName,
+                            content: eventContent,
+                            start: $('#getStart').val(),
+                            end: $('#getEnd').val(),
+                            allDay: true
+                        };
+                        $.ajax({
+                            url: "calendar.do?method=addCalendarEvent",
+                            async: false,
+                            type: "POST",
+                            dataType: "json",
+                            data: eventData,
+                            success: function (data) {
+                                $message.alert({
+                                    title: "Insert result",
+                                    msg: "<p>" + data.msg + "</p>"
+                                });
+                                if (data.result === "true") {
+                                    //Render Event
+                                    $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
+                                }
+                            },
+                            error : function (data) {
+                                $message.alert({
+                                    title: "Insert result",
+                                    msg: "<p>" + "失败!" + "</p>"
+                                });
+                            }
+                        });
+                        $('#addNew-event form')[0].reset();
+                        $('#addNew-event').modal('hide');
+                    }
+                });
             });    
             
             //Calendar views 视图改变 切换 月/周/日

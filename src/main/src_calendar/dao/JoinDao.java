@@ -9,4 +9,5 @@ public interface JoinDao {
     void delJoinInfo(CalendarJoinPo po);
     List<CalendarJoinPo> queryJoinInfoByEventId(Long eventId);
     List<CalendarJoinPo> queryJoinInfoByEventIds(List<Long> eventIdList);
+    CalendarJoinPo queryJoinInfoByEventIdAndMemberId(Long eventId,Long memberId);
 }

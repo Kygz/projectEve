@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import po.CalendarJoinPo;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class JoinDaoImpl implements JoinDao{
@@ -41,5 +40,15 @@ public class JoinDaoImpl implements JoinDao{
         query.setParameter(0,eventIdList);
         List<CalendarJoinPo> list = query.list();
         return list;
+    }
+
+    public CalendarJoinPo queryJoinInfoByEventIdAndMemberId(Long eventId, Long memberId) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "FROM CalendarJoinPo as c WHERE c.calendar_event_id = ? and c.calendar_member_id = ?";
+        Query query = session.createQuery(hql);
+        query.setParameter(0,eventId);
+        query.setParameter(1,memberId);
+        CalendarJoinPo po = (CalendarJoinPo) query.uniqueResult();
+        return po;
     }
 }

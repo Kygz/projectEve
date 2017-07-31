@@ -36,4 +36,7 @@ public class JoinManagerImpl implements JoinManager{
         }
         return list;
     }
+    public CalendarJoinPo queryJoinInfoByEventIdAndMemberId(Long eventId, Long memberId) {
+        return joinDao.queryJoinInfoByEventIdAndMemberId(eventId,memberId);
+    }
 }

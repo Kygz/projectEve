@@ -35,6 +35,7 @@ public class CalendarController {
     private CalendarManager calendarManager;
     @Autowired
     private JoinManager joinManager;
+
     /**
      * 增加日程
      * @param session
@@ -95,6 +96,7 @@ public class CalendarController {
         }
         return SysUtil.createGson().toJson(resultMap);
     }
+
     /**
      * 按月查日程
      * @param session
@@ -148,6 +150,39 @@ public class CalendarController {
         }
         return SysUtil.createGson().toJson(resultMap);
     }
+
+    /**
+     * 参加Event
+     * @param session
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(params = "method=joinEvent", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+    @ResponseBody
+    public String joinEvent(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        MemberPo memberPo = (MemberPo)session.getAttribute("member");
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        if(memberPo==null) {
+            resultMap.put("result","false");
+            resultMap.put("msg","妖兽啊~~掉线啦~~~");
+        }else{
+            String eventId = request.getParameter("eventId");
+            CalendarJoinPo po = new CalendarJoinPo();
+            po.setIdIfNew();
+            po.setCalendar_event_id(Long.parseLong(eventId));
+            po.setCalendar_member_id(memberPo.getMember_id());
+            po.setCalendar_member_name(memberPo.getMember_nickname());
+
+            joinManager.insertJoinInfo(po);
+
+            resultMap.put("result","true");
+            resultMap.put("msg","添加成功!");
+
+        }
+        return SysUtil.createGson().toJson(resultMap);
+    }
+
     @RequestMapping(params = "method=index", method= RequestMethod.GET)
     public ModelAndView mailIndex(HttpSession httpSession){
         MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
