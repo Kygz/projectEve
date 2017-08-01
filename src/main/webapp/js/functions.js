@@ -1,5 +1,25 @@
 $(document).ready(function(){
     /* --------------------------------------------------------
+	alert 弹窗
+    -----------------------------------------------------------*/
+    var messageBox = '' +
+        '<div class="modal fade" id="alertDiv" tabindex="-1" role="dialog" aria-hidden="true">' +
+            '<div class="modal-dialog">' +
+                '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+                        '<h4 class="modal-title"></h4>' +
+                    '</div>' +
+                    '<div class="modal-body">' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                        '<button type="button" class="btn btn-sm" data-dismiss="modal">确定</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    $('#main').prepend(messageBox);
+    /* --------------------------------------------------------
 	Template Settings 首页换背景
     -----------------------------------------------------------*/
     var settings =  '<a id="settings" href="#changeSkin" data-toggle="modal">' +

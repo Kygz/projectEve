@@ -84,14 +84,15 @@ public class CalendarController {
                 }else{
                     CalendarEventPo po = new CalendarEventPo(memberPo.getMember_id(),memberPo.getMember_nickname(), title, content, startTime, endTime, "true".equals(allDay)?1:0, 0);
                     calendarManager.insertCalendarEventPo(po);
+                    resultMap.put("result","true");
+                    resultMap.put("msg","增加成功！");
                 }
             } catch (ParseException e) {
                 log.error("新建事件《"+title+"》失败！",e);
                 resultMap.put("result","false");
                 resultMap.put("msg","增加失败！");
             }
-            resultMap.put("result","true");
-            resultMap.put("msg","增加成功！");
+
 
         }
         return SysUtil.createGson().toJson(resultMap);
@@ -118,7 +119,7 @@ public class CalendarController {
 
             List<CalendarEventPo> poList = calendarManager.queryCalendarEventPoByMonth(Integer.parseInt(year), Integer.parseInt(month));
             List<CalendarEventVo> voList = new ArrayList<CalendarEventVo>();
-            if(poList!=null){
+            if(poList!=null&&poList.size()>0){
                 List<Long> eventIdList = new ArrayList<Long>();
                 for(CalendarEventPo po : poList){
                     eventIdList.add(po.getCalendar_id());
@@ -178,7 +179,6 @@ public class CalendarController {
 
             resultMap.put("result","true");
             resultMap.put("msg","添加成功!");
-
         }
         return SysUtil.createGson().toJson(resultMap);
     }

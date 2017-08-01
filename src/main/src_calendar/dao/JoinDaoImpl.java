@@ -35,9 +35,9 @@ public class JoinDaoImpl implements JoinDao{
 
     public List<CalendarJoinPo> queryJoinInfoByEventIds(List<Long> eventIdList) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "FROM CalendarJoinPo as c WHERE c.calendar_event_id in(?)";
+        String hql = "FROM CalendarJoinPo as c WHERE c.calendar_event_id in (:ids)";
         Query query = session.createQuery(hql);
-        query.setParameter(0,eventIdList);
+        query.setParameterList("ids",eventIdList);
         List<CalendarJoinPo> list = query.list();
         return list;
     }
