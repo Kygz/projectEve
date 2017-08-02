@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2017-07-29 18:01:00
+Date: 2017-08-02 21:02:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,9 +35,35 @@ CREATE TABLE `calendar_event` (
 -- ----------------------------
 -- Records of calendar_event
 -- ----------------------------
-INSERT INTO `calendar_event` VALUES ('11111', '1', null, '测试预置', '这是过去的数据', '2017-07-01 00:00:00', '2017-07-02 00:00:00', '1', '0');
-INSERT INTO `calendar_event` VALUES ('22222', '1', null, '测试预置', '正在进行的数据', '2017-07-26 00:00:00', '2017-07-29 23:59:59', '1', '0');
-INSERT INTO `calendar_event` VALUES ('6020859022254097627', '1', null, '123456', '123', '2017-07-29 00:00:00', '2017-07-29 00:00:00', '1', '0');
+INSERT INTO `calendar_event` VALUES ('-8129845709251590232', '1', '星际奏者', '888', '888', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('-6529787324893019170', '1', '星际奏者', '123', '456', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('-5260414777408927735', '1', '星际奏者', '444', '444', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('-5045878095671375824', '1', '星际奏者', '7', '7', '2017-07-31 00:00:00', '2017-07-31 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('-4635022369235189633', '1', '星际奏者', '123', '456', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('11111', '1', '星际奏者', '测试预置', '这是过去的数据', '2017-07-01 00:00:00', '2017-07-02 00:00:00', '1', '0');
+INSERT INTO `calendar_event` VALUES ('22222', '1', '星际奏者', '测试预置', '正在进行的数据', '2017-07-26 00:00:00', '2017-07-29 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('932637619462554205', '1', '星际奏者', '3', '5', '2017-08-02 00:00:00', '2017-08-02 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('2883885995073814873', '1', '星际奏者', '000', '000', '2017-08-02 00:00:00', '2017-08-02 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('3310912722921867051', '1', '星际奏者', '555', '555', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('5997909351431487622', '1', '星际奏者', '333', '444', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('6020859022254097627', '1', '星际奏者', '123456', '123', '2017-07-29 00:00:00', '2017-07-29 00:00:00', '1', '0');
+INSERT INTO `calendar_event` VALUES ('8753330307245689910', '1', '星际奏者', '6', '6', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+
+-- ----------------------------
+-- Table structure for calendar_join
+-- ----------------------------
+DROP TABLE IF EXISTS `calendar_join`;
+CREATE TABLE `calendar_join` (
+  `calendar_join_id` bigint(20) NOT NULL,
+  `calendar_event_id` bigint(20) NOT NULL,
+  `calendar_member_id` bigint(20) NOT NULL,
+  `calendar_member_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`calendar_join_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of calendar_join
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for mail
@@ -106,7 +132,7 @@ CREATE TABLE `planet` (
   `planet_star_6_price` bigint(20) unsigned DEFAULT '0',
   `planet_star_7_price` bigint(20) unsigned DEFAULT '0',
   PRIMARY KEY (`planet_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of planet
