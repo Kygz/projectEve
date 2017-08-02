@@ -74,11 +74,18 @@ public class CalendarController {
                     endTime = endC.getTime();
                     startC.set(startC.get(Calendar.YEAR),startC.get(Calendar.MONTH),startC.get(Calendar.DATE),0,0,0);
                     now.set(startC.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DATE),0,0,0);
+                    now.set(Calendar.MILLISECOND, 0);
                 }else{
                     startC.set(startC.get(Calendar.YEAR),startC.get(Calendar.MONTH),startC.get(Calendar.DATE),startC.get(Calendar.HOUR_OF_DAY),0,0);
                     now.set(startC.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DATE),now.get(Calendar.HOUR_OF_DAY),0,0);
                 }
-                if(now.getTime().getTime()<startC.getTime().getTime()){
+                log.info("发起时间" + startC.getTime());
+                log.info("现在时间" + now.getTime());
+                log.info("发起时间" + startC.getTime().getTime());
+                log.info("现在时间" + now.getTime().getTime());
+                log.info("过时？" + (now.getTime().getTime()>startC.getTime().getTime()));
+
+                if(now.after(startC)){
                     resultMap.put("result","false");
                     resultMap.put("msg","发起时间不能晚于今天！");
                 }else{
@@ -169,16 +176,51 @@ public class CalendarController {
             resultMap.put("msg","妖兽啊~~掉线啦~~~");
         }else{
             String eventId = request.getParameter("eventId");
-            CalendarJoinPo po = new CalendarJoinPo();
-            po.setIdIfNew();
-            po.setCalendar_event_id(Long.parseLong(eventId));
-            po.setCalendar_member_id(memberPo.getMember_id());
-            po.setCalendar_member_name(memberPo.getMember_nickname());
 
-            joinManager.insertJoinInfo(po);
+            CalendarJoinPo calendarJoinPo = joinManager.queryJoinInfoByEventIdAndMemberId(Long.parseLong(eventId), memberPo.getMember_id());
+            if(calendarJoinPo == null){
+                CalendarJoinPo po = new CalendarJoinPo();
+                po.setIdIfNew();
+                po.setCalendar_event_id(Long.parseLong(eventId));
+                po.setCalendar_member_id(memberPo.getMember_id());
+                po.setCalendar_member_name(memberPo.getMember_nickname());
+                joinManager.insertJoinInfo(po);
+                resultMap.put("result","true");
+                resultMap.put("msg","添加成功!");
+            }else{
+                resultMap.put("result","false");
+                resultMap.put("msg","请勿重复加入!");
+            }
+        }
+        return SysUtil.createGson().toJson(resultMap);
+    }
+    /**
+     * 取消参加Event
+     * @param session
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(params = "method=cancelJoinEvent", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+    @ResponseBody
+    public String cancelJoinEvent(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        MemberPo memberPo = (MemberPo)session.getAttribute("member");
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        if(memberPo==null) {
+            resultMap.put("result","false");
+            resultMap.put("msg","妖兽啊~~掉线啦~~~");
+        }else{
+            String eventId = request.getParameter("eventId");
 
-            resultMap.put("result","true");
-            resultMap.put("msg","添加成功!");
+            CalendarJoinPo calendarJoinPo = joinManager.queryJoinInfoByEventIdAndMemberId(Long.parseLong(eventId), memberPo.getMember_id());
+            if(calendarJoinPo != null){
+                joinManager.delJoinInfo(calendarJoinPo);
+                resultMap.put("result","true");
+                resultMap.put("msg","取消成功!");
+            }else{
+                resultMap.put("result","false");
+                resultMap.put("msg","未加何消!");
+            }
         }
         return SysUtil.createGson().toJson(resultMap);
     }

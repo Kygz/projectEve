@@ -288,10 +288,10 @@
                 
                 <div class="col-md-4">
                     <h4 class="m-l-5">Upcoming Events</h4>
-                    <div class="listview narrow">
+                    <div class="listview narrow" id="eventList">
                         <div class="media p-l-5">
                             <div class="pull-left">
-                                <img width="40" src="img/profile-pics/1.jpg" alt="">
+                                <img width="40" src="img/my-calendar-pics/teamEvent.png" alt="">
                             </div>
                             <div class="media-body">
                                 <small class="text-muted">Today at 5:30 PM</small><br>
@@ -369,8 +369,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <input type="submit" class="btn btn-info btn-sm" id="join" value="参加">
-                                <input type="submit" class="btn btn-info btn-sm" id="noJoin" value="有事退出">
+                                <input type="submit" class="btn btn-info btn-sm" id="join" value="参加" data-dismiss="modal">
+                                <input type="submit" class="btn btn-info btn-sm" id="noJoin" value="有事退出" data-dismiss="modal">
                                 <button type="button" class="btn btn-info btn-sm" data-dismiss="modal">关闭</button>
                             </div>
                         </div>
@@ -452,7 +452,8 @@
                             content: eventContent,
                             start: $('#getStart').val(),
                             end: $('#getEnd').val(),
-                            allDay: true
+                            allDay : true,
+                            color : normalColor
                         };
                         $.ajax({
                             url: "calendar.do?method=addCalendarEvent",
@@ -483,27 +484,32 @@
                 });
                 $('body').on('click', '#join', function () {
                     //Event Name 事件名称
-                    var eventId = $('#show_eventid').val();
-                    var eventContent = $('#eventContent').val();
+                    var eventId = $('#show_eventId').val();
                     var eventData = {
-                        eventId: eventId,
-                        join: true,
+                        eventId: eventId
                     };
                     $.ajax({
-                        url: "calendar.do?method=addCalendarEvent",
+                        url: "calendar.do?method=joinEvent",
                         async: false,
                         type: "POST",
                         dataType: "json",
                         data: eventData,
                         success: function (data) {
                             $message.alert({
-                                title: "Insert result",
+                                title: "Join result",
                                 msg: "<p>" + data.msg + "</p>"
                             });
                             if (data.result === "true") {
-                                //Render Event
-                                $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
+                                var eventList = $('#calendar').fullCalendar( 'clientEvents' ,eventId ); //Stick the event
+                                if(eventList.length === 1){
+                                    var event = eventList[0]; //Stick the event
+                                    event.color = joinColor;
+                                    event.isJoin = true;
+                                    $('#calendar').fullCalendar('updateEvent', event);
+                                }
+
                             }
+
                         },
                         error : function (data) {
                             $message.alert({
@@ -515,47 +521,45 @@
                     $('#addNew-event form')[0].reset();
                     $('#addNew-event').modal('hide');
                 });
+                /**
+                 * 取消加入
+                 */
                 $('body').on('click', '#noJoin', function () {
-                    var eventForm = $(this).closest('.modal').find('.form-validation');
-                    eventForm.validationEngine('validate');
-
-                    if (!(eventForm).find('.formErrorContent')[0]) {
-                        //Event Name 事件名称
-                        var eventName = $('#eventName').val();
-                        var eventContent = $('#eventContent').val();
-                        var eventData = {
-                            title: eventName,
-                            content: eventContent,
-                            start: $('#getStart').val(),
-                            end: $('#getEnd').val(),
-                            allDay: true
-                        };
-                        $.ajax({
-                            url: "calendar.do?method=addCalendarEvent",
-                            async: false,
-                            type: "POST",
-                            dataType: "json",
-                            data: eventData,
-                            success: function (data) {
-                                $message.alert({
-                                    title: "Insert result",
-                                    msg: "<p>" + data.msg + "</p>"
-                                });
-                                if (data.result === "true") {
-                                    //Render Event
-                                    $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
+                    //Event Name 事件名称
+                    var eventId = $('#show_eventId').val();
+                    var eventData = {
+                        eventId: eventId
+                    };
+                    $.ajax({
+                        url: "calendar.do?method=cancelJoinEvent",
+                        async: false,
+                        type: "POST",
+                        dataType: "json",
+                        data: eventData,
+                        success: function (data) {
+                            $message.alert({
+                                title: "Insert result",
+                                msg: "<p>" + data.msg + "</p>"
+                            });
+                            if (data.result === "true") {
+                                var eventList = $('#calendar').fullCalendar( 'clientEvents' ,eventId ); //Stick the event
+                                if(eventList.length === 1){
+                                    var event = eventList[0]; //Stick the event
+                                    event.color = normalColor;
+                                    event.isJoin = false;
+                                    $('#calendar').fullCalendar('updateEvent', event);
                                 }
-                            },
-                            error : function (data) {
-                                $message.alert({
-                                    title: "Insert result",
-                                    msg: "<p>" + "失败!" + "</p>"
-                                });
                             }
-                        });
-                        $('#addNew-event form')[0].reset();
-                        $('#addNew-event').modal('hide');
-                    }
+                        },
+                        error : function (data) {
+                            $message.alert({
+                                title: "Insert result",
+                                msg: "<p>" + "失败!" + "</p>"
+                            });
+                        }
+                    });
+                    $('#addNew-event form')[0].reset();
+                    $('#addNew-event').modal('hide');
                 });
             });    
             
