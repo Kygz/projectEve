@@ -346,11 +346,19 @@
                                         <input type="text" class="input-sm form-control validate[required]" id="show_eventCreateMember" readonly value="">
                                     </div>
                                     <div class="form-group">
+                                        <label for="show_eventTime">TIME</label>
+                                        <input type="text" class="input-sm form-control validate[required]" id="show_eventTime" readonly value="">
+                                        <input type="hidden" id="show_getStart" />
+                                        <input type="hidden" id="show_getEnd" />
+                                    </div>
+                                    <div class="form-group">
                                         <label for="eventContent">CONTENT</label>
                                         <textarea class="input-sm form-control auto-size" id="show_eventContent" placeholder="什么都没留下，只有一句形容 'RT'" readonly></textarea>
                                     </div>
-                                    <input type="hidden" id="show_getStart" />
-                                    <input type="hidden" id="show_getEnd" />
+                                    <div class="form-group">
+                                        <label for="eventContent">JOIN MEMBER</label>
+                                        <textarea class="input-sm form-control auto-size" rows="2" id="show_joinMember" placeholder="凄凄凉凉 问苍茫星空 知音何在？" readonly></textarea>
+                                    </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -440,7 +448,8 @@
                             start: $('#getStart').val(),
                             end: $('#getEnd').val(),
                             allDay : true,
-                            color : normalColor
+                            color : normalColor,
+                            idList : []
                         };
                         $.ajax({
                             url: "calendar.do?method=addCalendarEvent",
@@ -487,11 +496,17 @@
                                 msg: "<p>" + data.msg + "</p>"
                             });
                             if (data.result === "true") {
+                                var currentMember = $designerStorage.getCurrentMember();
+
                                 var eventList = $('#calendar').fullCalendar( 'clientEvents' ,eventId ); //Stick the event
                                 if(eventList.length === 1){
                                     var event = eventList[0]; //Stick the event
                                     event.color = joinColor;
                                     event.isJoin = true;
+
+                                    var memberList = event.idList;
+                                    memberList.push({id:currentMember.member_id,name:currentMember.member_nickname});
+                                    event.idList = memberList;
                                     $('#calendar').fullCalendar('updateEvent', event);
                                 }
 
@@ -528,12 +543,21 @@
                                 title: "Insert result",
                                 msg: "<p>" + data.msg + "</p>"
                             });
+                            var currentMember = $designerStorage.getCurrentMember();
                             if (data.result === "true") {
                                 var eventList = $('#calendar').fullCalendar( 'clientEvents' ,eventId ); //Stick the event
                                 if(eventList.length === 1){
                                     var event = eventList[0]; //Stick the event
                                     event.color = normalColor;
                                     event.isJoin = false;
+                                    var memberList = event.idList;
+                                    for(var i = 0;i<memberList.length;i++){
+                                        var tempMember = memberList[i];
+                                        if(tempMember.id === currentMember.member_id){
+                                            memberList.splice(i,1);
+                                        }
+                                    }
+                                    event.idList = memberList;
                                     $('#calendar').fullCalendar('updateEvent', event);
                                 }
                             }

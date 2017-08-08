@@ -51,22 +51,42 @@ function createCalendar(list){
                 $("#join").hide();
                 $("#noJoin").hide();
             }
+            //时间处理
+            var startTime = event.allDay?event.start.Format('yyyy-MM-dd'):event.start.Format('yyyy-MM-dd HH:mm');
+            var endTime = event.allDay?event.end.Format('yyyy-MM-dd'):event.end.Format('yyyy-MM-dd HH:mm');
+            //人头清点
+            var joinNum = event.idList.length;
+
             $("#show_eventId").val(event.id);
             $("#show_eventName").val(event.title);
             $("#show_eventCreateMember").val(event.userName);
-            $("#show_eventContent").val(event.content);
-            $('#show_getStart').val(event.start.Format('yyyy-MM-dd HH:mm:ss'));
-            $('#show_getEnd').val(event.end.Format('yyyy-MM-dd HH:mm:ss'));
+            $("#show_eventContent").val(event.content).trigger("input");
+            $('#show_getStart').val(startTime);
+            $('#show_getEnd').val(endTime);
+            if(startTime === endTime){
+                $('#show_eventTime').val(startTime);
+            }else {
+                $('#show_eventTime').val(startTime + " <--> " +endTime);
+            }
+            if(joinNum>0){
+                var allMember = "截至现在共" + joinNum + "人参加\n";
+                var memberList = event.idList;
+                for(var i = 0;i<joinNum;i++){
+                    var tempMember = memberList[i];
+                    allMember += tempMember.name +"        ";
+                }
+                $("#show_joinMember").val(allMember).trigger("input");
+            }else{
+                $("#show_joinMember").val("").trigger("input");
+            }
             $("#show-event").modal("show");
-            // console.log('eventClick中选中Event的id属性值为：', event.id);
-            // console.log('eventClick中选中Event的title属性值为：', event.title);
-            // console.log('eventClick中选中Event的start属性值为：', event.start.Format('yyyy-MM-dd HH:mm:ss'));
-            // console.log('eventClick中选中Event的end属性值为：', event.end.Format('yyyy-MM-dd HH:mm:ss'));
-            // console.log('eventClick中选中Event的color属性值为：', event.color);
-            // console.log('eventClick中选中Event的className属性值为：', event.className);
-            // console.log('eventClick中选中Event的className属性值为：', event.editable);
-            // ...
         },
+        // eventMouseover : function (event, jsEvent, view) {
+        //     debugger;
+        // },
+        // eventMouseout : function (event, jsEvent, view) {
+        //     debugger;
+        // },
         eventResize: function(event,dayDelta,minuteDelta,revertFunc) {
             revertFunc();
         }

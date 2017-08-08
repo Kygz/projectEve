@@ -47,7 +47,7 @@ public class CalendarController {
     @ResponseBody
     public String addCalendarEvent(HttpSession session, HttpServletRequest request, HttpServletResponse response){
         MemberPo memberPo = (MemberPo)session.getAttribute("member");
-        Map<String,String> resultMap = new HashMap<String, String>();
+        Map<String,Object> resultMap = new HashMap<String, Object>();
         if(memberPo==null) {
             resultMap.put("result","false");
             resultMap.put("msg","妖兽啊~~掉线啦~~~");
@@ -79,11 +79,6 @@ public class CalendarController {
                     startC.set(startC.get(Calendar.YEAR),startC.get(Calendar.MONTH),startC.get(Calendar.DATE),startC.get(Calendar.HOUR_OF_DAY),0,0);
                     now.set(startC.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DATE),now.get(Calendar.HOUR_OF_DAY),0,0);
                 }
-                log.info("发起时间" + startC.getTime());
-                log.info("现在时间" + now.getTime());
-                log.info("发起时间" + startC.getTime().getTime());
-                log.info("现在时间" + now.getTime().getTime());
-                log.info("过时？" + (now.getTime().getTime()>startC.getTime().getTime()));
 
                 if(now.after(startC)){
                     resultMap.put("result","false");
@@ -91,8 +86,10 @@ public class CalendarController {
                 }else{
                     CalendarEventPo po = new CalendarEventPo(memberPo.getMember_id(),memberPo.getMember_nickname(), title, content, startTime, endTime, "true".equals(allDay)?1:0, 0);
                     calendarManager.insertCalendarEventPo(po);
+                    CalendarEventVo vo = new CalendarEventVo(po,null,memberPo);
                     resultMap.put("result","true");
                     resultMap.put("msg","增加成功！");
+                    resultMap.put("event",vo);
                 }
             } catch (ParseException e) {
                 log.error("新建事件《"+title+"》失败！",e);
