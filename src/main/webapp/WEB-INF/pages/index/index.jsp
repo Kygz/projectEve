@@ -927,14 +927,17 @@
 	<script src="js/functions.js"></script>
 	
 	<!-- 首页初始化方法汇总 -->
+	<script src="js/myJs/commonFunction.js"></script>
 	<script src="js/myJs/indexFunction.js"></script>
-	
+
 	<script type="text/javascript">
 		$(function() {
-			var name = "${sessionScope.member}";
-			if (name == null || name == "") {
+			var member = '${sessionScope.memberStr}';
+			if (member == null || member == "") {
 				alert("请先登陆！");
 				window.location.href = "login.do?method=logout";
+			}else{
+                $designerStorage.setCurrentMember("currentUser",member);
 			}
 			//行星开发初始化
 			ajaxQueryPlanetSection();

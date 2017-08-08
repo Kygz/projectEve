@@ -2047,6 +2047,18 @@ a.list-group-item.active > .badge,
     /* --------------------------------------------------------
         Template Skins for Mobile
     -----------------------------------------------------------*/
+    #skin-blur-eve1 {
+        background: #152d33;
+    }
+
+    #skin-blur-eve2 {
+        background: #152d33;
+    }
+
+    #skin-blur-eve3 {
+        background: #152d33;
+    }
+
     #skin-blur-violate {
         background: #581528;
     }

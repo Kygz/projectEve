@@ -59,8 +59,8 @@ public class LoginController {
 			mav.addObject("error", "帐号或密码错误！");
 			return mav;
 		}
-
 		httpSession.setAttribute("member", memberPo);
+		httpSession.setAttribute("memberStr", SysUtil.createGson().toJson(memberPo));
 		log.info("用户：" +memberPo.getMember_nickname() + "登陆");
 		return new ModelAndView("redirect:/login.do?method=index");  // 采用重定向方式跳转页面
         // 重定向还有一种简单写法
