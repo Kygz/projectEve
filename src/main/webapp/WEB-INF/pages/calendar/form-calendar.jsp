@@ -289,21 +289,6 @@
                 <div class="col-md-4">
                     <h4 class="m-l-5">Upcoming Events</h4>
                     <div class="listview narrow" id="eventList">
-                        <div class="media p-l-5">
-                            <div class="pull-left">
-                                <img width="40" src="img/my-calendar-pics/teamEvent.png" alt="">
-                            </div>
-                            <div class="media-body">
-                                <small class="text-muted">Today at 5:30 PM</small><br>
-                                <a class="t-overflow" href="">搞基</a>
-                            </div>
-                        </div>
-                        <div class="media p-l-5">
-                            <div class="media-body">
-                                <small class="text-muted">Tomorrow at 8:56 PM</small><br>
-                                <a class="t-overflow" href="">再搞基</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -436,8 +421,10 @@
                 var m = date.getMonth();
                 var y = date.getFullYear();
 
-                getEventData(y,m+1,createCalendar);
-
+                getEventData(y,m+1,function(list){
+                    createCalendar(list);
+                    createEventList(list);
+                });
                 //新建确定按钮
                 $('body').on('click', '#addEvent', function () {
                     var eventForm = $(this).closest('.modal').find('.form-validation');

@@ -1872,6 +1872,10 @@ a.list-group-item.active > .badge,
         background-image: url(../img/body/eve2.jpg);
     }
 
+    #skin-blur-eve3 {
+        background-image: url(../img/body/eve3.jpg);
+    }
+
     #skin-blur-violate {
         background-image: url(../img/body/violate.jpg);
         /*background-image: url(../img/body/eve-background01.jpg);*/

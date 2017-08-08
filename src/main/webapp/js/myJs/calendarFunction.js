@@ -12,7 +12,6 @@ function getEventData(year,month,callbackFunc){
             month : month
         },
         success : function(data) {
-            console.log(data);
             callbackFunc(data.list)
         }
     });
@@ -24,18 +23,12 @@ function createCalendar(list){
             left: 'prev, next',
             right: ''
         },
-        // views: {
-        //     month: {
-        //         eventLimit: 5 // adjust to 6 only for agendaWeek/agendaDay
-        //     }
-        // },
         events: list,
         businessHours: true,
         selectable: true,
         selectHelper: true,
         editable: true,
         aspectRatio: 1.35,
-        // eventLimit: 5,        //设置为true时，如果数据过多超过日历格子显示的高度时，多出去的数据不会将格子挤开，而是显示为 +...more ，点击后才会完整显示所有的数据
         allDayText: '全天',
 
         select: function(start, end, allDay) {
@@ -76,21 +69,6 @@ function createCalendar(list){
         },
         eventResize: function(event,dayDelta,minuteDelta,revertFunc) {
             revertFunc();
-            //暂不支持拖动改时间
-            //$('#editEvent').modal('show');
-            //
-            //var info =
-            //    "The end date of " + event.title + "has been moved " +
-            //    dayDelta + " days and " +
-            //    minuteDelta + " minutes."
-            //;
-            //
-            //$('#eventInfo').html(info);
-            //
-            //
-            //$('#editEvent #editCancel').click(function(){
-            //     revertFunc();
-            //})
         }
     });
 }
@@ -111,9 +89,11 @@ function createEventList(list){
         if(!event.isPass){
             var tempRow = _listRow.clone();
             tempRow.attr("id","event_"+ event.id);
-            var time = event.start;
-            if(event.start!=event.end){
-                time += " - " + event.end;
+            var time = event.start.Format('yyyy-MM-dd HH:mm');
+            if(event.start.Format('yyyy-MM-dd')!=event.end.Format('yyyy-MM-dd')){
+                time += " - " + event.end.Format('yyyy-MM-dd HH:mm');
+            }else{
+                time += "全天";
             }
             tempRow.find(".text-muted").text(time);
             tempRow.find(".media-body a").text(event.title);
