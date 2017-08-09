@@ -496,7 +496,7 @@
                                 msg: "<p>" + data.msg + "</p>"
                             });
                             if (data.result === "true") {
-                                var currentMember = $designerStorage.getCurrentMember();
+                                var currentMember = $storage.getCurrentMember();
 
                                 var eventList = $('#calendar').fullCalendar( 'clientEvents' ,eventId ); //Stick the event
                                 if(eventList.length === 1){
@@ -543,7 +543,7 @@
                                 title: "Insert result",
                                 msg: "<p>" + data.msg + "</p>"
                             });
-                            var currentMember = $designerStorage.getCurrentMember();
+                            var currentMember = $storage.getCurrentMember();
                             if (data.result === "true") {
                                 var eventList = $('#calendar').fullCalendar( 'clientEvents' ,eventId ); //Stick the event
                                 if(eventList.length === 1){

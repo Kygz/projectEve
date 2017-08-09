@@ -1,6 +1,5 @@
 package controller;
 
-import com.google.gson.Gson;
 import manager.SkillMailManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

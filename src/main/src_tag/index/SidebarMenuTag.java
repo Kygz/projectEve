@@ -26,8 +26,8 @@ public class SidebarMenuTag  extends TagSupport {
                         "       </a>" +
                         "   </li>" +
                         "   <li>" +
-                        "       <a class=\"sa-side-typography\" href=\"404.html\">" +
-                        "           <span class=\"menu-item\">装配车间</span>" +
+                        "       <a class=\"sa-side-typography\" href=\"shipAssembly.do?method=index\">" +
+                        "           <span class=\"menu-item\" >装配车间</span>" +
                         "       </a>" +
                         "   </li>" +
                         "   <li>" +

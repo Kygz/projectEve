@@ -937,7 +937,7 @@
 				alert("请先登陆！");
 				window.location.href = "login.do?method=logout";
 			}else{
-                $designerStorage.setCurrentMember(member);
+                $storage.setCurrentMember(member);
 			}
 			//行星开发初始化
 			ajaxQueryPlanetSection();

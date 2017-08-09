@@ -27,7 +27,7 @@ var $message = {
 /**
  * 存取设置数据 存于 sessionStorage
  */
-var $designerStorage = {
+var $storage = {
     /**
      * 初始化 清空sessionStorage
      */

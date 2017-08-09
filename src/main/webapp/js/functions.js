@@ -470,7 +470,15 @@ $(document).ready(function(){
         //WYSIWYE Editor
 	if($('.wysiwye-editor')[0]) {
 	    $('.wysiwye-editor').summernote({
-		height: 200
+		    height: 200,
+            toolbar: [
+                ["font", ["bold", "italic", "underline", "clear"]],
+                ["fontsize", ["fontsize"]],
+                ["color", ["color"]],
+                ["para", ["ul", "ol", "paragraph"]],
+                ["height", ["height"]],
+                ["table", ["table"]]
+            ]
 	    });
 	}
         
