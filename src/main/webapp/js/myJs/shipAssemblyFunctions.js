@@ -2,10 +2,7 @@
  * 提交
  */
 function submitShipAssembly() {
-    var form = $("#uploadForm");
-    form.validationEngine('validate');
-    if (!(form).find('.formErrorContent')[0]) {
-        var title = $("#ship_title").val();
+        var title = $.trim($("#ship_title").val());
         var img = $("#ship_img > .fileupload-preview > img").attr("src");
         var content = $.trim($("#ship_desc").code());
         var ship_scope = $("#ship_scope").val();
@@ -13,6 +10,13 @@ function submitShipAssembly() {
         var ship_tag = $("#ship_tag").val();
         var ship_tag_str = "";
 
+        if( title === ""){
+            $message.alert({
+                title: "ERROR",
+                msg: "<p>请填写标题！</p>"
+            });
+            return false;
+        }
         if(typeof img === "undefined"){
             $message.alert({
                 title: "ERROR",
@@ -62,10 +66,6 @@ function submitShipAssembly() {
                     title: "Insert result",
                     msg: "<p>" + data.msg + "</p>"
                 });
-                if (data.result === "true") {
-                    //Render Event
-                    $('#calendar').fullCalendar('renderEvent', eventData, true); //Stick the event                                }
-                }
             },
             error : function (data) {
                 $message.alert({
@@ -74,6 +74,4 @@ function submitShipAssembly() {
                 });
             }
         });
-    }
-
 }

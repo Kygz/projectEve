@@ -256,14 +256,14 @@
                     <h3 class="block-title">没有什么是一个官员盖伦特藤椒炸鸡腿搞不定的，如果有，那就来两个</h3>
                     <br/>
                     <div class="row">
-                        <form id="uploadForm" class="form-validation" role="form">
+                        <form id="uploadForm" class="form-validation" role="form" onsubmit="return false;">
                             <div class="col-md-12 m-b-15">
                                 <label>标题</label>
-                                <input type="text" class="input-sm form-control validate[required]" id="ship_title" placeholder="">
+                                <input type="text" class="input-sm form-control" id="ship_title" placeholder="">
                             </div>
                             <div class="col-md-3 m-b-15">
                                 <label>范围描述</label>
-                                <select class="select validate[required]" id="ship_scope">
+                                <select class="select" id="ship_scope">
                                     <option value="0" selected>联盟制式</option>
                                     <option value="1">军团制式</option>
                                     <option value="2">小队制式</option>
@@ -272,14 +272,14 @@
                             </div>
                             <div class="col-md-3 m-b-15">
                                 <label>性质描述</label>
-                                <select class="select validate[required]" id="ship_type">
+                                <select class="select " id="ship_type">
                                     <option value="0" selected>PVP</option>
                                     <option value="1">PVE</option>
                                 </select>
                             </div>
                             <div class="col-md-6 m-b-15">
                                 <label>特征描述</label>
-                                <select data-placeholder="Select Functions..." class="tag-select-limited validate[required]" multiple id="ship_tag">
+                                <select data-placeholder="Select Functions..." class="tag-select-limited" multiple id="ship_tag">
                                     <option value="抓人">抓人</option>
                                     <option value="做点">做点</option>
                                     <option value="特种">特种</option>
