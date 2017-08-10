@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2017-08-10 11:38:37
+Date: 2017-08-10 20:28:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -175,9 +175,9 @@ CREATE TABLE `shipassembly_entity` (
   `shipAssembly_img` varchar(8000) DEFAULT NULL,
   `shipAssembly_content` varchar(8000) DEFAULT NULL,
   `shipAssembly_tag` varchar(200) DEFAULT NULL,
-  `shipAssembly_scope` int(11) DEFAULT NULL,
-  `shipAssembly_use_type` int(11) DEFAULT NULL,
-  `shipAssembly_ship_type` int(11) DEFAULT NULL,
+  `shipAssembly_scope` int(2) DEFAULT NULL,
+  `shipAssembly_use_type` int(2) DEFAULT NULL,
+  `shipAssembly_ship_type` int(10) DEFAULT NULL,
   PRIMARY KEY (`shipAssembly_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
