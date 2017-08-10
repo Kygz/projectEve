@@ -470,7 +470,7 @@ $(document).ready(function(){
         //WYSIWYE Editor
 	if($('.wysiwye-editor')[0]) {
 	    $('.wysiwye-editor').summernote({
-		    height: 200,
+		    height: 240,
             toolbar: [
                 ["font", ["bold", "italic", "underline", "clear"]],
                 ["fontsize", ["fontsize"]],

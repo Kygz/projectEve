@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="po.ShipAssemblyPo" table="shipAssembly_entity" lazy="false">
+        <id name="shipAssembly_id" type="long" column="shipAssembly_id" length="20">
+            <generator class="assigned"/>
+        </id>
+        <property name="shipAssembly_creator_id" type="long" column="shipAssembly_creator_id" length="255" />
+        <property name="shipAssembly_creator_name" type="string" column="shipAssembly_creator_name" length="255" />
+        <property name="shipAssembly_create_time" type="java.util.Date" column="shipAssembly_create_time" />
+        <property name="shipAssembly_title" type="string" column="shipAssembly_title" length="200" />
+        <property name="shipAssembly_img" type="string" column="shipAssembly_img" length="8000" />
+        <property name="shipAssembly_content" type="string" column="shipAssembly_content" length="8000" />
+        <property name="shipAssembly_tag" type="string" column="shipAssembly_tag" length="200" />
+        <property name="shipAssembly_scope" type="int" column="shipAssembly_scope" length="2" />
+        <property name="shipAssembly_use_type" type="int" column="shipAssembly_use_type" length="2" />
+        <property name="shipAssembly_ship_type" type="int" column="shipAssembly_ship_type" length="10" />
+    </class>
+</hibernate-mapping>

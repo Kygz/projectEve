@@ -54,10 +54,10 @@ public class CalendarController {
         }else{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String title = request.getParameter("title");
-            String content = request.getParameter("content");
-            String start = request.getParameter("start");
-            String end = request.getParameter("end");
-            String allDay = request.getParameter("allDay");
+            String content = request.getParameter("img");
+            String start = request.getParameter("content");
+            String end = request.getParameter("ship_type");
+            String allDay = request.getParameter("ship_tag");
 
             try {
                 Date startTime = sdf.parse(start);

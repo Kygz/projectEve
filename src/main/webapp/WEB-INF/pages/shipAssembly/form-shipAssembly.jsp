@@ -256,58 +256,66 @@
                     <h3 class="block-title">没有什么是一个官员盖伦特藤椒炸鸡腿搞不定的，如果有，那就来两个</h3>
                     <br/>
                     <div class="row">
-                        <div class="col-md-3 m-b-15">
-                            <label>范围描述</label>
-                            <select class="select" id="ship_scope">
-                                <option value="联盟制式">联盟制式</option>
-                                <option value="军团制式">军团制式</option>
-                                <option value="小队制式">小队制式</option>
-                                <option value="个人秀">个人秀</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 m-b-15">
-                            <label>性质描述</label>
-                            <select class="select" id="ship_type">
-                                <option value="PVP">PVP</option>
-                                <option value="PVE">PVE</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 m-b-15">
-                            <label>特征描述</label>
-                            <select data-placeholder="Select Functions..." class="tag-select-limited" multiple id="ship_keyWord">
-                                <option value="抓人">抓人</option>
-                                <option value="做点">做点</option>
-                                <option value="隐跳">隐跳</option>
-                                <option value="网子">网子</option>
-                                <option value="侦查">侦查</option>
-                                <option value="火力">火力</option>
-                                <option value="奶妈">奶妈</option>
-                                <option value="刷怪">刷怪</option>
-                                <option value="任务">任务</option>
-                                <option value="土壕">土壕</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 m-b-15">
-                            <label>装配图</label>
-                            <div class="fileupload fileupload-new" data-provides="fileupload" id="ship_img">
-                                <div class="fileupload-preview thumbnail form-control" style="width: 100%;height: 250px"></div>
-                                <div>
-                                    <span class="btn btn-file btn-alt btn-sm">
-                                        <span class="fileupload-new">Select image</span>
-                                        <span class="fileupload-exists">Change</span>
-                                        <input type="file"/>
-                                    </span>
-                                    <a href="#" class="btn fileupload-exists btn-sm" data-dismiss="fileupload">Remove</a>
+                        <form id="uploadForm" class="form-validation" role="form">
+                            <div class="col-md-12 m-b-15">
+                                <label>标题</label>
+                                <input type="text" class="input-sm form-control validate[required]" id="ship_title" placeholder="">
+                            </div>
+                            <div class="col-md-3 m-b-15">
+                                <label>范围描述</label>
+                                <select class="select validate[required]" id="ship_scope">
+                                    <option value="0" selected>联盟制式</option>
+                                    <option value="1">军团制式</option>
+                                    <option value="2">小队制式</option>
+                                    <option value="3">个人秀</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 m-b-15">
+                                <label>性质描述</label>
+                                <select class="select validate[required]" id="ship_type">
+                                    <option value="0" selected>PVP</option>
+                                    <option value="1">PVE</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 m-b-15">
+                                <label>特征描述</label>
+                                <select data-placeholder="Select Functions..." class="tag-select-limited validate[required]" multiple id="ship_tag">
+                                    <option value="抓人">抓人</option>
+                                    <option value="做点">做点</option>
+                                    <option value="特种">特种</option>
+                                    <option value="侦查">侦查</option>
+                                    <option value="火力">火力</option>
+                                    <option value="电子">电子</option>
+                                    <option value="奶妈">奶妈</option>
+                                    <option value="刷怪">刷怪</option>
+                                    <option value="任务">任务</option>
+                                    <option value="土壕">土壕</option>
+                                    <option value="新人友好">新人友好</option>
+                                    <option value="其它" selected>其它</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 m-b-15">
+                                <label>装配图</label>
+                                <div class="fileupload fileupload-new" data-provides="fileupload" id="ship_img">
+                                    <div class="fileupload-preview thumbnail form-control" style="width: 100%;height: 250px"></div>
+                                    <div>
+                                        <span class="btn btn-file btn-alt btn-sm">
+                                            <span class="fileupload-new">Select image</span>
+                                            <span class="fileupload-exists">Change</span>
+                                            <input type="file"/>
+                                        </span>
+                                        <a href="#" class="btn fileupload-exists btn-sm" data-dismiss="fileupload">Remove</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-8 m-b-15">
-                            <label>描述</label>
-                            <div class="wysiwye-editor" id="ship_desc"></div>
-                        </div>
-                        <div class="col-md-12 m-b-15">
-                            <button class="btn btn-sm m-r-5" id="submitPlanet" >配置上传</button>
-                        </div>
+                            <div class="col-md-8 m-b-15">
+                                <label>描述</label>
+                                <div class="wysiwye-editor" id="ship_desc"></div>
+                            </div>
+                            <div class="col-md-12 m-b-15">
+                                <button class="btn btn-sm m-r-5" id="submitPlanet" onclick="submitShipAssembly()">配置上传</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -349,6 +357,7 @@
         
         
         <!-- All JS functions -->
+        <script src="js/myJs/commonFunction.js"></script>
         <script src="js/functions.js"></script>
         <script src="js/myJs/shipAssemblyFunctions.js"></script>
 
@@ -357,10 +366,10 @@
                 /* Tag Select */
                 (function(){
                     /* select 下拉选标签 Limited 初始化*/
-                    $("#ship_keyWord").chosen({
+                    $("#ship_tag").chosen({
                         max_selected_options: 3
                     });
-                    
+                    //$("#ship_keyWord").trigger("liszt:updated");
                     /* Overflow */
                     $('.overflow').niceScroll();
                 })();
