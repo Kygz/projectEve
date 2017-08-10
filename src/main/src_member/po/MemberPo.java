@@ -1,6 +1,8 @@
 package po;
 
 
+import util.SysUtil;
+
 /**
  * 人员实体
  *
@@ -69,5 +71,9 @@ public class MemberPo {
 
     public void setMember_email(String member_email) {
         this.member_email = member_email;
+    }
+
+    public void setIdIfNew() {
+        this.setMember_id(SysUtil.longUUID());
     }
 }

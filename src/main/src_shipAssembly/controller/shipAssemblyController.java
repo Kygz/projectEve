@@ -13,12 +13,30 @@ import javax.servlet.http.HttpSession;
 public class shipAssemblyController {
 
     @RequestMapping(params = "method=index", method= RequestMethod.GET)
-    public ModelAndView mailIndex(HttpSession httpSession){
+    public ModelAndView shipAssemblyIndex(HttpSession httpSession){
         MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
         if(memberPo==null){
             return new ModelAndView("login");
         }else{
             return new ModelAndView("shipAssembly/form-shipAssembly");
         }
+    }
+
+    @RequestMapping(params = "method=list", method= RequestMethod.GET)
+    public ModelAndView shipAssemblyListIndex(HttpSession httpSession){
+        MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
+        if(memberPo==null){
+            return new ModelAndView("login");
+        }else{
+            return new ModelAndView("shipAssembly/form-shipAssembly");
+        }
+    }
+
+    public String insertShipAssembly(HttpSession httpSession){
+        MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
+        if(memberPo==null){
+        }else{
+        }
+        return null;
     }
 }

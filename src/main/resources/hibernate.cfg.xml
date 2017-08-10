@@ -29,6 +29,7 @@
         <!--<property name="current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</property>-->
         <mapping resource="po/ItemPo.hbm.xml"/>
         <mapping resource="po/MemberPo.hbm.xml"/>
+        <mapping resource="po/RolePo.hbm.xml"/>
         <mapping resource="po/PlanetPo.hbm.xml"/>
         <mapping resource="po/MailPo.hbm.xml"/>
         <mapping resource="po/CalendarEventPo.hbm.xml"/>

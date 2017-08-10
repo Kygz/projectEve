@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="po.RolePo" table="role" lazy="false">
+        <id name="role_id" type="long" column="role_id" length="20">
+            <generator class="assigned"/>
+        </id>
+        <property name="role_key" type="string" column="role_key" length="255" />
+        <property name="role_name" type="string" column="role_name" length="255" />
+        <property name="role_id_list" type="string" column="role_id_list" length="8000" />
+    </class>
+</hibernate-mapping>

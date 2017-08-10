@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2017-08-02 21:02:46
+Date: 2017-08-10 11:38:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,6 +37,7 @@ CREATE TABLE `calendar_event` (
 -- ----------------------------
 INSERT INTO `calendar_event` VALUES ('-8129845709251590232', '1', '星际奏者', '888', '888', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('-6529787324893019170', '1', '星际奏者', '123', '456', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('-6103396562780142266', '1', '星际奏者', '会战', '船只类型 aaa\nbbb\nccc', '2017-08-10 00:00:00', '2017-08-10 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('-5260414777408927735', '1', '星际奏者', '444', '444', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('-5045878095671375824', '1', '星际奏者', '7', '7', '2017-07-31 00:00:00', '2017-07-31 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('-4635022369235189633', '1', '星际奏者', '123', '456', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
@@ -45,6 +46,7 @@ INSERT INTO `calendar_event` VALUES ('22222', '1', '星际奏者', '测试预置
 INSERT INTO `calendar_event` VALUES ('932637619462554205', '1', '星际奏者', '3', '5', '2017-08-02 00:00:00', '2017-08-02 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('2883885995073814873', '1', '星际奏者', '000', '000', '2017-08-02 00:00:00', '2017-08-02 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('3310912722921867051', '1', '星际奏者', '555', '555', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
+INSERT INTO `calendar_event` VALUES ('5567667390613374141', '1', '星际奏者', '测试参加列表', 'fffffff', '2017-08-09 00:00:00', '2017-08-09 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('5997909351431487622', '1', '星际奏者', '333', '444', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
 INSERT INTO `calendar_event` VALUES ('6020859022254097627', '1', '星际奏者', '123456', '123', '2017-07-29 00:00:00', '2017-07-29 00:00:00', '1', '0');
 INSERT INTO `calendar_event` VALUES ('8753330307245689910', '1', '星际奏者', '6', '6', '2017-08-01 00:00:00', '2017-08-01 23:59:59', '1', '0');
@@ -64,6 +66,7 @@ CREATE TABLE `calendar_join` (
 -- ----------------------------
 -- Records of calendar_join
 -- ----------------------------
+INSERT INTO `calendar_join` VALUES ('-8477484200568010072', '-6103396562780142266', '1', '星际奏者');
 
 -- ----------------------------
 -- Table structure for mail
@@ -138,3 +141,46 @@ CREATE TABLE `planet` (
 -- Records of planet
 -- ----------------------------
 INSERT INTO `planet` VALUES ('00000000000000000001', '1', '星际奏者', '2015-08-02', '100', '100', '100', '100', '100', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `role_id` bigint(20) NOT NULL,
+  `role_key` varchar(255) NOT NULL,
+  `role_name` varchar(255) NOT NULL,
+  `role_id_list` varchar(8000) DEFAULT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of role
+-- ----------------------------
+INSERT INTO `role` VALUES ('-8578240082376768048', 'superAdmin', '超级管理员', null);
+INSERT INTO `role` VALUES ('-7498411867153544466', 'calendarAdmin', '日程管理员', '1');
+INSERT INTO `role` VALUES ('1474601842975391884', 'memberAdmin', '人员管理员', '1');
+INSERT INTO `role` VALUES ('2726293526685436521', 'shipAssemblyAdmin', '舰船装配管理员', '1');
+
+-- ----------------------------
+-- Table structure for shipassembly_entity
+-- ----------------------------
+DROP TABLE IF EXISTS `shipassembly_entity`;
+CREATE TABLE `shipassembly_entity` (
+  `shipAssembly_id` bigint(20) NOT NULL,
+  `shipAssembly_creator_id` bigint(20) NOT NULL,
+  `shipAssembly_creator_name` varchar(255) DEFAULT NULL,
+  `shipAssembly_create_time` datetime DEFAULT NULL,
+  `shipAssembly_title` varchar(200) DEFAULT NULL,
+  `shipAssembly_img` varchar(8000) DEFAULT NULL,
+  `shipAssembly_content` varchar(8000) DEFAULT NULL,
+  `shipAssembly_tag` varchar(200) DEFAULT NULL,
+  `shipAssembly_scope` int(11) DEFAULT NULL,
+  `shipAssembly_use_type` int(11) DEFAULT NULL,
+  `shipAssembly_ship_type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`shipAssembly_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shipassembly_entity
+-- ----------------------------
