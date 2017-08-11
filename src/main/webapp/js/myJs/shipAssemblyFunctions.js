@@ -84,14 +84,15 @@ function submitShipAssembly() {
 以下为列表页面所用
  */
 var $listPageFun = {
+    _DEFICON : ["LEGION.png","LEGION.png","TEAM.png","PERSONAL.png"],
     _DEFROW : "<div class=\"media p-l-5\">" +
     "              <div class=\"pull-left\">" +
-    "                <img width=\"40\" src=\"img/profile-pics/1.jpg\" alt=\"\">" +
+    "                <img width=\"55\" src=\"img/profile-pics/1.jpg\" alt=\"\">" +
     "              </div>" +
     "              <div class=\"media-body\">" +
-    "                <small class=\"text-muted\">标题</small><br/>" +
-    "                <a class=\"t-overflow\" href=\"\"></a>" +
-    "                <a class=\"t-overflow\" href=\"\"></a>" +
+    "                <small >标题</small><br/>" +
+    "                <a class=\"t-overflow text-muted\" href=\"\"></a>" +
+    "                <a class=\"t-overflow text-muted\" href=\"\"></a>" +
     "              </div>" +
     "          </div>",
     createList : function findList(pageNo,condition){
@@ -104,11 +105,14 @@ var $listPageFun = {
                 pageNo : pageNo
             },
             success: function (data) {
-                $message.alert({
-                    title: "Insert result",
-                    msg: "<p>" + data.msg + "</p>"
-                });
-                debugger;
+                var div = $("#leftList");
+                var list = data.list;
+                if(list && list.length>0){
+                    div.find(">div[id!='pageDiv']").remove();
+                    for(var i = 0;i<list.length;i++){
+                        $("#pageDiv").before($listPageFun.renderRow(list[i]));
+                    }
+                }
             },
             error : function (data) {
                 $message.alert({
@@ -119,7 +123,34 @@ var $listPageFun = {
         });
     },
     renderRow :function (vo) {
+        var temp = $(this._DEFROW);
+        var titleImg  = "img/shipAssembly/";
 
+        temp.attr("id","row_" + vo.shipAssembly_id)
+            .find("img").attr("src",titleImg + this._DEFICON[vo.shipAssembly_scope]).end()
+            .find(".media-body").find(" > small").text(vo.shipAssembly_title).end()
+            .find("a:eq(0)").text(vo.shipAssembly_creator_name).end()
+            .find("a:eq(1)").text(vo.shipAssembly_tag);
+        return temp;
+    },
+    getPic : function (id,domId) {
+        $.ajax({
+            url: "shipAssembly.do?method=getPic",
+            async: false,
+            type: "POST",
+            dataType: "json",
+            data: {
+                id : id
+            },
+            success: function (data) {
+                if(data.img !== ""|| typeof data.img !== "undefined"){
+                    $("#"+domId).attr("src",data.img);
+                }
+            },
+            error : function (data) {
+
+            }
+        });
     }
 
 }

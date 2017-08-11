@@ -81,4 +81,13 @@ public class ShipAssemblyDaoImpl implements ShipAssemblyDao {
         List<ShipAssemblyPo> list = query.list();
         return list;
     }
+
+    public ShipAssemblyPo queryShipAssemblyPoById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "FROM ShipAssemblyPo as ship where 1=1 and ship.shipAssembly_id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id",id);
+        ShipAssemblyPo o = (ShipAssemblyPo)query.uniqueResult();
+        return o;
+    }
 }

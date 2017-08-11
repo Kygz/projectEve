@@ -288,34 +288,23 @@
 				<li class="active">Data</li>
 			</ol>
 
-			<h4 class="page-title">技能提醒</h4>
-			<!-- planetTable -->
-			<div class="block-area" id="tableStriped">
+			<h4 class="page-title">装配大厅</h4>
+			<div class="block-area">
 				<div class="col-md-4">
 					<div class="tile">
-						<h2 class="tile-title">Recent Postings</h2>
+						<h2 class="tile-title">Upload List</h2>
 						<div class="tile-config dropdown">
 							<a data-toggle="dropdown" href="" class="tooltips tile-menu" title="Options"></a>
 							<ul class="dropdown-menu pull-right text-right">
-								<li><a href="">Refresh</a></li>
+								<li><a >Refresh</a></li>
 								<li><a>Settings</a></li>
 							</ul>
 						</div>
 
 						<div class="listview narrow" id="leftList">
-							<div class="media p-l-5">
-								<div class="pull-left">
-									<img width="40" src="img/profile-pics/1.jpg" alt="">
-								</div>
-								<div class="media-body">
-									<small class="text-muted">2 Hours ago by Adrien San</small><br/>
-									<a class="t-overflow" href="">Cras molestie fermentum nibh, ac semper</a>
-
-								</div>
-							</div>
-							<div class="media p-5 text-center l-100">
-								<a ><small>prev        </small></a>
-								<a ><small>        next</small></a>
+							<div class="media p-5 text-center l-100" id="pageDiv">
+								<a class="p-r-20"><small>prev</small></a>
+								<a class="p-l-20"><small>next</small></a>
 							</div>
 						</div>
 					</div>
@@ -387,7 +376,6 @@
 	
 	<!-- All JS functions -->
 	<script src="js/myJs/commonFunction.js"></script>
-	<script src="js/functions.js"></script>
 	<script src="js/myJs/shipAssemblyFunctions.js"></script>
 
 	<script type="text/javascript">
@@ -400,7 +388,7 @@
 
 
             (function () {
-
+                $listPageFun.createList(1,null);
             })();
 
         });

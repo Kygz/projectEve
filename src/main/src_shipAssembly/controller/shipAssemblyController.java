@@ -109,11 +109,27 @@ public class shipAssemblyController {
             Map<String,Object> param = new HashMap<String,Object>();
             param.put("pageNo",Integer.parseInt(pageNo));
             List<ShipAssemblyPo> shipAssemblyPos = shipAssemblyManager.queryShipAssemblyPo(param);
-
+            for(ShipAssemblyPo po: shipAssemblyPos){
+                po.setShipAssembly_img("");
+            }
             resultMap.put("result","true");
             resultMap.put("msg","成功");
             resultMap.put("list",shipAssemblyPos);
         }
+        return SysUtil.createGson().toJson(resultMap);
+    }
+
+    @RequestMapping(params = "method=getPic", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+    @ResponseBody
+    public String getPic(HttpSession httpSession, HttpServletRequest request){
+        MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        String id = request.getParameter("id");
+        Map<String,Object> param = new HashMap<String,Object>();
+        ShipAssemblyPo shipAssemblyPo = shipAssemblyManager.queryShipAssemblyPoById(Long.parseLong(id));
+        resultMap.put("result","true");
+        resultMap.put("msg","成功");
+        resultMap.put("img",shipAssemblyPo.getShipAssembly_img());
         return SysUtil.createGson().toJson(resultMap);
     }
 }

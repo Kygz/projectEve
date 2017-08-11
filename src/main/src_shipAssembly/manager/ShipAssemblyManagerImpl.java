@@ -20,4 +20,7 @@ public class ShipAssemblyManagerImpl implements ShipAssemblyManager{
     public List<ShipAssemblyPo> queryShipAssemblyPo(Map<String, Object> queryParams) {
         return shipAssemblyDao.queryShipAssemblyPo(queryParams);
     }
+    public ShipAssemblyPo queryShipAssemblyPoById(Long id) {
+        return shipAssemblyDao.queryShipAssemblyPoById(id);
+    }
 }
