@@ -25,10 +25,14 @@ public class SidebarMenuTag  extends TagSupport {
                         "           <span class=\"menu-item\">招募英雄专用小酒馆</span>" +
                         "       </a>" +
                         "   </li>" +
-                        "   <li>" +
-                        "       <a class=\"sa-side-typography\" href=\"shipAssembly.do?method=index\">" +
+                        "   <li class=\"dropdown\">" +
+                        "       <a class=\"sa-side-table\">" +
                         "           <span class=\"menu-item\" >装配车间</span>" +
                         "       </a>" +
+                        "       <ul class=\"list-unstyled menu-item\">" +
+                        "           <li><a href=\"shipAssembly.do?method=list\">展示大厅</a></li>" +
+                        "           <li><a href=\"shipAssembly.do?method=index\">配置上传</a></li>" +
+                        "       </ul>" +
                         "   </li>" +
                         "   <li>" +
                         "       <a class=\"sa-side-widget\" href=\"404.html\">" +
@@ -36,7 +40,7 @@ public class SidebarMenuTag  extends TagSupport {
                         "       </a>" +
                         "   </li>" +
                         "   <li class=\"dropdown\">" +
-                        "       <a class=\"sa-side-table\" href=\"404.html\">" +
+                        "       <a class=\"sa-side-table\">" +
                         "           <span class=\"menu-item\">事务中心</span>" +
                         "       </a>" +
                         "       <ul class=\"list-unstyled menu-item\">" +

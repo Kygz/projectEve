@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -48,7 +49,7 @@ public class shipAssemblyController {
         if(memberPo==null){
             return new ModelAndView("login");
         }else{
-            return new ModelAndView("shipAssembly/form-shipAssembly");
+            return new ModelAndView("shipAssembly/list-shipAssembly");
         }
     }
 
@@ -91,6 +92,27 @@ public class shipAssemblyController {
                 resultMap.put("result","false");
                 resultMap.put("msg","无权限！");
             }
+        }
+        return SysUtil.createGson().toJson(resultMap);
+    }
+
+    @RequestMapping(params = "method=queryList", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+    @ResponseBody
+    public String queryShipAssembly(HttpSession httpSession, HttpServletRequest request){
+        MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        if(memberPo==null){
+            resultMap.put("result","false");
+            resultMap.put("msg","妖兽啊~~掉线啦~~~");
+        }else{
+            String pageNo = request.getParameter("pageNo");
+            Map<String,Object> param = new HashMap<String,Object>();
+            param.put("pageNo",Integer.parseInt(pageNo));
+            List<ShipAssemblyPo> shipAssemblyPos = shipAssemblyManager.queryShipAssemblyPo(param);
+
+            resultMap.put("result","true");
+            resultMap.put("msg","成功");
+            resultMap.put("list",shipAssemblyPos);
         }
         return SysUtil.createGson().toJson(resultMap);
     }

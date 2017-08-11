@@ -1,3 +1,6 @@
+/*
+以下为上传页面所用
+ */
 /**
  * 提交
  */
@@ -74,4 +77,49 @@ function submitShipAssembly() {
                 });
             }
         });
+}
+
+
+/*
+以下为列表页面所用
+ */
+var $listPageFun = {
+    _DEFROW : "<div class=\"media p-l-5\">" +
+    "              <div class=\"pull-left\">" +
+    "                <img width=\"40\" src=\"img/profile-pics/1.jpg\" alt=\"\">" +
+    "              </div>" +
+    "              <div class=\"media-body\">" +
+    "                <small class=\"text-muted\">标题</small><br/>" +
+    "                <a class=\"t-overflow\" href=\"\"></a>" +
+    "                <a class=\"t-overflow\" href=\"\"></a>" +
+    "              </div>" +
+    "          </div>",
+    createList : function findList(pageNo,condition){
+        $.ajax({
+            url: "shipAssembly.do?method=queryList",
+            async: false,
+            type: "POST",
+            dataType: "json",
+            data: {
+                pageNo : pageNo
+            },
+            success: function (data) {
+                $message.alert({
+                    title: "Insert result",
+                    msg: "<p>" + data.msg + "</p>"
+                });
+                debugger;
+            },
+            error : function (data) {
+                $message.alert({
+                    title: "Insert result",
+                    msg: "<p>" + "失败!" + "</p>"
+                });
+            }
+        });
+    },
+    renderRow :function (vo) {
+
+    }
+
 }
