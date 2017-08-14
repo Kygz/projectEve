@@ -300,7 +300,6 @@
 								<li><a>Settings</a></li>
 							</ul>
 						</div>
-
 						<div class="listview narrow" id="leftList">
 							<div class="media p-5 text-center l-100" id="pageDiv">
 								<a class="p-r-20"><small>prev</small></a>
@@ -310,7 +309,29 @@
 					</div>
 				</div>
 				<div class="col-md-8">
-
+					<h3 class="block-title">配置详情</h3>
+					<div class="tile p-15">
+						<form role="form">
+							<div class="form-group">
+								<label for="show_title">标题</label>
+								<input class="form-control input-sm" id="show_title" readonly>
+							</div>
+							<div class="form-group">
+								<label for="show_scope">范围描述</label>
+								<input class="form-control input-sm" id="show_scope" readonly>
+							</div>
+							<div class="form-group">
+								<label for="show_scope">性质描述</label>
+								<input class="form-control input-sm" id="show_type" readonly>
+							</div>
+							<div class="form-group">
+								<label for="show_scope">特征描述</label>
+								<input class="form-control input-sm" id="show_tag" readonly>
+							</div>
+							<p>不可描述的描述</p>
+							<div id="show_content"></div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</section>
