@@ -107,6 +107,7 @@ var $listPageFun = {
             success: function (data) {
                 var div = $("#leftList");
                 var list = data.list;
+                $storage.setPropertyByKey("shipAssemblyList",$.toJSON(list));
                 if(list && list.length>0){
                     div.find(">div[id!='pageDiv']").remove();
                     for(var i = 0;i<list.length;i++){
@@ -130,7 +131,18 @@ var $listPageFun = {
             .find("img").attr("src",titleImg + this._DEFICON[vo.shipAssembly_scope]).end()
             .find(".media-body").find(" > small").text(vo.shipAssembly_title).end()
             .find("a:eq(0)").text(vo.shipAssembly_creator_name).end()
-            .find("a:eq(1)").text(vo.shipAssembly_tag);
+            .find("a:eq(1)").text(vo.shipAssembly_tag).end()
+            .onclick(function () {
+                var id = this.getAttribute("id").split("_")[1];
+                var listStr = $storage.getPropertyByKey("shipAssemblyList");
+                var jsonList = $.parseJSON(listStr);
+                for(var i = 0,tempObj = jsonList[i];i<jsonList.length;i++){
+                    if(tempObj.shipAssembly_id === id){
+
+                    }
+                }
+                $listPageFun.getPic()
+            });
         return temp;
     },
     getPic : function (id,domId) {

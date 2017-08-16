@@ -9,6 +9,5 @@ public interface ShipAssemblyDao {
 
     void insertShipAssemblyPo(ShipAssemblyPo po);
     List<ShipAssemblyPo> queryShipAssemblyPo(Map<String,Object> queryParams);
-
     ShipAssemblyPo queryShipAssemblyPoById(Long id);
 }
