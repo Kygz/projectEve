@@ -301,14 +301,20 @@
 				<a class="shortcut tile" href="http://www.ceve-market.org/index/">
 					<img src="img/shortcuts/money.png" alt=""> <small
 					class="t-overflow">国服市场中心</small>
-				</a> <a class="shortcut tile" href="http://killboard.nl/cn/?a=home">
+				</a>
+				<a class="shortcut tile" href="http://killboard.nl/cn/?a=home">
 					<img src="img/shortcuts/stats.png" alt=""> <small
 					class="t-overflow">老KB榜</small>
-				</a> <a class="shortcut tile" href="http://kb.ceve-market.org/"> <img
+				</a>
+				<a class="shortcut tile" href="http://kb.ceve-market.org/"> <img
 					src="img/shortcuts/reports.png" alt=""> <small
 					class="t-overflow">新KB榜</small>
 				</a>
-				<!-- 隐藏 
+				<a class="shortcut tile" href="http://www.eve-wiki.net/"> <img
+					src="img/shortcuts/reports.png" alt=""> <small
+					class="t-overflow">WIKI</small>
+				</a>
+				<!-- 隐藏
                     <a class="shortcut tile" href="">
                         <img src="img/shortcuts/twitter.png" alt="">
                         <small class="t-overflow">Tweets</small>

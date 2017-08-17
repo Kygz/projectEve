@@ -91,8 +91,8 @@ var $listPageFun = {
     "              </div>" +
     "              <div class=\"media-body\">" +
     "                <small >标题</small><br/>" +
-    "                <a class=\"t-overflow text-muted\" href=\"\"></a>" +
-    "                <a class=\"t-overflow text-muted\" href=\"\"></a>" +
+    "                <a class=\"t-overflow text-muted\" ></a>" +
+    "                <a class=\"t-overflow text-muted\" ></a>" +
     "              </div>" +
     "          </div>",
     createList : function findList(pageNo,condition){
@@ -107,7 +107,7 @@ var $listPageFun = {
             success: function (data) {
                 var div = $("#leftList");
                 var list = data.list;
-                $storage.setPropertyByKey("shipAssemblyList",$.toJSON(list));
+                $storage.setPropertyByKey("shipAssemblyList",JSON.stringify(list));
                 if(list && list.length>0){
                     div.find(">div[id!='pageDiv']").remove();
                     for(var i = 0;i<list.length;i++){
@@ -131,17 +131,18 @@ var $listPageFun = {
             .find("img").attr("src",titleImg + this._DEFICON[vo.shipAssembly_scope]).end()
             .find(".media-body").find(" > small").text(vo.shipAssembly_title).end()
             .find("a:eq(0)").text(vo.shipAssembly_creator_name).end()
-            .find("a:eq(1)").text(vo.shipAssembly_tag).end()
-            .onclick(function () {
+            .find("a:eq(1)").text(vo.shipAssembly_tag).end().end()
+            .click(function () {
                 var id = this.getAttribute("id").split("_")[1];
                 var listStr = $storage.getPropertyByKey("shipAssemblyList");
                 var jsonList = $.parseJSON(listStr);
                 for(var i = 0,tempObj = jsonList[i];i<jsonList.length;i++){
                     if(tempObj.shipAssembly_id === id){
-
+                        debugger
                     }
                 }
-                $listPageFun.getPic()
+                $listPageFun.getPic();
+                return false;
             });
         return temp;
     },
