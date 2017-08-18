@@ -138,10 +138,14 @@ var $listPageFun = {
                 var jsonList = $.parseJSON(listStr);
                 for(var i = 0,tempObj = jsonList[i];i<jsonList.length;i++){
                     if(tempObj.shipAssembly_id === id){
-                        debugger
+                        $("#show_title").val(tempObj.shipAssembly_title);
+                        $("#show_scope").val(tempObj.shipAssembly_scope);
+                        $("#show_type").val(tempObj.shipAssembly_use_type);
+                        $("#show_tag").val(tempObj.shipAssembly_tag.split("|")).trigger("liszt:updated");
+                        $("#show_content").html(tempObj.shipAssembly_content);
                     }
                 }
-                $listPageFun.getPic();
+                $listPageFun.getPic(tempObj.shipAssembly_id);
                 return false;
             });
         return temp;
@@ -157,7 +161,7 @@ var $listPageFun = {
             },
             success: function (data) {
                 if(data.img !== ""|| typeof data.img !== "undefined"){
-                    $("#"+domId).attr("src",data.img);
+                    $("#show_img > img").attr("src",data.img);
                 }
             },
             error : function (data) {

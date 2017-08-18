@@ -24,6 +24,7 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/icons.css" rel="stylesheet">
 <link href="css/generics.css" rel="stylesheet">
+
 </head>
 <body id="${sessionScope.member.member_skin}">
 	<header id="header" class="media">
@@ -314,21 +315,46 @@
 						<form role="form">
 							<div class="form-group">
 								<label for="show_title">标题</label>
-								<input class="form-control input-sm" id="show_title" readonly>
+								<input class="form-control input-sm" id="show_title" disabled>
 							</div>
 							<div class="form-group">
 								<label for="show_scope">范围描述</label>
-								<input class="form-control input-sm" id="show_scope" readonly>
+								<select class="select" id="show_scope" disabled>
+									<option value="0">联盟制式</option>
+									<option value="1">军团制式</option>
+									<option value="2">小队制式</option>
+									<option value="3">个人秀</option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="show_scope">性质描述</label>
-								<input class="form-control input-sm" id="show_type" readonly>
+								<select class="select " id="show_type" disabled>
+									<option value="0">PVP</option>
+									<option value="1">PVE</option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="show_scope">特征描述</label>
-								<input class="form-control input-sm" id="show_tag" readonly>
+								<select data-placeholder="Select Functions..." class="tag-select-limited" multiple id="show_tag" disabled>
+									<option value="抓人">抓人</option>
+									<option value="做点">做点</option>
+									<option value="特种">特种</option>
+									<option value="侦查">侦查</option>
+									<option value="火力">火力</option>
+									<option value="电子">电子</option>
+									<option value="奶妈">奶妈</option>
+									<option value="刷怪">刷怪</option>
+									<option value="任务">任务</option>
+									<option value="土壕">土壕</option>
+									<option value="新人友好">新人友好</option>
+									<option value="其它">其它</option>
+								</select>
 							</div>
-							<p>不可描述的描述</p>
+							<label>图</label>
+							<div id="show_img" class="p-l-10">
+								<img src="" alt="" width="100%">
+							</div>
+							<label>不可描述的描述</label>
 							<div id="show_content"></div>
 						</form>
 					</div>
@@ -391,7 +417,6 @@
 	<script src="js/feeds.min.js"></script>
 	<!-- News Feeds -->
 
-
 	<!-- All JS functions -->
 	<script src="js/functions.js"></script>
 	
@@ -405,6 +430,9 @@
             (function () {
                 /* Overflow */
                 $('.overflow').niceScroll();
+                $("#show_tag").chosen({
+                    max_selected_options: 3
+                });
             })();
 
 
