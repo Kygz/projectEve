@@ -637,6 +637,44 @@
 					</div>
 
 					<div class="col-md-4">
+						<div class="tile" id="oldYellow">
+							<h2 class="tile-title">宜</h2>
+							<div class="tile-config dropdown">
+								<a data-toggle="dropdown" href="" class="tile-menu"></a>
+								<ul class="dropdown-menu pull-right text-right">
+									<li id="oldYellow-year"><a href="">Add New</a></li>
+									<li id="oldYellow-month"><a href="">Refresh</a></li>
+									<li id="oldYellow-day"><a href="">Clear All</a></li>
+								</ul>
+							</div>
+
+							<div class="listview">
+								<div class="media">
+									<div class="m-0">
+										<label class="t-overflow">
+											XXXXX
+										</label>
+									</div>
+								</div>
+								<div class="media">
+									<div class="m-0">
+										<label class="t-overflow">
+											YYYY
+										</label>
+									</div>
+								</div>
+							</div>
+							<h2 class="tile-title">不宜</h2>
+							<div class="listview ">
+								<div class="media">
+									<div class="m-0">
+										<label class="t-overflow">
+											YYYY
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
 						<!-- LQ Map -->
 						<div class="tile" hidden>
 							<h2 class="tile-title">地窖星图</h2>
@@ -652,21 +690,20 @@
 						</div>
 
 						<!-- Dynamic Chart -->
-						<div class="tile">
-							<h2 class="tile-title" hidden>待定</h2>
-							<div class="tile-config dropdown">
-								<a data-toggle="dropdown" href="" class="tile-menu"></a>
-								<ul class="dropdown-menu pull-right text-right">
-									<li><a href="">Refresh</a></li>
-									<li><a href="">Settings</a></li>
-								</ul>
-							</div>
+						<%--<div class="tile" hidden>--%>
+							<%--<h2 class="tile-title" hidden>待定</h2>--%>
+							<%--<div class="tile-config dropdown">--%>
+								<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
+								<%--<ul class="dropdown-menu pull-right text-right">--%>
+									<%--<li><a href="">Refresh</a></li>--%>
+									<%--<li><a href="">Settings</a></li>--%>
+								<%--</ul>--%>
+							<%--</div>--%>
 
-							<div class="p-t-10 p-r-5 p-b-5">
-								<div id="dynamic-chart" style="height: 200px"></div>
-							</div>
-
-						</div>
+							<%--<div class="p-t-10 p-r-5 p-b-5">--%>
+								<%--<div id="dynamic-chart" style="height: 200px"></div>--%>
+							<%--</div>--%>
+						<%--</div>--%>
 
 						<!-- Activity -->
 						<div class="tile" hidden>
@@ -934,6 +971,7 @@
 	
 	<!-- 首页初始化方法汇总 -->
 	<script src="js/myJs/commonFunction.js"></script>
+	<script src="js/myJs/oldYellowCalendarFunction.js"></script>
 	<script src="js/myJs/indexFunction.js"></script>
 
 	<script type="text/javascript">

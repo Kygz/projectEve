@@ -29,3 +29,7 @@ function ajaxQueryPlanetSection(){
 		}
 	});
 }
+
+function initOldYellowCalendar() {
+	var  data = oldYellowCalendar.pickTodaysLuck();
+}
