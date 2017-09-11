@@ -120,9 +120,9 @@ var oldYellowCalendar = {
     pickRandomActivity: function (size) {
         var picked_events = this.pickRandom(this.activities, size);
 
-        for (var i = 0; i < picked_events.length; i++) {
-            picked_events[i] = parse(picked_events[i]);
-        }
+        // for (var i = 0; i < picked_events.length; i++) {
+        //     picked_events[i] = parse(picked_events[i]);
+        // }
 
         return picked_events;
     },
@@ -151,7 +151,7 @@ var oldYellowCalendar = {
         if (year && month && day) {
             this.iday = year * 10000 + (month + 1) * 100 + day;
         } else {
-            this.iday = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+            this.iday = this.today.getFullYear() * 10000 + (this.today.getMonth() + 1) * 100 + this.today.getDate();
         }
         var numGood = this.random(this.iday, 98) % 3 + 2;
         var numBad = this.random(this.iday, 87) % 3 + 2;

@@ -31,5 +31,33 @@ function ajaxQueryPlanetSection(){
 }
 
 function initOldYellowCalendar() {
-	var  data = oldYellowCalendar.pickTodaysLuck();
+	var _ROWTPL = $("<div class=\"media\">" +
+        			"    <div class=\"m-0\">" +
+        			"        <label class=\"t-overflow\">" +
+        			"        </label>" +
+        			"    </div>" +
+        			"</div>");
+	var data = oldYellowCalendar.pickTodaysLuck();
+	if($("#oldYellow > .listview")[0]){
+		var goodListView = $($("#oldYellow > .listview")[0]);
+        goodListView.html("");
+        if(data.good && data.good.length>0){
+			for(var i = 0 ; i < data.good.length ; i++){
+				var goodRow = _ROWTPL.clone();
+                goodRow.find("label").text(data.good[i].name + "----" + data.good[i].good);
+                goodListView.append(goodRow);
+			}
+		}
+	}
+	if($("#oldYellow > .listview")[1]){
+        var badListView = $($("#oldYellow > .listview")[1]);
+        badListView.html("");
+        if(data.bad && data.bad.length>0){
+            var badRow = _ROWTPL.clone();
+            for(var i = 0 ; i < data.bad.length ; i++){
+                badRow.find("label").text(data.bad[i].name + "----" + data.bad[i].bad);
+            	badListView.append(badRow);
+            }
+        }
+	}
 }

@@ -647,32 +647,10 @@
 									<li id="oldYellow-day"><a href="">Clear All</a></li>
 								</ul>
 							</div>
-
 							<div class="listview">
-								<div class="media">
-									<div class="m-0">
-										<label class="t-overflow">
-											XXXXX
-										</label>
-									</div>
-								</div>
-								<div class="media">
-									<div class="m-0">
-										<label class="t-overflow">
-											YYYY
-										</label>
-									</div>
-								</div>
 							</div>
 							<h2 class="tile-title">不宜</h2>
-							<div class="listview ">
-								<div class="media">
-									<div class="m-0">
-										<label class="t-overflow">
-											YYYY
-										</label>
-									</div>
-								</div>
+							<div class="listview">
 							</div>
 						</div>
 						<!-- LQ Map -->
@@ -985,6 +963,7 @@
 			}
 			//行星开发初始化
 			ajaxQueryPlanetSection();
+            initOldYellowCalendar();
 		});
 	</script>
 </body>
