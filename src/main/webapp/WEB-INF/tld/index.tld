@@ -63,5 +63,16 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <!--顶部消息模块-->
+    <tag>
+        <name>messagesDrawer</name>
+        <tag-class>index.MessagesDrawer</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>notificationDrawer</name>
+        <tag-class>index.NotificationDrawer</tag-class>
+        <body-content>empty</body-content>
+    </tag>
     <!-- Invoke 'Generate' action to add tags or functions -->
 </taglib>

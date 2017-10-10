@@ -68,14 +68,6 @@
 				<div class="s-widget m-b-25">
 					<div id="sidebar-calendar"></div>
 				</div>
-				<!-- Feeds 
-                    <div class="s-widget m-b-25">
-                        <h2 class="tile-title">栏目待定</h2>
-                        <div class="s-widget-body">
-                            <div id="news-feed"></div>
-                        </div>
-                    </div> 
-                    -->
 				<%--舰长六维--%>
 				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
 			</div>
@@ -86,206 +78,9 @@
 		<!-- Content -->
 		<section id="content" class="container">
 			<!-- Messages Drawer -->
-			<div id="messages" class="tile drawer animated">
-				<div class="listview narrow">
-					<div class="media">
-						<a href="">Send a New Message</a> <span class="drawer-close">&times;</span>
-
-					</div>
-					<div class="overflow" style="height: 254px">
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/1.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
-								<a class="t-overflow" href="">Mauris consectetur urna nec
-									tempor adipiscing. Proin sit amet nisi ligula. Sed eu
-									adipiscing lectus</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/2.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">David Villa - 5 Hours ago</small><br>
-								<a class="t-overflow" href="">Suspendisse in purus ut nibh
-									placerat Cras pulvinar euismod nunc quis gravida. Suspendisse
-									pharetra</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/3.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Harris worgon - On 15/12/2013</small><br>
-								<a class="t-overflow" href="">Maecenas venenatis enim
-									condimentum ultrices fringilla. Nulla eget libero rhoncus,
-									bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar,
-									ornare turpis id</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/4.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Mitch Bradberry - On
-									14/12/2013</small><br> <a class="t-overflow" href="">Phasellus
-									interdum felis enim, eu bibendum ipsum tristique vitae.
-									Phasellus feugiat massa orci, sed viverra felis aliquet quis.
-									Curabitur vel blandit odio. Vestibulum sagittis quis sem sit
-									amet tristique.</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/1.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Nadin Jackson - On 15/12/2013</small><br>
-								<a class="t-overflow" href="">Ipsum wintoo consectetur urna
-									nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu
-									adipiscing lectus</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/2.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">David Villa - On 16/12/2013</small><br>
-								<a class="t-overflow" href="">Suspendisse in purus ut nibh
-									placerat Cras pulvinar euismod nunc quis gravida. Suspendisse
-									pharetra</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/3.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Harris worgon - On 17/12/2013</small><br>
-								<a class="t-overflow" href="">Maecenas venenatis enim
-									condimentum ultrices fringilla. Nulla eget libero rhoncus,
-									bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar,
-									ornare turpis id</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/4.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Mitch Bradberry - On
-									18/12/2013</small><br> <a class="t-overflow" href="">Phasellus
-									interdum felis enim, eu bibendum ipsum tristique vitae.
-									Phasellus feugiat massa orci, sed viverra felis aliquet quis.
-									Curabitur vel blandit odio. Vestibulum sagittis quis sem sit
-									amet tristique.</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/5.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Wendy Mitchell - On 19/12/2013</small><br>
-								<a class="t-overflow" href="">Integer a eros dapibus,
-									vehicula quam accumsan, tincidunt purus</a>
-							</div>
-						</div>
-					</div>
-					<div class="media text-center whiter l-100">
-						<a href=""><small>VIEW ALL</small></a>
-					</div>
-				</div>
-			</div>
-
+			<eve:messagesDrawer/>
 			<!-- Notification Drawer -->
-			<div id="notifications" class="tile drawer animated">
-				<div class="listview narrow">
-					<div class="media">
-						<a href="">Notification Settings</a> <span class="drawer-close">&times;</span>
-					</div>
-					<div class="overflow" style="height: 254px">
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/1.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
-								<a class="t-overflow" href="">Mauris consectetur urna nec
-									tempor adipiscing. Proin sit amet nisi ligula. Sed eu
-									adipiscing lectus</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/2.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">David Villa - 5 Hours ago</small><br>
-								<a class="t-overflow" href="">Suspendisse in purus ut nibh
-									placerat Cras pulvinar euismod nunc quis gravida. Suspendisse
-									pharetra</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/3.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Harris worgon - On 15/12/2013</small><br>
-								<a class="t-overflow" href="">Maecenas venenatis enim
-									condimentum ultrices fringilla. Nulla eget libero rhoncus,
-									bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar,
-									ornare turpis id</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/4.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Mitch Bradberry - On
-									14/12/2013</small><br> <a class="t-overflow" href="">Phasellus
-									interdum felis enim, eu bibendum ipsum tristique vitae.
-									Phasellus feugiat massa orci, sed viverra felis aliquet quis.
-									Curabitur vel blandit odio. Vestibulum sagittis quis sem sit
-									amet tristique.</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/1.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">Nadin Jackson - On 15/12/2013</small><br>
-								<a class="t-overflow" href="">Ipsum wintoo consectetur urna
-									nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu
-									adipiscing lectus</a>
-							</div>
-						</div>
-						<div class="media">
-							<div class="pull-left">
-								<img width="40" src="img/profile-pics/2.jpg" alt="">
-							</div>
-							<div class="media-body">
-								<small class="text-muted">David Villa - On 16/12/2013</small><br>
-								<a class="t-overflow" href="">Suspendisse in purus ut nibh
-									placerat Cras pulvinar euismod nunc quis gravida. Suspendisse
-									pharetra</a>
-							</div>
-						</div>
-					</div>
-					<div class="media text-center whiter l-100">
-						<a href=""><small>VIEW ALL</small></a>
-					</div>
-				</div>
-			</div>
+			<eve:notificationDrawer/>
 
 			<!-- Breadcrumb -->
 			<ol class="breadcrumb hidden-xs">
@@ -654,18 +449,18 @@
 							</div>
 						</div>
 						<!-- LQ Map -->
-						<div class="tile" hidden>
-							<h2 class="tile-title">地窖星图</h2>
-							<div class="tile-config dropdown">
-								<a data-toggle="dropdown" href="" class="tile-menu"></a>
-								<ul class="dropdown-menu pull-right text-right">
-									<li><a href="">Refresh</a></li>
-									<li><a href="">Settings</a></li>
-								</ul>
-							</div>
+						<%--<div class="tile" hidden>--%>
+							<%--<h2 class="tile-title">地窖星图</h2>--%>
+							<%--<div class="tile-config dropdown">--%>
+								<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
+								<%--<ul class="dropdown-menu pull-right text-right">--%>
+									<%--<li><a href="">Refresh</a></li>--%>
+									<%--<li><a href="">Settings</a></li>--%>
+								<%--</ul>--%>
+							<%--</div>--%>
 
-							<div id="usa-map"></div>
-						</div>
+							<%--<div id="usa-map"></div>--%>
+						<%--</div>--%>
 
 						<!-- Dynamic Chart -->
 						<%--<div class="tile" hidden>--%>
