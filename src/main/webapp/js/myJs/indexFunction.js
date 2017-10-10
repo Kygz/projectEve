@@ -53,8 +53,8 @@ function initOldYellowCalendar() {
         var badListView = $($("#oldYellow > .listview")[1]);
         badListView.html("");
         if(data.bad && data.bad.length>0){
-            var badRow = _ROWTPL.clone();
             for(var i = 0 ; i < data.bad.length ; i++){
+                var badRow = _ROWTPL.clone();
                 badRow.find("label").text(data.bad[i].name + "----" + data.bad[i].bad);
             	badListView.append(badRow);
             }
