@@ -2,6 +2,7 @@ package controller;
 
 import com.google.gson.Gson;
 import manager.MemberManager;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import po.MemberPo;
+import sun.misc.BASE64Encoder;
 import util.SysUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +56,15 @@ public class LoginController {
 			return mav;
 		}
 
-		MemberPo memberPo = memberManager.queryMemberByIdAndPassword(name, password);
+		String reg_pwd_encode = "";
+		try {
+			MessageDigest md5= MessageDigest.getInstance("MD5");
+			BASE64Encoder base64en = new BASE64Encoder();
+			reg_pwd_encode = base64en.encode(md5.digest((password + name).getBytes("utf-8")));
+		} catch (Exception e) {
+			log.info("转码失败",e);
+		}
+		MemberPo memberPo = memberManager.queryMemberByIdAndPassword(name, reg_pwd_encode);
 		
 		if(memberPo==null){
 			mav.addObject("error", "帐号或密码错误！");

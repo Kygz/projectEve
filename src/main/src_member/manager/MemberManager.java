@@ -30,4 +30,10 @@ public interface MemberManager {
 	 * @param po
 	 */
 	void saveSkinByMember(MemberPo po);
+	/**
+	 * 保存Member 不可重名
+	 * @param po
+	 * @return
+	 */
+	String saveMember(MemberPo po);
 }

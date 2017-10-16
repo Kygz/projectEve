@@ -19,6 +19,7 @@ $(document).ready(function(){
             '</div>' +
         '</div>';
     $('#main').prepend(messageBox);
+    $('#login').prepend(messageBox);
     /* --------------------------------------------------------
 	Template Settings 首页换背景
     -----------------------------------------------------------*/

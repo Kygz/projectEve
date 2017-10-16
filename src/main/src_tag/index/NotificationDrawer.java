@@ -22,14 +22,14 @@ public class NotificationDrawer extends TagSupport {
             out.println("       </div>");
             out.println("       <div class=\"overflow\" style=\"height: 254px\">");
 
-            for(int i = 0;i<6;i++){
+            for(int i = 0;i<1;i++){
                 out.println("           <div class=\"media\">");
                 out.println("           	<div class=\"pull-left\">");
                 out.println("           		<img width=\"40\" src=\"img/profile-pics/1.jpg\" alt=\"\">");
                 out.println("           	</div>");
                 out.println("           	<div class=\"media-body\">");
                 out.println("           		<small class=\"text-muted\">Nadin Jackson - 2 Hours ago</small><br>");
-                out.println("           		<a class=\"t-overflow\" href=\"\"> yyyyyyyy </a>");
+                out.println("           		<a class=\"t-overflow\" href=\"\"> 待建设 </a>");
                 out.println("           	</div>");
                 out.println("           </div>");
             }

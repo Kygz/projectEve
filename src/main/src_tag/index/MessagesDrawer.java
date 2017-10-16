@@ -29,7 +29,7 @@ public class MessagesDrawer extends TagSupport {
                 out.println("           	</div>");
                 out.println("           	<div class=\"media-body\">");
                 out.println("           		<small class=\"text-muted\">Nadin Jackson - 2 Hours ago</small><br>");
-                out.println("           		<a class=\"t-overflow\" href=\"\"> xxxxxxx </a>");
+                out.println("           		<a class=\"t-overflow\" href=\"\"> 待开发 </a>");
                 out.println("           	</div>");
                 out.println("           </div>");
             }

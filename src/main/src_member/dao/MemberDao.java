@@ -22,4 +22,10 @@ public interface MemberDao {
 	 * @param po
 	 */
 	void saveSkinByMember(MemberPo po);
+
+	/**
+	 * 保存人员
+	 * @param po
+	 */
+	void saveMember(MemberPo po);
 }

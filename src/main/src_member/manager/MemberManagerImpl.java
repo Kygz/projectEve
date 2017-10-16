@@ -33,4 +33,15 @@ public class MemberManagerImpl implements MemberManager {
     public void saveSkinByMember(MemberPo po) {
         memberDao.saveSkinByMember(po);
     }
+
+    public String saveMember(MemberPo po) {
+        String rv = "success";
+        MemberPo queryPo = memberDao.queryByName(po.getMember_name());
+        if(queryPo == null){
+            memberDao.saveMember(po);
+        }else{
+            rv = "sameName";
+        }
+        return rv;
+    }
 }

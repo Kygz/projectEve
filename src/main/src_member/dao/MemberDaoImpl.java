@@ -35,4 +35,9 @@ public class MemberDaoImpl implements MemberDao {
 		session.update(member);
 	}
 
+	public void saveMember(MemberPo po) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(po);
+	}
+
 }
