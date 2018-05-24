@@ -361,7 +361,7 @@ $(function() {
         height: '50px',
         barWidth: 4,
         barColor: '#fff',
-        barSpacing: 3,
+        barSpacing: 3
     });
 
     $("#stats-bar-2").sparkline([4,7,6,2,5,3,8,6], {

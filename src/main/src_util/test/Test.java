@@ -3,6 +3,7 @@ package test;
 import po.JitaItem;
 import util.DateUtil;
 import util.JitaUtil;
+import util.SysUtil;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -18,7 +19,7 @@ public class Test {
 //        JitaItem item = JitaUtil.getItemInfo("34");
 //        DecimalFormat df =new   java.text.DecimalFormat("#.00");
 //        System.out.print(item.toString());
-        dateTest();
+        testSplit();
     }
 
     public static void dateTest(){
@@ -35,5 +36,12 @@ public class Test {
             e.printStackTrace();
         }
     }
-
+    public static void getUUID(){
+        System.out.println(SysUtil.longUUID());
+    }
+    public static void testSplit(){
+        String str = "12341245|3423453|3242342";
+        String[] temp = str.split("\\|");
+        System.out.println(SysUtil.createGson().toJson(temp));
+    }
 }

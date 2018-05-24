@@ -184,3 +184,20 @@ CREATE TABLE `shipassembly_entity` (
 -- ----------------------------
 -- Records of shipassembly_entity
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for football
+-- ----------------------------
+DROP TABLE IF EXISTS `football`;
+CREATE TABLE `football` (
+  `football_id` bigint(20) NOT NULL,
+  `football_title` varchar(255) DEFAULT NULL,
+  `football_content` varchar(1000) DEFAULT NULL,
+  `football_create` bigint(20) DEFAULT NULL,
+  `football_starttime` datetime DEFAULT NULL,
+  `football_deadline` datetime DEFAULT NULL,
+  `football_options` varchar(2000) NOT NULL,
+  `football_result` int(2) DEFAULT NULL,
+  `football_state` int(1) DEFAULT NULL,
+  PRIMARY KEY (`football_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

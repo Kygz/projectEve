@@ -132,6 +132,15 @@
 			<div class="block-area">
 				<div class="row">
 					<div class="col-md-3 col-xs-6">
+						<div class="tile quick-stats media">
+							<div id="stats-line" class="pull-left"></div>
+							<div class="media-body">
+								<h2 data-value="29356">0</h2>
+								<small>装配收录</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-xs-6">
 						<div class="tile quick-stats">
 							<div id="stats-line-2" class="pull-left"></div>
 							<div class="data">
@@ -140,7 +149,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="col-md-3 col-xs-6">
 						<div class="tile quick-stats media">
 							<div id="stats-line-3" class="pull-left"></div>
@@ -150,7 +158,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="col-md-3 col-xs-6">
 						<div class="tile quick-stats media">
 
@@ -162,17 +169,6 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="col-md-3 col-xs-6">
-						<div class="tile quick-stats media">
-							<div id="stats-line" class="pull-left"></div>
-							<div class="media-body">
-								<h2 data-value="29356">0</h2>
-								<small>今日宝剑</small>
-							</div>
-						</div>
-					</div>
-
 				</div>
 
 			</div>

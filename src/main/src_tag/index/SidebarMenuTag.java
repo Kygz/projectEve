@@ -1,5 +1,8 @@
 package index;
 
+import po.MemberPo;
+
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
@@ -13,6 +16,9 @@ public class SidebarMenuTag  extends TagSupport {
     @Override
     public int doStartTag() throws JspException{
         JspWriter out = this.pageContext.getOut();
+        HttpSession httpSession = this.pageContext.getSession();
+        MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
+
         try {
             out.println("<ul class=\"list-unstyled side-menu\">" +
                         "   <li class=\"active\">" +
