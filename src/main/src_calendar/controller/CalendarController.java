@@ -38,6 +38,15 @@ public class CalendarController {
 
     /**
      * 增加日程
+     * var eventData = {
+     *     title: eventName,
+     *     content: eventContent,
+     *     start: $('#getStart').val(),
+     *     end: $('#getEnd').val(),
+     *     allDay : true,
+     *     color : normalColor,
+     *     idList : []
+     * };
      * @param session
      * @param request
      * @param response
@@ -54,10 +63,10 @@ public class CalendarController {
         }else{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String title = request.getParameter("title");
-            String content = request.getParameter("img");
-            String start = request.getParameter("content");
-            String end = request.getParameter("ship_type");
-            String allDay = request.getParameter("ship_tag");
+            String content = request.getParameter("content");
+            String start = request.getParameter("start");
+            String end = request.getParameter("end");
+            String allDay = request.getParameter("allDay");
 
             try {
                 Date startTime = sdf.parse(start);
@@ -65,7 +74,7 @@ public class CalendarController {
                 Calendar startC = Calendar.getInstance();
                 startC.setTime(startTime);
                 Calendar endC = Calendar.getInstance();
-                endC.setTime(startTime);
+                endC.setTime(endTime);
                 Calendar now = Calendar.getInstance();
 
                 if("true".equals(allDay)){
@@ -191,7 +200,7 @@ public class CalendarController {
         }
         return SysUtil.createGson().toJson(resultMap);
     }
-    /**
+    /**SkillMailManagerImpl
      * 取消参加Event
      * @param session
      * @param request
