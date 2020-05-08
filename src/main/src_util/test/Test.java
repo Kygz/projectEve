@@ -1,10 +1,12 @@
 package test;
 
 import po.JitaItem;
+import sun.misc.BASE64Encoder;
 import util.DateUtil;
 import util.JitaUtil;
 import util.SysUtil;
 
+import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +21,7 @@ public class Test {
 //        JitaItem item = JitaUtil.getItemInfo("34");
 //        DecimalFormat df =new   java.text.DecimalFormat("#.00");
 //        System.out.print(item.toString());
-        testSplit();
+        pwd();
     }
 
     public static void dateTest(){
@@ -43,5 +45,17 @@ public class Test {
         String str = "12341245|3423453|3242342";
         String[] temp = str.split("\\|");
         System.out.println(SysUtil.createGson().toJson(temp));
+    }
+    public static void pwd(){
+        String name = "";
+        String password = "";
+        try {
+        MessageDigest md5= MessageDigest.getInstance("MD5");
+        BASE64Encoder base64en = new BASE64Encoder();
+        String reg_pwd_encode = base64en.encode(md5.digest((password + name).getBytes("utf-8")));
+        System.out.println(reg_pwd_encode);
+        } catch (Exception e) {
+            System.out.println("转码失败");
+        }
     }
 }

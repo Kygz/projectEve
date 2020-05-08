@@ -4,15 +4,15 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/projectEVE</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">projectEVE</property>
-        <property name="connection.password">123456</property>
+        <property name="connection.url">jdbc:mysql://39.101.212.37:3306/projectEVE</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.username">qBMgkNW7azM=</property>
+        <property name="connection.password">aShKS8zZfRs3qMMsbKywBw==</property>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
         <!-- 配置C3P0连接池属性 -->
         <property name="hibernate.connection.provider_class">
-            org.hibernate.c3p0.internal.C3P0ConnectionProvider
+            database.CustomConnectionProvider
         </property>
         <property name="c3p0.min_size">5</property>
         <property name="c3p0.max_size">20</property>
@@ -23,7 +23,7 @@
         <!-- 显示sql -->
         <property name="show_sql">true</property>
         <!-- 方言，不同的数据库语法有差异，选择正常的数据库方言，便于hibernate生成对应的SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <!-- Enable Hibernate's automatic session context management -->
         <!--<property name="current_session_context_class">thread</property>-->
         <!--<property name="current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</property>-->

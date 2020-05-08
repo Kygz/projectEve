@@ -109,7 +109,7 @@ CREATE TABLE `member` (
 -- ----------------------------
 -- Records of member
 -- ----------------------------
-INSERT INTO `member` VALUES ('1', '星际奏者', 'xjzz', '123456', '120964066', 'gavin110991@163.com', 'skin-blur-chrome');
+INSERT INTO `member` VALUES ('1', '星际奏者', 'xjzz', 'tgmGDvE3U+Yh2bWdl6ev0Q==', '120964066', 'gavin110991@163.com', 'skin-blur-chrome');
 
 -- ----------------------------
 -- Table structure for planet
@@ -165,8 +165,8 @@ INSERT INTO `role` VALUES ('2726293526685436521', 'shipAssemblyAdmin', '舰船�
 -- ----------------------------
 -- Table structure for shipassembly_entity
 -- ----------------------------
-DROP TABLE IF EXISTS `shipassembly_entity`;
-CREATE TABLE `shipassembly_entity` (
+DROP TABLE IF EXISTS `shipAssembly_entity`;
+CREATE TABLE `shipAssembly_entity` (
   `shipAssembly_id` bigint(20) NOT NULL,
   `shipAssembly_creator_id` bigint(20) NOT NULL,
   `shipAssembly_creator_name` varchar(255) DEFAULT NULL,
@@ -182,7 +182,7 @@ CREATE TABLE `shipassembly_entity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of shipassembly_entity
+-- Records of shipAssembly_entity
 -- ----------------------------
 
 # -- ----------------------------
