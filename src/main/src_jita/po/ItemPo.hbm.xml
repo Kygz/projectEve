@@ -3,11 +3,17 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="po.ItemPo" table="item" lazy="false">
-        <id name="item_id" type="long" column="item_id" length="20">
+    <class name="po.ItemPo" table="jita_items" lazy="false">
+        <id name="item_id" type="long" column="id" length="20">
             <generator class="assigned"/>
         </id>
         <property name="item_name" type="java.lang.String" column="item_name"/>
         <property name="item_desc" type="java.lang.String" column="item_desc"/>
+        <property name="item_category1" type="java.lang.String" column="category_1"/>
+        <property name="item_category2" type="java.lang.String" column="category_2"/>
+        <property name="item_category3" type="java.lang.String" column="category_3"/>
+        <property name="item_category4" type="java.lang.String" column="category_4"/>
+        <property name="item_category5" type="java.lang.String" column="category_5"/>
+        <property name="item_category6" type="java.lang.String" column="category_6"/>
     </class>
 </hibernate-mapping>

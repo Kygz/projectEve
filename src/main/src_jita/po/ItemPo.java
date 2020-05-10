@@ -7,6 +7,12 @@ public class ItemPo {
     private Long item_id;
     private String item_name;
     private String item_desc;
+    private String item_category1;
+    private String item_category2;
+    private String item_category3;
+    private String item_category4;
+    private String item_category5;
+    private String item_category6;
     private String item_sell;
     private String item_order;
 
@@ -28,6 +34,54 @@ public class ItemPo {
 
     public String getItem_desc() {
         return item_desc;
+    }
+
+    public String getItem_category1() {
+        return item_category1;
+    }
+
+    public void setItem_category1(String item_category1) {
+        this.item_category1 = item_category1;
+    }
+
+    public String getItem_category2() {
+        return item_category2;
+    }
+
+    public void setItem_category2(String item_category2) {
+        this.item_category2 = item_category2;
+    }
+
+    public String getItem_category3() {
+        return item_category3;
+    }
+
+    public void setItem_category3(String item_category3) {
+        this.item_category3 = item_category3;
+    }
+
+    public String getItem_category4() {
+        return item_category4;
+    }
+
+    public void setItem_category4(String item_category4) {
+        this.item_category4 = item_category4;
+    }
+
+    public String getItem_category5() {
+        return item_category5;
+    }
+
+    public void setItem_category5(String item_category5) {
+        this.item_category5 = item_category5;
+    }
+
+    public String getItem_category6() {
+        return item_category6;
+    }
+
+    public void setItem_category6(String item_category6) {
+        this.item_category6 = item_category6;
     }
 
     public void setItem_desc(String item_desc) {

@@ -24,24 +24,25 @@ public class PlanetDaoImpl implements PlanetDao {
 		Session session = sessionFactory.getCurrentSession();
 		String firstDay = DateUtil.getFirstDayOfMonth(new Date());
 		String lastDay = DateUtil.getLastDayOfMonth(new Date());
-		String sql = "SELECT planet.planet_user_name,"
-				+ "Sum(planet.planet_star_1),"
-				+ "Sum(planet.planet_star_2),"
-				+ "Sum(planet.planet_star_3),"
-				+ "Sum(planet.planet_star_4),"
-				+ "Sum(planet.planet_star_5),"
-				+ "Sum(planet.planet_star_6),"
-				+ "Sum(planet.planet_star_7) "
-				+ "FROM "
-				+ "planet "
-				+ "WHERE "
-				+ "planet.planet_user_id = '" + id + "'"
-				+ " AND "
-				+ "planet.planet_upload_date BETWEEN '"+firstDay+"' AND '"+lastDay+"' "
-				+ "GROUP BY "
-				+ "planet.planet_user_id";
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT any_value(planet.planet_user_name),");
+		sql.append("Sum(planet.planet_star_1),");
+		sql.append("Sum(planet.planet_star_2),");
+		sql.append("Sum(planet.planet_star_3),");
+		sql.append("Sum(planet.planet_star_4),");
+		sql.append("Sum(planet.planet_star_5),");
+		sql.append("Sum(planet.planet_star_6),");
+		sql.append("Sum(planet.planet_star_7) ");
+		sql.append("FROM ");
+		sql.append("planet ");
+		sql.append("WHERE ");
+		sql.append("planet.planet_user_id = '" + id + "'");
+		sql.append(" AND ");
+		sql.append("planet.planet_upload_date BETWEEN '"+firstDay+"' AND '"+lastDay+"' ");
+		sql.append("GROUP BY ");
+		sql.append("planet.planet_user_id");
 		@SuppressWarnings("unchecked")
-		List<Object[]> result = session.createSQLQuery(sql).list();
+		List<Object[]> result = session.createSQLQuery(sql.toString()).list();
 		if(result.size()==1){
 			Object[] obj= result.get(0);
 			PlanetRecordResult pr = new PlanetRecordResult(id,String.valueOf(obj[0]));

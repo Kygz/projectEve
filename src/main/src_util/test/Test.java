@@ -4,6 +4,7 @@ import po.JitaItem;
 import sun.misc.BASE64Encoder;
 import util.DateUtil;
 import util.JitaUtil;
+import util.NetUtil;
 import util.SysUtil;
 
 import java.security.MessageDigest;
@@ -12,6 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by gavin on 2016/5/11 0011.
@@ -21,7 +24,8 @@ public class Test {
 //        JitaItem item = JitaUtil.getItemInfo("34");
 //        DecimalFormat df =new   java.text.DecimalFormat("#.00");
 //        System.out.print(item.toString());
-        pwd();
+//        pwd();
+        jitaNameSearch("三钛");
     }
 
     public static void dateTest(){
@@ -57,5 +61,13 @@ public class Test {
         } catch (Exception e) {
             System.out.println("转码失败");
         }
+    }
+    public static void jitaNameSearch(String name){
+        final String JITA_SEARCH_NAME_URL = "https://www.ceve-market.org/api/searchname";
+
+        Map<String,String> searchItem = new HashMap<String, String>();
+        searchItem.put("name",name);
+        String result = NetUtil.createNetConnection(JITA_SEARCH_NAME_URL, "POST", SysUtil.createGson().toJson(searchItem));
+        System.out.println(result);
     }
 }
