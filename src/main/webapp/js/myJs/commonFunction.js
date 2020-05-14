@@ -2,6 +2,11 @@
  * 公用JS Function
  * Created by gavin on 2016/4/27 0027.
  */
+
+/**
+ * 取UUID
+ * @returns {string}
+ */
 function getUUID(){
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -9,6 +14,10 @@ function getUUID(){
     });
 }
 
+/**
+ * 弹窗对象
+ * @type {{alert: $message.alert}}
+ */
 var $message = {
     /**
      * option.title 标题

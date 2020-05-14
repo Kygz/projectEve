@@ -2,6 +2,9 @@
  * 主页相关方法归总
  */
 function ajaxQueryPlanetSection(){
+	if($("#planetBlock").length === 0){
+		return;
+	}
 	$.ajax({
 		url : "planet.do?method=queryMonth",
 		data : {
@@ -30,7 +33,14 @@ function ajaxQueryPlanetSection(){
 	});
 }
 
+/**
+ * 老黄历
+ */
 function initOldYellowCalendar() {
+	var oldYellowBlock = $("#oldYellow");
+	if(oldYellowBlock.length == 0){
+		return;
+	}
 	var _ROWTPL = $("<div class=\"media\">" +
         			"    <div class=\"m-0\">" +
         			"        <label class=\"t-overflow\">" +

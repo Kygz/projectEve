@@ -227,7 +227,7 @@
 						<%--</div>--%>
 
 						<!-- Easy Pie Charts 仪表盘  Pies 氧 电解物 水 稀有金属 有毒金属 反应金属 手性结构 -->
-						<div class="tile text-center">
+						<div class="tile text-center" id="planetBlock">
 							<div class="tile-dark p-10">
 								<div class="pie-chart-tiny" data-percent="50" id="planet1">
 									<span class="percent"></span> <span class="pie-title">氧
