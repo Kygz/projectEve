@@ -27,7 +27,7 @@ public class SidebarMenuTag  extends TagSupport {
                         "       </a>" +
                         "   </li>" +
                         "   <li>" +
-                        "       <a class=\"sa-side-calendar\" href=\"calendar.do?method=index\">" +
+                        "       <a class=\"sa-side-calendar\" href=\"calendar.do?method=index\" target=\"mainIframe\">" +
                         "           <span class=\"menu-item\">招募英雄专用小酒馆</span>" +
                         "       </a>" +
                         "   </li>" +
@@ -36,8 +36,8 @@ public class SidebarMenuTag  extends TagSupport {
                         "           <span class=\"menu-item\" >装配车间</span>" +
                         "       </a>" +
                         "       <ul class=\"list-unstyled menu-item\">" +
-                        "           <li><a href=\"shipAssembly.do?method=list\">展示大厅</a></li>" +
-                        "           <li><a href=\"shipAssembly.do?method=index\">配置上传</a></li>" +
+                        "           <li><a href=\"shipAssembly.do?method=list\" target=\"mainIframe\">展示大厅</a></li>" +
+                        "           <li><a href=\"shipAssembly.do?method=index\" target=\"mainIframe\">配置上传</a></li>" +
                         "       </ul>" +
                         "   </li>" +
                         "   <li>" +
@@ -52,8 +52,8 @@ public class SidebarMenuTag  extends TagSupport {
                         "       <ul class=\"list-unstyled menu-item\">" +
                         "           <li><a href=\"404.html\">统计表格</a></li>" +
                         "           <li><a href=\"404.html\">新手船只申领</a></li>" +
-                        "           <li><a href=\"planet.do?method=planetInsertPage\">行星开发</a></li>" +
-                        "           <li><a href=\"skillMail.do?method=index\">技能提醒</a></li>" +
+                        "           <li><a href=\"planet.do?method=planetInsertPage\" target=\"mainIframe\">行星开发</a></li>" +
+                        "           <li><a href=\"skillMail.do?method=index\" target=\"mainIframe\">技能提醒</a></li>" +
                         "           <li><a href=\"form-examples.html\">异常拾荒</a></li>" +
                         "           <li><a href=\"form-validation.html\">出勤登记</a></li>" +
                         "       </ul>" +
