@@ -25,11 +25,19 @@ var $message = {
      * @param option
      */
     alert : function(option){
-        var title = option.title?option.title:"alert";
-        var msg = option.msg?option.msg:"";
-        var alertDiv = $("#alertDiv").find(".modal-title").text(title).end()
-            .find(".modal-body").html(msg).end();
-        $("#alertDiv").modal('show');
+        var alertDiv;
+        if(typeof indexPageParam != 'undefined' || (typeof loginPage != 'undefined' && loginPage === true)){//首页
+            alertDiv = $("#alertDiv");
+        }else if(parent.indexPageParam){
+            alertDiv = parent.$("#alertDiv");
+        }
+        if(alertDiv){
+            var title = option.title?option.title:"alert";
+            var msg = option.msg?option.msg:"";
+            alertDiv.find(".modal-title").text(title).end()
+                .find(".modal-body").html(msg).end();
+            alertDiv.modal('show');
+        }
     }
 };
 

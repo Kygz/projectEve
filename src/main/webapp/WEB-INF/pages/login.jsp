@@ -92,6 +92,7 @@
         <script src="js/functions.js"></script>
         <script src="js/myJs/commonFunction.js"></script>
         <script>
+            var loginPage = true;
             $(document).ready(function() {
                 $("#registerButton").click(function () {
                     var eventForm = $("box-register");

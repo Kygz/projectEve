@@ -97,7 +97,7 @@ public class LoginController {
 			mav.addObject("error", "登陆信息过期，请重新登陆！");
 			return mav;
 		}else{
-			return new ModelAndView("index/index_temp");
+			return new ModelAndView("index/index");
 		}
 	}
 

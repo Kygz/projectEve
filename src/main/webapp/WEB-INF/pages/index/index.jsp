@@ -5,109 +5,110 @@
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<meta name="format-detection" content="telephone=no">
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="Violate Responsive Admin Template">
-<meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
-<link rel="Shortcut Icon" href="../../../favicon.ico" />
-<title>米氏非正常人类集散地</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Violate Responsive Admin Template">
+	<meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+	<link rel="Shortcut Icon" href="../../../favicon.ico" />
+	<title>米氏非正常人类集散地</title>
 
-<!-- CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/form.css" rel="stylesheet">
-<link href="css/calendar.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/icons.css" rel="stylesheet">
-<link href="css/generics.css" rel="stylesheet">
+	<!-- CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/animate.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/form.css" rel="stylesheet">
+	<link href="css/calendar.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/icons.css" rel="stylesheet">
+	<link href="css/generics.css" rel="stylesheet">
 </head>
 <body id="${sessionScope.member.member_skin}">
 <!-- 顶栏 -->
-	<header id="header" class="media">
-		<a href="" id="menu-toggle"></a>
-		<a class="logo pull-left" href="/login.do?method=index">米氏非正常人类研究院</a>
+<header id="header" class="media">
+	<a href="" id="menu-toggle"></a>
+	<a class="logo pull-left" href="/login.do?method=index">米氏非正常人类研究院</a>
 
-		<div class="media-body">
-			<div class="media" id="top-menu">
-				<div class="pull-left tm-icon">
-					<a data-drawer="messages" class="drawer-toggle" href="">
-						<i class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
-					</a>
-				</div>
-				<div class="pull-left tm-icon">
-					<a data-drawer="notifications" class="drawer-toggle" href="">
-						<i class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
-					</a>
-				</div>
-				<!-- 时间栏 -->
-				<div id="time" class="pull-right">
-					<span id="hours"></span>:<span id="min"></span>:<span id="sec"></span>
-				</div>
-				<!-- 搜索栏 -->
-				<div class="media-body">
-					<input type="text" class="main-search">
-				</div>
+	<div class="media-body">
+		<div class="media" id="top-menu">
+			<div class="pull-left tm-icon">
+				<a data-drawer="messages" class="drawer-toggle" href="">
+					<i class="sa-top-message"></i> <i class="n-count animated">5</i> <span>舰长邮件</span>
+				</a>
+			</div>
+			<div class="pull-left tm-icon">
+				<a data-drawer="notifications" class="drawer-toggle" href="">
+					<i class="sa-top-updates"></i> <i class="n-count animated">9</i> <span>消息更新</span>
+				</a>
+			</div>
+			<!-- 时间栏 -->
+			<div id="time" class="pull-right">
+				<span id="hours"></span>:<span id="min"></span>:<span id="sec"></span>
+			</div>
+			<!-- 搜索栏 -->
+			<div class="media-body">
+				<input type="text" class="main-search">
 			</div>
 		</div>
-	</header>
+	</div>
+</header>
 
-	<div class="clearfix"></div>
+<div class="clearfix"></div>
 
-	<section id="main" class="p-relative" role="main">
+<section id="main" class="p-relative" role="main">
 
-		<!-- Sidebar -->
-		<aside id="sidebar">
-			<!-- Sidbar Widgets -->
-			<div class="side-widgets overflow">
-				<!-- Profile Menu -->
-				<eve:showProfileMenu userName="${sessionScope.member.member_nickname}" qqNum="${sessionScope.member.member_qq}"/>
-				<!-- Calendar -->
-				<div class="s-widget m-b-25">
-					<div id="sidebar-calendar"></div>
-				</div>
-				<%--舰长六维--%>
-				<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
+	<!-- Sidebar -->
+	<aside id="sidebar">
+		<!-- Sidbar Widgets -->
+		<div class="side-widgets overflow">
+			<!-- Profile Menu -->
+			<eve:showProfileMenu userName="${sessionScope.member.member_nickname}" qqNum="${sessionScope.member.member_qq}"/>
+			<!-- Calendar -->
+			<div class="s-widget m-b-25">
+				<div id="sidebar-calendar"></div>
 			</div>
-			<!-- Side Menu -->
-			<eve:showSideMenu/>
-		</aside>
+			<%--舰长六维--%>
+			<eve:showTheSix para1="7" para2="4" para3="6" para4="8" para5="2" para6="3"/>
+		</div>
+		<!-- Side Menu -->
+		<eve:showSideMenu/>
+	</aside>
 
-		<!-- Content -->
-		<section id="content" class="container">
-			<!-- Messages Drawer -->
-			<eve:messagesDrawer/>
-			<!-- Notification Drawer -->
-			<eve:notificationDrawer/>
+	<!-- Content -->
+	<section id="content" class="container">
+		<!-- Messages Drawer -->
+		<eve:messagesDrawer/>
+		<!-- Notification Drawer -->
+		<eve:notificationDrawer/>
 
-			<!-- Breadcrumb -->
-			<ol class="breadcrumb hidden-xs">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Library</a></li>
-				<li class="active">Data</li>
-			</ol>
+		<!-- Breadcrumb -->
+		<ol class="breadcrumb hidden-xs">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Library</a></li>
+			<li class="active">Data</li>
+		</ol>
 
-			<h4 class="page-title">舰长室</h4>
+		<h4 class="page-title">舰长室</h4>
 
+		<div id="mainPortal" >
 			<!-- Shortcuts -->
 			<div class="block-area shortcut-area">
 				<a class="shortcut tile" href="http://www.ceve-market.org/index/">
 					<img src="img/shortcuts/money.png" alt=""> <small
-					class="t-overflow">国服市场中心</small>
+						class="t-overflow">国服市场中心</small>
 				</a>
 				<a class="shortcut tile" href="http://killboard.nl/cn/?a=home">
 					<img src="img/shortcuts/stats.png" alt=""> <small
-					class="t-overflow">老KB榜</small>
+						class="t-overflow">老KB榜</small>
 				</a>
 				<a class="shortcut tile" href="http://kb.ceve-market.org/"> <img
-					src="img/shortcuts/reports.png" alt=""> <small
-					class="t-overflow">新KB榜</small>
+						src="img/shortcuts/reports.png" alt=""> <small
+						class="t-overflow">新KB榜</small>
 				</a>
 				<a class="shortcut tile" href="http://www.eve-wiki.net/"> <img
-					src="img/shortcuts/reports.png" alt=""> <small
-					class="t-overflow">WIKI</small>
+						src="img/shortcuts/reports.png" alt=""> <small
+						class="t-overflow">WIKI</small>
 				</a>
 				<!-- 隐藏
                     <a class="shortcut tile" href="">
@@ -122,7 +123,7 @@
                         <img src="img/shortcuts/connections.png" alt="">
                         <small class="t-overflow">Connection</small>
                     </a>
-                    
+
                     -->
 			</div>
 
@@ -182,48 +183,48 @@
 					<div class="col-md-8">
 						<!-- Main Chart -->
 						<%--<div class="tile">--%>
-							<%--<h2 class="tile-title">出勤</h2>--%>
-							<%--<div class="tile-config dropdown">--%>
-								<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
-								<%--<ul class="dropdown-menu pull-right text-right">--%>
-									<%--<li><a class="tile-info-toggle" href="">Chart--%>
-											<%--Information</a></li>--%>
-									<%--<li><a href="">Refresh</a></li>--%>
-									<%--<li><a href="">Settings</a></li>--%>
-								<%--</ul>--%>
-							<%--</div>--%>
-							<%--<div class="p-10">--%>
-								<%--<div id="line-chart" class="main-chart" style="height: 250px"></div>--%>
+						<%--<h2 class="tile-title">出勤</h2>--%>
+						<%--<div class="tile-config dropdown">--%>
+						<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
+						<%--<ul class="dropdown-menu pull-right text-right">--%>
+						<%--<li><a class="tile-info-toggle" href="">Chart--%>
+						<%--Information</a></li>--%>
+						<%--<li><a href="">Refresh</a></li>--%>
+						<%--<li><a href="">Settings</a></li>--%>
+						<%--</ul>--%>
+						<%--</div>--%>
+						<%--<div class="p-10">--%>
+						<%--<div id="line-chart" class="main-chart" style="height: 250px"></div>--%>
 
-								<%--<div class="chart-info">--%>
-									<%--<ul class="list-unstyled">--%>
-										<%--<li class="m-b-10">本月出勤总计 <span--%>
-											<%--class="pull-right text-muted t-s-0"> <i--%>
-												<%--class="fa fa-chevron-up"></i>+12%--%>
-										<%--</span>--%>
-										<%--</li>--%>
-										<%--<li><small>本月会战出勤 <span--%>
-												<%--class="pull-right text-muted t-s-0"><i--%>
-													<%--class="fa m-l-15 fa-chevron-down"></i>-8%</span>--%>
-										<%--</small>--%>
-											<%--<div class="progress progress-small">--%>
-												<%--<div class="progress-bar progress-bar-warning"--%>
-													<%--role="progressbar" aria-valuenow="40" aria-valuemin="0"--%>
-													<%--aria-valuemax="100" style="width: 40%"></div>--%>
-											<%--</div></li>--%>
-										<%--<li><small>本月防卫出勤 <span--%>
-												<%--class="pull-right text-muted t-s-0"> <i--%>
-													<%--class="fa m-l-15 fa-chevron-up"></i>-3%--%>
-											<%--</span>--%>
-										<%--</small>--%>
-											<%--<div class="progress progress-small">--%>
-												<%--<div class="progress-bar progress-bar-info"--%>
-													<%--role="progressbar" aria-valuenow="40" aria-valuemin="0"--%>
-													<%--aria-valuemax="100" style="width: 60%"></div>--%>
-											<%--</div></li>--%>
-									<%--</ul>--%>
-								<%--</div>--%>
-							<%--</div>--%>
+						<%--<div class="chart-info">--%>
+						<%--<ul class="list-unstyled">--%>
+						<%--<li class="m-b-10">本月出勤总计 <span--%>
+						<%--class="pull-right text-muted t-s-0"> <i--%>
+						<%--class="fa fa-chevron-up"></i>+12%--%>
+						<%--</span>--%>
+						<%--</li>--%>
+						<%--<li><small>本月会战出勤 <span--%>
+						<%--class="pull-right text-muted t-s-0"><i--%>
+						<%--class="fa m-l-15 fa-chevron-down"></i>-8%</span>--%>
+						<%--</small>--%>
+						<%--<div class="progress progress-small">--%>
+						<%--<div class="progress-bar progress-bar-warning"--%>
+						<%--role="progressbar" aria-valuenow="40" aria-valuemin="0"--%>
+						<%--aria-valuemax="100" style="width: 40%"></div>--%>
+						<%--</div></li>--%>
+						<%--<li><small>本月防卫出勤 <span--%>
+						<%--class="pull-right text-muted t-s-0"> <i--%>
+						<%--class="fa m-l-15 fa-chevron-up"></i>-3%--%>
+						<%--</span>--%>
+						<%--</small>--%>
+						<%--<div class="progress progress-small">--%>
+						<%--<div class="progress-bar progress-bar-info"--%>
+						<%--role="progressbar" aria-valuenow="40" aria-valuemin="0"--%>
+						<%--aria-valuemax="100" style="width: 60%"></div>--%>
+						<%--</div></li>--%>
+						<%--</ul>--%>
+						<%--</div>--%>
+						<%--</div>--%>
 						<%--</div>--%>
 
 						<!-- Easy Pie Charts 仪表盘  Pies 氧 电解物 水 稀有金属 有毒金属 反应金属 手性结构 -->
@@ -310,7 +311,7 @@
 											<div class="media-body">
 												<small class="text-muted">On 15/12/2013 by Mitch
 													bradberry</small><br /> <a class="t-overflow" href="">Cras
-													pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
+												pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
 
 											</div>
 										</div>
@@ -321,7 +322,7 @@
 											<div class="media-body">
 												<small class="text-muted">On 14/12/2013 by Mitch
 													bradberry</small><br /> <a class="t-overflow" href="">Cras
-													pulvinar euismod nunc quis gravida. </a>
+												pulvinar euismod nunc quis gravida. </a>
 
 											</div>
 										</div>
@@ -332,7 +333,7 @@
 											<div class="media-body">
 												<small class="text-muted">On 13/12/2013 by Mitch
 													bradberry</small><br /> <a class="t-overflow" href="">Integer
-													a eros dapibus, vehicula quam accumsan, tincidunt purus</a>
+												a eros dapibus, vehicula quam accumsan, tincidunt purus</a>
 
 											</div>
 										</div>
@@ -396,7 +397,7 @@
 										<div class="media">
 											<div class="checkbox m-0">
 												<label class="t-overflow"> <input type="checkbox"
-													checked="checked"> Motor susbect win latictals bin
+																				  checked="checked"> Motor susbect win latictals bin
 													the woodat cool
 												</label>
 											</div>
@@ -405,7 +406,7 @@
 										<div class="media">
 											<div class="checkbox m-0">
 												<label class="t-overflow"> <input type="checkbox"
-													checked="checked"> Wendy mitchel susbect win
+																				  checked="checked"> Wendy mitchel susbect win
 													latictals bin the woodat cool
 												</label>
 											</div>
@@ -414,7 +415,7 @@
 										<div class="media">
 											<div class="checkbox m-0">
 												<label class="t-overflow"> <input type="checkbox"
-													checked="checked"> Latictals bin the woodat cool
+																				  checked="checked"> Latictals bin the woodat cool
 													for the win
 												</label>
 											</div>
@@ -446,32 +447,32 @@
 						</div>
 						<!-- LQ Map -->
 						<%--<div class="tile" hidden>--%>
-							<%--<h2 class="tile-title">地窖星图</h2>--%>
-							<%--<div class="tile-config dropdown">--%>
-								<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
-								<%--<ul class="dropdown-menu pull-right text-right">--%>
-									<%--<li><a href="">Refresh</a></li>--%>
-									<%--<li><a href="">Settings</a></li>--%>
-								<%--</ul>--%>
-							<%--</div>--%>
+						<%--<h2 class="tile-title">地窖星图</h2>--%>
+						<%--<div class="tile-config dropdown">--%>
+						<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
+						<%--<ul class="dropdown-menu pull-right text-right">--%>
+						<%--<li><a href="">Refresh</a></li>--%>
+						<%--<li><a href="">Settings</a></li>--%>
+						<%--</ul>--%>
+						<%--</div>--%>
 
-							<%--<div id="usa-map"></div>--%>
+						<%--<div id="usa-map"></div>--%>
 						<%--</div>--%>
 
 						<!-- Dynamic Chart -->
 						<%--<div class="tile" hidden>--%>
-							<%--<h2 class="tile-title" hidden>待定</h2>--%>
-							<%--<div class="tile-config dropdown">--%>
-								<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
-								<%--<ul class="dropdown-menu pull-right text-right">--%>
-									<%--<li><a href="">Refresh</a></li>--%>
-									<%--<li><a href="">Settings</a></li>--%>
-								<%--</ul>--%>
-							<%--</div>--%>
+						<%--<h2 class="tile-title" hidden>待定</h2>--%>
+						<%--<div class="tile-config dropdown">--%>
+						<%--<a data-toggle="dropdown" href="" class="tile-menu"></a>--%>
+						<%--<ul class="dropdown-menu pull-right text-right">--%>
+						<%--<li><a href="">Refresh</a></li>--%>
+						<%--<li><a href="">Settings</a></li>--%>
+						<%--</ul>--%>
+						<%--</div>--%>
 
-							<%--<div class="p-t-10 p-r-5 p-b-5">--%>
-								<%--<div id="dynamic-chart" style="height: 200px"></div>--%>
-							<%--</div>--%>
+						<%--<div class="p-t-10 p-r-5 p-b-5">--%>
+						<%--<div id="dynamic-chart" style="height: 200px"></div>--%>
+						<%--</div>--%>
 						<%--</div>--%>
 
 						<!-- Activity -->
@@ -545,40 +546,40 @@
 					<div class="listview narrow">
 						<div class="media">
 							<img class="pull-left" src="img/profile-pics/1.jpg" width="30"
-								alt="">
+								 alt="">
 							<div class="media-body p-t-5">Alex Bendit</div>
 						</div>
 						<div class="media">
 							<img class="pull-left" src="img/profile-pics/2.jpg" width="30"
-								alt="">
+								 alt="">
 							<div class="media-body">
 								<span class="t-overflow p-t-5">David Volla Watkinson</span>
 							</div>
 						</div>
 						<div class="media">
 							<img class="pull-left" src="img/profile-pics/3.jpg" width="30"
-								alt="">
+								 alt="">
 							<div class="media-body">
 								<span class="t-overflow p-t-5">Mitchell Christein</span>
 							</div>
 						</div>
 						<div class="media">
 							<img class="pull-left" src="img/profile-pics/4.jpg" width="30"
-								alt="">
+								 alt="">
 							<div class="media-body">
 								<span class="t-overflow p-t-5">Wayne Parnell</span>
 							</div>
 						</div>
 						<div class="media">
 							<img class="pull-left" src="img/profile-pics/5.jpg" width="30"
-								alt="">
+								 alt="">
 							<div class="media-body">
 								<span class="t-overflow p-t-5">Melina April</span>
 							</div>
 						</div>
 						<div class="media">
 							<img class="pull-left" src="img/profile-pics/6.jpg" width="30"
-								alt="">
+								 alt="">
 							<div class="media-body">
 								<span class="t-overflow p-t-5">Ford Harnson</span>
 							</div>
@@ -591,14 +592,14 @@
 				<div class="media-body">
 					<div class="chat-header">
 						<a class="btn btn-sm" href=""> <i
-							class="fa fa-circle-o status m-r-5"></i> Chat with Friends
+								class="fa fa-circle-o status m-r-5"></i> Chat with Friends
 						</a>
 					</div>
 
 					<div class="chat-body">
 						<div class="media">
 							<img class="pull-right" src="img/profile-pics/1.jpg" width="30"
-								alt="" />
+								 alt="" />
 							<div class="media-body pull-right">
 								Hiiii<br /> How you doing bro? <small>Me - 10 Mins ago</small>
 							</div>
@@ -606,25 +607,25 @@
 
 						<div class="media pull-left">
 							<img class="pull-left" src="img/profile-pics/2.jpg" width="30"
-								alt="" />
+								 alt="" />
 							<div class="media-body">
 								I'm doing well buddy. <br />How do you do? <small>David
-									- 9 Mins ago</small>
+								- 9 Mins ago</small>
 							</div>
 						</div>
 
 						<div class="media pull-right">
 							<img class="pull-right" src="img/profile-pics/2.jpg" width="30"
-								alt="" />
+								 alt="" />
 							<div class="media-body">
 								I'm Fine bro <br />Thank you for asking <small>Me - 8
-									Mins ago</small>
+								Mins ago</small>
 							</div>
 						</div>
 
 						<div class="media pull-right">
 							<img class="pull-right" src="img/profile-pics/2.jpg" width="30"
-								alt="" />
+								 alt="" />
 							<div class="media-body">
 								Any idea for a hangout? <small>Me - 8 Mins ago</small>
 							</div>
@@ -642,120 +643,138 @@
 
 				</div>
 			</div>
-		</section>
-
-		<!-- Older IE Message -->
-		<!--[if lt IE 9]>
-                <div class="ie-block">
-                    <h1 class="Ops">Ooops!</h1>
-                    <p>You are using an outdated version of Internet Explorer, upgrade to any of the following web browser in order to access the maximum functionality of this website. </p>
-                    <ul class="browsers">
-                        <li>
-                            <a href="https://www.google.com/intl/en/chrome/browser/">
-                                <img src="img/browsers/chrome.png" alt="">
-                                <div>Google Chrome</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.mozilla.org/en-US/firefox/new/">
-                                <img src="img/browsers/firefox.png" alt="">
-                                <div>Mozilla Firefox</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.opera.com/computer/windows">
-                                <img src="img/browsers/opera.png" alt="">
-                                <div>Opera</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://safari.en.softonic.com/">
-                                <img src="img/browsers/safari.png" alt="">
-                                <div>Safari</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-10/worldwide-languages">
-                                <img src="img/browsers/ie.png" alt="">
-                                <div>Internet Explorer(New)</div>
-                            </a>
-                        </li>
-                    </ul>
-                    <p>Upgrade your browser for a Safer and Faster web experience. <br/>Thank you for your patience...</p>
-                </div>   
-            <![endif]-->
+		</div>
+		<div id="mainIframeBlock" class="hidden">
+			<iframe id="mainIframe" name="mainIframe" allowtransparency="true" width="100%" scrolling="no" frameborder="0"></iframe>
+		</div>
 	</section>
 
-	<!-- Javascript Libraries -->
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Library -->
-	<script src="js/jquery-ui.min.js"></script>
-	<!-- jQuery UI -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- jQuery Easing - Requirred for Lightbox + Pie Charts-->
+	<!-- Older IE Message -->
+	<!--[if lt IE 9]>
+	<div class="ie-block">
+		<h1 class="Ops">Ooops!</h1>
+		<p>You are using an outdated version of Internet Explorer, upgrade to any of the following web browser in order to access the maximum functionality of this website. </p>
+		<ul class="browsers">
+			<li>
+				<a href="https://www.google.com/intl/en/chrome/browser/">
+					<img src="img/browsers/chrome.png" alt="">
+					<div>Google Chrome</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://www.mozilla.org/en-US/firefox/new/">
+					<img src="img/browsers/firefox.png" alt="">
+					<div>Mozilla Firefox</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://www.opera.com/computer/windows">
+					<img src="img/browsers/opera.png" alt="">
+					<div>Opera</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://safari.en.softonic.com/">
+					<img src="img/browsers/safari.png" alt="">
+					<div>Safari</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://windows.microsoft.com/en-us/internet-explorer/downloads/ie-10/worldwide-languages">
+					<img src="img/browsers/ie.png" alt="">
+					<div>Internet Explorer(New)</div>
+				</a>
+			</li>
+		</ul>
+		<p>Upgrade your browser for a Safer and Faster web experience. <br/>Thank you for your patience...</p>
+	</div>
+	<![endif]-->
+</section>
 
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Charts -->
-	<script src="js/charts/jquery.flot.js"></script>
-	<!-- Flot Main -->
-	<script src="js/charts/jquery.flot.time.js"></script>
-	<!-- Flot sub -->
-	<script src="js/charts/jquery.flot.animator.min.js"></script>
-	<!-- Flot sub -->
-	<script src="js/charts/jquery.flot.resize.min.js"></script>
-	<!-- Flot sub - for repaint when resizing the screen -->
+<!-- Javascript Libraries -->
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery Library -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- jQuery UI -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- jQuery Easing - Requirred for Lightbox + Pie Charts-->
 
-	<script src="js/sparkline.min.js"></script>
-	<!-- Sparkline - Tiny charts -->
-	<script src="js/easypiechart.js"></script>
-	<!-- EasyPieChart - Animated Pie Charts -->
-	<script src="js/charts.js"></script>
-	<!-- All the above chart related functions -->
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Charts -->
+<script src="js/charts/jquery.flot.js"></script>
+<!-- Flot Main -->
+<script src="js/charts/jquery.flot.time.js"></script>
+<!-- Flot sub -->
+<script src="js/charts/jquery.flot.animator.min.js"></script>
+<!-- Flot sub -->
+<script src="js/charts/jquery.flot.resize.min.js"></script>
+<!-- Flot sub - for repaint when resizing the screen -->
 
-	<!-- Map -->
-	<script src="js/maps/jvectormap.min.js"></script>
-	<!-- jVectorMap main library -->
-	<script src="js/maps/usa.js"></script>
-	<!-- USA Map for jVectorMap -->
+<script src="js/sparkline.min.js"></script>
+<!-- Sparkline - Tiny charts -->
+<script src="js/easypiechart.js"></script>
+<!-- EasyPieChart - Animated Pie Charts -->
+<script src="js/charts.js"></script>
+<!-- All the above chart related functions -->
 
-	<!--  Form Related -->
-	<script src="js/icheck.js"></script>
-	<!-- Custom Checkbox + Radio -->
+<!-- Map -->
+<script src="js/maps/jvectormap.min.js"></script>
+<!-- jVectorMap main library -->
+<script src="js/maps/usa.js"></script>
+<!-- USA Map for jVectorMap -->
 
-	<!-- UX -->
-	<script src="js/scroll.min.js"></script>
-	<!-- Custom Scrollbar -->
+<!--  Form Related -->
+<script src="js/icheck.js"></script>
+<!-- Custom Checkbox + Radio -->
 
-	<!-- Other -->
-	<script src="js/calendar.min.js"></script>
-	<!-- Calendar -->
-	<script src="js/feeds.min.js"></script>
-	<!-- News Feeds -->
+<!-- UX -->
+<script src="js/scroll.min.js"></script>
+<!-- Custom Scrollbar -->
+
+<!-- Other -->
+<script src="js/calendar.min.js"></script>
+<!-- Calendar -->
+<script src="js/feeds.min.js"></script>
+<!-- News Feeds -->
 
 
-	<!-- All JS functions -->
-	<script src="js/functions.js"></script>
-	
-	<!-- 首页初始化方法汇总 -->
-	<script src="js/myJs/commonFunction.js"></script>
-	<script src="js/myJs/oldYellowCalendarFunction.js"></script>
-	<script src="js/myJs/indexFunction.js"></script>
+<!-- All JS functions -->
+<script src="js/functions.js"></script>
 
-	<script type="text/javascript">
-		$(function() {
-			var member = '${sessionScope.memberStr}';
-			if (member == null || member == "") {
-				alert("请先登陆！");
-				window.location.href = "login.do?method=logout";
-			}else{
-                $storage.setCurrentMember(member);
-			}
-			//行星开发初始化
-			ajaxQueryPlanetSection();
-            initOldYellowCalendar();
-		});
-	</script>
+<!-- 首页初始化方法汇总 -->
+<script src="js/myJs/commonFunction.js"></script>
+<script src="js/myJs/oldYellowCalendarFunction.js"></script>
+<script src="js/myJs/indexFunction.js"></script>
+
+<script type="text/javascript">
+	var indexPageParam = {
+		top : window,
+		mainPortalObj : {
+			portalBlock : $("#mainPortal")
+		},
+		mainIframeObj : {
+			iframeBlock : $("#mainIframeBlock"),
+			iframe : $("#mainIframe"),
+			autoIframe : null,
+		}
+	};
+	$(function() {
+		var member = '${sessionScope.memberStr}';
+		if (member == null || member == "") {
+			alert("请先登陆！");
+			window.location.href = "login.do?method=logout";
+		}else{
+			$storage.setCurrentMember(member);
+		}
+		//菜单点鸡初始化
+		initSideBarClick();
+		//行星开发初始化
+		ajaxQueryPlanetSection();
+		//老黄历初始化
+		initOldYellowCalendar();
+	});
+</script>
 </body>
 </html>

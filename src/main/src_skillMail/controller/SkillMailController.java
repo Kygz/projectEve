@@ -120,7 +120,7 @@ public class SkillMailController {
 		if(memberPo==null){
 			return new ModelAndView("login");
 		}else{
-			return new ModelAndView("skillMail/form-skillMail_test");
+			return new ModelAndView("skillMail/form-skillMail");
 		}
 	}
 }

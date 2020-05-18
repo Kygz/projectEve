@@ -1,5 +1,5 @@
 /**
- * 行星产物页面相关js
+ * 日程相关js
  */
 function getEventData(year,month,callbackFunc){
     $.ajax({

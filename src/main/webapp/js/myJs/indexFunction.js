@@ -1,6 +1,36 @@
 /**
  * 主页相关方法归总
  */
+
+function initSideBarClick() {
+	$(".side-menu li > a").on('click',function(){
+		var obj = $(this);
+		var isIndex = obj.hasClass("sa-side-home");
+		if(isIndex){
+			showPortal(true);
+		}else{
+			var toUrl = obj.attr("_href");
+			showPortal(false,toUrl);
+		}
+	})
+}
+
+function showPortal(isShow,url){
+	if(isShow){
+		indexPageParam.mainIframeObj.iframeBlock.toggleClass("hidden",true);
+		indexPageParam.mainIframeObj.iframe.toggleClass("hidden",true);
+		indexPageParam.mainPortalObj.portalBlock.toggleClass("hidden",false);
+		indexPageParam.mainIframeObj.iframe.attr("src","");
+	}else{
+		indexPageParam.mainPortalObj.portalBlock.toggleClass("hidden",true);
+		if(url && $.trim(url) !== ""){
+			indexPageParam.mainIframeObj.iframe.attr("src",url);
+			indexPageParam.mainIframeObj.iframeBlock.toggleClass("hidden",false);
+			indexPageParam.mainIframeObj.iframe.toggleClass("hidden",false);
+		}
+	}
+}
+
 function ajaxQueryPlanetSection(){
 	if($("#planetBlock").length === 0){
 		return;
