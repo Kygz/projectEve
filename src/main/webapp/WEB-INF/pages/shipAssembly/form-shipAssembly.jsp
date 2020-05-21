@@ -1,5 +1,6 @@
 <%@taglib prefix="planet" uri="/planetTaglib" %>
 <%@taglib prefix="eve" uri="/indexTaglib" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@
 </head>
 <body style="background: none">
 <section id="content" class="container" style="margin-left: 0">
-<%--    <h4 class="page-title">舰船装配上传</h4>--%>
+    <%--    <h4 class="page-title">舰船装配上传</h4>--%>
     <!-- Custom Select -->
     <div class="block-area" id="uploadDiv">
 
@@ -37,6 +38,15 @@
                 <div class="col-md-12 m-b-15">
                     <label>标题</label>
                     <input type="text" class="input-sm form-control" id="ship_title" placeholder="">
+                </div>
+                <div class="col-md-3 m-b-15">
+                    <label>舰<span style="text-decoration: line-through">船</span>娘名称</label>
+                    <select class="select" id="ship_name">
+                        <option value="0" selected>未知</option>
+                        <c:forEach items="${shipList}" var="ship">
+                            <option value="${ship.id}">${ship.name}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="col-md-3 m-b-15">
                     <label>范围描述</label>
@@ -54,7 +64,7 @@
                         <option value="1">PVE</option>
                     </select>
                 </div>
-                <div class="col-md-6 m-b-15">
+                <div class="col-md-3 m-b-15">
                     <label>特征描述</label>
                     <select data-placeholder="Select Functions..." class="tag-select-limited" multiple id="ship_tag">
                         <option value="抓人">抓人</option>
@@ -71,16 +81,48 @@
                         <option value="其它" selected>其它</option>
                     </select>
                 </div>
+                <div class="col-md-4 hidden">
+                    <input id="c1" name="c1" type="hidden" value="">
+                    <input id="c2" name="c2" type="hidden" value="">
+                    <input id="c3" name="c3" type="hidden" value="">
+                    <input id="c4" name="c4" type="hidden" value="">
+                    <div class="tile" id="oldYellow">
+                        <h2 class="tile-title">低</h2>
+                        <div class="listview" id="c1List">
+                            <div class="media">
+                                <div class="m-0"><label class="t-overflow">无</label></div>
+                            </div>
+                        </div>
+                        <h2 class="tile-title">中</h2>
+                        <div class="listview" id="c2List">
+                            <div class="media">
+                                <div class="m-0"><label class="t-overflow">无</label></div>
+                            </div>
+                        </div>
+                        <h2 class="tile-title">高</h2>
+                        <div class="listview" id="c3List">
+                            <div class="media">
+                                <div class="m-0"><label class="t-overflow">无</label></div>
+                            </div>
+                        </div>
+                        <h2 class="tile-title">其它</h2>
+                        <div class="listview" id="c4List">
+                            <div class="media">
+                                <div class="m-0"><label class="t-overflow">无</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-4 m-b-15">
                     <label>装配图</label>
                     <div class="fileupload fileupload-new" data-provides="fileupload" id="ship_img">
                         <div class="fileupload-preview thumbnail form-control" style="width: 100%;height: 250px"></div>
                         <div>
-                                        <span class="btn btn-file btn-alt btn-sm">
-                                            <span class="fileupload-new">Select image</span>
-                                            <span class="fileupload-exists">Change</span>
-                                            <input type="file"/>
-                                        </span>
+                            <span class="btn btn-file btn-alt btn-sm">
+                                <span class="fileupload-new">Select image</span>
+                                <span class="fileupload-exists">Change</span>
+                                <input type="file"/>
+                            </span>
                             <a href="#" class="btn fileupload-exists btn-sm" data-dismiss="fileupload">Remove</a>
                         </div>
                     </div>
@@ -88,6 +130,9 @@
                 <div class="col-md-8 m-b-15">
                     <label>描述</label>
                     <div class="wysiwye-editor" id="ship_desc"></div>
+                </div>
+                <div class="col-md-12">
+                    <input class="input-sm form-control" id="importFromGame" readonly>从游戏中导入</input>
                 </div>
                 <div class="col-md-12 m-b-15">
                     <button class="btn btn-sm m-r-5" id="submitPlanet" onclick="submitShipAssembly()">配置上传</button>
@@ -155,6 +200,10 @@
         /* TEST按钮事件 */
         (function () {
             parent.setMainIframeHeight();
+            $('#importFromGame').bind('paste', function (e) {
+                var _t = e.originalEvent.clipboardData.getData('Text');
+                getFromClipBoard(_t);
+            });
         })();
     });
 </script>

@@ -78,3 +78,29 @@ var $storage = {
         return $.parseJSON(memberStr,true);
     }
 };
+
+var $fileSize = {
+    /**
+     * 取科比
+     */
+    getKb : function (strLength) {
+        return strLength/8/1024;
+    },
+    /**
+     * 取你MB
+     */
+    getMb : function (strLength) {
+        return this.getKb(strLength)/1024;
+    },
+    /**
+     * 好看的皮囊
+     */
+    getSizeFowShow : function (strLength) {
+        var mb = this.getMb(strLength);
+        if(mb > 0.1){
+            return mb + "Mb";
+        }else{
+            return this.getKb() + "Kb";
+        }
+    }
+};

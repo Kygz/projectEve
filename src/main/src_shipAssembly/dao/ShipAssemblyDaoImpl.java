@@ -90,4 +90,20 @@ public class ShipAssemblyDaoImpl implements ShipAssemblyDao {
         ShipAssemblyPo o = (ShipAssemblyPo)query.uniqueResult();
         return o;
     }
+
+    public List<Object[]> queryAllShipEquipment() {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category2 = '舰船装备' or jita.item_category2 = '舰船和装备改装件') ";
+        Query query = session.createQuery(hql);
+        List<Object[]> result = (List<Object[]>)query.list();
+        return result;
+    }
+
+    public List<Object[]> queryShipList() {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category2 = '舰船') ";
+        Query query = session.createQuery(hql);
+        List<Object[]> result = (List<Object[]>)query.list();
+        return result;
+    }
 }

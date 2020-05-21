@@ -34,6 +34,13 @@ function submitShipAssembly() {
             });
             return false;
         }
+        if($fileSize.getMb(content.length + img.length) > 1){
+            $message.alert({
+                title: "ERROR",
+                msg: "<p>图文大小请小于1Mb,当前预估大小"+ $fileSize.getSizeFowShow(content.length + img.length) +"</p>"
+            });
+            return false;
+        }
 
         if(ship_tag === null){
             $message.alert({
@@ -78,6 +85,82 @@ function submitShipAssembly() {
             }
         });
 }
+
+/**
+ * 从剪贴板中获取装配
+ */
+function getFromClipBoard(text) {
+    var text = text.trim();
+    if(text != ""){
+        console.log("按行来一通");
+        var shipName = "";
+        var assemblyName = "";
+        var step = 0;
+        var c1 = [];
+        var c2 = [];
+        var c3 = [];
+        var c4 = [];
+        var nrNum = 0;
+        var isSuccess = true;
+        text.split('\n').forEach(function(v, i) {
+            console.log(v);
+            v = v.replace(/\n|\r/g,"");
+            if(i === 0 && v.startsWith("[") && v.endsWith("]")){
+                var nameRow = v.replace(/[\[\]]/g,"");
+                var _nameRow = nameRow.split(",");
+                if(_nameRow.length === 2 && _nameRow[0].trim() !== ""){
+                    var $select = $("select#ship_name option");
+                    shipName = _nameRow[0];
+                    assemblyName = _nameRow[1];
+                    for(var j = 0; j < $select.length; j++){
+                        var nowOpt = $($select[j]);
+                        if(nowOpt.text() === _nameRow[0].trim()){
+                            $('#ship_name').selectpicker('val', nowOpt.val());
+                            if(_nameRow[1].trim() !== ""){
+                                $("#ship_title").val(_nameRow[1].trim());
+                            }
+                            break
+                        }
+                    }
+                }
+                step = 1;
+            }else{
+                if(i > 0 && step === 0 || step > 4 || nrNum > 3){
+                    isSuccess = false;
+                    return;
+                }
+                if(i === 1){//标题下一个空行，啥都不干
+
+                }else if(v === ""){//空行，开始计数
+                    nrNum++;
+                    if(nrNum === 3){
+                        step ++;
+                    }
+                }else{
+                    nrNum = 0;
+                    switch (step) {
+                        case 1: c1.push(v);break;
+                        case 2: c2.push(v);break;
+                        case 3: c3.push(v);break;
+                        case 4: c4.push(v);break;
+                    }
+                }
+            }
+            if(isSuccess){
+
+                if(c1.length > 0){
+
+                }
+            }
+
+
+
+            console.log(v);
+        });
+        console.log(text);
+    }
+}
+
 
 
 /*
@@ -170,4 +253,4 @@ var $listPageFun = {
         });
     }
 
-}
+};

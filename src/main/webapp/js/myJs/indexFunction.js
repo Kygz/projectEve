@@ -107,7 +107,11 @@ function setMainIframeHeight() {
 	var hasContent = indexPageParam.mainIframeObj.iframe && indexPageParam.mainIframeObj.iframe[0].contentWindow.getContentHeight;
 	if(isShow && hasContent && !indexPageParam.mainIframeObj.autoIframe){
 		indexPageParam.mainIframeObj.autoIframe = setInterval(function () {
-			indexPageParam.mainIframeObj.iframe.height(indexPageParam.mainIframeObj.iframe[0].contentWindow.getContentHeight());
+			if(indexPageParam.mainIframeObj.iframe[0].contentWindow.getContentHeight){
+				indexPageParam.mainIframeObj.iframe.height(indexPageParam.mainIframeObj.iframe[0].contentWindow.getContentHeight());
+			}else{
+				setMainIframeHeight();
+			}
 		});
 	}else if(indexPageParam.mainIframeObj.autoIframe && (!isShow || !hasContent)){
 		clearInterval(indexPageParam.mainIframeObj.autoIframe);

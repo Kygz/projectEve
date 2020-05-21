@@ -14,10 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import po.MemberPo;
 import po.RolePo;
 import po.ShipAssemblyPo;
+import util.ShipAssemblyUtil;
 import util.SysUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -33,16 +35,36 @@ public class shipAssemblyController {
     @Autowired
     private ShipAssemblyManager shipAssemblyManager;
 
+    /**
+     * 上传
+     * @param httpSession
+     * @return
+     */
     @RequestMapping(params = "method=index", method= RequestMethod.GET)
     public ModelAndView shipAssemblyIndex(HttpSession httpSession){
         MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
         if(memberPo==null){
             return new ModelAndView("login");
         }else{
-            return new ModelAndView("shipAssembly/form-shipAssembly");
+            Map<String, Long> shipMap = shipAssemblyManager.getShipMap();
+            List<Map<String,String>> shipSelect = new ArrayList<>();
+            shipMap.keySet().forEach(ship -> {
+                Map<String,String> shipInfo = new HashMap<>();
+                shipInfo.put("id",shipMap.get(ship).toString());
+                shipInfo.put("name",ship);
+                shipSelect.add(shipInfo);
+            });
+            ModelAndView modelAndView = new ModelAndView("shipAssembly/form-shipAssembly");
+            modelAndView.addObject("shipList",shipSelect);
+            return modelAndView;
         }
     }
 
+    /**
+     * 列表
+     * @param httpSession
+     * @return
+     */
     @RequestMapping(params = "method=list", method= RequestMethod.GET)
     public ModelAndView shipAssemblyListIndex(HttpSession httpSession){
         MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
@@ -68,9 +90,16 @@ public class shipAssemblyController {
                 String title = request.getParameter("title");
                 String img = request.getParameter("img");
                 String content = request.getParameter("content");
+                String shipInfo = request.getParameter("shipInfo");
+                String c1 = request.getParameter("c1");
+                String c2 = request.getParameter("c2");
+                String c3 = request.getParameter("c3");
+                String c4 = request.getParameter("c4");
                 String ship_scope = request.getParameter("ship_scope");
                 String ship_type = request.getParameter("ship_type");
                 String ship_tag = request.getParameter("ship_tag");
+
+                shipAssemblyManager.getItemsFromText("","","","","");
 
                 ShipAssemblyPo po = new ShipAssemblyPo();
                 po.setIdIfNew();
