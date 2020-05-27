@@ -46,12 +46,12 @@ public class shipAssemblyController {
         if(memberPo==null){
             return new ModelAndView("login");
         }else{
-            Map<String, Long> shipMap = shipAssemblyManager.getShipMap();
+            Map<Long, String> shipMap = shipAssemblyManager.getShipMap();
             List<Map<String,String>> shipSelect = new ArrayList<>();
             shipMap.keySet().forEach(ship -> {
                 Map<String,String> shipInfo = new HashMap<>();
-                shipInfo.put("id",shipMap.get(ship).toString());
-                shipInfo.put("name",ship);
+                shipInfo.put("id",ship.toString());
+                shipInfo.put("name",shipMap.get(ship));
                 shipSelect.add(shipInfo);
             });
             ModelAndView modelAndView = new ModelAndView("shipAssembly/form-shipAssembly");
@@ -92,14 +92,14 @@ public class shipAssemblyController {
                 String content = request.getParameter("content");
                 String shipInfo = request.getParameter("shipInfo");
                 String c1 = request.getParameter("c1");
-                String c2 = request.getParameter("c2");
-                String c3 = request.getParameter("c3");
-                String c4 = request.getParameter("c4");
+//                String c2 = request.getParameter("c2");
+//                String c3 = request.getParameter("c3");
+//                String c4 = request.getParameter("c4");
                 String ship_scope = request.getParameter("ship_scope");
                 String ship_type = request.getParameter("ship_type");
                 String ship_tag = request.getParameter("ship_tag");
 
-                shipAssemblyManager.getItemsFromText("","","","","");
+                Map<String, List<String[]>> itemsFromText = shipAssemblyManager.getItemsFromText(shipInfo, c1);
 
                 ShipAssemblyPo po = new ShipAssemblyPo();
                 po.setIdIfNew();
@@ -112,7 +112,7 @@ public class shipAssemblyController {
                 po.setShipAssembly_scope(Integer.parseInt(ship_scope));
                 po.setShipAssembly_ship_type(Integer.parseInt(ship_type));
                 po.setShipAssembly_tag(ship_tag);
-
+                po.setShipAssembly_equipment(SysUtil.createGson().toJson(itemsFromText));
                 shipAssemblyManager.insertShipAssemblyPo(po);
 
                 resultMap.put("result","true");

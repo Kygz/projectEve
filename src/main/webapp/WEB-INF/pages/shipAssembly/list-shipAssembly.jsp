@@ -28,18 +28,6 @@
 </head>
 <body style="background: none">
 <section id="content" class="container" style="margin-left: 0">
-    <!-- Messages Drawer -->
-    <eve:messagesDrawer/>
-    <!-- Notification Drawer -->
-    <eve:notificationDrawer/>
-
-    <!-- Breadcrumb -->
-    <ol class="breadcrumb hidden-xs">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
-    </ol>
-
     <h4 class="page-title">装配大厅</h4>
     <div class="block-area">
         <div class="col-md-4">

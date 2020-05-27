@@ -21,11 +21,12 @@ function submitShipAssembly() {
             return false;
         }
         if(typeof img === "undefined"){
-            $message.alert({
-                title: "ERROR",
-                msg: "<p>无图言X,请上传配置图片！</p>"
-            });
-            return false;
+            // $message.alert({
+            //     title: "ERROR",
+            //     msg: "<p>无图言X,请上传配置图片！</p>"
+            // });
+            // return false;
+            img = "";
         }
         if(content===""){
             $message.alert({
@@ -90,21 +91,17 @@ function submitShipAssembly() {
  * 从剪贴板中获取装配
  */
 function getFromClipBoard(text) {
-    var text = text.trim();
-    if(text != ""){
+    text = text.trim();
+    if(text !== ""){
         console.log("按行来一通");
         var shipName = "";
         var assemblyName = "";
         var step = 0;
         var c1 = [];
-        var c2 = [];
-        var c3 = [];
-        var c4 = [];
-        var nrNum = 0;
         var isSuccess = true;
         text.split('\n').forEach(function(v, i) {
             console.log(v);
-            v = v.replace(/\n|\r/g,"");
+            v = v.replace(/[\n\r]/g,"");
             if(i === 0 && v.startsWith("[") && v.endsWith("]")){
                 var nameRow = v.replace(/[\[\]]/g,"");
                 var _nameRow = nameRow.split(",");
@@ -125,39 +122,32 @@ function getFromClipBoard(text) {
                 }
                 step = 1;
             }else{
-                if(i > 0 && step === 0 || step > 4 || nrNum > 3){
+                if(i > 0 && step === 0){
                     isSuccess = false;
                     return;
                 }
-                if(i === 1){//标题下一个空行，啥都不干
-
-                }else if(v === ""){//空行，开始计数
-                    nrNum++;
-                    if(nrNum === 3){
-                        step ++;
-                    }
-                }else{
-                    nrNum = 0;
-                    switch (step) {
-                        case 1: c1.push(v);break;
-                        case 2: c2.push(v);break;
-                        case 3: c3.push(v);break;
-                        case 4: c4.push(v);break;
-                    }
+                if(step === 1 && v !== ""){//标题下一个空行，啥都不干
+                    c1.push(v);
                 }
             }
             if(isSuccess){
-
+                var rowTPL = $("<div class=\"m-0\"><label class=\"t-overflow\"></label></div>");
+                var itemList = $("#c1List > .media");
+                var itemInput = $("#c1");
+                var itemValue = "";
                 if(c1.length > 0){
-
+                    itemList.find(".m-0").remove();
+                    itemInput.val("");
+                    c1.forEach(function(text, i) {
+                        itemValue += text + ",";
+                        var _row = rowTPL.clone();
+                        _row.find("label").text(text);
+                        itemList.append(_row);
+                    });
+                    itemInput.val(itemValue);
                 }
             }
-
-
-
-            console.log(v);
         });
-        console.log(text);
     }
 }
 
@@ -245,6 +235,8 @@ var $listPageFun = {
             success: function (data) {
                 if(data.img !== ""|| typeof data.img !== "undefined"){
                     $("#show_img > img").attr("src",data.img);
+                }else{
+
                 }
             },
             error : function (data) {

@@ -11,5 +11,12 @@ public interface ShipAssemblyDao {
     List<ShipAssemblyPo> queryShipAssemblyPo(Map<String,Object> queryParams);
     ShipAssemblyPo queryShipAssemblyPoById(Long id);
     List<Object[]> queryAllShipEquipment();
+
+    List<Object[]> queryAllShipMod();
+
+    List<Object[]> queryAllShipSubsystem();
+
+    List<Object[]> queryAllShipAmmunitionAndScript();
+
     List<Object[]> queryShipList();
 }

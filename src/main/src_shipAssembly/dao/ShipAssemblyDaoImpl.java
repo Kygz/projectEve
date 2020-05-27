@@ -91,17 +91,69 @@ public class ShipAssemblyDaoImpl implements ShipAssemblyDao {
         return o;
     }
 
+    /**
+     * 取舰船装备
+     * select * from jita_items ji where category_1 = '舰船装备';
+     * @return
+     */
     public List<Object[]> queryAllShipEquipment() {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category2 = '舰船装备' or jita.item_category2 = '舰船和装备改装件') ";
+        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category1 = '舰船装备') ";
         Query query = session.createQuery(hql);
         List<Object[]> result = (List<Object[]>)query.list();
         return result;
     }
 
+    /**
+     * 取改装件
+     * select * from jita_items ji where category_1 = '舰船和装备改装件' AND category_2 like '改装件';
+     * @return
+     */
+    @Override
+    public List<Object[]> queryAllShipMod() {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category1 = '舰船和装备改装件' and jita.item_category2 = '改装件') ";
+        Query query = session.createQuery(hql);
+        List<Object[]> result = (List<Object[]>)query.list();
+        return result;
+    }
+
+    /**
+     * 取子系统
+     * select * from jita_items ji where category_1 = '舰船和装备改装件' AND category_2 like '子系统';
+     * @return
+     */
+    @Override
+    public List<Object[]> queryAllShipSubsystem() {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category1 = '舰船和装备改装件' and jita.item_category2 = '子系统') ";
+        Query query = session.createQuery(hql);
+        List<Object[]> result = (List<Object[]>)query.list();
+        return result;
+    }
+
+    /**
+     * 取弹药脚本
+     * select * from jita_items ji where category_1 = '军火和弹药';
+     * @return
+     */
+    @Override
+    public List<Object[]> queryAllShipAmmunitionAndScript() {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category1 = '军火和弹药') ";
+        Query query = session.createQuery(hql);
+        List<Object[]> result = (List<Object[]>)query.list();
+        return result;
+    }
+
+    /**
+     * 取舰船
+     * @return
+     */
+    @Override
     public List<Object[]> queryShipList() {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category2 = '舰船') ";
+        String hql = "select jita.item_id, jita.item_name FROM ItemPo as jita where 1=1 and (jita.item_category1 = '舰船') ";
         Query query = session.createQuery(hql);
         List<Object[]> result = (List<Object[]>)query.list();
         return result;
