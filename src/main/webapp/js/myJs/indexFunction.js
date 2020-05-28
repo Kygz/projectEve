@@ -115,6 +115,7 @@ function setMainIframeHeight() {
 		});
 	}else if(indexPageParam.mainIframeObj.autoIframe && (!isShow || !hasContent)){
 		clearInterval(indexPageParam.mainIframeObj.autoIframe);
+		indexPageParam.mainIframeObj.autoIframe = null;
 		indexPageParam.mainIframeObj.iframe.height(0);
 	}
 }

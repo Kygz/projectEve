@@ -81,11 +81,12 @@
                         <option value="其它" selected>其它</option>
                     </select>
                 </div>
-                <div class="col-md-4 hidden">
+                <div class="col-md-12 m-b-15">
                     <input id="c1" name="c1" type="hidden" value="">
-<%--                    <input id="c2" name="c2" type="hidden" value="">--%>
-<%--                    <input id="c3" name="c3" type="hidden" value="">--%>
-<%--                    <input id="c4" name="c4" type="hidden" value="">--%>
+                </div>
+                <div class="col-md-4 m-b-15" id="itemBlock">
+                    <label>从游戏中导入配置</label>
+                    <input class="input-sm form-control m-t-5 m-b-5" id="importFromGame" readonly placeholder="由游戏中Alt+f->复制到剪贴板 在此处ctrl+v"/>
                     <div class="tile" id="itemList">
                         <h2 class="tile-title">列表</h2>
                         <div class="listview" id="c1List">
@@ -93,29 +94,9 @@
                                 <div class="m-0"><label class="t-overflow">无</label></div>
                             </div>
                         </div>
-<%--                        <h2 class="tile-title">中</h2>--%>
-<%--                        <div class="listview" id="c2List">--%>
-<%--                            <div class="media">--%>
-<%--                                <div class="m-0"><label class="t-overflow">无</label></div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <h2 class="tile-title">高</h2>--%>
-<%--                        <div class="listview" id="c3List">--%>
-<%--                            <div class="media">--%>
-<%--                                <div class="m-0"><label class="t-overflow">无</label></div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <h2 class="tile-title">其它</h2>--%>
-<%--                        <div class="listview" id="c4List">--%>
-<%--                            <div class="media">--%>
-<%--                                <div class="m-0"><label class="t-overflow">无</label></div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
                     </div>
-                </div>
-                <div class="col-md-4 m-b-15">
-                    <label>装配图</label>
-                    <div class="fileupload fileupload-new" data-provides="fileupload" id="ship_img">
+                    <label class="hidden">装配图</label>
+                    <div class="fileupload fileupload-new hidden" data-provides="fileupload" id="ship_img">
                         <div class="fileupload-preview thumbnail form-control" style="width: 100%;height: 250px"></div>
                         <div>
                             <span class="btn btn-file btn-alt btn-sm">
@@ -131,10 +112,8 @@
                     <label>描述</label>
                     <div class="wysiwye-editor" id="ship_desc"></div>
                 </div>
-                <div class="col-md-12">
-                    <input class="input-sm form-control" id="importFromGame" readonly>从游戏中导入</input>
-                </div>
-                <div class="col-md-12 m-b-15">
+                <hr class="whiter">
+                <div class="col-md-12 m-t-15 m-b-15">
                     <button class="btn btn-sm m-r-5" id="submitPlanet" onclick="submitShipAssembly()">配置上传</button>
                 </div>
             </form>
@@ -204,6 +183,9 @@
                 var _t = e.originalEvent.clipboardData.getData('Text');
                 getFromClipBoard(_t);
             });
+            // setTimeout(function () {
+            //     $('.note-editable').animate({height:"333px"});
+            // },500);
         })();
     });
 </script>

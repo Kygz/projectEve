@@ -38,7 +38,7 @@ function submitShipAssembly() {
         if($fileSize.getMb(content.length + img.length) > 1){
             $message.alert({
                 title: "ERROR",
-                msg: "<p>图文大小请小于1Mb,当前预估大小"+ $fileSize.getSizeFowShow(content.length + img.length) +"</p>"
+                msg: "<p>图文大小请小于200Kb,当前预估大小"+ $fileSize.getSizeFowShow(content.length + img.length) +"</p>"
             });
             return false;
         }
@@ -51,7 +51,7 @@ function submitShipAssembly() {
             return false;
         }else{
             for(var i = 0;i<ship_tag.length;i++){
-                var tempTag = ship_tag[0];
+                var tempTag = ship_tag[i];
                 ship_tag_str += tempTag;
                 if(i<(ship_tag.length-1)){
                     ship_tag_str += "|";
@@ -130,24 +130,25 @@ function getFromClipBoard(text) {
                     c1.push(v);
                 }
             }
-            if(isSuccess){
-                var rowTPL = $("<div class=\"m-0\"><label class=\"t-overflow\"></label></div>");
-                var itemList = $("#c1List > .media");
-                var itemInput = $("#c1");
-                var itemValue = "";
-                if(c1.length > 0){
-                    itemList.find(".m-0").remove();
-                    itemInput.val("");
-                    c1.forEach(function(text, i) {
-                        itemValue += text + ",";
-                        var _row = rowTPL.clone();
-                        _row.find("label").text(text);
-                        itemList.append(_row);
-                    });
-                    itemInput.val(itemValue);
-                }
-            }
         });
+        if(isSuccess){
+            console.log("载入成功");
+            var rowTPL = $("<div class=\"m-0\"><label class=\"t-overflow\"></label></div>");
+            var itemList = $("#c1List > .media");
+            var itemInput = $("#c1");
+            var itemValue = "";
+            if(c1.length > 0){
+                itemList.find(".m-0").remove();
+                itemInput.val("");
+                c1.forEach(function(text, i) {
+                    itemValue += text + ",";
+                    var _row = rowTPL.clone();
+                    _row.find("label").text(text);
+                    itemList.append(_row);
+                });
+                itemInput.val(itemValue);
+            }
+        }
     }
 }
 
@@ -216,9 +217,11 @@ var $listPageFun = {
                         $("#show_type").val(tempObj.shipAssembly_use_type);
                         $("#show_tag").val(tempObj.shipAssembly_tag.split("|")).trigger("liszt:updated");
                         $("#show_content").html(tempObj.shipAssembly_content);
+                        $("#listBlock").toggleClass("col-md-4",true).toggleClass("col-md-12",false);
+                        $("#detailBlock").toggleClass("hidden",false);
                     }
                 }
-                $listPageFun.getPic(tempObj.shipAssembly_id);
+                // $listPageFun.getPic(tempObj.shipAssembly_id);
                 return false;
             });
         return temp;

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import po.ShipAssemblyPo;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +79,10 @@ public class ShipAssemblyDaoImpl implements ShipAssemblyDao {
         }else{
             query.setFirstResult(0);
         }
+        long time = new Date().getTime();
         List<ShipAssemblyPo> list = query.list();
+        long time1 = new Date().getTime();
+        System.out.println(time1 - time);
         return list;
     }
 

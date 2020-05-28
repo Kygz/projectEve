@@ -30,7 +30,7 @@
 <section id="content" class="container" style="margin-left: 0">
     <h4 class="page-title">装配大厅</h4>
     <div class="block-area">
-        <div class="col-md-4">
+        <div class="col-md-12" id="listBlock">
             <div class="tile">
                 <h2 class="tile-title">Upload List</h2>
                 <div class="tile-config dropdown">
@@ -48,54 +48,70 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 hidden" id="detailBlock">
             <h3 class="block-title">配置详情</h3>
             <div class="tile p-15">
                 <form role="form">
-                    <div class="form-group">
-                        <label for="show_title">标题</label>
-                        <input class="form-control input-sm" id="show_title" disabled>
+                    <label for="show_title">标题</label>
+                    <input class="form-control input-sm" id="show_title" disabled>
+                    <label for="show_scope">范围描述</label>
+                    <select class="select" id="show_scope" disabled>
+                        <option value="0">联盟制式</option>
+                        <option value="1">军团制式</option>
+                        <option value="2">小队制式</option>
+                        <option value="3">个人秀</option>
+                    </select>
+                    <label for="show_scope">性质描述</label>
+                    <select class="select " id="show_type" disabled>
+                        <option value="0">PVP</option>
+                        <option value="1">PVE</option>
+                    </select>
+                    <label for="show_scope">特征描述</label>
+                    <select data-placeholder="Select Functions..." class="tag-select-limited" multiple id="show_tag"
+                            disabled>
+                        <option value="抓人">抓人</option>
+                        <option value="做点">做点</option>
+                        <option value="特种">特种</option>
+                        <option value="侦查">侦查</option>
+                        <option value="火力">火力</option>
+                        <option value="电子">电子</option>
+                        <option value="奶妈">奶妈</option>
+                        <option value="刷怪">刷怪</option>
+                        <option value="任务">任务</option>
+                        <option value="土壕">土壕</option>
+                        <option value="新人友好">新人友好</option>
+                        <option value="其它">其它</option>
+                    </select>
+<%--                    <label>图</label>--%>
+<%--                    <div id="show_img" class="p-l-10">--%>
+<%--                        <img src="" alt="" width="100%">--%>
+<%--                    </div>--%>
+                    <ul class="nav tab nav-tabs">
+                        <li class="active"><a href="#show_content">不可描述的描述</a></li>
+                        <li class=""><a href="#items">配装</a></li>
+                    </ul>
+                    <div class="tab-content" style="background: rgba(0,0,0,0.05);">
+                        <div class="tab-pane active" id="show_content">
+                        </div>
+                        <div class="tab-pane" id="items">
+                            <div class="table-responsive overflow" tabindex="5001" style="overflow: hidden; outline: none;">
+                                <table class="table tile">
+                                    <thead>
+                                    <tr>
+                                        <th>装备名称</th>
+                                        <th>吉他估价</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="itemBody">
+                                    <tr>
+                                        <td>无</td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="show_scope">范围描述</label>
-                        <select class="select" id="show_scope" disabled>
-                            <option value="0">联盟制式</option>
-                            <option value="1">军团制式</option>
-                            <option value="2">小队制式</option>
-                            <option value="3">个人秀</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="show_scope">性质描述</label>
-                        <select class="select " id="show_type" disabled>
-                            <option value="0">PVP</option>
-                            <option value="1">PVE</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="show_scope">特征描述</label>
-                        <select data-placeholder="Select Functions..." class="tag-select-limited" multiple id="show_tag"
-                                disabled>
-                            <option value="抓人">抓人</option>
-                            <option value="做点">做点</option>
-                            <option value="特种">特种</option>
-                            <option value="侦查">侦查</option>
-                            <option value="火力">火力</option>
-                            <option value="电子">电子</option>
-                            <option value="奶妈">奶妈</option>
-                            <option value="刷怪">刷怪</option>
-                            <option value="任务">任务</option>
-                            <option value="土壕">土壕</option>
-                            <option value="新人友好">新人友好</option>
-                            <option value="其它">其它</option>
-                        </select>
-                    </div>
-                    <label>图</label>
-                    <div id="show_img" class="p-l-10">
-                        <img src="" alt="" width="100%">
-                    </div>
-                    <label>不可描述的描述</label>
-                    <div id="show_content"></div>
                 </form>
             </div>
         </div>

@@ -70,6 +70,7 @@ public class ShipAssemblyManagerImpl implements ShipAssemblyManager{
                 shipEquipmentMap.put((Long)item[0],(String)item[1]);
             }
         }
+
         List<Object[]> shipMods = shipAssemblyDao.queryAllShipMod();
         shipModMap = new HashMap<>();
         if(shipMods !=null && shipMods.size() >0){
@@ -77,6 +78,7 @@ public class ShipAssemblyManagerImpl implements ShipAssemblyManager{
                 shipModMap.put((Long)mod[0],(String)mod[1]);
             }
         }
+
         List<Object[]> subsystems = shipAssemblyDao.queryAllShipSubsystem();
         shipSubSystemMap = new HashMap<>();
         if(subsystems !=null && subsystems.size() >0){
@@ -84,11 +86,20 @@ public class ShipAssemblyManagerImpl implements ShipAssemblyManager{
                 shipSubSystemMap.put((Long)subsystem[0],(String)subsystem[1]);
             }
         }
+
         List<Object[]> ammunitionAndScripts = shipAssemblyDao.queryAllShipAmmunitionAndScript();
         shipAmmunitionAndScriptMap = new HashMap<>();
         if(ammunitionAndScripts !=null && ammunitionAndScripts.size() >0){
             for (Object[] ammunitionAndScript : ammunitionAndScripts) {
                 shipAmmunitionAndScriptMap.put((Long)ammunitionAndScript[0],(String)ammunitionAndScript[1]);
+            }
+        }
+
+        List<Object[]> ships = shipAssemblyDao.queryShipList();
+        shipMap = new HashMap<>();
+        if(ships !=null && ships.size() >0){
+            for (Object[] ship : ships) {
+                shipMap.put((Long)ship[0],(String)ship[1]);
             }
         }
     }
