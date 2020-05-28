@@ -16,6 +16,7 @@ public class ShipAssemblyPo {
     private int shipAssembly_scope;
     private int shipAssembly_use_type;
     private int shipAssembly_ship_type;
+    private int shipAssembly_ship_id;
     private String shipAssembly_equipment;
 
     public long getShipAssembly_id() {
@@ -115,5 +116,13 @@ public class ShipAssemblyPo {
 
     public void setShipAssembly_equipment(String shipAssembly_equipment) {
         this.shipAssembly_equipment = shipAssembly_equipment;
+    }
+
+    public int getShipAssembly_ship_id() {
+        return shipAssembly_ship_id;
+    }
+
+    public void setShipAssembly_ship_id(int shipAssembly_ship_id) {
+        this.shipAssembly_ship_id = shipAssembly_ship_id;
     }
 }

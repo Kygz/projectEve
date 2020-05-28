@@ -40,7 +40,7 @@
                     <input type="text" class="input-sm form-control" id="ship_title" placeholder="">
                 </div>
                 <div class="col-md-3 m-b-15">
-                    <label>舰<span style="text-decoration: line-through">船</span>娘名称</label>
+                    <label><span style="text-decoration: line-through">舰船名称</span>&nbsp;舰娘名称</label>
                     <select class="select" id="ship_name">
                         <option value="0" selected>未知</option>
                         <c:forEach items="${shipList}" var="ship">
@@ -81,12 +81,10 @@
                         <option value="其它" selected>其它</option>
                     </select>
                 </div>
-                <div class="col-md-12 m-b-15">
-                    <input id="c1" name="c1" type="hidden" value="">
-                </div>
                 <div class="col-md-4 m-b-15" id="itemBlock">
                     <label>从游戏中导入配置</label>
                     <input class="input-sm form-control m-t-5 m-b-5" id="importFromGame" readonly placeholder="由游戏中Alt+f->复制到剪贴板 在此处ctrl+v"/>
+                    <input id="c1" name="c1" type="hidden" value="">
                     <div class="tile" id="itemList">
                         <h2 class="tile-title">列表</h2>
                         <div class="listview" id="c1List">

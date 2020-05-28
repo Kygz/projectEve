@@ -18,6 +18,7 @@
         <property name="shipAssembly_scope" type="int" column="shipAssembly_scope" length="2" />
         <property name="shipAssembly_use_type" type="int" column="shipAssembly_use_type" length="2" />
         <property name="shipAssembly_ship_type" type="int" column="shipAssembly_ship_type" length="10" />
+        <property name="shipAssembly_ship_id" type="int" column="shipassembly_ship_id" length="10" />
         <property name="shipAssembly_equipment" type="string" column="shipAssembly_equipment" length="500" />
     </class>
 </hibernate-mapping>

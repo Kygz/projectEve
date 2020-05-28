@@ -3,6 +3,7 @@
  */
 /**
  * 提交
+ *
  */
 function submitShipAssembly() {
         var title = $.trim($("#ship_title").val());
@@ -11,6 +12,8 @@ function submitShipAssembly() {
         var ship_scope = $("#ship_scope").val();
         var ship_type = $("#ship_type").val();
         var ship_tag = $("#ship_tag").val();
+        var ship_id = $("#ship_id").val();
+        var items = $("#c1").val();
         var ship_tag_str = "";
 
         if( title === ""){
@@ -70,7 +73,9 @@ function submitShipAssembly() {
                 content : content,
                 ship_scope : ship_scope,
                 ship_type : ship_type,
-                ship_tag : ship_tag_str
+                ship_tag : ship_tag_str,
+                ship_name : ship_id,
+                items : items
             },
             success: function (data) {
                 $message.alert({
@@ -219,6 +224,88 @@ var $listPageFun = {
                         $("#show_content").html(tempObj.shipAssembly_content);
                         $("#listBlock").toggleClass("col-md-4",true).toggleClass("col-md-12",false);
                         $("#detailBlock").toggleClass("hidden",false);
+                        var $select = $("select#ship_name option");
+                        var shipId = tempObj.shipAssembly_ship_id + "";
+                        for(var j = 0; j < $select.length; j++){
+                            var nowOpt = $($select[j]);
+                            if(nowOpt.attr("value") === (shipId)){
+                                $('#ship_name').selectpicker('val', nowOpt.val());
+                                break
+                            }
+                        }
+                        $("#ship_name").val(tempObj.shipAssembly_ship_id);
+                        var items = JSON.parse(tempObj.shipAssembly_equipment);
+                        var allItemIds = "";
+                        var c1List = items.c1;
+                        var c2List = items.c2;
+                        var c3List = items.c3;
+                        var c4List = items.c4;
+                        var c1Clear = true;
+                        var c2Clear = true;
+                        var c3Clear = true;
+                        var c4Clear = true;
+
+                        var $1 = $("<div class=\"media\">\n" +
+                            "<div class=\"m-0\"><label class=\"t-overflow\">无</label></div>\n" +
+                            "</div>");
+                        //c1
+                        var $equipmentBlock = $("#equipmentBlock");
+                        $equipmentBlock.html($1.clone());
+                        for (var c1ListKey in c1List) {
+                            var item = c1List[c1ListKey];
+                            if(c1Clear){
+                                c1Clear = false;
+                                $equipmentBlock.html("");
+                            }
+                            allItemIds += item[0] + ",";
+                            var _row = $1.clone();
+                            _row.find("label").text(item[1]);
+                            _row.appendTo($equipmentBlock);
+                        }
+                        //c2
+                        var $modBlock = $("#modBlock");
+                        $modBlock.html($1.clone());
+                        for (var c2ListKey in c2List) {
+                            var item = c2List[c2ListKey];
+                            if(c2Clear){
+                                c2Clear = false;
+                                $modBlock.html("");
+                            }
+                            allItemIds += item[0] + ",";
+                            var _row = $1.clone();
+                            _row.find("label").text(item[1]);
+                            _row.appendTo($modBlock);
+                        }
+                        //c3
+                        var $subSystemBlock = $("#subSystemBlock");
+                        $subSystemBlock.html($1.clone());
+                        for (var c3ListKey in c3List) {
+                            var item = c3List[c3ListKey];
+                            if(c3Clear){
+                                c3Clear = false;
+                                $subSystemBlock.html("");
+                            }
+                            allItemIds += item[0] + ",";
+                            var _row = $1.clone();
+                            _row.find("label").text(item[1]);
+                            _row.appendTo($subSystemBlock);
+                        }
+                        //c4
+                        var $ammunitionAndScriptBlock = $("#ammunitionAndScriptBlock");
+                        $ammunitionAndScriptBlock.html($1.clone());
+                        for (var c4ListKey in c4List) {
+                            var item = c4List[c4ListKey];
+                            if(c4Clear){
+                                c4Clear = false;
+                                $ammunitionAndScriptBlock.html("");
+                            }
+                            allItemIds += item[0] + ",";
+                            var _row = $1.clone();
+                            _row.find("label").text(item[1]);
+                            _row.appendTo($ammunitionAndScriptBlock);
+                        }
+
+                        $("#allItemIds").val(allItemIds);
                     }
                 }
                 // $listPageFun.getPic(tempObj.shipAssembly_id);
@@ -246,6 +333,9 @@ var $listPageFun = {
 
             }
         });
+    },
+    searchFun : function () {
+        var ids = $("#allItemIds").val();
+        console.log(ids);
     }
-
 };

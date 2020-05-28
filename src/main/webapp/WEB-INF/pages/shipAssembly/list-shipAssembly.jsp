@@ -1,5 +1,6 @@
 <%@taglib prefix="planet" uri="/planetTaglib" %>
 <%@taglib prefix="eve" uri="/indexTaglib" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@
 <section id="content" class="container" style="margin-left: 0">
     <h4 class="page-title">装配大厅</h4>
     <div class="block-area">
-        <div class="col-md-12" id="listBlock">
+        <div class="col-md-12 m-t-10" id="listBlock">
             <div class="tile">
                 <h2 class="tile-title">Upload List</h2>
                 <div class="tile-config dropdown">
@@ -82,33 +83,58 @@
                         <option value="新人友好">新人友好</option>
                         <option value="其它">其它</option>
                     </select>
+                    <label><span style="text-decoration: line-through">舰船名称</span>&nbsp;舰娘名称</label>
+                    <select class="select" id="ship_name">
+                        <option value="0" selected>未知</option>
+                        <c:forEach items="${shipList}" var="ship">
+                            <option value="${ship.id}">${ship.name}</option>
+                        </c:forEach>
+                    </select>
 <%--                    <label>图</label>--%>
 <%--                    <div id="show_img" class="p-l-10">--%>
 <%--                        <img src="" alt="" width="100%">--%>
 <%--                    </div>--%>
-                    <ul class="nav tab nav-tabs">
+                    <ul class="nav tab nav-tabs m-t-15">
                         <li class="active"><a href="#show_content">不可描述的描述</a></li>
                         <li class=""><a href="#items">配装</a></li>
                     </ul>
-                    <div class="tab-content" style="background: rgba(0,0,0,0.05);">
+                    <div class="tab-content" style="background: rgba(0,0,0,0.15);">
                         <div class="tab-pane active" id="show_content">
+                            无
                         </div>
                         <div class="tab-pane" id="items">
-                            <div class="table-responsive overflow" tabindex="5001" style="overflow: hidden; outline: none;">
-                                <table class="table tile">
-                                    <thead>
-                                    <tr>
-                                        <th>装备名称</th>
-                                        <th>吉他估价</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="itemBody">
-                                    <tr>
-                                        <td>无</td>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="tile">
+                                <h2 class="tile-title">装备</h2>
+                                <div class="tile-config dropdown">
+                                    <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                                    <ul class="dropdown-menu pull-right text-right">
+                                        <li id="searchPrice" onclick="searchFun()"><a href="javascript:void(0);">询价</a></li>
+                                    </ul>
+                                    <input id="allItemIds" type="hidden">
+                                </div>
+                                <div class="listview" id="equipmentBlock">
+                                    <div class="media">
+                                        <div class="m-0"><label class="t-overflow">无</label></div>
+                                    </div>
+                                </div>
+                                <h2 class="tile-title">改装件</h2>
+                                <div class="listview" id="modBlock">
+                                    <div class="media">
+                                        <div class="m-0"><label class="t-overflow">无</label></div>
+                                    </div>
+                                </div>
+                                <h2 class="tile-title">子系统</h2>
+                                <div class="listview" id="subSystemBlock">
+                                    <div class="media">
+                                        <div class="m-0"><label class="t-overflow">无</label></div>
+                                    </div>
+                                </div>
+                                <h2 class="tile-title">弹药/脚本/无人姬</h2>
+                                <div class="listview" id="ammunitionAndScriptBlock">
+                                    <div class="media">
+                                        <div class="m-0"><label class="t-overflow">无</label></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

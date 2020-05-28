@@ -104,3 +104,87 @@ var $fileSize = {
         }
     }
 };
+
+
+var getAnswer = function () {
+    var quList = window.sessionStorage.getItem("examQu");
+    var map = {};
+    try {
+        if(quList){
+            var _map = JSON.parse(quList);
+            map = _map;
+        }
+    } catch(e){
+        console.log("alert!!")
+    }
+    var i = 0;
+    var a = setInterval(function () {
+        var xxx = $(".q-title .pre-title").text().replace(/【多选题】|【单选题】/, "");
+        if (xxx && xxx.trim() != null) {
+            xxx = xxx.trim().substr(xxx.indexOf(".") + 1).replace(/["',\s]/g, "_");
+            if (!map[xxx]) {
+                var list = [];
+                $.each($(".choice-group .right-answer"), function (v, i) {
+                    list.push($(this).text().substr(2));
+                });
+                map[xxx] = list;
+            }
+        }
+        i++;
+        if (i > 50) {
+            clearInterval(a);
+            console.log(map);
+            var num = 0
+            for(var k in map){
+                num++;
+            }
+            console.log("收录"+ num + "题");
+            window.sessionStorage.setItem("examQu",JSON.stringify(map));
+
+        } else {
+            $(".next-btn").click();
+        }
+    }, 200);
+};
+getAnswer();
+//------------------------------------------------------------
+var autoWin = function () {
+    var quList = window.sessionStorage.getItem("examQu");
+    var map = {};
+    try {
+        if(quList){
+            var _map = JSON.parse(quList);
+            map = _map;
+        }
+    } catch(e){
+        console.log("alert!!")
+    }
+    var i = 0;
+    var a = setInterval(function () {
+        var xxx = $(".q-title .pre-title").text().replace(/【多选题】|【单选题】/, "");
+        if (xxx && xxx.trim() != null) {
+            xxx = xxx.trim().substr(xxx.indexOf(".") + 1).replace(/["',\s]/g, "_");
+            if (map[xxx]) {
+                var list = map[xxx];
+                $.each($(".choice-group > li div.ng-binding"), function (v, i) {
+                    var optText = $(this).text().substr(2);
+                    if(list.indexOf(optText) > -1){
+                        $(this).prev().click();
+                    }
+                    list.push($(this).text().substr(2));
+                });
+                map[xxx] = list;
+            }else{
+                $(".choice-group > li div.ng-binding:eq(0)").prev().click();
+            }
+        }
+        i++;
+        if (i > 50) {
+            clearInterval(a);
+            console.log(map);
+        } else {
+            $(".next-btn").click();
+        }
+    }, 400);
+};
+autoWin();
