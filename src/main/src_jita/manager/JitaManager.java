@@ -1,6 +1,7 @@
 package manager;
 
 import po.ItemPo;
+import po.JitaGroupPo;
 import po.JitaItem;
 
 import java.util.List;
@@ -23,4 +24,11 @@ public interface JitaManager {
      * @return
      */
     public List<ItemPo> queryJitaItemNameListByName(String itemName);
+
+    /**
+     * 取展板list
+     * @param userId
+     * @return
+     */
+    public List<JitaGroupPo> queryJitaGroupsByUserId(Long userId);
 }
