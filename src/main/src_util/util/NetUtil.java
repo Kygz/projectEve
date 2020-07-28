@@ -10,6 +10,8 @@ import java.net.URL;
 public class NetUtil {
     private static final Log log = LogFactory.getLog(NetUtil.class);
 
+    private static final String FORMAT_JSON = "";
+    private static final String FORMAT_XML = "";
     /**
      * 简单的连接
      * @param urlStr
@@ -23,6 +25,9 @@ public class NetUtil {
         BufferedWriter writer;
         try {
             URL url = new URL(urlStr);
+            if("https".equalsIgnoreCase(url.getProtocol())) {
+                SslUtil.ignoreSsl();
+            }
             connection = (HttpURLConnection)url.openConnection();
             connection.setDoOutput(true);
             connection.setDoInput(true);
@@ -36,7 +41,6 @@ public class NetUtil {
             connection.connect();
 
             if("POST".equals(method)){
-                connection.setRequestProperty("Content-Type", "application/json;charset=utf-8");
                 writer = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(), "UTF-8"));
                 try {
                     writer.write(postParams);
@@ -58,6 +62,7 @@ public class NetUtil {
             }
         } catch (Exception e) {
             log.error("Simple net connection error",e);
+            e.printStackTrace();
         }
         return result;
     }

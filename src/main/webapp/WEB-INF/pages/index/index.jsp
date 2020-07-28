@@ -94,49 +94,28 @@
 		<div id="mainPortal" >
 			<!-- Shortcuts -->
 			<div class="block-area shortcut-area">
-				<a class="shortcut tile" href="http://www.ceve-market.org/index/">
-					<img src="img/shortcuts/money.png" alt=""> <small
-						class="t-overflow">国服市场中心</small>
+				<a class="shortcut tile" href="http://www.ceve-market.org/index/" target="_blank">
+					<img src="img/shortcuts/money.png" alt="">
+					<small class="t-overflow">国服市场中心</small>
 				</a>
-				<a class="shortcut tile" href="http://killboard.nl/cn/?a=home">
-					<img src="img/shortcuts/stats.png" alt=""> <small
-						class="t-overflow">老KB榜</small>
+				<a class="shortcut tile" href="http://kb.ceve-market.org/" target="_blank">
+					<img src="img/shortcuts/reports.png" alt="">
+					<small class="t-overflow">新KB榜</small>
 				</a>
-				<a class="shortcut tile" href="http://kb.ceve-market.org/"> <img
-						src="img/shortcuts/reports.png" alt=""> <small
-						class="t-overflow">新KB榜</small>
+				<a class="shortcut tile" href="http://www.eve-wiki.net/" target="_blank">
+					<img src="img/shortcuts/reports.png" alt="">
+					<small class="t-overflow">EVE-WIKI</small>
 				</a>
-				<a class="shortcut tile" href="http://www.eve-wiki.net/"> <img
-						src="img/shortcuts/reports.png" alt=""> <small
-						class="t-overflow">WIKI</small>
-				</a>
-				<!-- 隐藏
-                    <a class="shortcut tile" href="">
-                        <img src="img/shortcuts/twitter.png" alt="">
-                        <small class="t-overflow">Tweets</small>
-                    </a>
-                    <a class="shortcut tile" href="">
-                        <img src="img/shortcuts/calendar.png" alt="">
-                        <small class="t-overflow">Calendar</small>
-                    </a>
-                    <a class="shortcut tile" href="">
-                        <img src="img/shortcuts/connections.png" alt="">
-                        <small class="t-overflow">Connection</small>
-                    </a>
-
-                    -->
 			</div>
-
 			<hr class="whiter" />
-
 			<!-- Quick Stats -->
 			<div class="block-area">
 				<div class="row">
 					<div class="col-md-3 col-xs-6">
 						<div class="tile quick-stats media">
-							<div id="stats-line" class="pull-left"></div>
+							<div id="stats-line" class="pull-left" data-value="${quickNum.portal_quick0_chart}"></div>
 							<div class="media-body">
-								<h2 data-value="29356">0</h2>
+								<h2 data-value="${quickNum.portal_quick0}">0</h2>
 								<small>装配收录</small>
 							</div>
 						</div>

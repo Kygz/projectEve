@@ -2,8 +2,16 @@ package util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.xml.sax.InputSource;
 import po.JitaItem;
 
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +22,9 @@ import java.util.Map;
 public class JitaUtil {
     private static final Log log = LogFactory.getLog(JitaUtil.class);
     private static final Map<String,String> planetObjMap = new HashMap<String,String>();
-    private static final String JITA_PRICE_URL = "https://www.ceve-market.org/api/market/region/{REGION}/system/{SYSTEM}/type/{ITEM}.{FORMAT}";
-    private static final String JITA_SEARCH_NAME_URL = "https://www.ceve-market.org/api/searchname";
+    private static final String JITA_PRICE_URL          = "https://www.ceve-market.org/api/market/region/{REGION}/system/{SYSTEM}/type/{ITEM}.{FORMAT}";
+    private static final String JITA_SEARCH_NAME_URL    = "https://www.ceve-market.org/api/searchname";
+    private static final String JITA_MINERAL_PRICE_URL  = "https://www.ceve-market.org/api/evemon";
     /**
      * 吉他查价
      * 链接：https://www.ceve-market.org/api/market/region/{星域ID}/system/{星系ID}/type/{物品ID}.{格式}
@@ -66,5 +75,31 @@ public class JitaUtil {
             planetObjMap.put("硅","9828");
         }
         return planetObjMap.get(name);
+    }
+
+    public static List<Map<String,String>> getJitaMineralPrice(){
+        List<Map<String,String>> priceList = new ArrayList<>();
+        String result = NetUtil.createNetConnection(JITA_MINERAL_PRICE_URL, "GET","");
+        // 创建一个新的字符串
+        StringReader xmlString = new StringReader(result);
+        // 创建新的输入源SAX 解析器将使用 InputSource 对象来确定如何读取 XML 输入
+        InputSource source = new InputSource(xmlString);
+        SAXBuilder saxBuilder = new SAXBuilder();
+        try {
+            Document document = saxBuilder.build(source);
+            Element minerals = document.getRootElement();
+            List<Element> mineralList = minerals.getChildren("mineral");
+            mineralList.forEach( mineral -> {
+                String name = mineral.getChildText("name");
+                String price = mineral.getChildText("price");
+                HashMap<String,String> item = new HashMap<>();
+                item.put("name",name);
+                item.put("price",price);
+                priceList.add(item);
+            });
+        }catch (JDOMException | IOException e) {
+            log.error("xml解析出错",e);
+        }
+        return priceList;
     }
 }

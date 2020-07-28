@@ -381,7 +381,7 @@ $(function() {
     });
 
     //Line
-    $("#stats-line").sparkline([9,4,6,5,6,4,5,7,9,3,6,5], {
+    $("#stats-line").sparkline($("#stats-line").attr("data-value").split(","), {
         type: 'line',
         width: '100%',
         height: '65',

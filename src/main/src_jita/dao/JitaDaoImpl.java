@@ -18,6 +18,11 @@ public class JitaDaoImpl implements JitaDao{
     @Resource
     private SessionFactory sessionFactory;
 
+    /**
+     * 取名字相近的前5个物品结果
+     * @param itemName
+     * @return
+     */
     public List<ItemPo> queryJitaItemByName(String itemName) {
         Session session = sessionFactory.getCurrentSession();
         String hql = "from ItemPo where item_name like ? order by item_name asc ";

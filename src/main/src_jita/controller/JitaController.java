@@ -11,11 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import po.ItemPo;
 import po.JitaItem;
 import util.JitaUtil;
+import util.StringUtil;
 import util.SysUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,5 +82,31 @@ public class JitaController {
             String json = SysUtil.createGson().toJson(resultMap);
             return json;
         }
+    }
+
+    @RequestMapping(params = "method=queryJitaMineralPrices", method=RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String queryJitaMineralPrices(HttpSession session,HttpServletRequest request,HttpServletResponse response){
+        List<Map<String, String>> jitaMineralPrice = JitaUtil.getJitaMineralPrice();
+        return SysUtil.createGson().toJson(jitaMineralPrice);
+    }
+
+    @RequestMapping(params = "method=queryJitaItemsByName", method=RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String queryJitaItemsByName(HttpSession session,HttpServletRequest request,HttpServletResponse response){
+        List<Map<String,String>> result = new ArrayList<>();
+        String itemName = request.getParameter("itemName");
+        if(StringUtil.isBlank(itemName)) {
+            List<ItemPo> itemPos = jitaManager.queryJitaItemNameListByName(itemName);
+            if(StringUtil.isNotEmpty(itemPos)){
+                itemPos.forEach(itemPo -> {
+                    Map<String,String> tempMap = new HashMap<>();
+                    tempMap.put("id",itemPo.getItem_id().toString());
+                    tempMap.put("name",itemPo.getItem_name());
+                    result.add(tempMap);
+                });
+            }
+        }
+        return SysUtil.createGson().toJson(result);
     }
 }

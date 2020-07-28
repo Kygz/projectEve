@@ -97,7 +97,19 @@ public class LoginController {
 			mav.addObject("error", "登陆信息过期，请重新登陆！");
 			return mav;
 		}else{
-			return new ModelAndView("index/index");
+			ModelAndView mav = new ModelAndView("index/index");
+			//第一排四个数字
+			Map<String,String> quickNum = new HashMap<>();
+			quickNum.put("portal_quick0_chart","1,0,0,0,2,1,0");
+			quickNum.put("portal_quick0","9");
+			quickNum.put("portal_quick1_chart","1,0,0,0,2,1,0");
+			quickNum.put("portal_quick1","10");
+			quickNum.put("portal_quick2_chart","1,0,0,0,2,1,0");
+			quickNum.put("portal_quick2","11");
+			quickNum.put("portal_quick3_chart","1,0,0,0,2,1,0");
+			quickNum.put("portal_quick3","12");
+			mav.addObject("quickNum",quickNum);
+			return mav;
 		}
 	}
 
