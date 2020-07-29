@@ -106,47 +106,20 @@ var $fileSize = {
 };
 
 
-var getAnswer = function () {
-    var quList = window.sessionStorage.getItem("examQu");
-    var map = {};
-    try {
-        if(quList){
-            var _map = JSON.parse(quList);
-            map = _map;
-        }
-    } catch(e){
-        console.log("alert!!")
-    }
-    var i = 0;
-    var a = setInterval(function () {
-        var xxx = $(".q-title .pre-title").text().replace(/【多选题】|【单选题】/, "");
-        if (xxx && xxx.trim() != null) {
-            xxx = xxx.trim().substr(xxx.indexOf(".") + 1).replace(/["',\s]/g, "_");
-            if (!map[xxx]) {
-                var list = [];
-                $.each($(".choice-group .right-answer"), function (v, i) {
-                    list.push($(this).text().substr(2));
-                });
-                map[xxx] = list;
-            }
-        }
-        i++;
-        if (i > 50) {
-            clearInterval(a);
-            console.log(map);
-            var num = 0
-            for(var k in map){
-                num++;
-            }
-            console.log("收录"+ num + "题");
-            window.sessionStorage.setItem("examQu",JSON.stringify(map));
-
-        } else {
-            $(".next-btn").click();
-        }
-    }, 200);
+var htmlEncodeByRegExp = function(str){
+    /*1.用正则表达式实现html转码*/
+    var s = "";
+    if(str.length == 0) return "";
+    s = str.replace(/&/g,"&amp;");
+    s = s.replace(/</g,"&lt;");
+    s = s.replace(/>/g,"&gt;");
+    s = s.replace(/ /g,"&nbsp;");
+    s = s.replace(/\'/g,"&#39;");
+    s = s.replace(/\"/g,"&quot;");
+    s = s.replace(/\'/g,"&#039;");
+    s = s.replace(/\"/g,"&034;");
+    return s;
 };
-getAnswer();
 //------------------------------------------------------------
 var autoWin = function () {
     var quList = window.sessionStorage.getItem("examQu");
@@ -187,4 +160,4 @@ var autoWin = function () {
         }
     }, 400);
 };
-autoWin();
+

@@ -39,4 +39,8 @@ public class JitaDaoImpl implements JitaDao{
         return result;
     }
 
+    public void saveJitaGroup(JitaGroupPo jitaGroupPo){
+        Session session = sessionFactory.getCurrentSession();
+        session.save(jitaGroupPo);
+    }
 }

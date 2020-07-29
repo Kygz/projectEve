@@ -38,4 +38,8 @@ public class JitaManagerImpl implements JitaManager{
         }
         return result;
     }
+
+    public void saveJitaGroup(JitaGroupPo jitaGroupPo){
+
+    }
 }

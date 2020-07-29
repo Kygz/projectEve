@@ -31,4 +31,10 @@ public interface JitaManager {
      * @return
      */
     public List<JitaGroupPo> queryJitaGroupsByUserId(Long userId);
+
+    /**
+     * 保存jitaGroupPo
+     * @param jitaGroupPo
+     */
+    public void saveJitaGroup(JitaGroupPo jitaGroupPo);
 }

@@ -36,6 +36,7 @@
             right: 5px;
             top: 5px;
         }
+        #titleCol{ transition: width ease-in 0.3s}
     </style>
 </head>
 <body style="background: none">
@@ -124,7 +125,7 @@
                             <div class="row">
                                 <div class="col-md-12 m-b-15">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" id="titleCompare" name="titleCompare" onchange="titleChange()">
+                                        <input type="checkbox" id="titleCompare" name="titleCompare" >
                                         标题物品比价
                                     </label>
                                     <label class="checkbox-inline">
@@ -134,20 +135,20 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 m-b-15">
+                                <div id="titleCol" class="col-md-6 m-b-15">
                                     <label for="titleItem">标题</label>
                                     <div class="p-relative">
                                         <input type="text" class="input-sm form-control validate[required]" id="titleItem" value="">
-                                        <span class="icon cursor-hand transBtn" onclick="transItem(this)"></span>
+                                        <span id="searchTitleItem" class="icon cursor-hand transBtn" onclick="transItem('titleItem','titleItemId')"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-3 m-b-15">
+                                <div id="titleSelectCol" class="col-md-3 m-b-15">
                                     <label>&nbsp;</label>
                                     <select id="titleItemId" class="select">
                                         <option value="-1">-无-</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3 m-b-15">
+                                <div id="titleNumCol" class="col-md-3 m-b-15">
                                     <label for="titleNum">&nbsp;</label>
                                     <div class="p-relative">
                                         <input id="titleNum" class="form-control input-sm spinedit" value="1"/>
@@ -159,18 +160,20 @@
                                     <label for="titleItem">添加物品</label>
                                     <div class="p-relative">
                                         <input type="text" class="input-sm form-control" id="enterItem" value="">
-                                        <span class="icon cursor-hand transBtn" onclick="transItem(this)"></span>
+                                        <span class="icon cursor-hand transBtn" onclick="transItem('enterItem','enterItemId')"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-2 m-b-15">
+                                <div class="col-md-3 m-b-15">
                                     <label>&nbsp;</label>
                                     <select id="enterItemId" class="select">
                                         <option value="-1">-无-</option>
                                     </select>
                                 </div>
-                                <div class="col-md-4 m-b-15">
-                                    <p>&nbsp;</p>
-                                    <button class="btn m-r-5" id="addToList" onclick="addToList()">添加到列表</button>
+                                <div class="col-md-3 m-b-15">
+                                    <label>&nbsp;</label>
+                                    <div style=" height: 30px; width: 100%; line-height: 30px; cursor: pointer; text-align: center">
+                                        <span onclick="addToList()"><span class="icon" style="font-weight: bold"></span>&nbsp;添加到列表</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row" id="item_block">
@@ -233,6 +236,15 @@
         $('#titleItemId').selectpicker();
         // $('#testselect').selectpicker('refresh');
         // $('.selectpicker').selectpicker('val', ‘列表id');
+
+        $('#titleCompare').on('ifChecked', function(event){
+            titleChange(true);
+        });
+        $('#titleCompare').on('ifUnchecked', function(event){
+            titleChange(false);
+        });
+
+
         //新建确定按钮
         $('body').on('click', '#addSection', function () {
             var eventForm = $(this).closest('.modal').find('.form-validation');
@@ -241,8 +253,7 @@
             $("#titleCompare").prop("checked",false);
             $("#totalCount").prop("checked",false);
             $("#titleItem").val("");
-            $("#titleItemId option:not(:eq(0))").remove();
-            $('#titleItemId').selectpicker('refresh');
+            titleChange(false);
             $("#titleNum").val("1");
 
             $("#enterItem").val("");
@@ -251,11 +262,137 @@
             $("#item_block").html("");
 
             $('#addNew-event').modal('show');
+        });
 
 
+        $('body').on('click', '#addEvent', function () {
+            var eventForm = $(this).closest('.modal').find('.form-validation');
+            eventForm.validationEngine('validate');
+            var itemList = $(".sub_item_block");
+            if (!(eventForm).find('.formErrorContent')[0] && itemList.length > 0) {
+                var needCompare = $("#titleCompare").is(":checked");
+                var needCount = $("#totalCount").is(":checked");
 
+                var titleName = $("#titleItem").val();
+                var titleItemId = $("#titleItemId").val();
+                var titleNum = $("#titleNum").val();
+
+                var subList = [];
+                if(needCompare){
+                    if(titleItemId == -1){
+                        $message.alert({
+                            title: "Insert result",
+                            msg: "<p>" + "标题不是有效的物品！" + "</p>"
+                        });
+                        return;
+                    }
+                    var titleObj = {};
+                    titleObj.id     = titleItemId;
+                    titleObj.num    = titleNum;
+
+                    subList.push(titleObj);
+                }
+
+                for(var i = 0; i < itemList.length; i++){
+                    var subObj = {};
+                    var subItemId = itemList[i].getAttribute("id").replace("subItem_","");
+                    var subItemNum = $(itemList[i]).find("#itemNum_" + subItemId).val();
+                    subObj.id     = subItemId;
+                    subObj.num    = subItemNum;
+                    subList.push(subObj);
+                }
+
+                var sectionData = {
+                    title:titleName + "",
+                    needCompare:needCompare + "",
+                    needCount:needCount + "",
+                    itemList:JSON.stringify(subList) + ""
+                };
+                $.ajax({
+                    url: "itemGroup.do?method=addNewSection",
+                    async: false,
+                    type: "POST",
+                    dataType: "json",
+                    data: sectionData,
+                    success: function (data) {
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        $message.alert({
+                            title: "Insert result",
+                            msg: "<p>" + "失败!" + "</p>"
+                        });
+                    }
+                });
+                $('#addNew-event form')[0].reset();
+                $('#addNew-event').modal('hide');
+            }
         });
     });
+
+    function titleChange(isChecked) {
+        $("#titleItemId option:not(:eq(0))").remove();
+        $("#titleItemId").val("-1");
+        $('#titleItemId').selectpicker('refresh');
+        if(isChecked){
+            $("#titleCol").toggleClass("col-md-6",true).toggleClass("col-md-12",false);
+            setTimeout(function () {
+                $("#searchTitleItem").show();
+                $("#titleSelectCol").show();
+                $("#titleNumCol").show();
+            },500);
+        }else{
+            $("#searchTitleItem").hide();
+            $("#titleSelectCol").hide();
+            $("#titleNumCol").hide();
+            $("#titleCol").toggleClass("col-md-12",true).toggleClass("col-md-6",false);
+        }
+    }
+
+    function transItem(inputDomId,selectDomId){
+        var prevInputDom = $("#" + inputDomId);
+        var nextSelectDom = $("#" + selectDomId);
+        var itemName = $.trim(prevInputDom.val());
+        $.ajax({
+            url : "item.do?method=queryJitaItemsByName",
+            async : false,
+            type : "POST",
+            dataType : "json",
+            data : {
+                itemName : itemName,
+            },
+            success : function(data) {
+                nextSelectDom.find("option:not(:eq(0))").remove();
+                if(typeof data == "object" && data.length > 0){
+                    for(var i = 0; i < data.length; i++){
+                        $("<option>").text(data[i].name).val(data[i].id).appendTo(nextSelectDom);
+                    }
+                }
+                nextSelectDom.selectpicker('refresh');
+            }
+        });
+    }
+    function addToList() {
+        var itemName = $("#enterItemId").find("option:selected").text();
+        var itemId = $("#enterItemId").val();
+        if(itemId == "-1" || $("#subItem_" + itemId).length > 0){
+            return false;
+        }
+        var itemDom = $("<div id=\"subItem_"+ itemId +"\" class=\"col-md-3 m-b-15 sub_item_block\">\n" +
+            "    <label for=\"itemNum_"+itemId  +"\"><span class=\"icon\" style='font-weight: bold' onclick='removeSubItem(this)'></span>&nbsp;"+ itemName +"</label>\n" +
+            "    <div class=\"p-relative\">\n" +
+            "        <input id=\"itemNum_"+ itemId +"\" class=\"form-control input-sm spinedit\" value=\"1\"/>\n" +
+            "    </div>\n" +
+            "</div>");
+        itemDom.hide();
+        $("#item_block").append(itemDom);
+        $("#itemNum_"+ itemId).spinedit('setMinimum', 1).spinedit('setMaximum', 10000);
+        itemDom.show();
+    }
+
+    function removeSubItem(dom) {
+        $(dom).parent().remove();
+    }
 </script>
 </body>
 </html>

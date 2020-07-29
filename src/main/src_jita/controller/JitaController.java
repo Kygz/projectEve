@@ -91,12 +91,12 @@ public class JitaController {
         return SysUtil.createGson().toJson(jitaMineralPrice);
     }
 
-    @RequestMapping(params = "method=queryJitaItemsByName", method=RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @RequestMapping(params = "method=queryJitaItemsByName", method=RequestMethod.POST,produces = "application/json;charset=utf-8")
     @ResponseBody
     public String queryJitaItemsByName(HttpSession session,HttpServletRequest request,HttpServletResponse response){
         List<Map<String,String>> result = new ArrayList<>();
         String itemName = request.getParameter("itemName");
-        if(StringUtil.isBlank(itemName)) {
+        if(StringUtil.isNotBlank(itemName)) {
             List<ItemPo> itemPos = jitaManager.queryJitaItemNameListByName(itemName);
             if(StringUtil.isNotEmpty(itemPos)){
                 itemPos.forEach(itemPo -> {
