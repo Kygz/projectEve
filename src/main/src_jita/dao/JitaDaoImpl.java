@@ -18,6 +18,13 @@ public class JitaDaoImpl implements JitaDao{
     @Resource
     private SessionFactory sessionFactory;
 
+    public ItemPo queryJitaItemById(Long itemId){
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from ItemPo where item_id = ?";
+        Query query = session.createQuery(hql).setParameter(0,itemId);
+        return (ItemPo)query.uniqueResult();
+    }
+
     /**
      * 取名字相近的前5个物品结果
      * @param itemName
@@ -41,6 +48,7 @@ public class JitaDaoImpl implements JitaDao{
 
     public void saveJitaGroup(JitaGroupPo jitaGroupPo){
         Session session = sessionFactory.getCurrentSession();
+
         session.save(jitaGroupPo);
     }
 }

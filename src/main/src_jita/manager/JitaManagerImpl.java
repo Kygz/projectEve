@@ -1,5 +1,9 @@
 package manager;
 
+import cache.JitaItemCacheLoader;
+import cache.JitaItemPriceCacheLoader;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.LoadingCache;
 import dao.JitaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,10 +11,11 @@ import po.ItemPo;
 import po.JitaGroupPo;
 import po.JitaItem;
 
-import javax.annotation.Resource;
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 取JitaItem Manager
@@ -20,8 +25,37 @@ public class JitaManagerImpl implements JitaManager{
     @Autowired
     private JitaDao jitaDao;
 
-    public JitaItem queryJitaItemById(String id) {
+    private LoadingCache<Long,ItemPo> jitaItemCacheMap;
+    private LoadingCache<String,JitaItem> jitaItemPriceCacheMap;
 
+    @PostConstruct
+    private void init(){
+        jitaItemCacheMap = CacheBuilder.newBuilder()
+                .maximumSize(200)
+                .initialCapacity(20)
+                .build(new JitaItemCacheLoader());
+        jitaItemPriceCacheMap = CacheBuilder.newBuilder()
+                .maximumSize(200)
+                .initialCapacity(20)
+                .expireAfterWrite(30, TimeUnit.MINUTES)
+                .build(new JitaItemPriceCacheLoader());
+    }
+
+    public JitaItem queryJitaItemPriceById(String id) {
+        try {
+            return jitaItemPriceCacheMap.get(id);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ItemPo queryJitaItemById(Long id) {
+        try {
+            return jitaItemCacheMap.get(id);
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -40,6 +74,6 @@ public class JitaManagerImpl implements JitaManager{
     }
 
     public void saveJitaGroup(JitaGroupPo jitaGroupPo){
-
+        jitaDao.saveJitaGroup(jitaGroupPo);
     }
 }

@@ -26,6 +26,8 @@
             </list>
         </property>
     </bean>
+
+    <bean id="appContextUtil" class="appContextUtil.AppContextUtil"/>
     <!--<context:annotation-config />-->
     <!-- 配置action -->
     <context:component-scan base-package="controller" />
