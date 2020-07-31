@@ -28,7 +28,10 @@ public class JitaUtil {
     /**
      * 吉他查价
      * 链接：https://www.ceve-market.org/api/market/region/{星域ID}/system/{星系ID}/type/{物品ID}.{格式}
-     * 格式：{"sell": {"volume": 25135121388, "max": 20000000.0, "min": 12.63}, "all": {"volume": 58356222717, "max": 20000000.0, "min": 3.01}, "buy": {"volume": 33221101329, "max": 12.05, "min": 3.01}}
+     * 格式：{
+     *      "sell": {"volume": 25135121388, "max": 20000000.0, "min": 12.63},
+     *      "all": {"volume": 58356222717, "max": 20000000.0, "min": 3.01},
+     *      "buy": {"volume": 33221101329, "max": 12.05, "min": 3.01}}
      * @param itemId
      * @return
      */

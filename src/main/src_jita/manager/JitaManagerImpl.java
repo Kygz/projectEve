@@ -76,4 +76,12 @@ public class JitaManagerImpl implements JitaManager{
     public void saveJitaGroup(JitaGroupPo jitaGroupPo){
         jitaDao.saveJitaGroup(jitaGroupPo);
     }
+
+    @Override
+    public void deleteJitaGroupBySectionIdAndUserId(Long sectionId, Long userId) {
+        JitaGroupPo jitaGroupPo = jitaDao.queryJitaGroupsBySectionIdAndUserId(sectionId, userId);
+        if(jitaGroupPo != null){
+            jitaDao.deleteJitaGroupsBySectionIdAndUserId(sectionId,userId);
+        }
+    }
 }

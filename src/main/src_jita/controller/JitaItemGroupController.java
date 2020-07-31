@@ -79,18 +79,20 @@ public class JitaItemGroupController {
                         }
                         i++;
                     }
-
-                    if(needCompare){
-                        Map<String,String> compare = new HashMap<>();
-                        compare.put("id","-1");
-                        compare.put("name", titlePrice.compareTo(totalPrice) + "");
-                        itemObjListCopy.add(compare);
-                    }
                     if(needCount){
                         Map<String,String> total = new HashMap<>();
                         total.put("id","-2");
-                        total.put("name", String.format("%.2f", totalPrice));
+                        total.put("name", "总计");
+                        total.put("price", String.format("%.2f", totalPrice));
                         itemObjListCopy.add(total);
+                    }
+                    if(needCompare){
+                        Map<String,String> compare = new HashMap<>();
+                        compare.put("id","-1");
+                        compare.put("name", "差价(标题物品 - 其余总价)");
+                        compare.put("price", String.format("%.2f", titlePrice - totalPrice));
+                        compare.put("compare", titlePrice.compareTo(totalPrice) + "");
+                        itemObjListCopy.add(compare);
                     }
                     showSectionList.add(new JitaGroupVo(jitaGroupPo.getId().toString(),jitaGroupPo.getGroupName(),itemObjListCopy));
                 });
@@ -146,6 +148,24 @@ public class JitaItemGroupController {
             result.put("msg","保存出错！请联系You Know Who");
         }
 
+        return SysUtil.createGson().toJson(result);
+    }
+
+    @RequestMapping(params = "method=removeSection", method=RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String removeSection(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        Map<String,String> result = new HashMap<>();
+        MemberPo memberPo = (MemberPo)session.getAttribute("member");
+        if(memberPo==null){
+            result.put("code","-1");
+            result.put("msg","掉线！请重新登录 try again!");
+        }else{
+            Long userId = memberPo.getMember_id();
+            String sectionId = request.getParameter("sectionId");
+            jitaManager.deleteJitaGroupBySectionIdAndUserId(NumberUtils.toLong(sectionId,-1),userId);
+            result.put("code","0");
+            result.put("msg","删除成功");
+        }
         return SysUtil.createGson().toJson(result);
     }
 }

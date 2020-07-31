@@ -44,4 +44,11 @@ public interface JitaManager {
      * @param jitaGroupPo
      */
     public void saveJitaGroup(JitaGroupPo jitaGroupPo);
+
+    /**
+     * 按人删栏目
+     * @param sectionId
+     * @param userId
+     */
+    public void deleteJitaGroupBySectionIdAndUserId(Long sectionId, Long userId);
 }

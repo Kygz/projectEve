@@ -1,5 +1,6 @@
 <%@taglib prefix="planet" uri="/planetTaglib" %>
 <%@taglib prefix="eve" uri="/indexTaglib" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -37,6 +38,12 @@
             top: 5px;
         }
         #titleCol{ transition: width ease-in 0.3s}
+        .listview .counts.color-green{
+            color: #5cb85c;
+        }
+        .listview .counts.color-red{
+            color: #d9534f;
+        }
     </style>
 </head>
 <body style="background: none">
@@ -46,68 +53,51 @@
         <button class="btn m-r-5" id="addSection">新增栏目</button>
     </div>
     <div class="block-area">
+        <h3 class="block-title">栏目价格取自国服市场中心，最高收购价，每30分钟更新一次</h3>
         <div class="row">
+            <c:forEach items="${sections}" var="sectionObj">
+                <c:set var="sectionId" value="${sectionObj.id}"/>
+                <c:set var="sectionName" value="${sectionObj.titleName}"/>
+                <c:set var="itemList" value="${sectionObj.showList}"/>
             <div class="col-md-4">
+                <input type="hidden" id="">
                 <div class="tile">
-                    <h2 class="tile-title">凡晶石</h2>
+                    <h2 class="tile-title">${sectionName}</h2>
                     <div class="tile-config dropdown">
                         <a data-toggle="dropdown" href="" class="tooltips tile-menu" title="" data-original-title="Options"></a>
                         <ul class="dropdown-menu pull-right text-right">
-                            <li><a href="">Refresh</a></li>
-                            <li><a href="">Delete</a></li>
+<%--                                <li><a href="javascript:void(0);" onclick="sectionRefresh('${sectionId}')">Refresh</a></li>--%>
+                            <li><a href="javascript:void(0);"  onclick="deleteSection('${sectionId}')">删除栏目</a></li>
                         </ul>
                     </div>
                     <div class="listview narrow">
-
+                        <c:forEach items="${itemList}" var="itemObj">
+                            <c:set var="itemId" value="${itemObj.id}"/>
+                            <c:set var="itemName" value="${itemObj.name}"/>
+                            <c:set var="itemPrice" value="${itemObj.price}"/>
+                            <c:set var="itemCompare" value="${itemObj.compare}"/>
                         <div class="media">
                             <div class="pull-right">
-                                <div class="counts">367892</div>
+                                <c:if test="${'1' eq itemCompare }">
+                                    <div class="counts color-red">${itemPrice}&nbsp;ISK</div>
+                                </c:if>
+                                <c:if test="${'0' eq itemCompare || '' eq itemCompare || null eq itemCompare}">
+                                    <div class="counts">${itemPrice}&nbsp;ISK</div>
+                                </c:if>
+                                <c:if test="${'-1' eq itemCompare }">
+                                    <div class="counts color-green">${itemPrice}&nbsp;ISK</div>
+                                </c:if>
                             </div>
                             <div class="media-body">
-                                <h6>FACEBOOK LIKES</h6>
+                                <h6>${itemName}</h6>
                             </div>
                         </div>
-
-                        <div class="media">
-                            <div class="pull-right">
-                                <div class="counts">2012</div>
-                            </div>
-                            <div class="media-body">
-                                <h6>GOOGLE +1s</h6>
-                            </div>
-                        </div>
-
-                        <div class="media">
-                            <div class="pull-right">
-                                <div class="counts">56312</div>
-                            </div>
-                            <div class="media-body">
-                                <h6>YOUTUBE VIEWS</h6>
-                            </div>
-                        </div>
-
-                        <div class="media">
-                            <div class="pull-right">
-                                <div class="counts">785879</div>
-                            </div>
-                            <div class="media-body">
-                                <h6>TWITTER FOLLOWERS</h6>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="pull-right">
-                                <div class="counts">68</div>
-                            </div>
-                            <div class="media-body">
-                                <h6>WEBSITE COMMENTS</h6>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
+            </c:forEach>
 
-            <div class="col-md-4">
-            </div>
         </div>
     </div>
 
@@ -250,8 +240,8 @@
             var eventForm = $(this).closest('.modal').find('.form-validation');
             eventForm.validationEngine('validate');
             $('#addNew-event form')[0].reset();
-            $("#titleCompare").prop("checked",false);
-            $("#totalCount").prop("checked",false);
+            $('#titleCompare').iCheck('uncheck');
+            $('#totalCount').iCheck('uncheck');
             $("#titleItem").val("");
             titleChange(false);
             $("#titleNum").val("1");
@@ -392,6 +382,30 @@
 
     function removeSubItem(dom) {
         $(dom).parent().remove();
+    }
+
+    function deleteSection(sectionId){
+        if(sectionId && $.trim(sectionId) !== ""){
+            $.ajax({
+                url : "itemGroup.do?method=removeSection",
+                async : false,
+                type : "POST",
+                dataType : "json",
+                data : {
+                    sectionId : sectionId,
+                },
+                success : function(data) {
+                    if(data.code === "0"){
+                        window.location.reload();
+                    }else{
+                        $message.alert({
+                            title: "Delete result",
+                            msg: "<p>" + "删除失败! 原因：" + data.msg + "</p>"
+                        });
+                    }
+                }
+            });
+        }
     }
 </script>
 </body>

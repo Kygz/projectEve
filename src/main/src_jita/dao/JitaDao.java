@@ -14,5 +14,7 @@ public interface JitaDao {
     public List<ItemPo> queryJitaItemByName(String itemName);
 
     public List<JitaGroupPo> queryJitaGroupsByUserId(Long userId);
+    public JitaGroupPo queryJitaGroupsBySectionIdAndUserId(Long sectionId, Long userId);
+    public void deleteJitaGroupsBySectionIdAndUserId(Long sectionId, Long userId);
     public void saveJitaGroup(JitaGroupPo jitaGroupPo);
 }

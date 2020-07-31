@@ -26,14 +26,14 @@ public class JitaDaoImpl implements JitaDao{
     }
 
     /**
-     * 取名字相近的前5个物品结果
+     * 取名字相近的前5个物品结果 按相似度排序
      * @param itemName
      * @return
      */
     public List<ItemPo> queryJitaItemByName(String itemName) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "from ItemPo where item_name like ? order by item_name asc ";
-        Query query = session.createQuery(hql).setParameter(0,"%"+itemName+"%").setMaxResults(5);
+        String hql = "from ItemPo where item_name like ? order by length(replace(item_name,?,'')) asc";
+        Query query = session.createQuery(hql).setParameter(0,"%"+itemName+"%").setParameter(1,itemName).setMaxResults(5);
         List<ItemPo> result = query.list();
         return result;
     }
@@ -46,9 +46,24 @@ public class JitaDaoImpl implements JitaDao{
         return result;
     }
 
+    @Override
+    public JitaGroupPo queryJitaGroupsBySectionIdAndUserId(Long sectionId, Long userId) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from JitaGroupPo where userId = ? and id = ?";
+        Query query = session.createQuery(hql).setParameter(0,userId).setParameter(1,sectionId);
+        return (JitaGroupPo)query.uniqueResult();
+    }
+
+    @Override
+    public void deleteJitaGroupsBySectionIdAndUserId(Long sectionId, Long userId) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "delete JitaGroupPo where userId = ? and id = ?";
+        Query query = session.createQuery(hql).setParameter(0,userId).setParameter(1,sectionId);
+        query.executeUpdate();
+    }
+
     public void saveJitaGroup(JitaGroupPo jitaGroupPo){
         Session session = sessionFactory.getCurrentSession();
-
         session.save(jitaGroupPo);
     }
 }
