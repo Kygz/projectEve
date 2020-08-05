@@ -6,8 +6,10 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import po.ItemPo;
 import po.JitaGroupPo;
+import util.StringUtil;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +25,26 @@ public class JitaDaoImpl implements JitaDao{
         String hql = "from ItemPo where item_id = ?";
         Query query = session.createQuery(hql).setParameter(0,itemId);
         return (ItemPo)query.uniqueResult();
+    }
+
+    /**
+     * 列表不为null
+     * @param itemId
+     * @return
+     */
+    @Override
+    public List<ItemPo> queryJitaItemListByIds(List<Long> itemId) {
+        List<ItemPo> result = new ArrayList<>();
+        List<Long>[] lists = StringUtil.splitList(itemId, 900);
+
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from ItemPo where item_id = ?";
+        Query query = session.createQuery(hql);
+        for (List<Long> list : lists) {
+            query.setParameter(0,lists);
+            result.addAll(query.list());
+        }
+        return result;
     }
 
     /**

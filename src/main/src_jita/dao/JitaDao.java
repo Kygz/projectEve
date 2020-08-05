@@ -11,6 +11,7 @@ import java.util.List;
 public interface JitaDao {
 
     public ItemPo queryJitaItemById(Long itemId);
+    public List<ItemPo> queryJitaItemListByIds(List<Long> itemId);
     public List<ItemPo> queryJitaItemByName(String itemName);
 
     public List<JitaGroupPo> queryJitaGroupsByUserId(Long userId);

@@ -7,6 +7,7 @@ import com.google.common.cache.LoadingCache;
 import dao.JitaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import po.BlueprintPo;
 import po.ItemPo;
 import po.JitaGroupPo;
 import po.JitaItem;
@@ -27,6 +28,7 @@ public class JitaManagerImpl implements JitaManager{
 
     private LoadingCache<Long,ItemPo> jitaItemCacheMap;
     private LoadingCache<String,JitaItem> jitaItemPriceCacheMap;
+    private LoadingCache<Long, BlueprintPo> blueprintCacheMap;
 
     @PostConstruct
     private void init(){
