@@ -1,5 +1,7 @@
 package po;
 
+import enumUtils.BlueprintEnum;
+
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -13,14 +15,11 @@ public class BlueprintPo {
     //copying, invention, manufacturing, research_material, research_time;
     private Set<String> contentSet;
 
-
-
     public BlueprintPo(LinkedHashMap<String,Object> yamlObj) {
-        this.blueprintTypeId = (Integer) yamlObj.get("blueprintTypeId");
+        this.blueprintTypeId = (Integer) yamlObj.get("blueprintTypeID");
         this.activities = (LinkedHashMap<String,LinkedHashMap<String,Object>>) yamlObj.get("activities");
-        this.maxProductionLimit = (Integer) yamlObj.get("blueprintTypeId");
+        this.maxProductionLimit = (Integer) yamlObj.get("maxProductionLimit");
         this.contentSet = this.activities.keySet();
-
     }
 
     public Integer getBlueprintTypeId() {
@@ -45,5 +44,22 @@ public class BlueprintPo {
 
     public void setMaxProductionLimit(Integer maxProductionLimit) {
         this.maxProductionLimit = maxProductionLimit;
+    }
+
+    public boolean isCanResearch() {
+        return this.contentSet.contains(BlueprintEnum.research_material.getActivityType())
+                && this.contentSet.contains(BlueprintEnum.research_time.getActivityType());
+    }
+
+    public boolean isCanInvent() {
+        return this.contentSet.contains(BlueprintEnum.invention.getActivityType());
+    }
+
+    public boolean isCanManufacture() {
+        return this.contentSet.contains(BlueprintEnum.manufacturing.getActivityType());
+    }
+
+    public boolean isCanCopy() {
+        return this.contentSet.contains(BlueprintEnum.copying.getActivityType());
     }
 }
