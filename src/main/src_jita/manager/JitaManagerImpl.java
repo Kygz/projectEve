@@ -1,10 +1,13 @@
 package manager;
 
+import cache.BlueprintCacheLoader;
 import cache.JitaItemCacheLoader;
 import cache.JitaItemPriceCacheLoader;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.LoadingCache;
+import com.google.common.collect.ImmutableMap;
 import dao.JitaDao;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.Yaml;
@@ -20,6 +23,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -30,6 +35,8 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class JitaManagerImpl implements JitaManager{
+    private static Logger log = Logger.getLogger(JitaManagerImpl.class);
+
     @Autowired
     private JitaDao jitaDao;
 
@@ -40,15 +47,26 @@ public class JitaManagerImpl implements JitaManager{
     @PostConstruct
     private void init(){
         jitaItemCacheMap = CacheBuilder.newBuilder()
-                .maximumSize(200)
+                .maximumSize(2000)
                 .initialCapacity(20)
                 .build(new JitaItemCacheLoader());
         jitaItemPriceCacheMap = CacheBuilder.newBuilder()
-                .maximumSize(200)
+                .maximumSize(2000)
                 .initialCapacity(20)
                 .expireAfterWrite(30, TimeUnit.MINUTES)
                 .build(new JitaItemPriceCacheLoader());
 
+        blueprintCacheMap = CacheBuilder.newBuilder()
+                .maximumSize(5000)
+                .initialCapacity(20)
+                .build(new BlueprintCacheLoader());
+
+        reloadBlueprintCache();
+    }
+
+    private void reloadBlueprintCache(){
+        log.info("读取蓝图信息-start");
+        long startTime = new Date().getTime();
         URL resource = this.getClass().getResource("data/sde/fsd/blueprints.yaml");
         if(resource != null && resource.getFile() != null){
             File blueprintFile = new File(resource.getFile());
@@ -58,24 +76,29 @@ public class JitaManagerImpl implements JitaManager{
                 fileInputStream = new FileInputStream(blueprintFile);
                 Object loadObj = yaml.load(fileInputStream);
                 if(loadObj != null){
-                    LinkedHashMap<Integer, LinkedHashMap> mapObj = (LinkedHashMap<Integer, LinkedHashMap>) loadObj;
+                    LinkedHashMap<Integer, LinkedHashMap> originObj = (LinkedHashMap<Integer, LinkedHashMap>) loadObj;
+                    LinkedHashMap<Long, LinkedHashMap> mapObj = new LinkedHashMap<>();
+                    originObj.keySet().forEach( integer -> {
+                        mapObj.put(integer.longValue(), originObj.get(integer));
+                    });
+                    ImmutableMap<Long, ItemPo> allItem = jitaItemCacheMap.getAll(new ArrayList<>(mapObj.keySet()));
                     mapObj.keySet().forEach( id -> {
-                        BlueprintPo blueprintPo = new BlueprintPo(mapObj.get(id));
-                        System.out.println("id:" + blueprintPo.getBlueprintTypeId());
-
-                        JitaItem itemInfo = JitaUtil.getItemInfo(blueprintPo.getBlueprintTypeId().toString());
-                        if(itemInfo == null){
-                            System.out.println(mapObj.get(id));
+                        ItemPo itemPo = allItem.get(id);
+                        if(itemPo != null){
+                            BlueprintPo blueprintPo = new BlueprintPo(mapObj.get(id));
+                            blueprintPo.setBlueprintTypeName(itemPo.getItem_name());
+                            blueprintCacheMap.put(id,blueprintPo);
                         }
                     });
                 }
-                System.out.println("success");
-            } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException | ExecutionException e) {
+                log.info("读取蓝图失败");
                 e.printStackTrace();
             }
+            long endTime = new Date().getTime();
+            log.info("读取蓝图信息-end,耗时：" + (endTime - startTime)/1000 + "s");
         }
     }
-
     public JitaItem queryJitaItemPriceById(String id) {
         try {
             return jitaItemPriceCacheMap.get(id);
@@ -118,5 +141,10 @@ public class JitaManagerImpl implements JitaManager{
         if(jitaGroupPo != null){
             jitaDao.deleteJitaGroupsBySectionIdAndUserId(sectionId,userId);
         }
+    }
+
+    @Override
+    public HashMap<Long,BlueprintPo> getAllBlueprintMap(){
+        return new HashMap<>(blueprintCacheMap.asMap());
     }
 }

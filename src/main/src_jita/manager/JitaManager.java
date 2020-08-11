@@ -1,9 +1,11 @@
 package manager;
 
+import po.BlueprintPo;
 import po.ItemPo;
 import po.JitaGroupPo;
 import po.JitaItem;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -51,4 +53,6 @@ public interface JitaManager {
      * @param userId
      */
     public void deleteJitaGroupBySectionIdAndUserId(Long sectionId, Long userId);
+
+    HashMap<Long, BlueprintPo> getAllBlueprintMap();
 }

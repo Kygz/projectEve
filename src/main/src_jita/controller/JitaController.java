@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import po.BlueprintPo;
 import po.ItemPo;
 import po.JitaItem;
+import po.MemberPo;
 import util.JitaUtil;
 import util.StringUtil;
 import util.SysUtil;
@@ -108,5 +110,21 @@ public class JitaController {
             }
         }
         return SysUtil.createGson().toJson(result);
+    }
+
+    @RequestMapping(params = "method=blueprintIndex", method= RequestMethod.GET)
+    public ModelAndView blueprintIndex(HttpSession httpSession){
+        MemberPo memberPo = (MemberPo)httpSession.getAttribute("member");
+        if(memberPo==null){
+            return new ModelAndView("login");
+        }else{
+            HashMap<Long, BlueprintPo> allBlueprintMap = jitaManager.getAllBlueprintMap();
+            for (BlueprintPo blueprintPo : allBlueprintMap.values()) {
+                if(blueprintPo.isCanManufacture()) {
+
+                }
+            }
+            return null;
+        }
     }
 }

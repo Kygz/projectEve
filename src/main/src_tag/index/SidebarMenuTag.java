@@ -54,6 +54,7 @@ public class SidebarMenuTag  extends TagSupport {
 //                        "           <li><a href=\"404.html\">新手船只申领</a></li>" +
                         "           <li><a href=\"javascript:void(0)\" _href=\"planet.do?method=planetInsertPage\" target=\"mainIframe\">行星开发</a></li>" +
                         "           <li><a href=\"javascript:void(0)\" _href=\"itemGroup.do?method=index\" target=\"mainIframe\">市场展板</a></li>" +
+                        "           <li><a href=\"javascript:void(0)\" _href=\"itemGroup.do?method=index\" target=\"mainIframe\">蓝图详情</a></li>" +
                         "           <li><a href=\"javascript:void(0)\" _href=\"skillMail.do?method=index\" target=\"mainIframe\">技能提醒</a></li>" +
 //                        "           <li><a href=\"form-examples.html\">异常拾荒</a></li>" +
 //                        "           <li><a href=\"form-validation.html\">出勤登记</a></li>" +

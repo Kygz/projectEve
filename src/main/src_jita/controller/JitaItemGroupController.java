@@ -97,7 +97,7 @@ public class JitaItemGroupController {
                     showSectionList.add(new JitaGroupVo(jitaGroupPo.getId().toString(),jitaGroupPo.getGroupName(),itemObjListCopy));
                 });
             }
-            ModelAndView modelAndView = new ModelAndView("jitaGroup/jitaGroupIndex");
+            ModelAndView modelAndView = new ModelAndView("jita/jitaGroupIndex");
             modelAndView.addObject("sections",showSectionList);
             return modelAndView;
         }
